@@ -1,26 +1,65 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from fake_useragent import UserAgent
 from dbHelper import insert_product
 
-def scrape_amazon(driver, url):
-    driver.get(url)
-    time.sleep(3)
 
+def setup_driver():
+    options = Options()
+    ua = UserAgent()
+    user_agent = ua.random
+    options.add_argument(f"user-agent={user_agent}")
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+
+def scrape_amazon(driver, url, db):
     try:
-        product_title = driver.find_element(By.ID, "productTitle").text.strip()
-        price = driver.find_element(By.CSS_SELECTOR, ".a-price .a-offscreen").text.strip()
-        description = driver.find_element(By.ID, "feature-bullets").text.strip()
+        driver.get(url)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".s-main-slot"))
+        )
 
-        product_data = {
-            "title": product_title,
-            "price": price,
-            "description": description,
-            "url": url,
-            "source": "amazon"
-        }
+        products = driver.find_elements(By.CSS_SELECTOR, ".s-main-slot .s-result-item")
 
-        insert_product(product_data)
-        return product_data
+        for product in products:
+            try:
+                title = product.find_element(By.CSS_SELECTOR, ".a-size-base-plus.a-color-base.a-text-normal").text.strip()
+            except Exception:
+                title = "Title not found"
+
+            try:
+                price_whole = product.find_element(By.CSS_SELECTOR, ".a-price-whole").text.strip()
+                price_fraction = product.find_element(By.CSS_SELECTOR, ".a-price-fraction").text.strip()
+                price = f"${price_whole}.{price_fraction}"
+            except Exception:
+                price = "Price not found"
+
+            try:
+                link = product.find_element(By.CSS_SELECTOR, "a.a-link-normal.s-no-outline").get_attribute("href")
+            except Exception:
+                link = "Link not found"
+
+            product_data = {
+                "title": title,
+                "price": price,
+                "url": link,
+                "source": "Amazon",
+            }    
+
+            db.products.insert_one(product_data)
+            print(f"Inserted product: {product_data}")
+
     except Exception as e:
-        print(f"Error scraping Amazon: {e}")
-        return None
+        print(f"Error scrapin Amazon: {e}")
+
+
+    

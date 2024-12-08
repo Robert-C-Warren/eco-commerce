@@ -31,7 +31,7 @@ def main():
 
     for site, url in urls.items():
         if site == "amazon":
-            scrape_amazon(driver, url)
+            scrape_amazon(driver, url, db)
         elif site == "lochtree":
             scrape_lochtree(driver, url, db)
         elif site == "earthhero":
