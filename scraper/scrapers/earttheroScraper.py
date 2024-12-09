@@ -34,12 +34,19 @@ def scrape_earthhero(driver, url, db):
             except Exception:
                 product_link = "Link not found"
 
+            try:
+                image_link = product.find_element(By.CLASS_NAME, "boost-pfs-filter-product-item-image img").get_attribute("src")
+            except Exception:
+                image_link = "Image not found"
+
             # Prepare product data
             product_data = {
                 "title": title,
                 "price": price,
                 "url": product_link,
-                "source": "earthhero"
+                "image": image_link,
+                "source": "earthhero",
+                "visible": False,
             }
 
             # Insert into MongoDB

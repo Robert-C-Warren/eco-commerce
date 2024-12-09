@@ -34,12 +34,19 @@ def scrape_lochtree(driver, url, db):
             except Exception:
                 product_link = "Link not found"
 
+            try:
+                image_link = product.find_element(By.CLASS_NAME, "product-thumbnail__image").get_attribute("src")
+            except Exception:
+                image_link = "Image not found"
+
             # Prepare product data
             product_data = {
                 "title": title,
                 "price": price,
                 "url": product_link,
-                "source": "lochtree"
+                "image": image_link,
+                "source": "lochtree",
+                "visible": False,
             }
 
             # Insert into MongoDB

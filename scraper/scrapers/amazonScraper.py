@@ -48,11 +48,18 @@ def scrape_amazon(driver, url, db):
             except Exception:
                 link = "Link not found"
 
+            try:
+                image_link = product.find_element(By.CSS_SELECTOR, ".s-image").get_attribute("src")
+            except Exception:
+                image_link = "Image not found"
+
             product_data = {
                 "title": title,
                 "price": price,
                 "url": link,
+                "image": image_link,
                 "source": "Amazon",
+                "visible": False,
             }    
 
             db.products.insert_one(product_data)
