@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from config import get_database
-from bson import json_util
+from bson import ObjectId
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +26,7 @@ def update_product_visibilty(id):
     try:
         visible = request.json.get("visible", False)
         result = db.products.update_one({"_id": ObjectId(id)}, {"$set": {"visible": visible}})
+       
         if result.modified_count == 1:
             return jsonify({"message": "Product updated successfully"}), 200
         return jsonify({"message": "No changes made"}), 400
@@ -36,7 +37,9 @@ def update_product_visibilty(id):
 def get_all_products():
     try:
         products = list(db.products.find())
-        return jsonify(json_util.loads(json_util.dumps(products))), 200
+        for product in products:
+            product["_id"] = str(product["_id"])
+        return jsonify(products), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
