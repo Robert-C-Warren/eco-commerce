@@ -42,6 +42,7 @@ def scrape_earthhero(driver, url, db):
             # Prepare product data
             product_data = {
                 "title": title,
+                "summary": summary,
                 "price": price,
                 "url": product_link,
                 "image": image_link,

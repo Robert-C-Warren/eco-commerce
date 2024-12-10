@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from summarizer import summarize_title
 
 def scrape_lochtree(driver, url, db):
     base_url = "https://lochtree.com"
@@ -17,6 +18,7 @@ def scrape_lochtree(driver, url, db):
             try:
                 # Extract title
                 title = product.find_element(By.CLASS_NAME, "product-thumbnail__title").text.strip()
+                product["summary"] = summarize_title(product["title"])
             except Exception:
                 title = "Title not found"
 
@@ -42,6 +44,7 @@ def scrape_lochtree(driver, url, db):
             # Prepare product data
             product_data = {
                 "title": title,
+                "summary": product,
                 "price": price,
                 "url": product_link,
                 "image": image_link,

@@ -1,75 +1,73 @@
 .product-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 20px;
+    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .product-card {
-    width: 300px;
-    height: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    width: 250px; /* Adjust width as needed */
+    height: 400px; /* Ensure a consistent height */
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    text-align: center;
-    overflow: hidden;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-sizing: border-box;
+    text-align: center; /* Center-align content */
 }
 
-.product-card:hover {
-    transform: scale(1.05);
-}
-
-.product-image {
-    max-width: 100%;
-    max-height: 200px;
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Enforce a max height for images */
     object-fit: contain;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
-.product-title {
-    font-size: 18px;
+.product-card h6 {
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    min-height: 50px; /* Ensures title alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.product-price {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 12px;
+.product-card p {
+    margin: 0.5rem 0;
 }
 
-.product-link {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.product-card a {
     text-decoration: none;
+    color: #007bff;
+    margin: 0.5rem 0;
+    font-weight: bold;
 }
 
-.product-link:hover {
-    background-color: #0056b3;
-}
-
-.product-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 16px;
+.product-card button {
+    width: 80%; /* Consistent button size */
+    padding: 0.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 16px;
+    margin-top: auto; /* Pushes the button to the bottom */
 }
 
-.product-button:hover {
-    background-color: #0056b3;
+.btn-hide {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-show {
+    background-color: #28a745;
+    color: white;
 }

@@ -6,7 +6,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from fake_useragent import UserAgent
-from dbHelper import insert_product
 
 
 def setup_driver():
@@ -55,6 +54,7 @@ def scrape_amazon(driver, url, db):
 
             product_data = {
                 "title": title,
+                "summary": summary,
                 "price": price,
                 "url": link,
                 "image": image_link,
@@ -67,6 +67,3 @@ def scrape_amazon(driver, url, db):
 
     except Exception as e:
         print(f"Error scrapin Amazon: {e}")
-
-
-    

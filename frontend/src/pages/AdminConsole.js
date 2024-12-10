@@ -17,10 +17,19 @@ const AdminConsole = () => {
 
     const toggleVisibility = async (productId, currentVisibility) => {
         try {
-            await API.patch(`/products/${productId}`, { visible: !currentVisibility});
+            await API.patch(`/admin/products/${productId}`, { visible: !currentVisibility});
             fetchProducts();
         } catch (error) {
             console.error("Error updating visibilty:", error);
+        }
+    };
+
+    const deleteProduct = async (productId) => {
+        try {
+            await API.delete(`/admin/products/${productId}`);
+            setProducts(products.filter((product) => product._id !== productId));
+        } catch (error) {
+            console.error("Error deleting product:", error)
         }
     };
 
@@ -46,6 +55,12 @@ const AdminConsole = () => {
                             className={product.visible ? "btn-hide" : "btn-show"}
                         >
                             {product.visible ? "Hide from Site" : "Show on Site"}
+                        </button>
+                        <button
+                            onClick={() => deleteProduct(product._id)}
+                            className="btn-delete"
+                        >
+                            Delete
                         </button>
                     </div>    
                 ))}

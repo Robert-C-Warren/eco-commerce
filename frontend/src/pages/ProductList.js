@@ -55,7 +55,7 @@ const HomePage = () => {
                             onError={(e) => { e.target.src = "/fallback-image.jpg"; }}
                             className="product-image"
                         />
-                        <h3 className="product-title">{product.title}</h3>
+                        <h6 className="product-title">{product.summary} || {product.title}</h6>
                         <p className="product-price">Price: ${product.price}</p>
                         <a 
                             href={product.url} 
