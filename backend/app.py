@@ -60,6 +60,44 @@ def delete_product_admin(id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@app.route("/admin/products/<id>/edit", methods=["PATCH"])
+def edit_product_title(id):
+    try:
+        new_title = request.json.get("summary", None)
+        if not new_title:
+            return jsonify({"error": "Title is required"}), 400
+        
+        result = products_collection.update_one(
+            {"_id": ObjectId(id)}, {"$set": {"summary": new_title}}
+        )
+
+        if result.modified_count == 1:
+            return jsonify({"message": "Title updated successfully"}), 200
+        else:
+            return jsonify({"error": "No product found or no changes made"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/admin/products/visibility", methods=["PATCH"])
+def update_visibility_bulk():
+    try:
+        product_ids = request.json.get("product_ids", [])
+        visible = request.json.get("visible", False)
+        if not product_ids:
+            return jsonify({"error": "No product IDs provided"}), 400
+        
+        result = db.products.update_many(
+            {"_id": {"$in": [ObjectId(pid) for pid in product_ids]}},
+            {"$set": {"visible": visible}}
+        )
+
+        if result.modified_count > 0:
+            return jsonify({"message": f"Updated {result.modified_count}"}), 200
+        else:
+            return jsonify({"message": "No products updated"}), 400
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/admin/products", methods=["GET"])
 def get_all_products():
     try:

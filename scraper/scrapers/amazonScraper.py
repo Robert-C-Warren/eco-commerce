@@ -6,9 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from fake_useragent import UserAgent
-from transformers import pipeline
 
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def setup_driver():
     options = Options()
@@ -21,13 +19,18 @@ def setup_driver():
     options.add_argument("--disable-dev-shm-usage")
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-def summarize_title(title, max_length=10, min_length=5):
+def summarize_title(title, max_words=5):
     try:
-        summary = summarizer(title, max_length=max_length, min_length=min_length, truncation=True)
-        return summary[0]['summary_text']
+       exclusion_list = {"pack", "set"}
+       words = title.split()
+       keywords = [
+           word for word in words if len(word) > 3 and word.lower() 
+        not in exclusion_list][:max_words]
+       return " ".join(keywords)
     except Exception as e:
         print(f"Error summarizing title: {e}")
         return title
+    
 
 def scrape_amazon(driver, url, db):
     try:

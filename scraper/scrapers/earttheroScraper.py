@@ -1,17 +1,18 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from transformers import pipeline
+import time
 
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-
-def summarize_title(title, max_length=10, min_length=5):
-    try:
-        summary = summarizer(title, max_length=max_length, min_length=min_length, truncation=True)
-        return summary[0]['summary_text']
-    except Exception as e:
-        print(f"Error summarizing title: {e}")
-        return title
+def scroll_to_load_all(driver):
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    while True:
+        driver.execute_script("window.scrollBy(0, 300);")
+        time.sleep(1)
+        
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
 
 def scrape_earthhero(driver, url, db):
     base_url = "https://www.earthhero.com"
@@ -45,16 +46,17 @@ def scrape_earthhero(driver, url, db):
             except Exception:
                 product_link = "Link not found"
 
+            scroll_to_load_all(driver)
+
             try:
-                image_link = product.find_element(By.CLASS_NAME, "boost-pfs-filter-product-item-image img").get_attribute("src")
+                image_link = product.find_element(By.CLASS_NAME, "boost-pfs-filter-product-item-main-image").get_attribute("src")
             except Exception:
                 image_link = "Image not found"
 
             # Prepare product data
-            summary = summarize_title(title)
             product_data = {
                 "title": title,
-                "summary": summary,
+                "summary": title,
                 "price": price,
                 "url": product_link,
                 "image": image_link,

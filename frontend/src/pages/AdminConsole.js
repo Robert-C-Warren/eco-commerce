@@ -5,6 +5,8 @@ import "./AdminConsole.css"
 
 const AdminConsole = () => {
     const [products, setProducts] = useState([]);
+    const [editingProductId, setEditingProductId] = useState(null);
+    const [editedTitle, setEditedTitle] = useState("");
 
     const fetchProducts = async () => {
         try {
@@ -33,6 +35,21 @@ const AdminConsole = () => {
         }
     };
 
+    const startEditing = (productId, currentTitle) => {
+        setEditingProductId(productId);
+        setEditedTitle(currentTitle);
+    };
+
+    const saveEditedTitle = async (productId) => {
+        try {
+            await API.patch(`/admin/products/${productId}/edit`, { summary: editedTitle});
+            setEditingProductId(null);
+            fetchProducts();
+        } catch (error) {
+            console.error("Error updating title:", error)
+        }
+    };
+
     useEffect(() => {
         fetchProducts();
     }, []);
@@ -44,7 +61,26 @@ const AdminConsole = () => {
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
                         <img src={product.image} alt={product.title} />
-                        <h6>{product.summary}</h6>
+                        {editingProductId === product._id ? (
+                            <>
+                                <input
+                                    type="text"
+                                    value={editedTitle}
+                                    onChange={(e) => setEditedTitle(e.target.value)}
+                                    className="edit-title-input"
+                            />
+                            <button onClick={() => saveEditedTitle(product._id)}>Save</button>
+                            <button onClick={() => setEditingProductId(null)}>Cancel</button>
+                        </>
+                        ) : (
+                            <>
+                                <h6>{product.summary}</h6>
+                                <button onClick={() => startEditing(product._id, product.summary)}>
+                                    Edit Title
+                                </button>
+                            </>
+                        )}
+                        {/* <h6>{product.summary}</h6> */}
                         <p>Price: {product.price}</p>
                         <p>Source: {product.source}</p>
                         <a href={product.url} target="_blank" rel="noopener noreferrer">
