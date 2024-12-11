@@ -1,7 +1,17 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from summarizer import summarize_title
+from transformers import pipeline
+
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+def summarize_title(title, max_length=10, min_length=5):
+    try:
+        summary = summarizer(title, max_length=max_length, min_length=min_length, truncation=True)
+        return summary[0]['summary_text']
+    except Exception as e:
+        print(f"Error summarizing title: {e}")
+        return title
 
 def scrape_lochtree(driver, url, db):
     base_url = "https://lochtree.com"
@@ -18,7 +28,6 @@ def scrape_lochtree(driver, url, db):
             try:
                 # Extract title
                 title = product.find_element(By.CLASS_NAME, "product-thumbnail__title").text.strip()
-                product["summary"] = summarize_title(product["title"])
             except Exception:
                 title = "Title not found"
 
@@ -42,9 +51,10 @@ def scrape_lochtree(driver, url, db):
                 image_link = "Image not found"
 
             # Prepare product data
+            summary = summarize_title(title)
             product_data = {
                 "title": title,
-                "summary": product,
+                "summary": summary,
                 "price": price,
                 "url": product_link,
                 "image": image_link,

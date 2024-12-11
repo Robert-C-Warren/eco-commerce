@@ -2,21 +2,12 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
-from nltk.tokenize import word_tokenize
-import nltk
-nltk.download("punkt")
 
 app = Flask(__name__)
 CORS(app)
 
 db = get_database()
 products_collection = db["products"]
-
-def summarize_title(title, max_words=5):
-    words = word_tokenize(title)
-    if len(words) <= max_words:
-        return title
-    return " ".join(words[:max_words])
 
 @app.route("/")
 def home():
@@ -34,8 +25,6 @@ def get_products():
 def add_product():
     try:
         product = request.json
-        if "title" in product:
-            product["summary"] = summarize_title(product["title"])
         products_collection.insert_one(product)
         return jsonify({"message": "Product added successfully!"}), 201
     except Exception as e:
@@ -45,11 +34,7 @@ def add_product():
 def update_product_visibilty(id):
     try:
         visible = request.json.get("visible", False)
-        title = request.json.get("title", None)
         update_data = {"visible": visible}
-
-        if title:
-            update_data["summary"] = summarize_title(title)
 
         result = products_collection.update_one(
             {"_id": ObjectId(id)}, {"$set": update_data}

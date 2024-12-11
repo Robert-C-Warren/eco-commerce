@@ -44,7 +44,7 @@ const AdminConsole = () => {
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
                         <img src={product.image} alt={product.title} />
-                        <h6>{product.title}</h6>
+                        <h6>{product.summary}</h6>
                         <p>Price: {product.price}</p>
                         <p>Source: {product.source}</p>
                         <a href={product.url} target="_blank" rel="noopener noreferrer">

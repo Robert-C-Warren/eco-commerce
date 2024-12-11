@@ -1,6 +1,17 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from transformers import pipeline
+
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+def summarize_title(title, max_length=10, min_length=5):
+    try:
+        summary = summarizer(title, max_length=max_length, min_length=min_length, truncation=True)
+        return summary[0]['summary_text']
+    except Exception as e:
+        print(f"Error summarizing title: {e}")
+        return title
 
 def scrape_earthhero(driver, url, db):
     base_url = "https://www.earthhero.com"
@@ -40,6 +51,7 @@ def scrape_earthhero(driver, url, db):
                 image_link = "Image not found"
 
             # Prepare product data
+            summary = summarize_title(title)
             product_data = {
                 "title": title,
                 "summary": summary,
