@@ -5,6 +5,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import AdminPage from "./pages/AdminPage";
 import AdminConsole from "./pages/AdminConsole";
 import ProtectedRoute from "./services/ProtectedRoute";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);

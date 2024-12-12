@@ -7,6 +7,7 @@ const AdminConsole = () => {
     const [products, setProducts] = useState([]);
     const [editingProductId, setEditingProductId] = useState(null);
     const [editedTitle, setEditedTitle] = useState("");
+    const [selectedProducts, setSelectedProducts] = useState([])
 
     const fetchProducts = async () => {
         try {
@@ -23,6 +24,26 @@ const AdminConsole = () => {
             fetchProducts();
         } catch (error) {
             console.error("Error updating visibilty:", error);
+        }
+    };
+
+    const toggleProductSelected = (productId) => {
+        setSelectedProducts((prevSelected) => 
+            prevSelected.includes(productId)
+                ? prevSelected.filter((id) => id !== productId)
+                : [...prevSelected, productId]
+        );
+    };
+
+    const showSelectedProducts = async () => {
+        try {
+            await API.patch("/admin/products/visibility", {
+                product_ids: selectedProducts,
+                visible: true,            
+            });
+            fetchProducts();
+        } catch (error) {
+            console.error("Error updating visibility", error)
         }
     };
 
@@ -55,51 +76,29 @@ const AdminConsole = () => {
     }, []);
 
     return (
-        <div className="admin-console">
-            <h1>Admin Console</h1>
-            <div className="product-list">
-                {products.map((product) => (
-                    <div key={product.id} className="product-card">
-                        <img src={product.image} alt={product.title} />
-                        {editingProductId === product._id ? (
-                            <>
-                                <input
-                                    type="text"
-                                    value={editedTitle}
-                                    onChange={(e) => setEditedTitle(e.target.value)}
-                                    className="edit-title-input"
-                            />
-                            <button onClick={() => saveEditedTitle(product._id)}>Save</button>
-                            <button onClick={() => setEditingProductId(null)}>Cancel</button>
-                        </>
-                        ) : (
-                            <>
-                                <h6>{product.summary}</h6>
-                                <button onClick={() => startEditing(product._id, product.summary)}>
-                                    Edit Title
-                                </button>
-                            </>
-                        )}
-                        {/* <h6>{product.summary}</h6> */}
-                        <p>Price: {product.price}</p>
-                        <p>Source: {product.source}</p>
-                        <a href={product.url} target="_blank" rel="noopener noreferrer">
-                            View Product
-                        </a>
-                        <button
-                            onClick={() => toggleVisibility(product._id, product.visible)}
-                            className={product.visible ? "btn-hide" : "btn-show"}
-                        >
-                            {product.visible ? "Hide from Site" : "Show on Site"}
-                        </button>
-                        <button
-                            onClick={() => deleteProduct(product._id)}
-                            className="btn-delete"
-                        >
-                            Delete
-                        </button>
+        <div className="container my-4">
+            <h1 className="mb-4">Admin Console</h1>
+            <button onClick={showSelectedProducts} className="btn btn-primary mb-3">
+                Show All on Site 
+            </button>
+            <div className="row gy-4">
+                {products.map((product) => 
+                    <div key={product.id} className="col-md-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="form-check mb-3">
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        checked={selectedProducts.includes(product._id)}
+                                        onChange={() => toggleProductSelected(product._id)}
+                                        style={{ transform: "scale(1.5)"}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>    
-                ))}
+                )}
             </div>
         </div>
     );

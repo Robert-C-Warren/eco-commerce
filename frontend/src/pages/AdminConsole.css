@@ -18,6 +18,26 @@
     background-color: #fff;
 }
 
+.admin-console .btn-show-all {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-console .btn-show-all:hover {
+    background-color: #218838;
+}
+
+.product-card input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+ 
 .product-card img {
     width: 100%;
     height: 150px;

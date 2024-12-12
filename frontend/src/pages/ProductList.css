@@ -1,3 +1,21 @@
+body {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+
+.navbar-brand {
+    font-weight: bold;
+    color: #1cc741;
+}
+
+.nav-item-home {
+    font-weight: 400;
+}
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -6,26 +24,23 @@
 }
 
 .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    width: 250px; /* Adjust width as needed */
-    height: 400px; /* Ensure a consistent height */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: auto;
+    text-align: center;
     background-color: #fff;
-    box-sizing: border-box;
-    text-align: center; /* Center-align content */
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
-    max-height: 200px; /* Enforce a max height for images */
+    height: 150px;
     object-fit: contain;
     margin-bottom: 1rem;
 }
@@ -43,31 +58,4 @@
 
 .product-card p {
     margin: 0.5rem 0;
-}
-
-.product-card a {
-    text-decoration: none;
-    color: #007bff;
-    margin: 0.5rem 0;
-    font-weight: bold;
-}
-
-.product-card button {
-    width: 80%; /* Consistent button size */
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: auto; /* Pushes the button to the bottom */
-}
-
-.btn-hide {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-show {
-    background-color: #28a745;
-    color: white;
 }
