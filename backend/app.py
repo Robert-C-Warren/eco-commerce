@@ -3,6 +3,13 @@ from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
 
+availableIcons = [
+    { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
+    { "id": "small_business", "label": "Small Business", "src": "../frontend/src/resources/icons/handshake.png"},
+    { "id": "vegan", "label": "Vegan", "src": "../frontend/src/resources/icons/vegan.png"},
+    { "id": "biodegradable", "label": "Biodegradable", "src": "../frontend/src/resources/icons/leaf.png"},
+    { "id": "fair_trade", "label": "Fair-Trade", "src": "../frontend/src/resources/icons/trade.png"},
+]
 app = Flask(__name__)
 CORS(app)
 
@@ -155,5 +162,36 @@ def delete_product(title):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@app.route("/admin/products/<id>/icons", methods=["PATCH"])
+def update_product_icons(id):
+    try:
+        # Log the incoming data
+        print(f"Request data: {request.json}")
+        
+        # Extract icons from the request body
+        icons = request.json.get("icons")
+        
+        # Validate 'icons' is present and is a list
+        if not icons or not isinstance(icons, list):
+            return jsonify({"error": "'icons' must be a non-empty list"}), 400
+
+        # Attempt to update the product in the database
+        result = db.products.update_one(
+            {"_id": ObjectId(id)},  # Match by product ID
+            {"$set": {"icons": icons}}  # Update the icons field
+        )
+
+        # Check if the product was updated
+        if result.matched_count == 0:
+            return jsonify({"error": "Product not found"}), 404
+        if result.modified_count == 0:
+            return jsonify({"message": "No changes made"}), 200
+
+        return jsonify({"message": "Icons updated successfully"}), 200
+
+    except Exception as e:
+        print(f"Error in update_product_icons: {e}")  # Log the error
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)

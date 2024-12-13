@@ -61,7 +61,7 @@ def scrape_earthhero(driver, url, db):
                 "url": product_link,
                 "image": image_link,
                 "source": "earthhero",
-                "visible": False,
+                "visible": False
             }
 
             # Insert into MongoDB

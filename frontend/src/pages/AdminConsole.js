@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
 import API from "../services/api";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./AdminConsole.css"
+import bCorpIcon from "../resources/icons/bcorp.png"
+import smallBusinessIcon from "../resources/icons/handshake.png"
+import veganIcon from "../resources/icons/vegan.png"
+import biodegradableIcon from "../resources/icons/leaf.png"
+import fairTradeIcon from "../resources/icons/trade.png"
+import recycled from "../resources/icons/recycle.svg"
 
+const availableIcons = [
+    { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
+    { id: "small_business", label: "Small Business", src: smallBusinessIcon, title: "Small Business"},
+    { id: "vegan", label: "Vegan", src: veganIcon, title: "Vegan"},
+    { id: "biodegradable", label: "Biodegradable", src: biodegradableIcon, title: "Biodegradable"},
+    { id: "fair_trade", label: "Fair-Trade", src: fairTradeIcon, title: "Fair-Trade Certified"},
+    { id: "recycled_materials", label: "Recycled-Materials", src: recycled, title: "Made from Recycled Materials"},
+]
 
 const AdminConsole = () => {
     const [products, setProducts] = useState([]);
     const [editingProductId, setEditingProductId] = useState(null);
     const [editedTitle, setEditedTitle] = useState("");
     const [selectedProducts, setSelectedProducts] = useState([])
+    const [selectedIcons, setSelectedIcons] = useState({})
 
     const fetchProducts = async () => {
         try {
@@ -72,7 +88,37 @@ const AdminConsole = () => {
         }
     };
 
+    const toggleIcon = (productId, iconId) => {
+        setSelectedIcons((prev) => ({
+            ...prev,
+            [productId]: prev[productId]?.includes(iconId)
+            ? prev[productId].filter((id) => id !== iconId)
+            : [...(prev[productId] || []), iconId],
+        }));
+    };
+
+    const saveIcons = async(productId) => {
+        try {
+            const icons = selectedIcons[productId] || [];
+            console.log("Icons being sent:", { icons: icons});
+            await API.patch(`/admin/products/${productId}/icons`, { icons });
+            fetchProducts();
+        } catch (error) {
+            console.error("Error saving icons:", error)
+            alert("Failed to update icons.");
+        }
+    };
+
     useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await API.get("/admin/products");
+                setProducts(response.data);
+            } catch (error) {
+                console.error("Error fetching products:", error)
+            }
+        };
+
         fetchProducts();
     }, []);
 
@@ -177,6 +223,37 @@ const AdminConsole = () => {
                                                     >
                                                         Select for Bulk Show
                                                     </label>
+                                                </div>
+                                                <div className="icons">
+                                                    <h6>Select Icons</h6>
+                                                    {availableIcons.map((icon) => (
+                                                        <div key={icon.id} className="form-check">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="form-check-input"
+                                                                id={`${product._id}-${icon.id}`}
+                                                                checked={selectedIcons[product.id]?.includes(icon.id)}
+                                                                onChange={() => toggleIcon(product._id, icon.id)}
+                                                            />
+                                                            <label
+                                                                className="form-check-label"
+                                                                htmlFor={`${product._id}-${icon.id}`}
+                                                            >
+                                                                <img
+                                                                    src={icon.src}
+                                                                    alt={icon.label}
+                                                                    style={{ width: "30px", marginRight: "5px"}}
+                                                                />
+                                                                {icon.label}
+                                                            </label>
+                                                        </div>
+                                                    ))}
+                                                    <button
+                                                        className="btn btn-primary mt-2"
+                                                        onClick={() => saveIcons(product._id)}
+                                                    >
+                                                        Save Icons
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

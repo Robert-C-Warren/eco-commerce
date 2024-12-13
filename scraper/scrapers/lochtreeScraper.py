@@ -79,7 +79,7 @@ def scrape_lochtree(driver, url, db):
                 "url": product_link,
                 "image": img_src,
                 "source": "Lochtree",
-                "visible": False,
+                "visible": False
             }
 
             # Insert into MongoDB

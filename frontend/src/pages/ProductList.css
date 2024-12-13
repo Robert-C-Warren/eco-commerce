@@ -5,8 +5,6 @@ body {
   font-style: normal;
 }
 
-
-
 .navbar-brand {
     font-weight: bold;
     color: #1cc741;
@@ -23,6 +21,7 @@ body {
     gap: 1rem;
 }
 
+
 .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -36,6 +35,11 @@ body {
     height: auto;
     text-align: center;
     background-color: #fff;
+}
+
+.product-card .source-link {
+    align-items: center;
+    text-align: center;
 }
 
 .product-card img {
@@ -58,4 +62,11 @@ body {
 
 .product-card p {
     margin: 0.5rem 0;
+}
+
+.product-icons .icon_actual {
+    width: 30px; /* Set icon size */
+    height: auto; /* Preserve aspect ratio */
+    margin: 0; /* Remove unwanted space around icons */
+    padding-top: 12px;
 }

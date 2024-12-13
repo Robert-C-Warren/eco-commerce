@@ -74,6 +74,7 @@ def scrape_amazon(driver, url, db):
                 "image": image_link,
                 "source": "Amazon",
                 "visible": False,
+                "icons": {"b_corp", "small_business", "vegan", "biodegradable", "fair_trade"}
             }    
 
             db.products.insert_one(product_data)
