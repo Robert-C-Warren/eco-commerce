@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from scrapers.amazonScraper import scrape_amazon
+from scrapers.ecoternativesScraper import scrape_ecoternatives
 from scrapers.lochtreeScraper import scrape_lochtree
 from scrapers.earttheroScraper import scrape_earthhero
 from pymongo import MongoClient
@@ -24,14 +24,14 @@ def main():
     driver = setup_driver()
 
     urls = {
-        "amazon": "https://www.amazon.com/s?k=eco+friendly+products&s=date-desc-rank&crid=2EULHERBVIKZ1&qid=1733501276&sprefix=eco+friendly+prod%2Caps%2C148&ref=sr_st_date-desc-rank&ds=v1%3AZOz3phb50eqzNJtUdkGYUgRAWB7vpV1%2Fzd17eAYtYdY",
+        "ecoternatives": "https://ecoternatives.co/collections/all?sort_by=created-descending",
         "lochtree": "https://lochtree.com/collections/new-at-lochtree",
         "earthhero": "https://earthhero.com/collections/new-arrivals",
     }
 
     for site, url in urls.items():
-        if site == "amazon":
-            scrape_amazon(driver, url, db)
+        if site == "ecoternatives":
+            scrape_ecoternatives(driver, url, db)
         elif site == "lochtree":
             scrape_lochtree(driver, url, db)
         elif site == "earthhero":

@@ -193,5 +193,22 @@ def update_product_icons(id):
         print(f"Error in update_product_icons: {e}")  # Log the error
         return jsonify({"error": str(e)}), 500
 
+@app.route('/companies', methods=['GET'])
+def get_companies():
+    try:
+        companies = list(db.companies.find({}, {"_id": 0}))
+        return jsonify(companies), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/admin/companies', methods=['POST'])
+def add_company():
+    data = request.json
+    try:
+        db.companies.insert_one(data)
+        return jsonify({"message": "Company added successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
