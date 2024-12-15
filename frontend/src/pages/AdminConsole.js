@@ -9,6 +9,7 @@ import veganIcon from "../resources/icons/vegan.png"
 import biodegradableIcon from "../resources/icons/leaf.png"
 import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"
+import { Link } from "react-router-dom";
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
@@ -127,6 +128,14 @@ const AdminConsole = () => {
             <h1 className="text-center mb-4">Admin Console</h1>
             <div className="row mb-3">
                 <div className="col text-end">
+                    <div className="d-flex justify-content-end mb-3">
+                        <Link to="/admin/products" className="btn btn-secondary">
+                            Admin Products
+                        </Link>
+                        <Link to="/admin/companies" className="btn btn-secondary">
+                            Admin Companies
+                        </Link>
+                    </div>
                     <button
                         className="btn btn-success"
                         onClick={showSelectedProducts}

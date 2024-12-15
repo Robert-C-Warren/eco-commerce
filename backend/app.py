@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
+from bson.errors import InvalidId
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -196,7 +197,9 @@ def update_product_icons(id):
 @app.route('/companies', methods=['GET'])
 def get_companies():
     try:
-        companies = list(db.companies.find({}, {"_id": 0}))
+        companies = list(db.companies.find({}))
+        for company in companies:
+            company["_id"] = str(company["_id"])
         return jsonify(companies), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -204,6 +207,8 @@ def get_companies():
 @app.route('/companies', methods=['POST'])
 def add_company():
     data = request.json
+    if isinstance(data.get("qualifications"), str):
+        data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
     try:
         db.companies.insert_one(data)
         return jsonify({"message": "Company added successfully"}), 201
@@ -212,14 +217,33 @@ def add_company():
 
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
-    data = request.json
     try:
-        db.companies.update_one(
-            {"_id": ObjectId(company_id)},
-            {"$set": data}
-        )
+        print("Received Company ID:", company_id)  # Debugging
+        data = request.json
+        print("Received Data:", data)  # Debugging
+        
+        # Ensure company_id is a valid ObjectId
+        object_id = ObjectId(company_id)
+
+        # Remove '_id' from the data if present
+        if "_id" in data:
+            data.pop("_id")
+
+        # Convert qualifications to an array if it's a string
+        if "qualifications" in data and isinstance(data["qualifications"], str):
+            data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
+
+        # Perform the update
+        result = db.companies.update_one({"_id": object_id}, {"$set": data})
+
+        if result.matched_count == 0:
+            return jsonify({"error": "Company not found"}), 404
+
         return jsonify({"message": "Company updated successfully"}), 200
+    except InvalidId:
+        return jsonify({"error": "Invalid company ID"}), 400
     except Exception as e:
+        print("Unexpected Error:", str(e))
         return jsonify({"error": str(e)}), 500
     
 @app.route('/companies/<company_id>', methods=['DELETE'])
