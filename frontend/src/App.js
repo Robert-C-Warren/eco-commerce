@@ -6,6 +6,7 @@ import AdminPage from "./pages/AdminPage";
 import AdminConsole from "./pages/AdminConsole";
 import CompaniesPage from "./pages/CompaniesPage";
 import ProtectedRoute from "./services/ProtectedRoute";
+import AdminCompaniesPage from "./pages/AdminCompaniesPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
                 <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
+                <Route path="/products/:id" element={<ProductDetailPage />} />
                 <Route
                     path="/admin/products"
                     element={
@@ -25,7 +27,14 @@ const App = () => {
                         </ProtectedRoute>
                     }
                 />      
-                <Route path="/products/:id" element={<ProductDetailPage />} />
+                <Route
+                    path="/admin/companies"
+                    element={
+                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                            <AdminCompaniesPage />
+                        </ProtectedRoute>
+                    }
+                />      
             </Routes>
         </Router>
     );

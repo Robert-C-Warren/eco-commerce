@@ -201,12 +201,32 @@ def get_companies():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/admin/companies', methods=['POST'])
+@app.route('/companies', methods=['POST'])
 def add_company():
     data = request.json
     try:
         db.companies.insert_one(data)
         return jsonify({"message": "Company added successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/companies/<company_id>', methods=['PUT'])
+def update_company(company_id):
+    data = request.json
+    try:
+        db.companies.update_one(
+            {"_id": ObjectId(company_id)},
+            {"$set": data}
+        )
+        return jsonify({"message": "Company updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/companies/<company_id>', methods=['DELETE'])
+def delete_company(company_id):
+    try:
+        db.companies.delete_one({"_id": ObjectId(company_id)})
+        return jsonify({"message": "Company deleted successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
