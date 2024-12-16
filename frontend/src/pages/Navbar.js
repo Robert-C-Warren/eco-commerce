@@ -4,6 +4,8 @@ import smallLogo from "../resources/eco-commerce-logo.png";
 import DarkModeToggle from "./DarkModeToggle";
 
 const Navbar = () => {
+    const categories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"];
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
@@ -24,64 +26,13 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarMenu">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/">
-                                    Home
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/companies">
-                                    Companies
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/email">
-                                    Stay Updated
-                                </a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="categoriesDropdown"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Categories
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="categoriesDropdown">
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/cleaning">
-                                            Cleaning
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/home">
-                                            Home
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/outdoor">
-                                            Outdoor
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/pet">
-                                            Pet
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/kitchen">
-                                            Kitchen
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="/categories/personalcare">
-                                            Personal Care
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            {categories.map((category) => (
+                                <li className="nav-item" key={category}>
+                                    <Link to={`/products?category=${category}`} className="nav-link">
+                                        {category}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

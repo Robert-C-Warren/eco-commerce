@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import "./ProductList.css"
+import DarkModeToggle from "./DarkModeToggle";
 
 const CompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
@@ -26,7 +28,7 @@ const CompaniesPage = () => {
         <div className="row">
           {companies.map((company, index) => (
             <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div className="card h-100">
+              <div className="card company-card h-100">
                 <img
                   src={company.logo}
                   className="card-img-top"

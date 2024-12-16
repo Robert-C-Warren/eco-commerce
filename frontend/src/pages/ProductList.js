@@ -27,12 +27,13 @@ const HomePage = () => {
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
 
-    const fetchProducts = async () => {
+    const fetchProducts = async (category = null) => {
         try {
-            const response = await API.get("/products/filter", {
+            const response = await API.get("/products/filter", "/products", {
                 params: {
                     min_price: minPrice || 0,
                     max_price: maxPrice || Number.MAX_SAFE_INTEGER,
+                    category
                 },
             });
             const visibleProducts = response.data.filter((product) => product.visible);
@@ -43,7 +44,10 @@ const HomePage = () => {
     };
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search)
+        const category = queryParams.get("category");
         fetchProducts();
+        fetchProducts(category);
 
         const handleScroll = () => {
             const navbarCollapse = document.getElementById("navbarMenu");

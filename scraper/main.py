@@ -5,6 +5,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from scrapers.ecoternativesScraper import scrape_ecoternatives
 from scrapers.lochtreeScraper import scrape_lochtree
 from scrapers.earttheroScraper import scrape_earthhero
+from removeDuplicates import removeDuplicates
+from sendEmails import sendEmails
 from pymongo import MongoClient
 
 def setup_driver():
@@ -15,29 +17,38 @@ def setup_driver():
     options.add_argument("--disable-dev-shm-usage")
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-
-def main():
+def setup_mongo():
     client = MongoClient("mongodb://localhost:27017/")
-
     db = client["eco_commerce"]
+    return db
 
+def run_scrapers(db):
     driver = setup_driver()
-
     urls = {
         "ecoternatives": "https://ecoternatives.co/collections/all?sort_by=created-descending",
         "lochtree": "https://lochtree.com/collections/new-at-lochtree",
         "earthhero": "https://earthhero.com/collections/new-arrivals",
     }
+    try:
+        for site, url in urls.items():
+            if site == "ecoternatives":
+                scrape_ecoternatives(driver, url, db)
+            elif site == "lochtree":
+                scrape_lochtree(driver, url, db)
+            elif site == "earthhero":
+                scrape_earthhero(driver, url, db)
+    finally:
+        driver.quit()
 
-    for site, url in urls.items():
-        if site == "ecoternatives":
-            scrape_ecoternatives(driver, url, db)
-        elif site == "lochtree":
-            scrape_lochtree(driver, url, db)
-        elif site == "earthhero":
-            scrape_earthhero(driver, url, db)
+def main():
+    db = setup_mongo()
 
-    driver.quit()
+    print("Running scrapers...")
+    run_scrapers(db)
+    print("Removing duplicates...")
+    removeDuplicates(db)
+    # print("Sending emails...")
+    # sendEmails(db)
 
 if __name__ == "__main__":
     main()

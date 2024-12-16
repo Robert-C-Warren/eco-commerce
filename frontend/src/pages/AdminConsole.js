@@ -10,6 +10,8 @@ import biodegradableIcon from "../resources/icons/leaf.png"
 import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"
 import { Link } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
+import Navbar from "./Navbar";
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
@@ -20,12 +22,41 @@ const availableIcons = [
     { id: "recycled_materials", label: "Recycled-Materials", src: recycled, title: "Made from Recycled Materials"},
 ]
 
+const availableCategories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"]
+
 const AdminConsole = () => {
     const [products, setProducts] = useState([]);
     const [editingProductId, setEditingProductId] = useState(null);
     const [editedTitle, setEditedTitle] = useState("");
     const [selectedProducts, setSelectedProducts] = useState([])
     const [selectedIcons, setSelectedIcons] = useState({})
+    const [message, setMessage] = useState("");
+    const [category, setCategory] = useState(product.category || "");
+    
+    const ProdructCard = ({ product, fetchProducts }) => {
+        const [selectedCategories, setSelectedCategories] = useState(product.categories || []);
+    }
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategories((prev) =>
+            prev.includes(category)
+                ? prev.filter((c) => c !== category)
+                : [...prev, category]
+        )
+    }
+
+    const updateCategories = async () => {
+        try {
+            const response = await API.patch(`/admin/products/${product._id}/categories`, {
+                categories: selectedCategories,
+            });
+            alert(response.data.message);
+            fetchProducts();
+        } catch (error) {
+            console.error("Error updating categories:", error)
+            alert("Failed to update categories.")
+        }
+;    }
 
     const fetchProducts = async () => {
         try {
@@ -64,6 +95,29 @@ const AdminConsole = () => {
             console.error("Error updating visibility", error)
         }
     };
+
+    const showAllOnSite = async () => {
+        try {
+            const response = await API.patch("/admin/products/show_all");
+            setMessage(response.data.message);
+        } catch (error) {
+            console.error("Error updating products:", error);
+            setMessage("An error occurred while showing all products.");
+        }
+    }
+
+    const updateCategory = async () => {
+        try {
+            const response = await API.patch(`/admin/products/${product._id}/category`, {
+                category
+            });
+            alert(response.data.message);
+            fetchProducts();
+        } catch (error) {
+            console.error("Error updating category")
+            alert("Falied to update category")
+        }
+    }
 
     const deleteProduct = async (productId) => {
         try {
@@ -124,154 +178,179 @@ const AdminConsole = () => {
     }, []);
 
     return (
-        <div className="container mt-4">
-            <h1 className="text-center mb-4">Admin Console</h1>
-            <div className="row mb-3">
-                <div className="col text-end">
-                    <div className="d-flex justify-content-end mb-3">
-                        <Link to="/admin/products" className="btn btn-secondary">
-                            Admin Products
-                        </Link>
-                        <Link to="/admin/companies" className="btn btn-secondary">
-                            Admin Companies
-                        </Link>
-                    </div>
-                    <button
-                        className="btn btn-success"
-                        onClick={showSelectedProducts}
-                        disabled={!selectedProducts.length}
-                    >
-                        Show All Selected Products 
-                    </button>
-                </div>
-            </div>
+        <div>
+            <Navbar />
             <div className="container mt-4">
-                <div className="row g-3">
-                    {products.map((product) => (
-                        <div key={product._id} className="col-lg-3 col-md-4 col-sm-6">
-                            <div className="card h-100 d-flex flex-column">
-                                <img 
-                                    src={product.image}
-                                    className="card-img-top"
-                                    alt={product.title}
-                                    style={{ objectFit: "contain", height: "200px", width: "100% "}}
-                                />
-                                <div className="card-body d-flex flex-column">
-                                    {editingProductId === product._id ? (
-                                        <div>
-                                            <input
-                                                type="text"
-                                                className="form-control mb-2"
-                                                value={editedTitle}
-                                                onChange={(e) => setEditedTitle(e.target.value)}
-                                            />
-                                            <button
-                                                className="btn btn-primary w-100"
-                                                onClick={() => saveEditedTitle(product._id)}
-                                            >
-                                                Save
-                                            </button>
-                                            <button
-                                                className="btn btn-secondary w-100 mt-2"
-                                                onClick={() => setEditingProductId(null)}
-                                            >
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <div className="mt-auto">
-                                            <h5 className="card-title text-wrap text-center">{product.summary}</h5>
-                                            <p className="card-text">
-                                                <strong>Price:</strong> {product.price} <br />
-                                                <strong>Source:</strong> {product.source}
-                                            </p>
+                <h1 className="text-center mb-4">Admin Console</h1>
+                <div className="row mb-3">
+                    <div className="col text-end">
+                        <div className="d-flex justify-content-end mb-3">
+                            <Link to="/admin/products" className="btn btn-secondary">
+                                Admin Products
+                            </Link>
+                            <Link to="/admin/companies" className="btn btn-secondary">
+                                Admin Companies
+                            </Link>
+                        </div>
+                        <button
+                            className="btn btn-success"
+                            onClick={showSelectedProducts}
+                            disabled={!selectedProducts.length}
+                        >
+                            Show All Selected Products 
+                        </button>
+                        <button className="btn btn-success" onClick={showAllOnSite}>
+                            Show All On Site
+                        </button>
+                    </div>
+                    {message && <div className="alert alert-info">{message}</div>}
+                </div>
+                <div className="container mt-4">
+                    <div className="row g-3">
+                        {products.map((product) => (
+                            <div key={product._id} className="col-lg-3 col-md-4 col-sm-6">
+                                <div className="card h-100 d-flex flex-column">
+                                    <img 
+                                        src={product.image}
+                                        className="card-img-top"
+                                        alt={product.title}
+                                        style={{ objectFit: "contain", height: "200px", width: "100% "}}
+                                    />
+                                    <div className="card-body d-flex flex-column">
+                                        {editingProductId === product._id ? (
+                                            <div>
+                                                <input
+                                                    type="text"
+                                                    className="form-control mb-2"
+                                                    value={editedTitle}
+                                                    onChange={(e) => setEditedTitle(e.target.value)}
+                                                />
+                                                <button
+                                                    className="btn btn-primary w-100"
+                                                    onClick={() => saveEditedTitle(product._id)}
+                                                >
+                                                    Save
+                                                </button>
+                                                <button
+                                                    className="btn btn-secondary w-100 mt-2"
+                                                    onClick={() => setEditingProductId(null)}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        ) : (
                                             <div className="mt-auto">
-                                                <a
-                                                    href={product.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="btn btn-dark w-100 mb-2"
-                                                >
-                                                    View Product
-                                                </a>
-                                                <button 
-                                                    className={`btn w-100 ${
-                                                        product.visible ? "btn-danger" : "btn-success"
-                                                    }`}
-                                                    onClick={() =>
-                                                        toggleVisibility(product._id, product.visible)
-                                                    }
-                                                >
-                                                    {product.visible
-                                                        ? "Hide from Site"
-                                                        : "Show on Site"}
-                                                </button>
-                                                <button
-                                                    className="btn btn-warning w-100 mt-2"
-                                                    onClick={() => startEditing(product._id, product.title)}
-                                                >
-                                                    Edit Title 
-                                                </button>
-                                                <button
-                                                    className="btn btn-danger w-100 mt-2"
-                                                    onClick={() => deleteProduct(product._id)}
-                                                >
-                                                    Delete Product 
-                                                </button>
-                                                <div className="form-check mt-3">
-                                                    <input
-                                                        className="form-check-input"
-                                                        type="checkbox"
-                                                        checked={selectedProducts.includes(product._id)}
-                                                        onChange={() => toggleProductSelected(product._id)}
-                                                        id={`select-${product._id}`}
-                                                    />
-                                                    <label
-                                                        className="form-check-label"
-                                                        htmlFor={`select-${product._id}`}
+                                                <h5 className="card-title text-wrap text-center">{product.summary}</h5>
+                                                <p className="card-text">
+                                                    <strong>Price:</strong> {product.price} <br />
+                                                    <strong>Source:</strong> {product.source}
+                                                </p>
+                                                <div className="mt-auto">
+                                                    <a
+                                                        href={product.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="btn btn-dark w-100 mb-2"
                                                     >
-                                                        Select for Bulk Show
-                                                    </label>
-                                                </div>
-                                                <div className="icons">
-                                                    <h6>Select Icons</h6>
-                                                    {availableIcons.map((icon) => (
-                                                        <div key={icon.id} className="form-check">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="form-check-input"
-                                                                id={`${product._id}-${icon.id}`}
-                                                                checked={selectedIcons[product.id]?.includes(icon.id)}
-                                                                onChange={() => toggleIcon(product._id, icon.id)}
-                                                            />
-                                                            <label
-                                                                className="form-check-label"
-                                                                htmlFor={`${product._id}-${icon.id}`}
-                                                            >
-                                                                <img
-                                                                    src={icon.src}
-                                                                    alt={icon.label}
-                                                                    style={{ width: "30px", marginRight: "5px"}}
-                                                                />
-                                                                {icon.label}
-                                                            </label>
-                                                        </div>
-                                                    ))}
+                                                        View Product
+                                                    </a>
+                                                    <button 
+                                                        className={`btn w-100 ${
+                                                            product.visible ? "btn-danger" : "btn-success"
+                                                        }`}
+                                                        onClick={() =>
+                                                            toggleVisibility(product._id, product.visible)
+                                                        }
+                                                    >
+                                                        {product.visible
+                                                            ? "Hide from Site"
+                                                            : "Show on Site"}
+                                                    </button>
                                                     <button
-                                                        className="btn btn-primary mt-2"
-                                                        onClick={() => saveIcons(product._id)}
+                                                        className="btn btn-warning w-100 mt-2"
+                                                        onClick={() => startEditing(product._id, product.title)}
                                                     >
-                                                        Save Icons
+                                                        Edit Title 
+                                                    </button>
+                                                    <button
+                                                        className="btn btn-danger w-100 mt-2"
+                                                        onClick={() => deleteProduct(product._id)}
+                                                    >
+                                                        Delete Product 
+                                                    </button>
+                                                    <div className="form-check mt-3">
+                                                        <input
+                                                            className="form-check-input"
+                                                            type="checkbox"
+                                                            checked={selectedProducts.includes(product._id)}
+                                                            onChange={() => toggleProductSelected(product._id)}
+                                                            id={`select-${product._id}`}
+                                                        />
+                                                        <label
+                                                            className="form-check-label"
+                                                            htmlFor={`select-${product._id}`}
+                                                        >
+                                                            Select for Bulk Show
+                                                        </label>
+                                                    </div>
+                                                    <div className="icons">
+                                                        <h6>Select Icons</h6>
+                                                        {availableIcons.map((icon) => (
+                                                            <div key={icon.id} className="form-check">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="form-check-input"
+                                                                    id={`${product._id}-${icon.id}`}
+                                                                    checked={selectedIcons[product.id]?.includes(icon.id)}
+                                                                    onChange={() => toggleIcon(product._id, icon.id)}
+                                                                />
+                                                                <label
+                                                                    className="form-check-label"
+                                                                    htmlFor={`${product._id}-${icon.id}`}
+                                                                >
+                                                                    <img
+                                                                        src={icon.src}
+                                                                        alt={icon.label}
+                                                                        style={{ width: "30px", marginRight: "5px"}}
+                                                                    />
+                                                                    {icon.label}
+                                                                </label>
+                                                            </div>
+                                                        ))}
+                                                        <button
+                                                            className="btn btn-primary mt-2"
+                                                            onClick={() => saveIcons(product._id)}
+                                                        >
+                                                            Save Icons
+                                                        </button>
+                                                    </div>
+                                                    <div className="form-check" key={category}>
+                                                        <input
+                                                            type="checkbox"
+                                                            className="form-check-input"
+                                                            id={`${product._id}-${category}`}
+                                                            checked={selectedCategories.includes(category)}
+                                                            onChange={() => handleCategoryChange(category)}
+                                                        />
+                                                        <label
+                                                            htmlFor={`${product._id}-${category}`}
+                                                            className="form-check-label"
+                                                        >
+                                                            {category}
+                                                        </label>
+                                                    </div>
+                                                    <button onClick={updateCategories} className="btn btn-primary">
+                                                        Update Categories
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )}
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>    
+                        ))}
+                    </div>    
+                </div>
             </div>
         </div>
     );

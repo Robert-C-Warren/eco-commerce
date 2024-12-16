@@ -19,7 +19,7 @@ def scrape_ecoternatives(driver, url, db):
         # Extract product details
         title = product.find_element(By.CLASS_NAME, "lh-wrap-swap").text.strip()
         price = product.find_element(By.CLASS_NAME, "lh-product-price").text.strip()
-        link = product.find_element(By.TAG_NAME, "a").get_attribute("href")
+        url = product.find_element(By.TAG_NAME, "a").get_attribute("href")
         image = product.find_element(By.CLASS_NAME, "lh-product-item-images").find_element(By.TAG_NAME, "img").get_attribute("src")
 
         # Create a new dictionary for each product
@@ -27,7 +27,7 @@ def scrape_ecoternatives(driver, url, db):
             "title": title,
             "summary": title,
             "price": price,
-            "link": link,
+            "url": url,
             "image": image,
             "source": "ecoternatives",
             "visible": False

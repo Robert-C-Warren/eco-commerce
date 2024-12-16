@@ -6,6 +6,7 @@ import AdminPage from "./pages/AdminPage";
 import AdminConsole from "./pages/AdminConsole";
 import CompaniesPage from "./pages/CompaniesPage";
 import AdminCompaniesPage from "./pages/AdminCompaniesPage";
+import SubscribePage from "./pages/SubscribePage"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -16,8 +17,9 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
-                <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
                 <Route path="/products/:id" element={<ProductDetailPage />} />
+                <Route path="/email" element={<SubscribePage />} />
+                <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
                 {isAuthenticated ? (
                     <>
                         <Route path="/admin/products" element={<AdminConsole />} />

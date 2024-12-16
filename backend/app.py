@@ -16,6 +16,7 @@ CORS(app)
 
 db = get_database()
 products_collection = db["products"]
+subscribers = db["subscribers"]
 
 @app.route("/")
 def home():
@@ -29,6 +30,18 @@ def get_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@app.route("/products", methods=["GET"])
+def get_products_by_category():
+    category = request.args.get("category", None)
+    try:
+        query = {"visible": True}
+        if category:
+            query["category"] = category
+        products = list(db.products.find(query, {"_id": 0}))
+        return jsonify({"products": products}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 @app.route("/products", methods=["POST"])
 def add_product():
     try:
@@ -38,6 +51,25 @@ def add_product():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@app.route("/admin/products/<id>/category", methods=["PATCH"])
+def update_product_category(id):
+    try:
+        data = request.json
+        categories = data.get("categories")
+        if not categories or not isinstance(categories, list):
+            return jsonify({"error": "Categories must be a list"}), 400
+        
+        result = db.products.update_one(
+            {"_id": ObjectId(id)}, {"$set": {"category": categories}}
+        )
+
+        if result.matched_count == 0:
+            return jsonify({"error": "Product not found"}), 404
+        
+        return jsonify({"message": "Categories updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/admin/products/<id>", methods=["PATCH"])
 def update_product_visibilty(id):
     try:
@@ -57,6 +89,16 @@ def update_product_visibilty(id):
         print(f"Error updating visibility: {e}")
         return jsonify({"error": str(e)}), 500
     
+@app.route("/admin/products/show_all", methods=["PATCH"])
+def show_all_products():
+    try:
+        result = db.products.update_many({"visible": False}, {"$set": {"visible": True}})
+        return jsonify({
+            "message": f"{result.modified_count} products are now visible"
+        }), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/admin/products/<id>", methods=["DELETE"])
 def delete_product_admin(id):
     try:
@@ -253,6 +295,21 @@ def delete_company(company_id):
         return jsonify({"message": "Company deleted successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/subscribe", methods=["POST"])
+def subscribe():
+    data = request.json
+    name = data.get("name")
+    email = data.get("email")
+
+    if not email or not name:
+        return jsonify({"error": "Name and email are required"}), 400
+    
+    if subscribers.find_one({"email": email}):
+        return jsonify({"error": "Email is already subscribed"}), 400
+    
+    subscribers.insert_one({"name": name, "email": email})
+    return jsonify({"message": "Subscription successful!"}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
