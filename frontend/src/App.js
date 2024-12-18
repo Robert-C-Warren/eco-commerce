@@ -17,8 +17,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
+                <Route path="/products" element={<HomePage />} />
                 <Route path="/products/:id" element={<ProductDetailPage />} />
                 <Route path="/email" element={<SubscribePage />} />
+                <Route path="/products/:category" element={<HomePage />} />
                 <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
                 {isAuthenticated ? (
                     <>

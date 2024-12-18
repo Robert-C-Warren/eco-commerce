@@ -51,7 +51,7 @@ def add_product():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@app.route("/admin/products/<id>/category", methods=["PATCH"])
+@app.route("/admin/products/<id>/categories", methods=["PATCH"])
 def update_product_category(id):
     try:
         data = request.json
@@ -175,6 +175,7 @@ def filter_products():
     try:
         min_price = float(request.args.get("min_price", 0))
         max_price = float(request.args.get("max_price", float("inf")))
+        category = request.args.get("category", None)
         
         products = db.products.find()
         filtered_products = []
@@ -182,7 +183,9 @@ def filter_products():
         for product in products:
             try:
                 price = float(product["price"].replace("$", "").replace(",", ""))
-                if min_price <= price <= max_price:
+                if min_price <= price <= max_price and (
+                    not category or category in product.get("categories", [])
+                ):
                     product["price"] = price
                     product["_id"] = str(product["_id"])
                     filtered_products.append(product)

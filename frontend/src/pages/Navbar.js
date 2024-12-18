@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductList.css"
+import { Link } from "react-router-dom"
 import smallLogo from "../resources/eco-commerce-logo.png";
 import DarkModeToggle from "./DarkModeToggle";
 
@@ -25,15 +26,42 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarMenu">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {categories.map((category) => (
-                                <li className="nav-item" key={category}>
-                                    <Link to={`/products?category=${category}`} className="nav-link">
-                                        {category}
-                                    </Link>
+                            <ul className="navbar-nav mb-2 mb-lg-0 ms-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                                 </li>
-                            ))}
-                        </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/companies">Companies</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/email">Stay Updated</a>
+                                </li>
+                            </ul>
+
+                        <li className="nav-item dropdown">
+                            <a
+                                className="nav-link active dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Categories
+                            </a>
+                            <ul className="dropdown-menu">
+                                {categories.map((category) => (
+                                    <li key={category}>
+                                        <Link
+                                            to={`/products/${category}`}
+                                            className="dropdown-item"
+                                        >
+                                            {category}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+                    </div>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">
@@ -42,7 +70,6 @@ const Navbar = () => {
                         </form>
                     <DarkModeToggle />
                     </div>
-                </div>
             </nav>
   )
 }

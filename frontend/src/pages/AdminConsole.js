@@ -10,7 +10,6 @@ import biodegradableIcon from "../resources/icons/leaf.png"
 import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"
 import { Link } from "react-router-dom";
-import DarkModeToggle from "./DarkModeToggle";
 import Navbar from "./Navbar";
 
 const availableIcons = [
@@ -24,21 +23,11 @@ const availableIcons = [
 
 const availableCategories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"]
 
-const AdminConsole = () => {
-    const [products, setProducts] = useState([]);
-    const [editingProductId, setEditingProductId] = useState(null);
-    const [editedTitle, setEditedTitle] = useState("");
-    const [selectedProducts, setSelectedProducts] = useState([])
-    const [selectedIcons, setSelectedIcons] = useState({})
-    const [message, setMessage] = useState("");
-    const [category, setCategory] = useState(product.category || "");
-    
-    const ProdructCard = ({ product, fetchProducts }) => {
-        const [selectedCategories, setSelectedCategories] = useState(product.categories || []);
-    }
+const ProductCard = ({ product, fetchProducts }) => {
+    const [selectedCategories, setSelectedCategories] = useState(product.categories || []);
 
     const handleCategoryChange = (category) => {
-        setSelectedCategories((prev) =>
+        setSelectedCategories((prev) => 
             prev.includes(category)
                 ? prev.filter((c) => c !== category)
                 : [...prev, category]
@@ -49,14 +38,61 @@ const AdminConsole = () => {
         try {
             const response = await API.patch(`/admin/products/${product._id}/categories`, {
                 categories: selectedCategories,
-            });
-            alert(response.data.message);
-            fetchProducts();
+            })
+            alert(response.data.message)
+            fetchProducts()
         } catch (error) {
             console.error("Error updating categories:", error)
             alert("Failed to update categories.")
         }
-;    }
+    }
+
+    return (
+        <div className="card h-100 d-flex flex-column">
+            <img
+                src={product.image}
+                className="card-img-top"
+                alt={product.summary}
+                style={{ objectFit: "contain", height: "200px", width: "100%" }}
+            />
+            <div className="card-body d-flex flex-column">
+                <h5 className="card-title text-center">{product.summary}</h5>
+                <p className="card-text">
+                    <strong>Price:</strong> {product.price} <br />
+                    <strong>Source:</strong> {product.source}
+                </p>
+                <h6>Select Categories</h6>
+                <div>
+                    {availableCategories.map((category) => (
+                        <div key={category} className="form-check">
+                            <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id={`${product._id}.${category}`}
+                                checked={selectedCategories.includes(category)}
+                                onChange={() => handleCategoryChange(category)}
+                            />
+                            <label htmlFor={`${product._id}-${category}`} className="form-check-label">
+                                {category}
+                            </label>
+                        </div>
+                    ))}
+                </div>
+                <button onClick={updateCategories} className="btn btn-primary mt-2">
+                    Update Categories
+                </button>
+            </div>
+        </div>
+    )
+}
+
+const AdminConsole = () => {
+    const [products, setProducts] = useState([]);
+    const [editingProductId, setEditingProductId] = useState(null);
+    const [editedTitle, setEditedTitle] = useState("");
+    const [selectedProducts, setSelectedProducts] = useState([])
+    const [selectedIcons, setSelectedIcons] = useState({})
+    const [message, setMessage] = useState("");
 
     const fetchProducts = async () => {
         try {
@@ -74,14 +110,6 @@ const AdminConsole = () => {
         } catch (error) {
             console.error("Error updating visibilty:", error);
         }
-    };
-
-    const toggleProductSelected = (productId) => {
-        setSelectedProducts((prevSelected) => 
-            prevSelected.includes(productId)
-                ? prevSelected.filter((id) => id !== productId)
-                : [...prevSelected, productId]
-        );
     };
 
     const showSelectedProducts = async () => {
@@ -106,17 +134,12 @@ const AdminConsole = () => {
         }
     }
 
-    const updateCategory = async () => {
-        try {
-            const response = await API.patch(`/admin/products/${product._id}/category`, {
-                category
-            });
-            alert(response.data.message);
-            fetchProducts();
-        } catch (error) {
-            console.error("Error updating category")
-            alert("Falied to update category")
-        }
+    const toggleProductSelected = (productId) => {
+        setSelectedProducts((prevSelected) =>
+            prevSelected.includes(productId)
+                ? prevSelected.filter((id) => id !== productId)
+                : [...prevSelected, productId]
+        )
     }
 
     const deleteProduct = async (productId) => {
@@ -210,12 +233,7 @@ const AdminConsole = () => {
                         {products.map((product) => (
                             <div key={product._id} className="col-lg-3 col-md-4 col-sm-6">
                                 <div className="card h-100 d-flex flex-column">
-                                    <img 
-                                        src={product.image}
-                                        className="card-img-top"
-                                        alt={product.title}
-                                        style={{ objectFit: "contain", height: "200px", width: "100% "}}
-                                    />
+                                    <ProductCard product={product} fetchProducts={fetchProducts} />
                                     <div className="card-body d-flex flex-column">
                                         {editingProductId === product._id ? (
                                             <div>
@@ -324,24 +342,6 @@ const AdminConsole = () => {
                                                             Save Icons
                                                         </button>
                                                     </div>
-                                                    <div className="form-check" key={category}>
-                                                        <input
-                                                            type="checkbox"
-                                                            className="form-check-input"
-                                                            id={`${product._id}-${category}`}
-                                                            checked={selectedCategories.includes(category)}
-                                                            onChange={() => handleCategoryChange(category)}
-                                                        />
-                                                        <label
-                                                            htmlFor={`${product._id}-${category}`}
-                                                            className="form-check-label"
-                                                        >
-                                                            {category}
-                                                        </label>
-                                                    </div>
-                                                    <button onClick={updateCategories} className="btn btn-primary">
-                                                        Update Categories
-                                                    </button>
                                                 </div>
                                             </div>
                                         )}

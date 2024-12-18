@@ -19,6 +19,20 @@ body {
     font-weight: 400;
 }
 
+.nav-item {
+    display: inline-block;
+}
+
+.navbar-nav {
+    list-style: none !important;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.dropdown {
+    margin-left: 12px;
+}
+
 .product-list {
     display: flex;
     flex-wrap: wrap;

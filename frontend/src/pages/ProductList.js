@@ -11,7 +11,7 @@ import biodegradableIcon from "../resources/icons/leaf.png";
 import fairTradeIcon from "../resources/icons/trade.png";
 import recycled from "../resources/icons/recycle.svg";
 import * as bootstrap from "bootstrap";
-import DarkModeToggle from "./DarkModeToggle";
+import { useParams } from "react-router-dom";
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -26,10 +26,12 @@ const HomePage = () => {
     const [products, setProducts] = useState([]);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
+    const { category } = useParams();
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
     const fetchProducts = async (category = null) => {
         try {
-            const response = await API.get("/products/filter", "/products", {
+            const response = await API.get("/products/filter", {
                 params: {
                     min_price: minPrice || 0,
                     max_price: maxPrice || Number.MAX_SAFE_INTEGER,
@@ -38,6 +40,15 @@ const HomePage = () => {
             });
             const visibleProducts = response.data.filter((product) => product.visible);
             setProducts(visibleProducts);
+
+            if(category) {
+                const catergoryFiltered = visibleProducts.filter(
+                    (product) => product.categories?.includes(category)
+                );
+                setFilteredProducts(catergoryFiltered)
+            } else {
+                setFilteredProducts(visibleProducts)
+            }
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -73,6 +84,9 @@ const HomePage = () => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
 
+            const queryParams = new URLSearchParams(window.location.search)
+            const category = queryParams.get("category")
+
             tooltipTriggerList.forEach((tooltipTriggerEl) => {
                 const tooltipInstance = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
                 if (tooltipInstance) {
@@ -80,7 +94,7 @@ const HomePage = () => {
                 }
             });
         };
-    }, [minPrice, maxPrice]);
+    }, [minPrice, maxPrice, category]);
 
     return (
         <div>
@@ -103,6 +117,7 @@ const HomePage = () => {
                                 <p className="card-text">
                                     <strong>Price: ${product.price}</strong>
                                 </p>
+                                <p className="card-text">Categories: {product.categories?.join(", ") || ""}</p>
                                 <div className="d-flex flex-column align-items-center">
                                     <a
                                         className="source-link link-offset-1 link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
