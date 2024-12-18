@@ -27,14 +27,14 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarMenu">
                             <ul className="navbar-nav mb-2 mb-lg-0 ms-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="/">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/companies">Companies</a>
+                                <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="/companies">Companies</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/email">Stay Updated</a>
+                                <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="/email">Stay Updated</a>
                                 </li>
                             </ul>
 

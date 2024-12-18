@@ -43,7 +43,7 @@ const HomePage = () => {
 
             if(category) {
                 const catergoryFiltered = visibleProducts.filter(
-                    (product) => product.categories?.includes(category)
+                    (product) => product.category?.includes(category)
                 );
                 setFilteredProducts(catergoryFiltered)
             } else {
@@ -117,7 +117,7 @@ const HomePage = () => {
                                 <p className="card-text">
                                     <strong>Price: ${product.price}</strong>
                                 </p>
-                                <p className="card-text">Categories: {product.categories?.join(", ") || ""}</p>
+                                <p className="card-text">Category: {product.category?.join(", ") || ""}</p>
                                 <div className="d-flex flex-column align-items-center">
                                     <a
                                         className="source-link link-offset-1 link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
