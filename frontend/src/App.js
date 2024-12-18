@@ -7,6 +7,7 @@ import AdminConsole from "./pages/AdminConsole";
 import CompaniesPage from "./pages/CompaniesPage";
 import AdminCompaniesPage from "./pages/AdminCompaniesPage";
 import SubscribePage from "./pages/SubscribePage"
+import SearchResultsPage from "./pages/SearchResultsPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -18,9 +19,10 @@ const App = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
                 <Route path="/products" element={<HomePage />} />
-                <Route path="/products/:id" element={<ProductDetailPage />} />
+                <Route path="/products/details/:id" element={<ProductDetailPage />} />
                 <Route path="/email" element={<SubscribePage />} />
-                <Route path="/products/:category" element={<HomePage />} />
+                <Route path="/products/category/:category" element={<HomePage />} />
+                <Route path="/search" element={<SearchResultsPage />} />
                 <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
                 {isAuthenticated ? (
                     <>

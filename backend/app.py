@@ -30,18 +30,6 @@ def get_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@app.route("/products", methods=["GET"])
-def get_products_by_category():
-    category = request.args.get("category", None)
-    try:
-        query = {"visible": True}
-        if category:
-            query["category"] = category
-        products = list(db.products.find(query, {"_id": 0}))
-        return jsonify({"products": products}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
 @app.route("/products", methods=["POST"])
 def add_product():
     try:
@@ -50,7 +38,23 @@ def add_product():
         return jsonify({"message": "Product added successfully!"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
+@app.route("/products/<product_id>", methods=["GET"])
+def get_product_by_id(product_id):
+    try:
+        product_id = product_id.strip()
+        product = db.products.find_one({"_id": ObjectId(product_id)})
+
+        if not product:
+            return jsonify({"error": "Product not found"}), 404
+
+        product["_id"] = str(product["_id"])  # Convert ObjectId to string
+        return jsonify(product), 200
+
+    except Exception as e:
+        print(f"Error fetching product: {e}")
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/admin/products/<id>/categories", methods=["PATCH"])
 def update_product_category(id):
     try:
@@ -160,12 +164,14 @@ def get_all_products():
     
 @app.route("/products/search", methods=["GET"])
 def search_products():
-    query = request.args.get("q", "")
+    query = request.args.get("q", "").strip()
     try:
         products = list(products_collection.find(
             {"title": {"$regex": query, "$options": "i"}},
             {"_id": 0}
         ))
+        for product in products:
+            product["_id"] = str(product["_id"])
         return jsonify({"products": products}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -175,28 +181,32 @@ def filter_products():
     try:
         min_price = float(request.args.get("min_price", 0))
         max_price = float(request.args.get("max_price", float("inf")))
-        category = request.args.get("category", None)
-        
-        products = db.products.find()
+        category = request.args.get("category")
+
+        query = {"visible": True}
+        if category:
+            query["category"] = {"$regex": f"^{category}$", "$options": "i"}
+
+        products = list(db.products.find(query))
         filtered_products = []
 
         for product in products:
             try:
-                price = float(product["price"].replace("$", "").replace(",", ""))
-                if min_price <= price <= max_price and (
-                    not category or category in product.get("categories", [])
-                ):
+                price = float(product.get("price", "0").replace("$", "").replace(",", ""))
+                if min_price <= price <= max_price:
                     product["price"] = price
                     product["_id"] = str(product["_id"])
                     filtered_products.append(product)
-            except (ValueError, KeyError):
-                print(f"Skipping product with invalid price: {product}")
+            except (ValueError, KeyError) as e:
+                print(f"Skipping product due to error: {e}, Product: {product}")
 
+        print("Final filtered products to return:", filtered_products)  # Debug filtered data
         return jsonify(filtered_products), 200
-    
+
     except Exception as e:
+        print(f"Error in filter_products: {e}")
         return jsonify({"error": str(e)}), 500
-    
+
 @app.route("/products/<title>", methods=["DELETE"])
 def delete_product(title):
     try:

@@ -39,7 +39,6 @@ const ProductCard = ({ product, fetchProducts }) => {
             const response = await API.patch(`/admin/products/${product._id}/categories`, {
                 categories: selectedCategories,
             })
-            alert(response.data.message)
             fetchProducts()
         } catch (error) {
             console.error("Error updating categories:", error)
@@ -81,6 +80,10 @@ const ProductCard = ({ product, fetchProducts }) => {
                 <button onClick={updateCategories} className="btn btn-primary mt-2">
                     Update Categories
                 </button>
+                <p className="card-text">
+                    <strong>Category:</strong>{" "}
+                    {product.category?.join(", ") || "Uncategorized"}
+                </p>
             </div>
         </div>
     )

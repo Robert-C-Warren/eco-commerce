@@ -1,11 +1,22 @@
-import React from "react";
+import { React } from "react";
 import "./ProductList.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import smallLogo from "../resources/eco-commerce-logo.png";
 import DarkModeToggle from "./DarkModeToggle";
+import { useState } from "react";
 
 const Navbar = () => {
     const categories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"];
+    const [searchQuery, setSearchQuery] = useState("")
+    const navigate = useNavigate()
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/search?q=${searchQuery.trim()}`)
+        }
+    };
+
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
@@ -52,7 +63,7 @@ const Navbar = () => {
                                 {categories.map((category) => (
                                     <li key={category}>
                                         <Link
-                                            to={`/products/${category}`}
+                                            to={`/products/category/${category}`}
                                             className="dropdown-item"
                                         >
                                             {category}
@@ -62,8 +73,15 @@ const Navbar = () => {
                             </ul>
                         </li>
                     </div>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <form className="d-flex" role="search" onSubmit={handleSearch}>
+                            <input 
+                                className="form-control me-2" 
+                                type="search" 
+                                placeholder="Search" 
+                                aria-label="Search" 
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
                             <button className="btn btn-outline-success" type="submit">
                                 Search
                             </button>
