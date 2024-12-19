@@ -211,9 +211,6 @@ const AdminConsole = () => {
                 <div className="row mb-3">
                     <div className="col text-end">
                         <div className="d-flex justify-content-end mb-3">
-                            <Link to="/admin/products" className="btn btn-secondary">
-                                Admin Products
-                            </Link>
                             <Link to="/admin/companies" className="btn btn-secondary">
                                 Admin Companies
                             </Link>

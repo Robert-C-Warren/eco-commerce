@@ -167,12 +167,16 @@ def search_products():
     query = request.args.get("q", "").strip()
     try:
         products = list(products_collection.find(
-            {"title": {"$regex": query, "$options": "i"}},
-            {"_id": 0}
+            {
+                "$or": [
+                    {"category": {"$regex": query, "$options": "i"}},
+                    {"summary": {"$regex": query, "$options": "i"}}
+                ]
+            }
         ))
         for product in products:
             product["_id"] = str(product["_id"])
-        return jsonify({"products": products}), 200
+        return jsonify(products), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -240,6 +244,37 @@ def update_product_icons(id):
         # Check if the product was updated
         if result.matched_count == 0:
             return jsonify({"error": "Product not found"}), 404
+        if result.modified_count == 0:
+            return jsonify({"message": "No changes made"}), 200
+
+        return jsonify({"message": "Icons updated successfully"}), 200
+
+    except Exception as e:
+        print(f"Error in update_product_icons: {e}")  # Log the error
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/admin/companies/<id>/icons", methods=["PATCH"])
+def update_company_icons(id):
+    try:
+        # Log the incoming data
+        print(f"Request data: {request.json}")
+        
+        # Extract icons from the request body
+        icons = request.json.get("icons")
+        
+        # Validate 'icons' is present and is a list
+        if not icons or not isinstance(icons, list):
+            return jsonify({"error": "'icons' must be a non-empty list"}), 400
+
+        # Attempt to update the product in the database
+        result = db.companies.update_one(
+            {"_id": ObjectId(id)},  # Match by product ID
+            {"$set": {"icons": icons}}  # Update the icons field
+        )
+
+        # Check if the product was updated
+        if result.matched_count == 0:
+            return jsonify({"error": "Company not found"}), 404
         if result.modified_count == 0:
             return jsonify({"message": "No changes made"}), 200
 

@@ -8,6 +8,7 @@ import CompaniesPage from "./pages/CompaniesPage";
 import AdminCompaniesPage from "./pages/AdminCompaniesPage";
 import SubscribePage from "./pages/SubscribePage"
 import SearchResultsPage from "./pages/SearchResultsPage";
+import ScrollToTop from "./components/ScrollToTop";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
 
     return (
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />

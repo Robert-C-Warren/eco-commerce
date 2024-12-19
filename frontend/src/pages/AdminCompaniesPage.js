@@ -1,5 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import API from "../services/api";
+import bCorpIcon from "../resources/icons/bcorp.png"
+import smallBusinessIcon from "../resources/icons/handshake.png"
+import veganIcon from "../resources/icons/vegan.png"
+import biodegradableIcon from "../resources/icons/leaf.png"
+import fairTradeIcon from "../resources/icons/trade.png"
+import recycled from "../resources/icons/recycle.svg"
+import fla from "../resources/icons/flalogo.png";
+import cascale from "../resources/icons/cascalelogo.png";
+import oneForThePlanet from "../resources/icons/1fortheplanet.png"
+import sai from "../resources/icons/sailogo.png"
+
+
+const availableIcons = [
+    { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
+    { id: "small_business", label: "Small Business", src: smallBusinessIcon, title: "Small Business"},
+    { id: "vegan", label: "Vegan", src: veganIcon, title: "Vegan"},
+    { id: "biodegradable", label: "Biodegradable", src: biodegradableIcon, title: "Biodegradable"},
+    { id: "fair_trade", label: "Fair-Trade", src: fairTradeIcon, title: "Fair-Trade Certified"},
+    { id: "recycled_materials", label: "Recycled-Materials", src: recycled, title: "Made from Recycled Materials"},
+    { id: "fla_association", label: "Fair Labor Association", src: fla, title: "Fair Labor Association Member" },
+    { id: "cascale", label: "Cascale", src: cascale, title: "Cascale" },
+    { id: "1_for_the_planet", label: "1% For The Planet", src: oneForThePlanet, title: "1% For The Planet" },
+    { id: "social_accountability_international", label: "Social Accountability International (SAI)", src: sai, title: "Social Accountability International (SAI)" },
+]
 
 const AdminCompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
@@ -10,6 +35,7 @@ const AdminCompaniesPage = () => {
     logo: "",
     website: ""
   });
+  const [selectedIcons, setSelectedIcons] = useState({})
 
   const fetchCompanies = async () => {
     try {
@@ -19,6 +45,38 @@ const AdminCompaniesPage = () => {
       setCompanies(data);
     } catch (error) {
       console.error("Error fetching companies", error)
+    }
+  };
+
+  const toggleIcon = (companyId, iconId) => {
+    setSelectedIcons((prev) => ({
+        ...prev,
+        [companyId]: prev[companyId]?.includes(iconId)
+        ? prev[companyId].filter((id) => id !== iconId)
+        : [...(prev[companyId] || []), iconId],
+    }));
+  };
+
+  const saveIcons = async(companyId) => {
+    if(!companyId) {
+      console.error("Company ID is undefined")
+      return;
+    }
+
+    const icons = selectedIcons[companyId] || [];
+    if (!icons.length) {
+      console.error("icons array is empty")
+      alert("Please select at least one icon")
+      return
+    }
+
+    try {
+      console.log("Sending request:", { icons })
+      await API.patch(`/admin/companies/${companyId}/icons`, { icons })
+      fetchCompanies()
+    } catch (error) {
+      console.error("Error saving icons:", error)
+      alert("Failed to update icons.")
     }
   };
 
@@ -86,9 +144,6 @@ const AdminCompaniesPage = () => {
         <div className="d-flex justify-content-end mb-3">
           <Link to="/admin/products" className="btn btn-secondary">
             Admin Products
-          </Link>
-          <Link to="/admin/companies" className="btn btn-secondary">
-            Admin Companies
           </Link>
         </div>
 
@@ -158,7 +213,7 @@ const AdminCompaniesPage = () => {
 
       <h3>Existing Companies</h3>
       <table className="table table-bordered">
-        <head>
+        <thead>
           <tr>
             <th>Name</th>
             <th>Description</th>
@@ -167,7 +222,7 @@ const AdminCompaniesPage = () => {
             <th>Website Link</th>
             <th>Actions</th>
           </tr>
-        </head>
+        </thead>
         <tbody>
           {companies.map((company) => (
             <tr key={company._id}>
@@ -176,6 +231,34 @@ const AdminCompaniesPage = () => {
               <td>{company.qualifications.join(", ")}</td>
               <td>{company.website}</td>
               <td>
+                {availableIcons.map((icon) => (
+                <div key={icon.id} className="form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id={`${company._id}-${icon.id}`}
+                    checked={selectedIcons[company.id]?.includes(icon.id)}
+                    onChange={() => toggleIcon(company._id, icon.id)}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor={`${company._id}-${icon.id}`}
+                  >
+                    <img
+                      src={icon.src}
+                      alt={icon.label}
+                      style={{ width: "30px", marginRight: "5px" }}
+                    />
+                    {icon.label}
+                  </label>
+                </div>
+                ))}
+                <button 
+                  className="btn btn-primary mt-2"
+                  onClick={() => saveIcons(company._id)}
+                >
+                  Save Icons
+                </button>
                 <button
                   className="btn btn-warning btn-sm me-2"
                   onClick={() =>

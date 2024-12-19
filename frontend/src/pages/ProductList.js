@@ -10,7 +10,6 @@ import veganIcon from "../resources/icons/vegan.png";
 import biodegradableIcon from "../resources/icons/leaf.png";
 import fairTradeIcon from "../resources/icons/trade.png";
 import recycled from "../resources/icons/recycle.svg";
-import * as bootstrap from "bootstrap";
 import { useParams, useLocation } from "react-router-dom";
 
 const availableIcons = [
@@ -50,6 +49,13 @@ const HomePage = () => {
     useEffect(() => {
         fetchProducts(); // Fetch whenever category changes
     }, [category]);
+
+    useEffect(() => {
+        const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach((tooltipTriggerE1) => {
+            new window.bootstrap.Tooltip(tooltipTriggerE1)
+        })
+    }, [products])
 
     return (
         <div>
@@ -119,6 +125,7 @@ const HomePage = () => {
                                                 src={icon.src}
                                                 alt={icon.label}
                                                 data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom"
                                                 data-bs-title={icon.label}
                                             />
                                         ) : null;

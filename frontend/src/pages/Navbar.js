@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom"
 import smallLogo from "../resources/eco-commerce-logo.png";
 import DarkModeToggle from "./DarkModeToggle";
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Navbar = () => {
     const categories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"];
@@ -51,15 +53,16 @@ const Navbar = () => {
 
                         <li className="nav-item dropdown">
                             <a
-                                className="nav-link active dropdown-toggle"
+                                className="nav-link dropdown-toggle"
                                 href="#"
                                 role="button"
+                                id="dropdownMenuLink"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
                                 Categories
                             </a>
-                            <ul className="dropdown-menu">
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 {categories.map((category) => (
                                     <li key={category}>
                                         <Link

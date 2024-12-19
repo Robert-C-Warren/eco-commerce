@@ -1,0 +1,8 @@
+.product-icons .icon_actual {
+    width: 40px; 
+    height: auto; 
+    margin: 0; 
+    padding-top: 12px;
+    margin-bottom: 30px;
+    object-fit: contain;
+}

@@ -17,7 +17,9 @@ def removeDuplicates(db):
 
     # Iterate through the results and delete duplicates
     for doc in collection.aggregate(pipeline):
-        ids_to_delete = doc["duplicates"][1:]  # Exclude the first ID (keep it)
+        sorted_ids = sorted(doc["duplicates"])
+        ids_to_delete = sorted_ids[1:]  # Exclude the first ID (keep it)
+        
         if ids_to_delete:  # Check if there are duplicates
             collection.delete_many({"_id": {"$in": ids_to_delete}})
             print(f"Deleted duplicates for URL: {doc['_id']['title']}")
