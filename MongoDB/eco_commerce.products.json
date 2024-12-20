@@ -1,0 +1,1423 @@
+[{
+  "_id": {
+    "$oid": "6760710908b4a4f4a5bff31c"
+  },
+  "title": "100% Recycled Dog Plush Toy",
+  "summary": "100% Recycled Dog Plush Toy",
+  "price": "$10.95",
+  "url": "https://ecoternatives.co/collections/all/products/100-recycled-dog-plush-toy",
+  "image": "https://ecoternatives.co/cdn/shop/files/turtletoyyy.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ],
+  "icons": [
+    "small_business",
+    "recycled_materials"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676071e42b9cbac35fea8495"
+  },
+  "title": "Lochtree - Vegan Body Soap",
+  "summary": "Lochtree - Vegan Body Soap",
+  "price": "$7.49",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/vegan-body-soap",
+  "image": "https://lochtree.com/cdn/shop/files/Lochtree-2.2.24_7_2000x.png?v=1707611032",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ],
+  "icons": [
+    "small_business",
+    "vegan"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67607349a84f0a878380fd30"
+  },
+  "title": "5oz Dish Soap Bar",
+  "summary": "5oz Dish Soap Bar",
+  "price": "$5.95",
+  "url": "https://ecoternatives.co/collections/all/products/570-soap-company-dish-soap-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_28.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ],
+  "icons": [
+    "small_business"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760734ba84f0a878380fd49"
+  },
+  "title": "Little Otter Organic Lip Balm",
+  "summary": "Little Otter Organic Lip Balm",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/organic-lip-balm-little-otter",
+  "image": "https://ecoternatives.co/cdn/shop/products/little-otter-organic-lip-balm-624007.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ],
+  "icons": [
+    "small_business"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67607351a84f0a878380fd64"
+  },
+  "title": "Yoloha Yoga - Nomad Cork Yoga Mat",
+  "summary": "Yoloha Yoga - Nomad Cork Yoga Mat",
+  "price": "$118.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/nomad-cork-yoga-mat",
+  "image": "https://lochtree.com/cdn/shop/files/YolohaYoga-NomadCorkYogaMat_2000x.png?v=1717695006",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760763e8905f0fe987bb1d7"
+  },
+  "title": "Bio Enzyme Dishwasher Detergent",
+  "summary": "Bio Enzyme Dishwasher Detergent",
+  "price": "$14.95",
+  "url": "https://ecoternatives.co/collections/all/products/bio-enzyme-dishwasher-detergent",
+  "image": "https://ecoternatives.co/cdn/shop/files/file_5afbefa8-9af5-4615-9e38-ec4017f4a20c.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760763e8905f0fe987bb1db"
+  },
+  "title": "Amazing Peppermint Mouthwash Concentrate",
+  "summary": "Amazing Peppermint Mouthwash Concentrate",
+  "price": "$7.95",
+  "url": "https://ecoternatives.co/collections/all/products/amazing-peppermint-mouthwash-concentrate",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_1794x1798px.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076408905f0fe987bb1f4"
+  },
+  "title": "8pc Plastic Free Hair Ties",
+  "summary": "8pc Plastic Free Hair Ties",
+  "price": "$6.95",
+  "url": "https://ecoternatives.co/collections/all/products/plastic-free-hair-ties",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_1802x1800px.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076418905f0fe987bb203"
+  },
+  "title": "Upcycled Makeup Remover Pads - 12ct",
+  "summary": "Upcycled Makeup Remover Pads - 12ct",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/6ct-upcycled-cotton-rounds",
+  "image": "https://ecoternatives.co/cdn/shop/files/6ct-upcycled-make-up-remover-pads-889103-transformed_1.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076468905f0fe987bb210"
+  },
+  "title": "Lochtree - Pouches",
+  "summary": "Lochtree - Pouches",
+  "price": "$42.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/pouches",
+  "image": "https://lochtree.com/cdn/shop/files/Lochtree-Pouches_Assortment_2000x.png?v=1715965734",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Home"
+  ],
+  "icons": [
+    "small_business",
+    "recycled_materials"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076468905f0fe987bb212"
+  },
+  "title": "ECOlunchbox - Splash Box",
+  "summary": "ECOlunchbox - Splash Box",
+  "price": "$13.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/ecolunchbox-splash-box",
+  "image": "https://lochtree.com/cdn/shop/files/ecolunchbox-splash-box-ecolunchbox-894212_800x_7ae6e22a-61c9-4276-9683-4a09760f4c2c_2000x.png?v=1706919338",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076468905f0fe987bb214"
+  },
+  "title": "Lochtree - Soy Candles",
+  "summary": "Lochtree - Soy Candles",
+  "price": "$17.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/soy-candles",
+  "image": "https://lochtree.com/cdn/shop/files/Candles_1024x1024_4_2000x.png?v=1707611360",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676076698905f0fe987bb22f"
+  },
+  "title": "Bundle of 3 Furoshiki Wraps by Kelsey Weigl | 18\", 28\" & 35\", Polyester",
+  "summary": "Bundle of 3 Furoshiki Wraps by Kelsey Weigl | 18\", 28\" & 35\", Polyester",
+  "price": "$50.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/bundle-of-3-furoshiki-wraps-by-kelsey-weigl-18-28-35-polyester#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/27_22ce5d04-b419-423c-814d-413a5e56526f_540x.png?v=1732222813",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760766b8905f0fe987bb231"
+  },
+  "title": "Merino Wool Chappy-Nappy Pants",
+  "summary": "Merino Wool Chappy-Nappy Pants",
+  "price": "$40.00 - $50.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/undyed-merino-wool-chappy-nappy-pants#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/IMG_2580_540x.jpg?v=1731355585",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Uncategorized"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760766e8905f0fe987bb234"
+  },
+  "title": "Merino Wool Reusable Diaper Cover & Adjustable Belt",
+  "summary": "Merino Wool Reusable Diaper Cover & Adjustable Belt",
+  "price": "$40.00 - $50.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/merino-wool-all-in-two-flappy-nappy-diaper-cover#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/IMG_2530_540x.png?v=1731355097",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Uncategorized"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b1088548327da49c11"
+  },
+  "title": "Zero Waste Bottle Brush",
+  "summary": "Zero Waste Bottle Brush",
+  "price": "$5.95",
+  "url": "https://ecoternatives.co/collections/all/products/bottle-brush",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_3.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Cleaning"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b1088548327da49c18"
+  },
+  "title": "Reusable Sandwich & Snack Bag",
+  "summary": "Reusable Sandwich & Snack Bag",
+  "price": "$8.50",
+  "url": "https://ecoternatives.co/collections/all/products/reusable-sandwich-snack-bag",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_20.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b1088548327da49c19"
+  },
+  "title": "Sustainable Bees Wax Wraps, 3ct.",
+  "summary": "Sustainable Bees Wax Wraps, 3ct.",
+  "price": "$14.95",
+  "url": "https://ecoternatives.co/collections/all/products/sustainable-3ct-bees-wax-wraps",
+  "image": "https://ecoternatives.co/cdn/shop/files/Beeswax-Wraps-Variety.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b1088548327da49c1a"
+  },
+  "title": "Bamboo Switch Soap Rest",
+  "summary": "Bamboo Switch Soap Rest",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/bamboo-soap-rest-1",
+  "image": "https://ecoternatives.co/cdn/shop/files/FairTrade_3.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b1088548327da49c1b"
+  },
+  "title": "4oz Organic Charcoal Face Bar",
+  "summary": "4oz Organic Charcoal Face Bar",
+  "price": "$6.95",
+  "url": "https://ecoternatives.co/collections/all/products/4oz-organic-oil-reducing-charcoal-face-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/4oz-organic-oil-reducing-charcoal-face-bar-370774-transformed.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b3088548327da49c29"
+  },
+  "title": "Little Hands Hawaii Sunscreen",
+  "summary": "Little Hands Hawaii Sunscreen",
+  "price": "$17.95",
+  "url": "https://ecoternatives.co/collections/all/products/little-hands-hawaii-sunscreen",
+  "image": "https://ecoternatives.co/cdn/shop/files/Pop-UpMakeke-LittleHandsHawaii-Body_FaceMineralSunscreen-Regular_2000x_4b083756-adb3-4c4d-8719-7d75e36db53d.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b3088548327da49c2a"
+  },
+  "title": "Little Hands Hawaii Face Stick Sunscreen",
+  "summary": "Little Hands Hawaii Face Stick Sunscreen",
+  "price": "$14.95",
+  "url": "https://ecoternatives.co/collections/all/products/little-hands-hawaii-face-stick-sunscreen",
+  "image": "https://ecoternatives.co/cdn/shop/files/Pop-UpMakeke-LittleHandsHawaii-MineralSunscreenFaceStick_SportStick_-Regular-Open_2000x_f3e744d8-d309-45a2-9641-acbb81ac3e4d.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b3088548327da49c2b"
+  },
+  "title": "Cellulose Sponge + Coconut Scouring Pad",
+  "summary": "Cellulose Sponge + Coconut Scouring Pad",
+  "price": "$1.30",
+  "url": "https://ecoternatives.co/collections/all/products/expanding-cellulose-sponge",
+  "image": "https://ecoternatives.co/cdn/shop/files/file_2.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen",
+    "Cleaning"
+  ],
+  "icons": [
+    "biodegradable"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077b3088548327da49c2c"
+  },
+  "title": "4ct Swedish Sponge Cloths",
+  "summary": "4ct Swedish Sponge Cloths",
+  "price": "$6.95",
+  "url": "https://ecoternatives.co/collections/all/products/4pack-compostable-cleaning-cloths",
+  "image": "https://ecoternatives.co/cdn/shop/products/EcoLiving-Compostable-Sponge-Cleaning-Cloths-4-Pack-scaled.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen",
+    "Cleaning"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077bf088548327da49c3a"
+  },
+  "title": "Liquid Gold All Purpose Castile Soap",
+  "summary": "Liquid Gold All Purpose Castile Soap",
+  "price": "$21.99 - $24.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/liquid-gold-all-purpose-castile-soap#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/C5574187-5553-4E48-A5AD-BEFACC25D07E_105f4ffa-10d3-4557-a2a5-a142b4115903_540x.jpg?v=1733855262",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077cf088548327da49c48"
+  },
+  "title": "The Kitchn's Fresh Guacamole 5 Piece Astrik Mixing Bowls",
+  "summary": "The Kitchn's Fresh Guacamole 5 Piece Astrik Mixing Bowls",
+  "price": "$25.00 - $128.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/the-kitchns-fresh-guacamole-5-piece-astrik-mixing-bowls#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/FreshGuacFullSet_540x.jpg?v=1732223668",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077db088548327da49c53"
+  },
+  "title": "Bundle of 3 Furoshiki Wraps & 3 Fabric Bags by Kelsey Weigl",
+  "summary": "Bundle of 3 Furoshiki Wraps & 3 Fabric Bags by Kelsey Weigl",
+  "price": "$100.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/bundle-of-3-furoshiki-wraps-3-fabric-bags-by-kelsey-weigl#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/1_80630b84-e17d-408f-bb6b-19fe0ed66d39_540x.png?v=1732222792",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077dd088548327da49c55"
+  },
+  "title": "Snap-in Pads for All-in-Two Diaper Covers",
+  "summary": "Snap-in Pads for All-in-Two Diaper Covers",
+  "price": "$24.00 - $30.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/snap-in-pads-for-all-in-two-diaper-covers#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/IMG_3005_bc422d06-086d-4ef2-b5a2-b151adc306ab_540x.jpg?v=1731440994",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Uncategorized"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077de088548327da49c56"
+  },
+  "title": "Flappy-Nappies® Pocket Diaper 3-Pack",
+  "summary": "Flappy-Nappies® Pocket Diaper 3-Pack",
+  "price": "$66.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/flappy-nappy-pocket-diaper-3-pack#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/IMG_1479_6bea7368-de87-4801-8a80-7860b3e44dc9_540x.png?v=1731355070",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Uncategorized"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676077e2088548327da49c58"
+  },
+  "title": "Reusable Gift Tags with Chalk | 3-Pack",
+  "summary": "Reusable Gift Tags with Chalk | 3-Pack",
+  "price": "$10.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/reusable-gift-tags-3-pack#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/7_9dc2a2b8-7519-49de-b953-0bff17fccdfa_540x.png?v=1731091774",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676079b06262bd0e69d77cf4"
+  },
+  "title": "HiBAR Shampoo Bar Collection",
+  "summary": "HiBAR Shampoo Bar Collection",
+  "price": "$12.50",
+  "url": "https://ecoternatives.co/collections/all/products/hibar-shampoo-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_27.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676079b16262bd0e69d77cfe"
+  },
+  "title": "Organic Tampons with Biodegradable Applicator",
+  "summary": "Organic Tampons with Biodegradable Applicator",
+  "price": "$7.95",
+  "url": "https://ecoternatives.co/collections/all/products/organic-tampons-with-biodegradable-applicator",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_1296x1296px_1280x1280px_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676079b16262bd0e69d77d00"
+  },
+  "title": "3ct Natural Organic Dryer Balls",
+  "summary": "3ct Natural Organic Dryer Balls",
+  "price": "$16.95",
+  "url": "https://ecoternatives.co/collections/all/products/cruelty-free-wool-dryer-balls",
+  "image": "https://ecoternatives.co/cdn/shop/files/bd8e1a811fe23f0efa15ca09d8b79a7dfc27243c1a4dc4b1df33cbf5690a7c47.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676079ce6262bd0e69d77d42"
+  },
+  "title": "Astrik Measuring Duo Set",
+  "summary": "Astrik Measuring Duo Set",
+  "price": "$25.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/measuring-bowl-set#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/240626-Astrik_eComm-39_540x.jpg?v=1732223899",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dba61722b3a141e5de"
+  },
+  "title": "Foaming Hand Soap Tablets 2pc",
+  "summary": "Foaming Hand Soap Tablets 2pc",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/2pc-foaming-hand-soap-tablet",
+  "image": "https://ecoternatives.co/cdn/shop/files/2pc-foaming-hand-soap-tablets-142981.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dba61722b3a141e5e1"
+  },
+  "title": "Large 3.5oz Moisturizing Lotion Bar",
+  "summary": "Large 3.5oz Moisturizing Lotion Bar",
+  "price": "$7.95",
+  "url": "https://ecoternatives.co/collections/all/products/moisturizing-lotion-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/image.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dba61722b3a141e5e2"
+  },
+  "title": "100% Recycled Dog Waste Bags",
+  "summary": "100% Recycled Dog Waste Bags",
+  "price": "$6.50",
+  "url": "https://ecoternatives.co/collections/all/products/recycled-plastic-dog-poo-bags",
+  "image": "https://ecoternatives.co/cdn/shop/files/6728B280FF699EAC3C82D5E5B8AA33EB_1_3.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dba61722b3a141e5e3"
+  },
+  "title": "Value Size - Pet Shampoo Bar",
+  "summary": "Value Size - Pet Shampoo Bar",
+  "price": "$6.95",
+  "url": "https://ecoternatives.co/collections/all/products/large-clean-canine-pet-shampoo-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/pixlr.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5eb"
+  },
+  "title": "Biodegradable Bamboo Hair Brush",
+  "summary": "Biodegradable Bamboo Hair Brush",
+  "price": "$10.95",
+  "url": "https://ecoternatives.co/collections/all/products/bamboo-hair-brush",
+  "image": "https://ecoternatives.co/cdn/shop/files/28F2B4F1-DDA5-48AA-90B6-285CEF4C56AE_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5ec"
+  },
+  "title": "Sisal Soap Bag - Fundraiser",
+  "summary": "Sisal Soap Bag - Fundraiser",
+  "price": "$2.95",
+  "url": "https://ecoternatives.co/collections/all/products/sisal-soap-bag",
+  "image": "https://ecoternatives.co/cdn/shop/products/sisal-soap-bag-fundraiser-181260.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5ed"
+  },
+  "title": "Earth Breeze Laundry Detergent Sheets",
+  "summary": "Earth Breeze Laundry Detergent Sheets",
+  "price": "$13.95",
+  "url": "https://ecoternatives.co/collections/all/products/earth-breeze-laundry-detergent-strips",
+  "image": "https://ecoternatives.co/cdn/shop/files/2.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5ee"
+  },
+  "title": "Ecoternatives Natural Hair Ties 27ct",
+  "summary": "Ecoternatives Natural Hair Ties 27ct",
+  "price": "$8.95",
+  "url": "https://ecoternatives.co/collections/all/products/terra-ties-27ct",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_84_18cdc27a-acf0-4ee9-ab44-2efae50116c4_1_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5ef"
+  },
+  "title": "Organic Cotton Swabs",
+  "summary": "Organic Cotton Swabs",
+  "price": "$2.95",
+  "url": "https://ecoternatives.co/collections/all/products/organic-cotton-swabs",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_99.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5f0"
+  },
+  "title": "Organic Bamboo Pot Scrapers 4ct",
+  "summary": "Organic Bamboo Pot Scrapers 4ct",
+  "price": "$9.95",
+  "url": "https://ecoternatives.co/collections/all/products/bambu-pot-scrapers-4ct",
+  "image": "https://ecoternatives.co/cdn/shop/products/4-organic-bambu-pot-scrapers-222470.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5f1"
+  },
+  "title": "Meliora Organic Stain Remover",
+  "summary": "Meliora Organic Stain Remover",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/meliora-organic-stain-remover",
+  "image": "https://ecoternatives.co/cdn/shop/products/meliora-organic-stain-remover-457400.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5f2"
+  },
+  "title": "Plastic Free Pot Brush",
+  "summary": "Plastic Free Pot Brush",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/wooden-pot-brush",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_71_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5f5"
+  },
+  "title": "Reusable Organic Produce Bags",
+  "summary": "Reusable Organic Produce Bags",
+  "price": "$2.99",
+  "url": "https://ecoternatives.co/collections/all/products/ecobags-produce-bag",
+  "image": "https://ecoternatives.co/cdn/shop/files/Myproject-1_12_258577ca-fe80-413b-b3a0-d5d32f2679ee.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen",
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428dca61722b3a141e5f6"
+  },
+  "title": "Organic & Fair Trade Deodorant",
+  "summary": "Organic & Fair Trade Deodorant",
+  "price": "$8.95",
+  "url": "https://ecoternatives.co/collections/all/products/natural-deodorants-plastic-free",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_22.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e5fb"
+  },
+  "title": "Three Blue Birds - Swedish Dishcloths",
+  "summary": "Three Blue Birds - Swedish Dishcloths",
+  "price": "$6.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/swedish-dishcloth",
+  "image": "https://lochtree.com/cdn/shop/files/SwedishDishcloth_Mushrooms_Banner_17c7e4d5-a251-43a2-8704-4c5b14a245d5_2000x.png?v=1727448937",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e5fc"
+  },
+  "title": "Shiki Wrap - Reusable Gift Wraps",
+  "summary": "Shiki Wrap - Reusable Gift Wraps",
+  "price": "$16.00",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/shiki-wrap-reusable-gift-wraps",
+  "image": "https://lochtree.com/cdn/shop/files/ShikiWrap_CollectionPageBanner_2000x.png?v=1726846208",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e5fe"
+  },
+  "title": "Cold Current Kelp - KelpGlow Facial Oil",
+  "summary": "Cold Current Kelp - KelpGlow Facial Oil",
+  "price": "$68.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/kelpglow-facial-oil",
+  "image": "https://lochtree.com/cdn/shop/files/ColdCurrentKelp-KelpGlowFacialOil_2000x.png?v=1719509705",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e600"
+  },
+  "title": "Lochtree - Dopp Kits",
+  "summary": "Lochtree - Dopp Kits",
+  "price": "$42.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/dopp-kits",
+  "image": "https://lochtree.com/cdn/shop/files/Lochtree_DoppKits_Assorted_2000x.png?v=1715960376",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e602"
+  },
+  "title": "Tru Earth - Toilet Bowl Cleaner",
+  "summary": "Tru Earth - Toilet Bowl Cleaner",
+  "price": "$16.99",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/tru-earth-toilet-bowl-cleaner",
+  "image": "https://lochtree.com/cdn/shop/files/TruEarth-ToiletBowlCleaner_2000x.png?v=1715375152",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Cleaning"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e2a61722b3a141e604"
+  },
+  "title": "Lochtree - Vegan Hand Soap",
+  "summary": "Lochtree - Vegan Hand Soap",
+  "price": "$8.49",
+  "url": "https://lochtree.com/collections/new-at-lochtree/products/vegan-hand-soap",
+  "image": "https://lochtree.com/cdn/shop/files/Lochtree-2.2.24_11_2000x.png?v=1707611103",
+  "source": "Lochtree",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428e9a61722b3a141e607"
+  },
+  "title": "Stick Rubber Dog Toy",
+  "summary": "Stick Rubber Dog Toy",
+  "price": "$17.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/stick-rubber-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/7b4fd428462e6bcb46878b992bfd8a45f6c4d7dcd93efb78c5ed9e4bdc075eb3_540x.webp?v=1734376515",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428eba61722b3a141e608"
+  },
+  "title": "Koala Plush Rope Dog Toy",
+  "summary": "Koala Plush Rope Dog Toy",
+  "price": "$12.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/koala-plush-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/2e03fcb742c83af6bae3c49a2235067f872225c46a99c8c8e2153e4b1782296e_540x.webp?v=1734376507",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428eca61722b3a141e609"
+  },
+  "title": "Sloth Rope Dog Toy",
+  "summary": "Sloth Rope Dog Toy",
+  "price": "$12.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/sloth-rope-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/96ede0d3e7df414bdfab99b0bdf858b9171c41a6339fb6c9ea2e0b216f698759_540x.webp?v=1734376500",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428eda61722b3a141e60a"
+  },
+  "title": "Recycled Bee Dog Toy",
+  "summary": "Recycled Bee Dog Toy",
+  "price": "$16.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/recycled-bee-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/ce61c1a1f5f25c1bbbca22e620fb67cf870f3e2905876ee7b5860356e68ee16c_540x.webp?v=1734376493",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428eea61722b3a141e60b"
+  },
+  "title": "Recycled Owl Dog Toy",
+  "summary": "Recycled Owl Dog Toy",
+  "price": "$16.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/recycled-owl-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/dfa372b6c4047b85b0c4d3d95ec7cd10de285ef1e7d591d07443f14ba58c192d_540x.webp?v=1734376486",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428efa61722b3a141e60c"
+  },
+  "title": "Whale Dog Toy",
+  "summary": "Whale Dog Toy",
+  "price": "$16.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/whale-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/475689fc068b1b178298e725f4e3be07bd760f948e3eacb2f435af730d847df1_540x.webp?v=1734376654",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428f0a61722b3a141e60d"
+  },
+  "title": "Recycled Octopus Dog Toy",
+  "summary": "Recycled Octopus Dog Toy",
+  "price": "$19.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/recycled-octopus-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/c120dc61f7fc900b9dc4d6b3deda64b9f94b9cec70f2c1474315953e1aba13ae_540x.webp?v=1734376467",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428f1a61722b3a141e60e"
+  },
+  "title": "Recycled Snake Dog Toy",
+  "summary": "Recycled Snake Dog Toy",
+  "price": "$16.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/recycled-snake-dog-toy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/571bb6697779eed44a42de3de88c68beb18aca50d8e36b93ef9ce019d4b672f0_540x.webp?v=1734376659",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428f2a61722b3a141e60f"
+  },
+  "title": "Ocean Critters Cat Toys - Vitamin Sea Buds",
+  "summary": "Ocean Critters Cat Toys - Vitamin Sea Buds",
+  "price": "$12.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/critters-cat-toys-catch-me-if-you-can-copy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/3ac056fbea5343bdeb27d539ea121d4e4bfc2a0af36a114701958de5951799d6_540x.webp?v=1734376448",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428f3a61722b3a141e610"
+  },
+  "title": "Critters Cat Toys - Catch Me if you Can",
+  "summary": "Critters Cat Toys - Catch Me if you Can",
+  "price": "$12.99",
+  "url": "https://earthhero.com/collections/new-arrivals/products/critters-cat-toys-catch-me-if-you-can#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/b53c466447a6a9a8f7afd2c6a188412a5269e185c2145656dcbb33f2569ca27f_540x.webp?v=1734376663",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676428f5a61722b3a141e611"
+  },
+  "title": "The Caffeinated Duo",
+  "summary": "The Caffeinated Duo",
+  "price": "Price not found",
+  "url": "https://earthhero.com/collections/new-arrivals/products/coffee-serum-eye-cream-gift-set#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/TheCaffeinatedDuo2_1_copy_4dd120d0-28c9-4c76-ae6e-a1854041cbf7_540x.jpg?v=1734028546",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67642905a61722b3a141e61e"
+  },
+  "title": "5 Piece Astrik Mixing Bowls",
+  "summary": "5 Piece Astrik Mixing Bowls",
+  "price": "$60.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/mixing-bowls-copy#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/240626-Astrik_eComm-42_540x.jpg?v=1732223800",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67642906a61722b3a141e61f"
+  },
+  "title": "Astrik Compost Starter Bundles",
+  "summary": "Astrik Compost Starter Bundles",
+  "price": "$85.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/composter-bundle#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/241018-BamboozleBFCM-08_540x.jpg?v=1732223912",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764290ba61722b3a141e624"
+  },
+  "title": "Fabric Gift Bag by Kelsey Weigl | 22\", Cotton",
+  "summary": "Fabric Gift Bag by Kelsey Weigl | 22\", Cotton",
+  "price": "$35.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/fabric-gift-bag-by-kelsey-weigl-22-cotton#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/38_6253095f-7386-4b45-b5a8-9a6ea6d9ca5d_540x.png?v=1732223177",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764290ea61722b3a141e625"
+  },
+  "title": "Fabric Gift Bag by Kelsey Weigl | 18\", Cotton",
+  "summary": "Fabric Gift Bag by Kelsey Weigl | 18\", Cotton",
+  "price": "$26.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/fabric-gift-bag-by-kelsey-weigl-18-cotton#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/34_16dcf4a2-e51e-482d-8431-20ff7805fddb_540x.png?v=1732223139",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764290fa61722b3a141e626"
+  },
+  "title": "Fabric Gift Bag by Kelsey Weigl | 14\", Cotton",
+  "summary": "Fabric Gift Bag by Kelsey Weigl | 14\", Cotton",
+  "price": "$17.00",
+  "url": "https://earthhero.com/collections/new-arrivals/products/fabric-gift-bag-by-kelsey-weigl-14-cotton#",
+  "image": "https://cdn.shopify.com/s/files/1/0617/2878/4620/files/29_52f4987a-ac74-4b6e-ab3d-fdc0d0736de1_540x.png?v=1732223111",
+  "source": "earthhero",
+  "visible": true,
+  "category": [
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61f9"
+  },
+  "title": "Multi Surface Cleaner Tablet",
+  "summary": "Multi Surface Cleaner Tablet",
+  "price": "$2.30",
+  "url": "https://ecoternatives.co/collections/all/products/multi-surface-cleaner-tablet",
+  "image": "https://ecoternatives.co/cdn/shop/files/DSC00084-Edit-Edit-cover-transformed_393341c1-4d6c-4603-b7cb-26ad79deb4f7.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Cleaning",
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61fa"
+  },
+  "title": "Henson Razor (Best Safety Razor Ever Made)",
+  "summary": "Henson Razor (Best Safety Razor Ever Made)",
+  "price": "$64.95",
+  "url": "https://ecoternatives.co/collections/all/products/henson-al13-razor",
+  "image": "https://ecoternatives.co/cdn/shop/files/aircraftaluminum-03.webp",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61fb"
+  },
+  "title": "100pk RK Stainless Steel Razor Blades",
+  "summary": "100pk RK Stainless Steel Razor Blades",
+  "price": "$9.95",
+  "url": "https://ecoternatives.co/collections/all/products/rk-shaving-stainless-de-razor-blades-100pk",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_97.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61fc"
+  },
+  "title": "Mini Essentials Bundle",
+  "summary": "Mini Essentials Bundle",
+  "price": "$59.95",
+  "url": "https://ecoternatives.co/collections/all/products/mini-essentials-bundle",
+  "image": "https://ecoternatives.co/cdn/shop/files/aaaaaaa2.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Cleaning"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61fd"
+  },
+  "title": "Powder to Gel Dish Soap",
+  "summary": "Powder to Gel Dish Soap",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/powder-to-gel-kitchen-dish-soap",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_98.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61fe"
+  },
+  "title": "2pc Bamboo Toothbrushes (NEW & IMPROVED BRISTLES)",
+  "summary": "2pc Bamboo Toothbrushes (NEW & IMPROVED BRISTLES)",
+  "price": "$4.50",
+  "url": "https://ecoternatives.co/collections/all/products/to-be-added-toothbrush",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_1_1_0e89566f-5e9a-41d0-b15c-f573d8057269.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e61ff"
+  },
+  "title": "Mint & Aloe Shaving Soap Bar",
+  "summary": "Mint & Aloe Shaving Soap Bar",
+  "price": "$5.95",
+  "url": "https://ecoternatives.co/collections/all/products/shaving-soap",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_3.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643177d44f64ef545e6200"
+  },
+  "title": "HiBAR Conditioner Bar Collection",
+  "summary": "HiBAR Conditioner Bar Collection",
+  "price": "$12.50",
+  "url": "https://ecoternatives.co/collections/all/products/hibar-conditioner-bar",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitleddesign_26.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643178d44f64ef545e6202"
+  },
+  "title": "4.5oz Handmade Fair Trade & Organic Bar Soap",
+  "summary": "4.5oz Handmade Fair Trade & Organic Bar Soap",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/fair-trade-organic-bar-soap",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_5.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643178d44f64ef545e6203"
+  },
+  "title": "1ct Swedish Sponge Cloth",
+  "summary": "1ct Swedish Sponge Cloth",
+  "price": "$1.75",
+  "url": "https://ecoternatives.co/collections/all/products/copy-of-4ct-swedish-sponge-cloths",
+  "image": "https://ecoternatives.co/cdn/shop/files/Screenshot2024-03-05at10.02.31AM.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Kitchen",
+    "Home"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643178d44f64ef545e6205"
+  },
+  "title": "J&L Natural Face Moisturizer",
+  "summary": "J&L Natural Face Moisturizer",
+  "price": "$13.95",
+  "url": "https://ecoternatives.co/collections/all/products/plant-powered-face-salve",
+  "image": "https://ecoternatives.co/cdn/shop/files/NewJ_LBalance.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e620a"
+  },
+  "title": "Organic Bamboo Period Pads",
+  "summary": "Organic Bamboo Period Pads",
+  "price": "$7.50",
+  "url": "https://ecoternatives.co/collections/all/products/bamboo-pads-pack",
+  "image": "https://ecoternatives.co/cdn/shop/files/Screenshot2023-09-24at11.37.45AM.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e620f"
+  },
+  "title": "2 Pack - Upcycled Cat Treats (Recycled Plastic Packaging)",
+  "summary": "2 Pack - Upcycled Cat Treats (Recycled Plastic Packaging)",
+  "price": "$7.95",
+  "url": "https://ecoternatives.co/collections/all/products/upcycled-cat-treats-recycled-plastic-packaging",
+  "image": "https://ecoternatives.co/cdn/shop/files/CatnipNChillNewpackaging_1_1000x_2f6223d7-5bdf-4ccf-a1e1-af8344d7a8dd.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e6210"
+  },
+  "title": "Upcycled Dental Dog Sticks (In Recycled Bag)",
+  "summary": "Upcycled Dental Dog Sticks (In Recycled Bag)",
+  "price": "$8.95",
+  "url": "https://ecoternatives.co/collections/all/products/upcycled-dental-dog-sticks-in-recycled-bag",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_2.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e6211"
+  },
+  "title": "Upcycled Dog Training Treats (In Recycled Bag)",
+  "summary": "Upcycled Dog Training Treats (In Recycled Bag)",
+  "price": "$9.95",
+  "url": "https://ecoternatives.co/collections/all/products/upcycled-dog-training-treats-in-recycled-bag",
+  "image": "https://ecoternatives.co/cdn/shop/files/85a713cbab22766ffd5862312eac95194891a6f8a08b51bd842769472b7a3846.jpg",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e6212"
+  },
+  "title": "Upcycled Dog Biscuits (In Recycled Bag)",
+  "summary": "Upcycled Dog Biscuits (In Recycled Bag)",
+  "price": "$6.50",
+  "url": "https://ecoternatives.co/collections/all/products/upcycled-dog-biscuits-packaged-in-recycled-bag",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Pet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67643179d44f64ef545e6213"
+  },
+  "title": "Shower Loofah",
+  "summary": "Shower Loofah",
+  "price": "$3.50",
+  "url": "https://ecoternatives.co/collections/all/products/loofah",
+  "image": "https://ecoternatives.co/cdn/shop/files/1E686527-D256-4A7B-B783-571F9F292811.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6214"
+  },
+  "title": "20 Toilet Bowl Cleaner Tablets",
+  "summary": "20 Toilet Bowl Cleaner Tablets",
+  "price": "$9.95",
+  "url": "https://ecoternatives.co/collections/all/products/20-toilet-cleaner-tablets",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_830x828px_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Cleaning"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6215"
+  },
+  "title": "14 Applicator Free Organic Cotton Tampons",
+  "summary": "14 Applicator Free Organic Cotton Tampons",
+  "price": "$5.95",
+  "url": "https://ecoternatives.co/collections/all/products/14-organic-cotton-tampons_draft",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_1519x1519px_1.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6216"
+  },
+  "title": "12pc Organic Reusable Paper Towels",
+  "summary": "12pc Organic Reusable Paper Towels",
+  "price": "$21.95",
+  "url": "https://ecoternatives.co/collections/all/products/12-pack-reusable-paper-towels_draft",
+  "image": "https://ecoternatives.co/cdn/shop/files/dfv.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home",
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6217"
+  },
+  "title": "Organic Brushed Cotton Unpaper Towels",
+  "summary": "Organic Brushed Cotton Unpaper Towels",
+  "price": "$17.95",
+  "url": "https://ecoternatives.co/collections/all/products/organic-brushed-cotton-unpaper-towels_draft",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_1296x1296px.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Home",
+    "Kitchen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6218"
+  },
+  "title": "Dame Reusable Period Pads",
+  "summary": "Dame Reusable Period Pads",
+  "price": "$14.95",
+  "url": "https://ecoternatives.co/collections/all/products/reusable-period-pads_draft",
+  "image": "https://ecoternatives.co/cdn/shop/files/Untitled_770x770px.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6764317ad44f64ef545e6219"
+  },
+  "title": "Strong Bamboo Floss & Refills",
+  "summary": "Strong Bamboo Floss & Refills",
+  "price": "$4.95",
+  "url": "https://ecoternatives.co/collections/all/products/strong-bamboo-floss",
+  "image": "https://ecoternatives.co/cdn/shop/files/Removebackgroundproject_d39866bf-b49c-4eea-9fa7-2c97c5ac77ed.png",
+  "source": "ecoternatives",
+  "visible": true,
+  "category": [
+    "Personal Care"
+  ]
+}]

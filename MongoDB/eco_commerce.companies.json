@@ -1,0 +1,203 @@
+[{
+  "_id": {
+    "$oid": "67602c41a194a8fd11fb26fe"
+  },
+  "name": "Patagonia",
+  "description": "Patagonia is a globally recognized outdoor apparel and gear company known for its commitment to environmental and social responsibility. Founded in 1973 by Yvon Chouinard, the company designs high-quality, sustainable outdoor clothing and equipment. Patagonia is dedicated to using business as a force for positive change, focusing on reducing environmental impact and promoting ethical practices in its supply chain. The brand is a certified B Corporation and a member of 1% for the Planet, donating a portion of its revenue to environmental causes.",
+  "qualifications": [
+    "Deep interest in environmental stewardship and sustainable practices",
+    "Active engagement in outdoor sports or related activities",
+    "Commitment to Social and Environmental Responsibility",
+    "B Corp certified since 2011"
+  ],
+  "logo": "https://logos-world.net/wp-content/uploads/2020/05/Patagonia-Logo.png",
+  "website": "https://www.patagonia.com/home/",
+  "icons": [
+    "bluesign_logo"
+  ]
+},
+{
+  "_id": {
+    "$oid": "676460e3ceb3d04af60d1c8c"
+  },
+  "name": "Fjällräven",
+  "description": "Fjällräven is a Swedish company specializing in outdoor clothing and equipment, Renowned for its durable and functional products designed for activities like trekking and hiking. Founded in 1960 by Åke Nordin, the company has a strong commitment to sustainability and timeless Swedish design. Fjällräven's dedication to sustainability is evident in their use of eco-friendly materials and ethical production practices, aiming to create products that last for generations and minimize environmental impact. Fjällräven has been recognized as the most sustainable brand in its industry in Sweden for multiple years, reflecting its commitment to sustainability.",
+  "qualifications": [
+    "UN Global Compact Signatory",
+    "Sustainable Brand Index Recognition",
+    "Animal Welfare Commitments",
+    "Climate Compensation Goals",
+    "Use of Eco-Friendly Materials"
+  ],
+  "logo": "https://goodlogo.com/images/logos/fjllrven_logo_3502.gif",
+  "website": "https://www.fjallraven.com/us/en-us/",
+  "icons": [
+    "b_corp",
+    "fla_association",
+    "cascale"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67647481ceb3d04af60d1c8d"
+  },
+  "name": "Cotopaxi",
+  "description": "Utah-based outdoor gear and apparel company founded in 2014 by Davis Smith and Stephan Jacob. The company is renowned for its commitment to social impact and sustainability, operating under the ethos of \"Gear for Good.\" Cotopaxi allocates 1% of its annual revenue to the Cotopaxi Foundation, supporting initiatives aimed at alleviating poverty, particularly in Latin America. The foundation focuses on health care, education, and livelihood programs, partnering with organizations like the International Rescue Committee (IRC) and United to Beat Malaria. The company utilizes recycled, repurposed, or responsibly sourced materials in over 96% of its products and collaborates with factories that prioritize fair labor practices. The company has received recognition for its purpose-driven mission, ranking #339 on Forbes' list of America's Best Startup Employers in 2024.",
+  "qualifications": [
+    "Climate Neutral Certified",
+    "Use of Sustainable Materials",
+    "Ethical Manufacturing Practices"
+  ],
+  "logo": "https://logowik.com/content/uploads/images/cotopaxi3368.logowik.com.webp",
+  "website": "https://www.cotopaxi.com/",
+  "icons": [
+    "b_corp",
+    "recycled_materials",
+    "1_for_the_planet"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67647c83ceb3d04af60d1c8e"
+  },
+  "name": "The Common Good Company",
+  "description": "An Australian apparel and merchandise brand dedicated to sustainable and ethical manufacturing practices. Specializing in garments made from 100% recycled materials, TCGCo aims to provide eco-friendly alternatives to traditional apparel, thereby reducing the environmental impact associated with the fashion industry. TCGCo meets rigorous standards of social and environmental performance, accountability, and transparency. The company emphasizes the use of recycled pre-consumer textile waste and recycled polyester in its products, significantly minimizing waste, water usage, and pollution compared to conventional manufacturing processes. The company also supports zero-waste initiatives and gender-responsive workplaces, further contributing to its mission of operating 'in the benefit or interest of all. TCGCo provides wholesale services, including screen printing and customization, catering to businesses and organizations seeking ethically produced merchandise. By focusing on planet, people, and production, The Common Good Company strives to meet present needs without compromising the ability of future generations to meet theirs.",
+  "qualifications": [
+    "Fairtrade Certification",
+    "Sedex Membership",
+    "Social Accountability International (SAI) Certification",
+    "Global Recycled Standard (GRS)",
+    "PETA Approved Vegan"
+  ],
+  "logo": "https://tse4.mm.bing.net/th?id=OIP.OGnK-WKHIe-F6ArMpm7dYQHaHa&w=474&h=474&c=7",
+  "website": "https://www.thecommongoodco.com/",
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "vegan",
+    "social_accountability_international"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6765737bb2db8d8cd5196993"
+  },
+  "name": "Sozy",
+  "description": "Female-founded clothing brand based in Encinitas, California, specializing in soft and cozy women's apparel designed for everyday wear. Established by Lanai Moliterno in 2019, the company emphasizes comfort and style. The company donates 10% of its profits to support survivors of sexual violence and partners with organizations like RAINN (Rape, Abuse & Incest National Network) to further this mission. Sozy's products are made in the USA, ensuring ethical manufacturing practices and supporting local communities. The brand is also Climate Neutral Certified, having measured and offset its greenhouse gas emissions by investing in carbon reduction and removal projects such as clean energy and reforestation. ",
+  "qualifications": [
+    "Climate Neutral Certified",
+    "Made in the USA",
+    "RAINN Partnership",
+    "Sustainable Packaging"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/3012/3948/files/Logo.svg",
+  "website": "https://livesozy.com/",
+  "icons": [
+    "b_corp",
+    "change_climate",
+    "1_for_the_planet",
+    "RAINN_logo",
+    "One_Tree_Planted_Logo"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67657880b2db8d8cd5196994"
+  },
+  "name": "Someone Somewhere",
+  "description": "A sustainable and ethical fashion brand founded in 2016, headquartered in Mexico City, Mexico. The company collaborates with over 300 artisans across seven of Mexico's poorest states, integrating traditional handcrafts into contemporary clothing and accessories. Their product range includes jackets, sweatshirts, backpacks, t-shirts, masks, hats, and laptop cases, all designed to blend quality with cultural heritage. Someone Somewhere aims to alleviate poverty by providing fair and consistent job opportunities to artisans, preserving millenary traditions through enduring goods. By connecting conscious consumers and corporations with artisans, the company has supported more than 3,000 indigenous artisans, achieving an average 300% increase in their monthly income. Someone Somewhere has been awarded the Silver Medal by EcoVadis, reflecting its commitment to environmental and social responsibility.",
+  "qualifications": [
+    "Climate Neutral Certified",
+    "EcoVadis Silver Medal",
+    "Locally Handcrafted Goods"
+  ],
+  "logo": "https://cdn.brandfetch.io/idpZC5Pdez/w/200/h/200/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+  "website": "https://someonesomewhere.mx/",
+  "icons": [
+    "b_corp",
+    "small_business",
+    "change_climate",
+    "EcoVadis_logo"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67657c97b2db8d8cd5196995"
+  },
+  "name": "Paka",
+  "description": "Founded in the Andean region of Peru, The company is centered on crafting premium clothing using alpaca fiber, a natural, renewable, and biodegradable material prized for its softness, durability, and thermal properties. By blending traditional Andean craftsmanship with modern design, Paka creates versatile garments designed for outdoor and everyday wear. The company's mission extends beyond producing high-quality clothing—it actively empowers indigenous Quechua artisans, fosters sustainable practices, and promotes cultural preservation. Paka’s business model emphasizes environmental stewardship and ethical labor practices, striving to reduce its impact on the planet while supporting vulnerable communities. ",
+  "qualifications": [
+    "Sustainable Alpaca Wool",
+    "Indigenous Support",
+    "Low Environmental Impact Materials"
+  ],
+  "logo": "https://www.pakaapparel.com/cdn/shop/files/logo_80x.png?v=1633919352",
+  "website": "https://www.pakaapparel.com/",
+  "icons": [
+    "b_corp",
+    "small_business",
+    "Peruvian_Hearts_logo",
+    "fair_trade",
+    "SeaLegacy_logo"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67658309b2db8d8cd5196996"
+  },
+  "name": "united by blue",
+  "description": "A sustainable lifestyle brand founded in 2010, headquartered in Philadelphia, Pennsylvania. The company designs and sells eco-friendly apparel, bags, and accessories for both urban and outdoor adventurers. What sets United By Blue apart is its unwavering commitment to environmental conservation, innovative use of sustainable materials, and a mission-driven business model focused on reducing plastic pollution in oceans and waterways. United By Blue operates on a simple yet powerful mission: “For every product sold, we remove one pound of trash from oceans and waterways.” This initiative directly ties customer purchases to measurable environmental impact, creating a tangible link between business success and ecological restoration. United By Blue is more than just a clothing and accessories brand. It represents a movement toward sustainable and ethical business practices that prioritize the planet and its people. By integrating environmental restoration into its core business model, UBB has successfully aligned profit with purpose, proving that companies can thrive while making the world a better place.",
+  "qualifications": [
+    "Climate Neutral Certified",
+    "Certified Organic Cotton",
+    "Trash Removal Commitment",
+    "Single-use Plastic Free"
+  ],
+  "logo": "https://cdn.brandfetch.io/idVeN-QZAW/theme/dark/logo.svg?c=1bx1737384409722id64Mup7acVOnbkk4u&t=1728279077215",
+  "website": "https://unitedbyblue.com/",
+  "icons": [
+    "b_corp",
+    "change_climate",
+    "GOTS_logo",
+    "1_for_the_planet",
+    "bluesign_logo"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67658796b2db8d8cd5196997"
+  },
+  "name": "Jetty",
+  "description": "Founded in 2003 by a group of friends from New Jersey who shared a passion for surfing, fishing, art, travel, and music. With an initial investment of $200 each, they aimed to \"draw their own line\" in the apparel industry, creating products that resonate with those who love the water and the coastal lifestyle. Their products are known for unique designs that reflect the coastal lifestyle and are crafted with durability and comfort in mind. They prioritize eco-friendly practices, including the use of water-based inks in their screen-printing processes. In 2013, Jetty established the Jetty Rock Foundation, a 501(c)(3) charitable organization, to support coastal communities through various initiatives, including disaster relief efforts and environmental conservation. The foundation has donated over $1 million to these causes, reflecting Jetty's dedication to giving back to the community. Jetty's mission is to create kinship and community through a shared passion for water. Their tagline, \"Draw Your Own Line®,\" embodies the brand's ethos of individuality and adventure, encouraging customers to pursue their passions and embrace the coastal lifestyle.",
+  "qualifications": [
+    "Eco Friendly Practices",
+    "Jetty Rock Foundation",
+    "Community Centric Business Model"
+  ],
+  "logo": "https://jettylife.com/cdn/shop/files/jetty_logo_deep_sea_nav_200x.png?v=1722883690",
+  "website": "https://jettylife.com/",
+  "icons": [
+    "jetty_rock_foundation_logo",
+    "b_corp"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67658c58b2db8d8cd5196998"
+  },
+  "name": "Dolphin Blue, Inc",
+  "description": "A Dallas-based certified B Corporation specializing in environmentally responsible office supplies and products. The company emphasizes sustainability by offering items containing at least 10% post-consumer recycled material or those manufactured to exceed environmental standards, all with a minimal carbon footprint. Their product range includes paper goods, office and facility supplies, remanufactured ink and toner cartridges, and various home and garden items. Dolphin Blue is committed to responsible stewardship of Earth's resources, aiming to make sustainable purchasing simple and affordable for businesses and individuals. The company supports initiatives that promote sustainability, energy alternatives, organic agriculture, and waste reduction. They are associated with organizations such as the American Sustainable Business Council, Carbonfund.org, and the EPA Green Power Partner. Dolphin Blue's dedication to sustainability and quality has established it as a trusted source for environmentally and socially responsible products, contributing to a healthier, sustainable planet.",
+  "qualifications": [
+    "EPA Green Power Partner",
+    "Post-Consumer Recycled Material",
+    "Carbon Emissions Offset"
+  ],
+  "logo": "https://dolphinblue.com/cdn/shop/files/Dolphin_Blue_-_DB_Logo_Color_9e95be73-d4c6-43bc-9ea0-354f9626b52b.jpg?v=1683838631&width=120",
+  "website": "https://dolphinblue.com/",
+  "icons": [
+    "b_corp",
+    "epa_green_power_logo",
+    "asbc_logo",
+    "recycled_materials"
+  ]
+}]
