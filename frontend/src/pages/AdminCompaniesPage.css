@@ -1,0 +1,31 @@
+.company-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.company-card.collapsed {
+    background-color: #e9ecef;
+    font-weight: bold;
+    text-align: left;
+}
+
+.company-card.expanded {
+    background-color: #fff;
+}
+
+.company-header {
+    font-size: 1.2rem;
+}
+
+.company-details {
+    margin-top: 10px;
+}
+
+.icon-selector .form-check {
+    margin-bottom: 5px;
+}

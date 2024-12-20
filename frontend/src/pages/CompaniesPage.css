@@ -6,3 +6,61 @@
     margin-bottom: 30px;
     object-fit: contain;
 }
+
+.card-title {
+    margin: 0;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.company-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.company-card.collapsed {
+    height: auto;
+}
+
+.company-card.expanded {
+    z-index: 10;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    left: 0;
+}
+
+.company-card .card-header {
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    z-index: 15;
+}
+
+.company-card.expanded .card-body {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    left: 0;
+    font-size: 1.3rem;
+}
+
+.card-header.expanded {
+    position: absolute;
+}
+
+.company-card.collapsed .card-body {
+    display: none;
+}
+
+.card-header:hover {
+    background-color: #e0e0e0;
+}
