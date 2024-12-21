@@ -19,6 +19,15 @@
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+    background: white;
+    z-index: 1;
+}
+
+.card-header {
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 .company-card.collapsed {
@@ -26,16 +35,18 @@
 }
 
 .company-card.expanded {
+    position: absolute;
     z-index: 10;
+    top: 0;
     width: 100%;
     background: white;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
     left: 0;
+    font-size: 1.2rem;
 }
 
 .company-card .card-header {
     align-items: center;
-    font-weight: bold;
     font-size: 1.2rem;
     background-color: #f9f9f9;
     padding: 10px;
@@ -55,6 +66,12 @@
 
 .card-header.expanded {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    background: white;
 }
 
 .company-card.collapsed .card-body {
@@ -63,4 +80,28 @@
 
 .card-header:hover {
     background-color: #e0e0e0;
+}
+
+.row {
+    position: relative;
+    padding-top: 20px;
+    overflow: visible;
+}
+
+.card-img-top {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.card-text {
+    height: auto;
+    margin-top: 190px;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
 }
