@@ -25,7 +25,7 @@ def home():
 @app.route("/products", methods=["GET"])
 def get_products():
     try:
-        products = list(products_collection.find({}, {"_id": 0}))
+        products = list(products_collection.find({}, {"_id": 0}).sort("createdAt", -1))
         return jsonify({"products": products}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -155,7 +155,7 @@ def update_visibility_bulk():
 @app.route("/admin/products", methods=["GET"])
 def get_all_products():
     try:
-        products = list(db.products.find())
+        products = list(db.products.find().sort("createdAt", -1))
         for product in products:
             product["_id"] = str(product["_id"])
         return jsonify(products), 200

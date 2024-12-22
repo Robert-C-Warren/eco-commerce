@@ -23,6 +23,14 @@ import bluesign from "../resources/icons/bluesignlogo.svg"
 import jettyrockfoundation from "../resources/icons/jettyrockfoundationlogo.png"
 import epagreenpower from "../resources/icons/epagreenpowerlogo.svg"
 import asbc from "../resources/icons/asbclogo.svg"
+import crueltyFree from "../resources/icons/crueltyfreelogo.svg"
+import ECOLOGO from "../resources/icons/ecologologo.png"
+import fscLogo from "../resources/icons/fsclogo.svg"
+import rainforestAlliance from "../resources/icons/rainforestalliancelogo.png"
+import ewg from "../resources/icons/ewglogo.svg"
+import nongmo from "../resources/icons/nongmologo.jpeg"
+import greenAmerica from "../resources/icons/greenamericalogo.png"
+import safecosmetics from "../resources/icons/safecosmeticslogo.png"
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
@@ -46,7 +54,15 @@ const availableIcons = [
     { id: "jetty_rock_foundation_logo", label: "Jetty Rock Foundation", src: jettyrockfoundation, title: "Jetty Rock Foundation" },
     { id: "epa_green_power_logo", label: "EPA Green Power Partner", src: epagreenpower, title: "EPA Green Power Partner" },
     { id: "asbc_logo", label: "ASBC (American Sustainable Business Council)", src: asbc, title: "ASBC" },
-]
+    { id: "cruelty_free_logo", label: "Cruelty Free", src: crueltyFree, title: "Cruelty Free" },
+    { id: "ECOLOGO_logo", label: "ECOLOGO", src: ECOLOGO, title: "ECOLOGO" },
+    { id: "fsc_logo", label: "FSC (Forest Stewardship Council) Certified", src: fscLogo, title: "fsc" },
+    { id: "rainforest_alliance_logo", label: "Rainforest Alliance Certified", src: rainforestAlliance, title: "Rainforest Alliance" },
+    { id: "ewg_logo", label: "EWG (Environmental Working Group) Verified", src: ewg, title: "EWG" },
+    { id: "nongmo_logo", label: "Non-GMO Project Certified", src: nongmo, title: "nongmo" },
+    { id: "greenamerica_logo", label: "Green America Certified", src: greenAmerica, title: "Green America" },
+    { id: "safe_cosmetics_logo", label: "Safe Cosmetics Certified", src: safecosmetics, title: "Safe Cosmetics" },
+  ]
 
 const AdminCompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
@@ -166,7 +182,126 @@ const AdminCompaniesPage = () => {
           addCompany();
         }}
       >
-        {/* Form Fields */}
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Company Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="form-control"
+            placeholder="Enter Company Name"
+            value={newCompany.name}
+            onChange={(e) =>
+              setNewCompany({ ...newCompany, name: e.target.value})
+            }
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">
+            Company Description
+          </label>
+          <textarea
+            id="description"
+            className="form-control"
+            placeholder="Enter Company Description"
+            value={newCompany.description}
+            onChange={(e) =>
+              setNewCompany({ ...newCompany, description: e.target.value })
+            }
+            required
+            ></textarea>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="qualifications" className="form-label">
+            Qualifications
+          </label>
+          <input
+            type="text"
+            id="qualifications"
+            className="form-control"
+            placeholder="Enter qualifications (CSV)"
+            value={newCompany.qualifications}
+            onChange={(e) =>
+              setNewCompany({
+                ...newCompany, qualifications: e.target.value
+              })
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="logo" className="form-label">
+            Logo URL
+          </label>
+          <input
+            type="text"
+            id="logo"
+            className="form-control"
+            placeholder="Enter logo URL"
+            value={newCompany.logo}
+            onChange={(e) =>
+              setNewCompany({
+                ...newCompany, logo: e.target.value
+              })
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="website" className="form-label">
+            Website URL
+          </label>
+          <input
+            type="text"
+            id="website"
+            className="form-control"
+            placeholder="Enter website URL"
+            value={newCompany.website}
+            onChange={(e) =>
+              setNewCompany({
+                ...newCompany, website: e.target.value
+              })
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Certifications</label>
+          <div className="row">
+            {availableIcons.map((icon) => (
+              <div key={icon.id} className="col-6 col-md-4">
+                <div className="form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id={`newCompany-${icon.id}`}
+                    onChange={(e) => {
+                      setNewCompany((prevState) => ({
+                        ...prevState,
+                        certifications: e.target.checked
+                          ? [...(prevState.certifications || []), icon.id]
+                          : prevState.certifications.filter((id) => id !== icon.id),
+                      }))
+                    }}
+                  />
+                  <label 
+                    htmlFor={`newCompany-${icon.id}`}
+                    className="form-check-label"
+                  >
+                    <img
+                      src={icon.src}
+                      alt={icon.label}
+                      style={{ width: "30px", marginRight: "5px" }}
+                    />
+                    {icon.label}
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <button type="submit" className="btn btn-success">
+          Add Company
+        </button>
       </form>
 
       <h3>Existing Companies</h3>
@@ -176,7 +311,7 @@ const AdminCompaniesPage = () => {
             key={company._id}
             className={`company-card ${
               expandedCompany === company._id ? "expanded" : "collapsed"
-            }`}
+            }`} 
           >
             <div className="company-header" onClick={() => toggleExpand(company._id)}>
               {company.name}
@@ -233,6 +368,22 @@ const AdminCompaniesPage = () => {
                 <button className="btn btn-danger btn-sm" onClick={() => deleteCompany(company._id)}>
                   Delete
                 </button>
+                <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
+                      {company.icons?.map((iconId) => {
+                        const icon = availableIcons.find((i) => i.id === iconId);
+                        return icon ? (
+                          <img
+                            className="icon_actual"
+                            key={icon.id}
+                            src={icon.src}
+                            alt={icon.label}
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            data-bs-title={icon.label}
+                          />
+                        ) : null;
+                      })}
+                    </div>
               </div>
             )}
           </div>

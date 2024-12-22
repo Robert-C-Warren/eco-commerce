@@ -6,7 +6,6 @@ from scrapers.ecoternativesScraper import scrape_ecoternatives
 from scrapers.lochtreeScraper import scrape_lochtree
 from scrapers.earttheroScraper import scrape_earthhero
 from removeDuplicates import removeDuplicates
-from sendEmails import sendEmails
 from pymongo import MongoClient
 
 def setup_driver():
@@ -47,8 +46,6 @@ def main():
     run_scrapers(db)
     print("Removing duplicates...")
     removeDuplicates(db)
-    # print("Sending emails...")
-    # sendEmails(db)
 
 if __name__ == "__main__":
     main()

@@ -75,7 +75,7 @@ const HomePage = () => {
                 {products.length > 0 ? (
                     products.map((product, index) => (
                         <div
-                            key={product._id || index} // Use `_id` instead of `id`
+                            key={product._id || index}
                             className="product-card card text-center mb-3"
                         >
                             <div className="card-header column">

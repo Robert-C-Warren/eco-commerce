@@ -23,6 +23,14 @@ import bluesign from "../resources/icons/bluesignlogo.svg"
 import jettyrockfoundation from "../resources/icons/jettyrockfoundationlogo.png"
 import epagreenpower from "../resources/icons/epagreenpowerlogo.svg"
 import asbc from "../resources/icons/asbclogo.svg"
+import crueltyFree from "../resources/icons/crueltyfreelogo.svg"
+import ECOLOGO from "../resources/icons/ecologologo.png"
+import fscLogo from "../resources/icons/fsclogo.svg"
+import rainforestAlliance from "../resources/icons/rainforestalliancelogo.png"
+import ewg from "../resources/icons/ewglogo.svg"
+import nongmo from "../resources/icons/nongmologo.jpeg"
+import greenAmerica from "../resources/icons/greenamericalogo.png"
+import safecosmetics from "../resources/icons/safecosmeticslogo.png"
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -46,6 +54,14 @@ const availableIcons = [
   { id: "jetty_rock_foundation_logo", label: "Jetty Rock Foundation", src: jettyrockfoundation, title: "Jetty Rock Foundation" },
   { id: "epa_green_power_logo", label: "EPA Green Power Partner", src: epagreenpower, title: "EPA Green Power Partner" },
   { id: "asbc_logo", label: "ASBC (American Sustainable Business Council)", src: asbc, title: "ASBC" },
+  { id: "cruelty_free_logo", label: "Cruelty Free", src: crueltyFree, title: "Cruelty Free" },
+  { id: "ECOLOGO_logo", label: "ECOLOGO", src: ECOLOGO, title: "ECOLOGO" },
+  { id: "fsc_logo", label: "FSC (Forest Stewardship Council) Certified", src: fscLogo, title: "fsc" },
+  { id: "rainforest_alliance_logo", label: "Rainforest Alliance Certified", src: rainforestAlliance, title: "Rainforest Alliance" },
+  { id: "ewg_logo", label: "EWG (Environmental Working Group) Verified", src: ewg, title: "EWG" },
+  { id: "nongmo_logo", label: "Non-GMO Project Certified", src: nongmo, title: "nongmo" },
+  { id: "greenamerica_logo", label: "Green America Certified", src: greenAmerica, title: "Green America" },
+  { id: "safe_cosmetics_logo", label: "Safe Cosmetics Certified", src: safecosmetics, title: "Safe Cosmetics" },
 ];
 
 const CompaniesPage = () => {
@@ -84,7 +100,7 @@ const CompaniesPage = () => {
         <h1 className="text-center mb-4">Recommended Companies</h1>
         <div className="row position-relative">
           {companies.map((company, index) => (
-            <div key={index} className={`col-lg-4 col-md-6 col-sm-12 mb-4 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+            <div key={index} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
               <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
                 <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer"}}>
                   <img
@@ -96,7 +112,7 @@ const CompaniesPage = () => {
                   <h5 className="card-title m-0">{company.name}</h5>
                 </div>
                 {expandedCompany === company._id && (
-                  <div className="card-body">
+                  <div className="card-body ">
                     <p className="card-text">{company.description}</p>
                     <ul>
                       {company.qualifications.map((qualification, i) => (

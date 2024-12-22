@@ -23,79 +23,120 @@ const availableIcons = [
 
 const availableCategories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"]
 
-const ProductCard = ({ product, fetchProducts }) => {
+
+const ProductCard = ({ product, fetchProducts, toggleVisibility, startEditing, deleteProduct, selectedProducts, toggleProductSelected }) => {
     const [selectedCategories, setSelectedCategories] = useState(product.categories || []);
+    const [selectedIcons, setSelectedIcons] = useState(product.icons || []);
 
     const handleCategoryChange = (category) => {
-        setSelectedCategories((prev) => 
+        setSelectedCategories((prev) =>
             prev.includes(category)
                 ? prev.filter((c) => c !== category)
                 : [...prev, category]
-        )
-    }
+        );
+    };
 
     const updateCategories = async () => {
         try {
-            const response = await API.patch(`/admin/products/${product._id}/categories`, {
-                categories: selectedCategories,
-            })
-            fetchProducts()
+            await API.patch(`/admin/products/${product._id}/categories`, { categories: selectedCategories });
+            fetchProducts();
         } catch (error) {
-            console.error("Error updating categories:", error)
-            alert("Failed to update categories.")
+            console.error("Error updating categories:", error);
         }
-    }
+    };
+
+    const toggleIcon = (iconId) => {
+        setSelectedIcons((prev) =>
+            prev.includes(iconId) ? prev.filter((id) => id !== iconId) : [...prev, iconId]
+        );
+    };
+
+    const saveIcons = async () => {
+        try {
+            await API.patch(`/admin/products/${product._id}/icons`, { icons: selectedIcons });
+            fetchProducts();
+        } catch (error) {
+            console.error("Error saving icons:", error);
+        }
+    };
 
     return (
-        <div className="card h-100 d-flex flex-column">
-            <img
-                src={product.image}
-                className="card-img-top"
-                alt={product.summary}
-                style={{ objectFit: "contain", height: "200px", width: "100%" }}
-            />
+        <div className="card h-100">
+            <img src={product.image} alt={product.summary} className="card-img-top" style={{objectFit: "contain", height: "200px", width: "100%", borderRadius: "8px" }} />
             <div className="card-body d-flex flex-column">
-                <h5 className="card-title text-center">{product.summary}</h5>
-                <p className="card-text">
-                    <strong>Price:</strong> {product.price} <br />
-                    <strong>Source:</strong> {product.source}
-                </p>
+                <h5 className="card-title">{product.summary}</h5>
+                <p><strong>Price:</strong> {product.price}</p>
+                <p><strong>Source:</strong> {product.source}</p>
+
+                {/* Category Selection */}
                 <h6>Select Categories</h6>
-                <div>
-                    {availableCategories.map((category) => (
-                        <div key={category} className="form-check">
-                            <input
-                                type="checkbox"
-                                className="form-check-input"
-                                id={`${product._id}.${category}`}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCategoryChange(category)}
-                            />
-                            <label htmlFor={`${product._id}-${category}`} className="form-check-label">
-                                {category}
-                            </label>
-                        </div>
-                    ))}
+                {availableCategories.map((category) => (
+                    <div key={category} className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id={`${product._id}-${category}`}
+                            checked={selectedCategories.includes(category)}
+                            onChange={() => handleCategoryChange(category)}
+                        />
+                        <label htmlFor={`${product._id}-${category}`} className="form-check-label">
+                            {category}
+                        </label>
+                    </div>
+                ))}
+                <button className="btn btn-primary mt-2" onClick={updateCategories}>Update Categories</button>
+                <h6 className="category">{product.category}</h6>
+
+                {/* Icon Selection */}
+                <h6>Select Icons</h6>
+                {availableIcons.map((icon) => (
+                    <div key={icon.id} className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id={`${product._id}-${icon.id}`}
+                            checked={selectedIcons.includes(icon.id)}
+                            onChange={() => toggleIcon(icon.id)}
+                        />
+                        <label htmlFor={`${product._id}-${icon.id}`} className="form-check-label">
+                            <img src={icon.src} alt={icon.label} style={{ width: "30px", marginRight: "5px" }} />
+                            {icon.label}
+                        </label>
+                    </div>
+                ))}
+                <button className="btn btn-primary mt-2" onClick={saveIcons}>Save Icons</button>
+
+                {/* Product Actions */}
+                <div className="mt-auto">
+                    <a href={product.url} target="_blank" rel="noopener noreferrer" className="btn btn-dark w-100 mb-2">View Product</a>
+                    <button
+                        className={`btn w-100 ${product.visible ? "btn-danger" : "btn-success"}`}
+                        onClick={() => toggleVisibility(product._id, product.visible)}
+                    >
+                        {product.visible ? "Hide from Site" : "Show on Site"}
+                    </button>
+                    <button className="btn btn-warning w-100 mt-2" onClick={() => startEditing(product._id, product.summary)}>Edit Title</button>
+                    <button className="btn btn-danger w-100 mt-2" onClick={() => deleteProduct(product._id)}>Delete Product</button>
+                    <div className="form-check mt-3">
+                        <input
+                            className="form-check-input"
+                            type="checkbox"
+                            checked={selectedProducts.includes(product._id)}
+                            onChange={() => toggleProductSelected(product._id)}
+                        />
+                        <label className="form-check-label" htmlFor={`select-${product._id}`}>Select for Bulk Show</label>
+                    </div>
                 </div>
-                <button onClick={updateCategories} className="btn btn-primary mt-2">
-                    Update Categories
-                </button>
-                <p className="card-text">
-                    <strong>Category:</strong>{" "}
-                    {product.category?.join(", ") || "Uncategorized"}
-                </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const AdminConsole = () => {
     const [products, setProducts] = useState([]);
     const [editingProductId, setEditingProductId] = useState(null);
     const [editedTitle, setEditedTitle] = useState("");
-    const [selectedProducts, setSelectedProducts] = useState([])
-    const [selectedIcons, setSelectedIcons] = useState({})
-    const [message, setMessage] = useState("");
+    const [selectedProducts, setSelectedProducts] = useState([]);
 
     const fetchProducts = async () => {
         try {
@@ -108,49 +149,10 @@ const AdminConsole = () => {
 
     const toggleVisibility = async (productId, currentVisibility) => {
         try {
-            await API.patch(`/admin/products/${productId}`, { visible: !currentVisibility});
+            await API.patch(`/admin/products/${productId}`, { visible: !currentVisibility });
             fetchProducts();
         } catch (error) {
-            console.error("Error updating visibilty:", error);
-        }
-    };
-
-    const showSelectedProducts = async () => {
-        try {
-            await API.patch("/admin/products/visibility", {
-                product_ids: selectedProducts,
-                visible: true,            
-            });
-            fetchProducts();
-        } catch (error) {
-            console.error("Error updating visibility", error)
-        }
-    };
-
-    const showAllOnSite = async () => {
-        try {
-            const response = await API.patch("/admin/products/show_all");
-            setMessage(response.data.message);
-        } catch (error) {
-            console.error("Error updating products:", error);
-            setMessage("An error occurred while showing all products.");
-        }
-    }
-
-    const toggleProductSelected = (productId) => {
-        setSelectedProducts((prevSelected) =>
-            prevSelected.includes(productId)
-                ? prevSelected.filter((id) => id !== productId)
-                : [...prevSelected, productId]
-        )
-    }
-
-    const deleteProduct = async (productId) => {
-        try {
-            await API.delete(`/admin/products/${productId}`);
-            setProducts(products.filter((product) => product._id !== productId));
-        } catch (error) {
-            console.error("Error deleting product:", error)
+            console.error("Error updating visibility:", error);
         }
     };
 
@@ -159,47 +161,22 @@ const AdminConsole = () => {
         setEditedTitle(currentTitle);
     };
 
-    const saveEditedTitle = async (productId) => {
+    const deleteProduct = async (productId) => {
         try {
-            await API.patch(`/admin/products/${productId}/edit`, { summary: editedTitle});
-            setEditingProductId(null);
-            fetchProducts();
+            await API.delete(`/admin/products/${productId}`);
+            setProducts(products.filter((product) => product._id !== productId));
         } catch (error) {
-            console.error("Error updating title:", error)
+            console.error("Error deleting product:", error);
         }
     };
 
-    const toggleIcon = (productId, iconId) => {
-        setSelectedIcons((prev) => ({
-            ...prev,
-            [productId]: prev[productId]?.includes(iconId)
-            ? prev[productId].filter((id) => id !== iconId)
-            : [...(prev[productId] || []), iconId],
-        }));
-    };
-
-    const saveIcons = async(productId) => {
-        try {
-            const icons = selectedIcons[productId] || [];
-            console.log("Icons being sent:", { icons: icons});
-            await API.patch(`/admin/products/${productId}/icons`, { icons });
-            fetchProducts();
-        } catch (error) {
-            console.error("Error saving icons:", error)
-            alert("Failed to update icons.");
-        }
+    const toggleProductSelected = (productId) => {
+        setSelectedProducts((prev) =>
+            prev.includes(productId) ? prev.filter((id) => id !== productId) : [...prev, productId]
+        );
     };
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await API.get("/admin/products");
-                setProducts(response.data);
-            } catch (error) {
-                console.error("Error fetching products:", error)
-            }
-        };
-
         fetchProducts();
     }, []);
 
@@ -210,146 +187,24 @@ const AdminConsole = () => {
                 <h1 className="text-center mb-4">Admin Console</h1>
                 <div className="row mb-3">
                     <div className="col text-end">
-                        <div className="d-flex justify-content-end mb-3">
-                            <Link to="/admin/companies" className="btn btn-secondary">
-                                Admin Companies
-                            </Link>
-                        </div>
-                        <button
-                            className="btn btn-success"
-                            onClick={showSelectedProducts}
-                            disabled={!selectedProducts.length}
-                        >
-                            Show All Selected Products 
-                        </button>
-                        <button className="btn btn-success" onClick={showAllOnSite}>
-                            Show All On Site
-                        </button>
+                        <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>
+                        <button className="btn btn-success me-2" onClick={() => toggleProductSelected()}>Show All Selected</button>
                     </div>
-                    {message && <div className="alert alert-info">{message}</div>}
                 </div>
-                <div className="container mt-4">
-                    <div className="row g-3">
-                        {products.map((product) => (
-                            <div key={product._id} className="col-lg-3 col-md-4 col-sm-6">
-                                <div className="card h-100 d-flex flex-column">
-                                    <ProductCard product={product} fetchProducts={fetchProducts} />
-                                    <div className="card-body d-flex flex-column">
-                                        {editingProductId === product._id ? (
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    className="form-control mb-2"
-                                                    value={editedTitle}
-                                                    onChange={(e) => setEditedTitle(e.target.value)}
-                                                />
-                                                <button
-                                                    className="btn btn-primary w-100"
-                                                    onClick={() => saveEditedTitle(product._id)}
-                                                >
-                                                    Save
-                                                </button>
-                                                <button
-                                                    className="btn btn-secondary w-100 mt-2"
-                                                    onClick={() => setEditingProductId(null)}
-                                                >
-                                                    Cancel
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <div className="mt-auto">
-                                                <h5 className="card-title text-wrap text-center">{product.summary}</h5>
-                                                <p className="card-text">
-                                                    <strong>Price:</strong> {product.price} <br />
-                                                    <strong>Source:</strong> {product.source}
-                                                </p>
-                                                <div className="mt-auto">
-                                                    <a
-                                                        href={product.url}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="btn btn-dark w-100 mb-2"
-                                                    >
-                                                        View Product
-                                                    </a>
-                                                    <button 
-                                                        className={`btn w-100 ${
-                                                            product.visible ? "btn-danger" : "btn-success"
-                                                        }`}
-                                                        onClick={() =>
-                                                            toggleVisibility(product._id, product.visible)
-                                                        }
-                                                    >
-                                                        {product.visible
-                                                            ? "Hide from Site"
-                                                            : "Show on Site"}
-                                                    </button>
-                                                    <button
-                                                        className="btn btn-warning w-100 mt-2"
-                                                        onClick={() => startEditing(product._id, product.title)}
-                                                    >
-                                                        Edit Title 
-                                                    </button>
-                                                    <button
-                                                        className="btn btn-danger w-100 mt-2"
-                                                        onClick={() => deleteProduct(product._id)}
-                                                    >
-                                                        Delete Product 
-                                                    </button>
-                                                    <div className="form-check mt-3">
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            checked={selectedProducts.includes(product._id)}
-                                                            onChange={() => toggleProductSelected(product._id)}
-                                                            id={`select-${product._id}`}
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor={`select-${product._id}`}
-                                                        >
-                                                            Select for Bulk Show
-                                                        </label>
-                                                    </div>
-                                                    <div className="icons">
-                                                        <h6>Select Icons</h6>
-                                                        {availableIcons.map((icon) => (
-                                                            <div key={icon.id} className="form-check">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    className="form-check-input"
-                                                                    id={`${product._id}-${icon.id}`}
-                                                                    checked={selectedIcons[product.id]?.includes(icon.id)}
-                                                                    onChange={() => toggleIcon(product._id, icon.id)}
-                                                                />
-                                                                <label
-                                                                    className="form-check-label"
-                                                                    htmlFor={`${product._id}-${icon.id}`}
-                                                                >
-                                                                    <img
-                                                                        src={icon.src}
-                                                                        alt={icon.label}
-                                                                        style={{ width: "30px", marginRight: "5px"}}
-                                                                    />
-                                                                    {icon.label}
-                                                                </label>
-                                                            </div>
-                                                        ))}
-                                                        <button
-                                                            className="btn btn-primary mt-2"
-                                                            onClick={() => saveIcons(product._id)}
-                                                        >
-                                                            Save Icons
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>    
+                <div className="row g-3">
+                    {products.map((product) => (
+                        <div key={product._id} className="col-lg-3 col-md-4 col-sm-6">
+                            <ProductCard
+                                product={product}
+                                fetchProducts={fetchProducts}
+                                toggleVisibility={toggleVisibility}
+                                startEditing={startEditing}
+                                deleteProduct={deleteProduct}
+                                selectedProducts={selectedProducts}
+                                toggleProductSelected={toggleProductSelected}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
