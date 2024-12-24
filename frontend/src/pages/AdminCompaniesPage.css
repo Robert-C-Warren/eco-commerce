@@ -15,9 +15,12 @@
 }
 
 .company-card.expanded {
+    max-height: 800px;
     background-color: #fff;
     width: 75%;
     margin-left: 12%;
+    margin-top: 0;
+    overflow: auto;
 }
 
 .company-header {

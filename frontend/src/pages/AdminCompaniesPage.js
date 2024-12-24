@@ -31,6 +31,16 @@ import ewg from "../resources/icons/ewglogo.svg"
 import nongmo from "../resources/icons/nongmologo.jpeg"
 import greenAmerica from "../resources/icons/greenamericalogo.png"
 import safecosmetics from "../resources/icons/safecosmeticslogo.png"
+import reefsafe from "../resources/icons/reefsafelogo.png"
+import leed from "../resources/icons/leedlogo.png"
+import energystar from "../resources/icons/energystarlogo.svg"
+import cradletocradle from "../resources/icons/cradletocradle.png"
+import MSC from "../resources/icons/msclogo.png"
+import BAP from "../resources/icons/baplogo.svg"
+import GRS from "../resources/icons/grslogo.svg"
+import WFTO from "../resources/icons/wftologo.svg"
+import LWG from "../resources/icons/lwglogo.png"
+
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
@@ -62,6 +72,15 @@ const availableIcons = [
     { id: "nongmo_logo", label: "Non-GMO Project Certified", src: nongmo, title: "nongmo" },
     { id: "greenamerica_logo", label: "Green America Certified", src: greenAmerica, title: "Green America" },
     { id: "safe_cosmetics_logo", label: "Safe Cosmetics Certified", src: safecosmetics, title: "Safe Cosmetics" },
+    { id: "reef_safe_logo", label: "Reef-Safe Certified", src: reefsafe, title: "Reef Safe" },
+    { id: "leed_logo", label: "LEED Certified", src: leed, title: "LEED Certified" },
+    { id: "energy_star_logo", label: "Energy Star Certified", src: energystar, title: "Energy Star Certified" },
+    { id: "cradle_to_cradle_logo", label: "Cradle To Cradle Certified", src: cradletocradle, title: "Cradle to Cradle Certified" },
+    { id: "msc_logo", label: "MSC (Marine Stewardship Council) Certified", src: MSC, title: "MSC" },
+    { id: "bap_logo", label: "BAP (Best Aquaculture Practices) Certified", src: BAP, title: "BAP" },
+    { id: "grs_logo", label: "GRS (Global Recycling Standard) Certified", src: GRS, title: "GRS" },
+    { id: "wfto_logo", label: "WFTO (World Fair Trade Organization) Guaranteed", src: WFTO, title: "WFTO" },
+    { id: "lwg_logo", label: "LWG (Leather Working Group) Gold Certification", src: LWG, title: "LWG" },
   ]
 
 const AdminCompaniesPage = () => {
@@ -278,8 +297,8 @@ const AdminCompaniesPage = () => {
                       setNewCompany((prevState) => ({
                         ...prevState,
                         certifications: e.target.checked
-                          ? [...(prevState.certifications || []), icon.id]
-                          : prevState.certifications.filter((id) => id !== icon.id),
+                          ? [...(prevState.icons || []), icon.id]
+                          : prevState.icons.filter((id) => id !== icon.id),
                       }))
                     }}
                   />
@@ -297,6 +316,13 @@ const AdminCompaniesPage = () => {
                 </div>
               </div>
             ))}
+                <div>
+                  <button 
+                    className="btn btn-secondary" 
+                    onClick={() => saveIcons(newCompany._id)}>
+                    Save Icons
+                  </button>
+                </div>
           </div>
         </div>
         <button type="submit" className="btn btn-success">
@@ -317,7 +343,7 @@ const AdminCompaniesPage = () => {
               {company.name}
             </div>
             {expandedCompany === company._id && (
-              <div className="company-details">
+              <div className="company-details card-content">
                 <p>
                   <strong>Description:</strong> {company.description}
                 </p>

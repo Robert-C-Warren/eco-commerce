@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import "./ProductList.css"
 import "./CompaniesPage.css"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
@@ -31,6 +30,16 @@ import ewg from "../resources/icons/ewglogo.svg"
 import nongmo from "../resources/icons/nongmologo.jpeg"
 import greenAmerica from "../resources/icons/greenamericalogo.png"
 import safecosmetics from "../resources/icons/safecosmeticslogo.png"
+import reefsafe from "../resources/icons/reefsafelogo.png"
+import leed from "../resources/icons/leedlogo.png"
+import energystar from "../resources/icons/energystarlogo.svg"
+import cradletocradle from "../resources/icons/cradletocradle.png"
+import MSC from "../resources/icons/msclogo.png"
+import BAP from "../resources/icons/baplogo.svg"
+import GRS from "../resources/icons/grslogo.svg"
+import WFTO from "../resources/icons/wftologo.svg"
+import LWG from "../resources/icons/lwglogo.png"
+
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -62,6 +71,15 @@ const availableIcons = [
   { id: "nongmo_logo", label: "Non-GMO Project Certified", src: nongmo, title: "nongmo" },
   { id: "greenamerica_logo", label: "Green America Certified", src: greenAmerica, title: "Green America" },
   { id: "safe_cosmetics_logo", label: "Safe Cosmetics Certified", src: safecosmetics, title: "Safe Cosmetics" },
+  { id: "reef_safe_logo", label: "Reef-Safe Certified", src: reefsafe, title: "Reef Safe" },
+  { id: "leed_logo", label: "LEED Certified", src: leed, title: "LEED Certified" },
+  { id: "energy_star_logo", label: "Energy Star Certified", src: energystar, title: "Energy Star Certified" },
+  { id: "cradle_to_cradle_logo", label: "Cradle To Cradle Certified", src: cradletocradle, title: "Cradle to Cradle Certified" },
+  { id: "msc_logo", label: "MSC (Marine Stewardship Council) Certified", src: MSC, title: "MSC" },
+  { id: "bap_logo", label: "BAP (Best Aquaculture Practices) Certified", src: BAP, title: "BAP" },
+  { id: "grs_logo", label: "GRS (Global Recycling Standard) Certified", src: GRS, title: "GRS" },
+  { id: "wfto_logo", label: "WFTO (World Fair Trade Organization) Guaranteed", src: WFTO, title: "WFTO" },
+  { id: "lwg_logo", label: "LWG (Leather Working Group) Gold Certification", src: LWG, title: "LWG" },
 ];
 
 const CompaniesPage = () => {
@@ -82,12 +100,31 @@ const CompaniesPage = () => {
     fetchCompanies();
   }, []);
 
-  useEffect(() => {
-    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach((tooltipTriggerE1) => {
-      new window.bootstrap.Tooltip(tooltipTriggerE1)
-    })
-  }, [companies])
+    useEffect(() => {
+      const existingToolTips = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      existingToolTips.forEach((tooltipTriggerE1) => {
+        const tooltipInstance = window.bootstrap.Tooltip.getInstance(tooltipTriggerE1);
+        if (tooltipInstance) {
+          tooltipInstance.dispose();
+        }
+      })
+
+      const initializeTooltips = () => {
+        const tooltipTriggerList = Array.from(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        )
+        tooltipTriggerList.forEach((tooltipTriggerE1) => {
+          new window.bootstrap.Tooltip(tooltipTriggerE1)
+        })
+      }
+
+      const timer = setTimeout(initializeTooltips, 100)
+
+      return () => {
+        clearTimeout(timer)
+      }
+    }, [companies])
+
 
   const toggleExpand = (id) => {
     setExpandedCompany((prev) => (prev === id ? null : id))
@@ -98,7 +135,7 @@ const CompaniesPage = () => {
       <Navbar />
       <div className="container my-4">
         <h1 className="text-center mb-4">Recommended Companies</h1>
-        <div className="row position-relative">
+        <div className="row">
           {companies.map((company, index) => (
             <div key={index} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
               <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
@@ -116,7 +153,7 @@ const CompaniesPage = () => {
                     <p className="card-text">{company.description}</p>
                     <ul>
                       {company.qualifications.map((qualification, i) => (
-                        <li key={i}>{qualification}</li>
+                        <li className="qualifications" key={i}>{qualification}</li>
                       ))}
                     </ul>
                     <a
@@ -127,7 +164,6 @@ const CompaniesPage = () => {
                     >
                       Visit Website
                     </a>
-
                     <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
                       {company.icons?.map((iconId) => {
                         const icon = availableIcons.find((i) => i.id === iconId);
@@ -143,6 +179,14 @@ const CompaniesPage = () => {
                           />
                         ) : null;
                       })}
+                    </div>
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <button className="collapse-button btn btn-outline-secondary" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z" />
+                          <path fillRule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 )}

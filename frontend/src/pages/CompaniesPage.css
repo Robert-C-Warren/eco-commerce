@@ -8,7 +8,8 @@
 }
 
 .card-title {
-    margin: 0;
+    margin: 10px 0;
+    text-align: center;
 }
 
 .card-body {
@@ -35,12 +36,13 @@
 }
 
 .company-card.expanded {
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    width: 100%;
+    z-index: 1050;
+    position: fixed;
+    top: 12%;
+    width: 90%;
+    height: 800px;
     background: white;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
     left: 0;
     font-size: 1.2rem;
 }
@@ -83,14 +85,15 @@
 }
 
 .row {
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     padding-top: 20px;
-    overflow: visible;
 }
 
 .card-img-top {
-    height: 50px;
-    width: 50px;
+    height: 150px;
+    width: auto;
     margin-right: 10px;
     object-fit: contain;
 }
@@ -98,10 +101,23 @@
 .card-text {
     height: auto;
     margin-top: 190px;
+    color: #1e1e1e;
+}
+
+.qualifications {
+    color: #1e1e1e;
+}
+
+.collapse-button {
+    align-items: right;
 }
 
 body.dark-mode .card {
     background-color: #1e1e1e;
     color: #e0e0e0;
     border: 1px solid #333;
+}
+
+.card-header.dark-mode {
+    color: #1e1e1e;
 }
