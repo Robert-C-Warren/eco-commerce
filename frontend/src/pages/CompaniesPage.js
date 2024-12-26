@@ -39,6 +39,8 @@ import BAP from "../resources/icons/baplogo.svg"
 import GRS from "../resources/icons/grslogo.svg"
 import WFTO from "../resources/icons/wftologo.svg"
 import LWG from "../resources/icons/lwglogo.png"
+import FLA from "../resources/icons/flalogo.jpeg"
+import SCA from "../resources/icons/scalogo.png"
 
 
 const availableIcons = [
@@ -80,6 +82,8 @@ const availableIcons = [
   { id: "grs_logo", label: "GRS (Global Recycling Standard) Certified", src: GRS, title: "GRS" },
   { id: "wfto_logo", label: "WFTO (World Fair Trade Organization) Guaranteed", src: WFTO, title: "WFTO" },
   { id: "lwg_logo", label: "LWG (Leather Working Group) Gold Certification", src: LWG, title: "LWG" },
+  { id: "fla_logo", label: "FLA (Fair Labor Association) Accredidation", src: FLA, title: "FLA" },
+  { id: "sca_logo", label: "SCA (Specialty Coffee Association) Standards", src: SCA, title: "SCA" },
 ];
 
 const CompaniesPage = () => {
