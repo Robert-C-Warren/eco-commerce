@@ -43,6 +43,20 @@ import FLA from "../resources/icons/flalogo.jpeg"
 import SCA from "../resources/icons/scalogo.png"
 import PSC from "../resources/icons/psclogo.png"
 import fairWear from "../resources/icons/fairwearlogo.jpg"
+import scsGlobal from "../resources/icons/scsglobalserviceslogo.svg"
+import SDG from "../resources/icons/sdglogo.png"
+import globalGood from "../resources/icons/globalgoodlogo.png"
+import SolarAid from "../resources/icons/solaraidlogo.png"
+import ipso from "../resources/icons/ipsologo.png"
+import realSeal from "../resources/icons/realseallogo.jpeg"
+import DFA from "../resources/icons/dfalogo.png"
+import GAP from "../resources/icons/gaplogo.png"
+import certifiedHumane from "../resources/icons/certifiedhumanelogo.png"
+import oceanCycle from "../resources/icons/oceancyclelogo.png"
+import sdvosb from "../resources/icons/sdvosblogo.png"
+import madeSafe from "../resources/icons/madesafelogo.png"
+import nsfansi from "../resources/icons/nsfansilogo.svg"
+
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -87,6 +101,19 @@ const availableIcons = [
   { id: "sca_logo", label: "SCA (Specialty Coffee Association) Standards", src: SCA, title: "SCA" },
   { id: "psc_logo", label: "PSC (Pet Sustainability Coalition) Member", src: PSC, title: "PSC" },
   { id: "fair_wear_logo", label: "Fair Wear Foundation Member", src: fairWear, title: "Fair Wear" },
+  { id: "scs_global_logo", label: "SCS Global Zero-Waste-to-Landfill", src: scsGlobal, title: "SCS Global" },
+  { id: "sdg_logo", label: "SDGs (Sustainable Development Goals) Alignment", src: SDG, title: "SDG" },
+  { id: "global_good_logo", label: "Global Good Awards Recognition", src: globalGood, title: "Global Good" },
+  { id: "solar_aid_logo", label: "SolarAid Partnership Certification", src: SolarAid, title: "SolarAid" },
+  { id: "ipso_logo", label: "IPSO Gold Award", src: ipso, title: "IPSO" },
+  { id: "real_seal_logo", label: "REAL Seal Certification", src: realSeal, title: "realSeal" },
+  { id: "dfa_logo", label: "Dairy Farmers of America (DFA) Membership", src: DFA, title: "DFA" },
+  { id: "gap_logo", label: "Global Animal Partnership (GAP) Certification", src: GAP, title: "GAP" },
+  { id: "certified_humane_logo", label: "Certified Humane", src: certifiedHumane, title: "Certified Humane" },
+  { id: "ocean_cycle_logo", label: "OceanCycle Certification", src: oceanCycle, title: "OceanCycle" },
+  { id: "sdvosb_logo", label: "Service-Disabled Veteran-Owned Small Business (SDVOSB)", src: sdvosb, title: "SVOSB" },
+  { id: "made_safe_logo", label: "MADE SAFE Certified", src: madeSafe, title: "MADE SAFE" },
+  { id: "nsf_ansi_logo", label: "NSF/ANSI International Standards Compliance", src: nsfansi, title: "nsfansi" },
 ];
 
 const CompaniesPage = () => {

@@ -20,13 +20,13 @@
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
-    background: white;
+    background: #ddd;
     z-index: 1;
 }
 
 .card-header {
     align-items: center;
-    background-color: #f9f9f9;
+    background-color: #ddd;
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
@@ -41,7 +41,7 @@
     top: 12%;
     width: 90%;
     height: 800px;
-    background: white;
+    background: #ddd;
     box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
     left: 0;
     font-size: 1.2rem;
@@ -50,7 +50,7 @@
 .company-card .card-header {
     align-items: center;
     font-size: 1.2rem;
-    background-color: #f9f9f9;
+    background-color: #ddd;
     padding: 10px;
     border-bottom: 1px solid #ddd;
     z-index: 15;
@@ -60,8 +60,8 @@
     position: absolute;
     z-index: 10;
     width: 100%;
-    background: white;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    background: #ddd;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
     left: 0;
     font-size: 1.3rem;
 }
@@ -73,11 +73,7 @@
     width: 100%;
     z-index: 10;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-    background: white;
-}
-
-.company-card.collapsed .card-body {
-    display: none;
+    background: #ddd;
 }
 
 .card-header:hover {
@@ -96,6 +92,7 @@
     width: auto;
     margin-right: 10px;
     object-fit: contain;
+    background-color: #ddd;
 }
 
 .card-text {

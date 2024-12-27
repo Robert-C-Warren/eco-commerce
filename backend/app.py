@@ -3,6 +3,7 @@ from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
 from bson.errors import InvalidId
+from datetime import datetime
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -287,7 +288,7 @@ def update_company_icons(id):
 @app.route('/companies', methods=['GET'])
 def get_companies():
     try:
-        companies = list(db.companies.find({}))
+        companies = list(db.companies.find({}).sort("createdAt", -1))
         for company in companies:
             company["_id"] = str(company["_id"])
         return jsonify(companies), 200
@@ -297,6 +298,7 @@ def get_companies():
 @app.route('/companies', methods=['POST'])
 def add_company():
     data = request.json
+    data["createdAt"] = datetime.utcnow()
     if isinstance(data.get("qualifications"), str):
         data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
     try:
