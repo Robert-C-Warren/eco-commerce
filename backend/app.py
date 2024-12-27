@@ -308,9 +308,7 @@ def add_company():
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
     try:
-        print("Received Company ID:", company_id)  # Debugging
         data = request.json
-        print("Received Data:", data)  # Debugging
         
         # Ensure company_id is a valid ObjectId
         object_id = ObjectId(company_id)
@@ -343,6 +341,29 @@ def delete_company(company_id):
         return jsonify({"message": "Company deleted successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/companies/<company_id>/category', methods=['PUT'])
+def update_company_category(company_id):
+    try:
+        data = request.json
+        object_id = ObjectId(company_id)
+
+        category = data.get("category")
+        if not category:
+            return jsonify({"error": "Category is required"}), 400
+        
+        result = db.companies.update_one(
+            {"_id": object_id},
+            {"$set": {"category": category}}
+        )
+
+        if result.matched_count == 0:
+            return jsonify({"error": "Company not found"}), 404
+        
+        return jsonify({"message": "Category updated successfully"}), 200
+    except InvalidId:
+        return jsonify({"error": "Invalid company ID"}), 400
+
 
 @app.route("/subscribe", methods=["POST"])
 def subscribe():

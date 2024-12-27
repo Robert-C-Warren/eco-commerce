@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css"
 import "./AdminCompaniesPage.css"
 import API from "../services/api";
 import bCorpIcon from "../resources/icons/bcorp.png"
@@ -42,6 +44,8 @@ import WFTO from "../resources/icons/wftologo.svg"
 import LWG from "../resources/icons/lwglogo.png"
 import FLA from "../resources/icons/flalogo.jpeg"
 import SCA from "../resources/icons/scalogo.png"
+import PSC from "../resources/icons/psclogo.png"
+import fairWear from "../resources/icons/fairwearlogo.jpg"
 
 
 const availableIcons = [
@@ -85,10 +89,14 @@ const availableIcons = [
     { id: "lwg_logo", label: "LWG (Leather Working Group) Gold Certification", src: LWG, title: "LWG" },
     { id: "fla_logo", label: "FLA (Fair Labor Association) Accredidation", src: FLA, title: "FLA" },
     { id: "sca_logo", label: "SCA (Specialty Coffee Association) Standards", src: SCA, title: "SCA" },
+    { id: "psc_logo", label: "PSC (Pet Sustainability Coalition) Member", src: PSC, title: "PSC" },
+    { id: "fair_wear_logo", label: "Fair Wear Foundation Member", src: fairWear, title: "Fair Wear" },
   ]
 
 const AdminCompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [editingCompanyId, setEditingCompanyId] = useState(null)
   const [newCompany, setNewCompany] = useState({
     name: "",
     description: "",
@@ -99,6 +107,20 @@ const AdminCompaniesPage = () => {
   const [selectedIcons, setSelectedIcons] = useState({});
   const [expandedCompany, setExpandedCompany] = useState(null);
 
+  const CategoryDropdown = ({ value, onChange }) => (
+    <select className="form-control mb-2" value={value} onChange={onChange}>
+      <option value="">Select a category</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Food">Food</option>
+      <option value="Home">Home</option>
+      <option value="Cleaning">Cleaning</option>
+      <option value="Personal Care">Personal Care</option>
+      <option value="Pet">Pet</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Kitchen">Kitchen</option>
+    </select>
+  )
+
   const fetchCompanies = async () => {
     try {
       const response = await API.get("/companies");
@@ -106,10 +128,6 @@ const AdminCompaniesPage = () => {
     } catch (error) {
       console.error("Error fetching companies:", error);
     }
-  };
-
-  const toggleExpand = (id) => {
-    setExpandedCompany((prev) => (prev === id ? null : id));
   };
 
   const toggleIcon = (companyId, iconId) => {
@@ -136,6 +154,7 @@ const AdminCompaniesPage = () => {
     try {
       await API.patch(`/admin/companies/${companyId}/icons`, { icons });
       fetchCompanies();
+      toast.success("Icon updated successfully", { autoClose: 3000 })
     } catch (error) {
       console.error("Error saving icons:", error);
       alert("Failed to update icons.");
@@ -146,7 +165,7 @@ const AdminCompaniesPage = () => {
     try {
       const response = await API.post("/companies", newCompany);
       if (response.status === 201) {
-        alert("Company added successfully");
+        toast.success("Category added successfully", { autoClose: 3000 })
         fetchCompanies();
         setNewCompany({
           name: "",
@@ -154,7 +173,9 @@ const AdminCompaniesPage = () => {
           qualifications: "",
           logo: "",
           website: "",
+          icon: ""
         });
+        selectedCategory("")
       }
     } catch (error) {
       console.error("Error adding company:", error);
@@ -189,8 +210,37 @@ const AdminCompaniesPage = () => {
     fetchCompanies();
   }, []);
 
+  const handleCategoryChange = (companyId, category) => {
+    setEditingCompanyId(companyId);
+    setSelectedCategory(category);
+  }
+
+  const handleSubmit = async (companyId) => {
+    try {
+      const response = await API.put(`/companies/${companyId}/category`, { category: selectedCategory });
+      if (response.status === 200) {
+        toast.success("Category updated successfully", { autoClose: 3000 })
+        const updatedCompanies = companies.map((company) => 
+          company._id === companyId ? { ...company, category: selectedCategory } : company
+        )
+        setCompanies(updatedCompanies)
+        setEditingCompanyId(null)
+      } else {
+        const { error } = await response.json()
+        alert(`Error: ${error}`)
+      }
+    } catch (error) {
+      console.error("Error updating category:", error)
+    }
+  }
+
+  const toggleExpand = (id) => {
+    setExpandedCompany((prev) => (prev === id ? null : id));
+  };
+
   return (
     <div className="container my-4">
+      <ToastContainer />
       <h1 className="text-center mb-4">Admin: Manage Companies</h1>
       <div className="d-flex justify-content-end mb-3">
         <Link to="/admin/products" className="btn btn-secondary">
@@ -381,6 +431,13 @@ const AdminCompaniesPage = () => {
                 <button className="btn btn-primary mt-2" onClick={() => saveIcons(company._id)}>
                   Save Icons
                 </button>
+                <CategoryDropdown
+                  value={editingCompanyId === company._id ? selectedCategory : company.category || ""}
+                  onChange={(e) => handleCategoryChange(company._id, e.target.value)}
+                />
+                <button className="btn btn-primary" onClick={() => handleSubmit(company._id)}>
+                    Submit
+                  </button>
                 <button
                   className="btn btn-warning btn-sm me-2"
                   onClick={() =>
