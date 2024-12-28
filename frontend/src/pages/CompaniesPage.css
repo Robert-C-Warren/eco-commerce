@@ -1,38 +1,20 @@
 .product-icons .icon_actual {
-    width: 40px; 
+    width: 50px; 
     height: auto; 
-    margin: 0; 
     padding-top: 12px;
     margin-bottom: 30px;
     object-fit: contain;
 }
 
 .card-title {
-    margin: 10px 0;
+    padding-top: 10px;
     text-align: center;
-}
-
-.card-body {
-    padding: 15px;
-}
-
-.company-card {
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    background: #ddd;
-    z-index: 1;
 }
 
 .card-header {
     align-items: center;
-    background-color: #ddd;
+    background-color: #75ba6c;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.company-card.collapsed {
-    height: auto;
 }
 
 .company-card.expanded {
@@ -41,43 +23,33 @@
     top: 12%;
     width: 90%;
     height: 800px;
-    background: #ddd;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+    background-color: #75ba6c !important;
+    box-shadow: 10px 0px 18px rgba(0,0,0,0.5);
     left: 0;
     font-size: 1.2rem;
+    padding: 0 !important;
 }
 
 .company-card .card-header {
     align-items: center;
     font-size: 1.2rem;
-    background-color: #ddd;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    background-color: #75ba6c;
     z-index: 15;
+    border: none;
 }
 
 .company-card.expanded .card-body {
     position: absolute;
-    z-index: 10;
-    width: 100%;
-    background: #ddd;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-    left: 0;
+    background: #75ba6c;
     font-size: 1.3rem;
 }
 
-.card-header.expanded {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-    background: #ddd;
+.company-card.company-card.collapsed {
+    background-color: #639e5b;
 }
 
-.card-header:hover {
-    background-color: #e0e0e0;
+.company-card.company-card.collapsed:hover {
+    background-color: #436c3e;
 }
 
 .row {
@@ -87,17 +59,8 @@
     padding-top: 20px;
 }
 
-.card-img-top {
-    height: 150px;
-    width: auto;
-    margin-right: 10px;
-    object-fit: contain;
-    background-color: #ddd;
-}
-
 .card-text {
-    height: auto;
-    margin-top: 190px;
+    margin-top: 200px;
     color: #1e1e1e;
 }
 
@@ -111,7 +74,6 @@
 
 body.dark-mode .card {
     background-color: #1e1e1e;
-    color: #e0e0e0;
     border: 1px solid #333;
 }
 

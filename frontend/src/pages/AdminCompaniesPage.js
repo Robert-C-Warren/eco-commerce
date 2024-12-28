@@ -59,6 +59,7 @@ import oceanCycle from "../resources/icons/oceancyclelogo.png"
 import sdvosb from "../resources/icons/sdvosblogo.png"
 import madeSafe from "../resources/icons/madesafelogo.png"
 import nsfansi from "../resources/icons/nsfansilogo.svg"
+import WRAP from "../resources/icons/wraplogo.svg"
 
 
 const availableIcons = [
@@ -117,6 +118,7 @@ const availableIcons = [
     { id: "sdvosb_logo", label: "Service-Disabled Veteran-Owned Small Business (SDVOSB)", src: sdvosb, title: "SVOSB" },
     { id: "made_safe_logo", label: "MADE SAFE Certified", src: madeSafe, title: "MADE SAFE" },
     { id: "nsf_ansi_logo", label: "NSF/ANSI International Standards Compliance", src: nsfansi, title: "nsfansi" },
+    { id: "wrap_logo", label: "Worldwide Responsible Accredited Production (WRAP) Certification", src: WRAP, title: "WRAP" },
   ]
 
 const AdminCompaniesPage = () => {
@@ -145,6 +147,7 @@ const AdminCompaniesPage = () => {
       <option value="Accessories">Accessories</option>
       <option value="Kitchen">Kitchen</option>
       <option value="Outdoor">Outdoor</option>
+      <option value="Beverage">Beverage</option>
     </select>
   )
 

@@ -8,6 +8,10 @@
     transition: all 0.5s ease;
 }
 
+.category-drop.expanded {
+    padding-left: 100px;
+}
+
 .company-card.collapsed {
     background-color: #e9ecef;
     font-weight: bold;
@@ -29,10 +33,12 @@
 
 .company-header {
     font-size: 1.2rem;
+    margin-left: 10px;
 }
 
 .company-details {
     margin-top: 10px;
+    margin-left: 10px;
 }
 
 .icon-selector .form-check {
