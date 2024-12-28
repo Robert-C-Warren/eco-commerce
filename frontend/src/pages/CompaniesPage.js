@@ -57,6 +57,11 @@ import sdvosb from "../resources/icons/sdvosblogo.png"
 import madeSafe from "../resources/icons/madesafelogo.png"
 import nsfansi from "../resources/icons/nsfansilogo.svg"
 import WRAP from "../resources/icons/wraplogo.svg"
+import ISO from "../resources/icons/isologo.svg"
+import SWA from "../resources/icons/swalogo.jpeg"
+import soil from "../resources/icons/soilassociationlogo.jpg"
+import napaGreen from "../resources/icons/napagreenlogo.png"
+import CSWA from "../resources/icons/sustainablewinegrowinglogo.svg"
 
 
 const availableIcons = [
@@ -116,6 +121,11 @@ const availableIcons = [
   { id: "made_safe_logo", label: "MADE SAFE Certified", src: madeSafe, title: "MADE SAFE" },
   { id: "nsf_ansi_logo", label: "NSF/ANSI International Standards Compliance", src: nsfansi, title: "nsfansi" },
   { id: "wrap_logo", label: "Worldwide Responsible Accredited Production (WRAP) Certification", src: WRAP, title: "WRAP" },
+  { id: "iso_logo", label: "ISO 14001 Environmental Management Certified", src: ISO, title: "ISO" },
+  { id: "swa_logo", label: "Member of the Scotch Whisky Association's Environmental Charter", src: SWA, title: "SWA" },
+  { id: "soil_logo", label: "Certified Organic by the Soil Association", src: soil, title: "Soil Association" },
+  { id: "napa_green_logo", label: "Napa Green Certified Winery", src: napaGreen, title: "Napa Green" },
+  { id: "sustainable_winegrowing_logo", label: "Sustainable Winegrowing Certification", src: CSWA, title: "Sustainable Winegrowing" },
 ];
 
 const CompaniesPage = () => {

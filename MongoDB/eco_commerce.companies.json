@@ -1821,4 +1821,309 @@
     "wrap_logo"
   ],
   "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67700ea73793f38ad143b616"
+  },
+  "name": "Regenrus",
+  "description": "A dedicated provider of sustainable and eco-conscious home solutions, emphasizing regenerative practices that positively impact the planet and society. The company integrates holistic values into its product offerings, ensuring a blend of environmental stewardship, innovative design, and ethical manufacturing. By fostering a community-centric approach, Regenrus Home connects individuals with products that are not only functional and aesthetically pleasing but also aligned with sustainable living principles. With a strong commitment to minimizing environmental footprints, Regenrus Home sources renewable materials and collaborates with certified eco-friendly partners. This commitment extends beyond products to the company’s overarching mission of promoting regenerative lifestyles, inspiring a ripple effect of sustainable practices within households globally.",
+  "qualifications": [
+    "Sustainable Sourcing",
+    "Regenerative Practices",
+    "Community-Centric Approach",
+    "Ethical Manufacturing",
+    "Education and Advocacy"
+  ],
+  "logo": "https://www.regenrus.com/cdn/shop/files/RG_Logo_SS.png?v=1613707313&width=500",
+  "website": "https://www.regenrus.com/",
+  "createdAt": {
+    "$date": "2024-12-28T14:43:51.453Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "fsc_logo",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67700f613793f38ad143b617"
+  },
+  "name": "Boonboo",
+  "description": "A forward-thinking company specializing in eco-friendly bamboo products that combine sustainability with style. Known for its dedication to reducing environmental impact, Boonboo leverages bamboo's natural renewability to create a diverse range of everyday products. From household essentials to personal care items, the company aims to replace single-use plastics and unsustainable materials with durable, biodegradable alternatives. At its core, Boonboo is committed to sustainable innovation and ethical practices. The company partners with eco-conscious communities and organizations to ensure its products are responsibly sourced and manufactured. By focusing on education and sustainable living, Boonboo empowers customers to make environmentally conscious choices in their daily lives.",
+  "qualifications": [
+    "Bamboo-Based Products",
+    "Plastic-Free Initiative",
+    "Sustainable Manufacturing",
+    "Ethical Partnerships",
+    "Eco-conscious Packaging"
+  ],
+  "logo": "https://boonboo.com/cdn/shop/files/Black_Logo_95x.png?v=1650405873",
+  "website": "https://boonboo.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T14:46:57.701Z"
+  },
+  "icons": [
+    "b_corp",
+    "vegan",
+    "fsc_logo",
+    "iso_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "677010e43793f38ad143b618"
+  },
+  "name": "Maker's Mark",
+  "description": "An iconic bourbon whiskey brand renowned for its rich heritage and handcrafted approach to whiskey production. Established in 1953, the distillery is located in Loretto, Kentucky, and is recognized for its signature red wax-sealed bottles and distinctively smooth flavor. Maker's Mark takes pride in crafting whiskey in small batches, ensuring meticulous attention to detail and maintaining a tradition of excellence. The brand emphasizes sustainable practices, incorporating environmentally friendly processes throughout its operations. From responsible sourcing of ingredients to energy-efficient production methods, Maker's Mark is committed to reducing its environmental footprint while delivering a premium product. Visitors can explore this dedication firsthand at the Maker’s Mark Distillery, which is a National Historic Landmark.",
+  "qualifications": [
+    "Handcrafted",
+    "Sustainable Sourcing",
+    "Water Conservation",
+    "Heritage Preservation",
+    "Community Engagement"
+  ],
+  "logo": "https://www.makersmark.com/themes/custom/bsi_tokens_theme/bsi_tokens_subtheme/logo.svg",
+  "website": "https://www.makersmark.com/en-us/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T14:53:24.206Z"
+  },
+  "icons": [
+    "b_corp",
+    "leed_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "677011da3793f38ad143b619"
+  },
+  "name": "CaliWoods",
+  "description": "A leading eco-friendly company that champions sustainability by offering high-quality reusable and biodegradable alternatives to single-use products. Founded in New Zealand, CaliWoods is driven by a mission to reduce plastic waste and inspire sustainable living practices worldwide. The company specializes in stainless steel straws, reusable cutlery, and eco-conscious household products, designed to be durable, practical, and kind to the planet. CaliWoods is more than just a product provider; it’s a movement for positive change. The company actively supports environmental initiatives, such as ocean conservation and waste reduction programs, while educating consumers on sustainable habits. With every product, CaliWoods empowers individuals to make eco-conscious choices that protect the environment for future generations.",
+  "qualifications": [
+    "Plastic Free Commitment",
+    "Eco-Innovative Materials",
+    "Waste Reduction Advocacy",
+    "Carbon-Conscious Operations",
+    "Community Engagement"
+  ],
+  "logo": "https://caliwoods.co.nz/cdn/shop/files/CALIWOODS_Wide_W02_2575b30b-e068-4d4d-adbc-7bc22a0b8196.png?v=1655688332&width=170",
+  "website": "https://caliwoods.co.nz/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T14:57:30.694Z"
+  },
+  "icons": [
+    "b_corp",
+    "change_climate",
+    "fsc_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677012a23793f38ad143b61a"
+  },
+  "name": "58 and CO",
+  "description": "A sustainable lifestyle brand dedicated to crafting eco-friendly, ethically sourced products for the modern conscious consumer. The company focuses on creating high-quality goods that seamlessly blend style, functionality, and sustainability. From everyday essentials to luxury items, 58 and Co empowers individuals to reduce their environmental footprint without compromising on design or durability. Rooted in the philosophy of mindful living, 58 and Co prioritizes transparent supply chains, fair trade practices, and the use of sustainable materials. By fostering a culture of environmental responsibility and ethical production, the brand strives to inspire a global movement toward sustainable consumption and a healthier planet.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Manufacturing",
+    "Plastic-Free Packaging",
+    "Eco-Innovative",
+    "Community Impact"
+  ],
+  "logo": "https://58andco.com/cdn/shop/files/58_AND_CO_Logo_Long_Copper_No_Background_1000x300_b8c2105e-030b-4ead-bf68-b6c034f59725.png?v=1716382098&width=200",
+  "website": "https://58andco.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T15:00:50.382Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "fsc_logo",
+    "change_climate"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "677070bb3793f38ad143b61b"
+  },
+  "name": "Nc'nean Distillery",
+  "description": "A pioneering Scotch whisky producer based in the rugged and scenic west coast of Scotland. Founded in 2017, Nc'nean is a trailblazer in sustainability within the whisky industry, committed to creating spirits that are as gentle on the planet as they are enjoyable. The distillery's name, inspired by Neachneohain, the Gaelic goddess of nature, reflects its deep connection to the natural world. Nc'nean is dedicated to using 100% organic Scottish barley in its production, renewable energy to power its operations, and innovative practices like closed-loop recycling. The distillery bottles its whisky in 100% recycled glass—the first in the Scotch whisky industry—and strives to reduce its carbon footprint at every stage of production. Nc'nean’s commitment to innovation and sustainability makes it a standout in the world of spirits.",
+  "qualifications": [
+    "Sustainability Leadership",
+    "Eco-Friendly Materials",
+    "Renewable Energy",
+    "Zero-Waste Distilling"
+  ],
+  "logo": "https://ncnean.com/cdn/shop/files/Nc_nean_logo_white_250x.png?v=1614298946",
+  "website": "https://ncnean.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T21:42:19.715Z"
+  },
+  "icons": [
+    "b_corp",
+    "change_climate",
+    "swa_logo",
+    "soil_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "677072d03793f38ad143b61c"
+  },
+  "name": "Two Drifters Rum",
+  "description": "A British rum distillery renowned for its premium, sustainable spirits and trailblazing environmental commitment. Based in Exeter, England, the distillery combines a passion for crafting high-quality rum with a mission to reduce its carbon footprint. Every step of production, from fermenting molasses to bottling the final product, takes place on-site, ensuring full transparency and quality control. Two Drifters is the world’s first carbon-negative distillery, offsetting more carbon than it produces through innovative techniques and partnerships with environmental initiatives. By using 100% renewable energy, locally sourced ingredients, and carbon-neutral packaging, the company embodies a new standard of sustainable craftsmanship. Their range of flavorful rums reflects their dedication to excellence, creativity, and sustainability.",
+  "qualifications": [
+    "Carbon-Negative Distillery",
+    "Sustainable Practices",
+    "Zero-Waste Mindset",
+    "Community Engagement"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0514/6011/2539/files/TwoDriftersLogo.svg?v=1628168064",
+  "website": "https://twodriftersrum.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T21:51:12.768Z"
+  },
+  "icons": [
+    "b_corp",
+    "change_climate"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6770740a3793f38ad143b61d"
+  },
+  "name": "Trois Noix",
+  "description": "A boutique Napa Valley winery founded with the mission to create exceptional wines while fostering community and sustainability. Named after the French term for \"three nuts,\" the brand symbolizes the trio of its founders’ shared passion for wine, storytelling, and meaningful connection. Trois Noix is celebrated for its artistry in winemaking, producing wines that reflect the richness of Napa Valley terroir while embracing innovative, sustainable practices. The winery takes a thoughtful approach to its operations, prioritizing environmentally friendly farming and production techniques. Trois Noix collaborates with local growers and artisans to source grapes responsibly and support a vibrant, sustainable wine community. Beyond crafting premium wines, the company engages in philanthropic efforts, emphasizing community well-being and environmental stewardship.",
+  "qualifications": [
+    "Artisan Winemaking",
+    "Sustainable Practices",
+    "Collaborative Sourcing",
+    "Philanthropy Focus"
+  ],
+  "logo": "https://www.troisnoixwine.com/wp-content/uploads/2024/09/TN-Round.png",
+  "website": "https://www.troisnoixwine.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T21:56:26.009Z"
+  },
+  "icons": [
+    "b_corp",
+    "napa_green_logo",
+    "sustainable_winegrowing_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "677078363793f38ad143b61e"
+  },
+  "name": "Pentire",
+  "description": "A pioneering non-alcoholic spirits brand based on the rugged coastline of Cornwall, UK. Inspired by the natural beauty and biodiversity of its surroundings, Pentire creates premium, botanical-based beverages that capture the essence of coastal plants and promote a mindful, alcohol-free lifestyle. With a focus on health, wellness, and sustainability, Pentire is redefining the drinking experience for those who seek flavor without compromise. Every bottle of Pentire is crafted using locally foraged botanicals, sustainable sourcing practices, and a deep respect for the environment. The brand’s commitment to quality and eco-conscious innovation extends beyond its products to include plastic-free packaging and support for marine conservation projects. Pentire’s drinks are perfect for those who value wellness, nature, and exceptional taste.",
+  "qualifications": [
+    "Botanical Innovation",
+    "Sustainable Sourcing",
+    "Plastic-Free Commitment",
+    "Health and Wellness Focus"
+  ],
+  "logo": "https://pentiredrinks.com/cdn/shop/files/Pentire_LOGO_Blue_360x.png?v=1665153571",
+  "website": "https://pentiredrinks.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T22:14:14.937Z"
+  },
+  "icons": [
+    "b_corp",
+    "change_climate",
+    "soil_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67707d873793f38ad143b61f"
+  },
+  "name": "Hevea",
+  "description": "A sustainable lifestyle brand dedicated to creating eco-friendly, non-toxic products for babies, children, and families. Named after the Hevea brasiliensis tree, the natural source of latex rubber, the brand is committed to minimizing its environmental impact through innovative and conscious design. Hevea’s product range includes pacifiers, toys, teething products, and other essentials, all crafted from natural rubber and sustainable materials. With a mission to protect the planet for future generations, Hevea prioritizes biodegradable materials, plastic-free packaging, and ethical production practices. The company combines functionality with elegant Scandinavian-inspired designs, making sustainability stylish and practical for modern families. Hevea’s commitment to quality and the environment is reflected in every product.",
+  "qualifications": [
+    "Natural Materials",
+    "Biodegradeable Design",
+    "Plastic-Free Packaging",
+    "Ethical Production"
+  ],
+  "logo": "https://heveaplanet.com/cdn/shop/files/HEVEA_-Small_logo_horisontal_white.png?v=1719567791",
+  "website": "https://heveaplanet.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T22:36:55.272Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "iso_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67707f5d3793f38ad143b620"
+  },
+  "name": "Salty Aura",
+  "description": "A sustainable outdoor lifestyle brand that specializes in high-quality, ethically made products designed for adventure and everyday comfort. Known for its beautifully crafted rugs, throws, and accessories, Salty Aura draws inspiration from the natural world and a passion for exploring the outdoors. The brand prioritizes sustainability, blending vibrant designs with eco-friendly practices to create durable, stylish pieces that leave a minimal environmental footprint. Salty Aura is deeply committed to ethical production and giving back to the planet. Every product is handmade by artisans using sustainable materials, and the company supports reforestation projects with every purchase. By fostering a connection to nature through its products, Salty Aura encourages individuals to live more mindfully and tread lightly on the earth.",
+  "qualifications": [
+    "Handmade Craftsmanship",
+    "Eco-Friendly Materials",
+    "Giving Back",
+    "Plastic Free Commitment"
+  ],
+  "logo": "https://saltyaura.com/cdn/shop/files/salty_aura_logo_brown.png?v=1709777913&width=180",
+  "website": "https://saltyaura.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T22:44:45.760Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "GOTS_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677080f23793f38ad143b621"
+  },
+  "name": "Feragaia",
+  "description": "A Scottish-based non-alcoholic spirits brand that embodies a deep connection to the natural world. Its name, meaning \"wild earth,\" reflects the brand’s commitment to crafting authentic, distilled beverages that celebrate the beauty of unspoiled landscapes. Made from a blend of carefully selected botanicals, including seaweed, herbs, and spices, Feragaia’s spirits offer a refreshing, complex flavor profile, designed to be savored in mindful moments. With a focus on sustainability and transparency, Feragaia distills its spirits in small batches in Scotland, using innovative methods that prioritize quality and environmental stewardship. The brand’s eco-conscious ethos extends to its packaging and operations, ensuring minimal impact on the planet. Feragaia provides a sophisticated, alcohol-free option for those seeking balance and connection.",
+  "qualifications": [
+    "Botanical Excellence",
+    "Sustainable Production",
+    "Plastic-Free Commitment",
+    "Locally Crafted",
+    "Health and Wellness Focused"
+  ],
+  "logo": "https://feragaia.com/cdn/shop/files/FERAGAIA_ROUNDEL_BLACK.png?v=1669124201",
+  "website": "https://feragaia.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-28T22:51:30.695Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Beverage"
 }]
