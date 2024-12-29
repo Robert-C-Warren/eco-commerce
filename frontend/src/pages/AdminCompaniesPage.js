@@ -65,6 +65,7 @@ import SWA from "../resources/icons/swalogo.jpeg"
 import soil from "../resources/icons/soilassociationlogo.jpg"
 import napaGreen from "../resources/icons/napagreenlogo.png"
 import CSWA from "../resources/icons/sustainablewinegrowinglogo.svg"
+import OEKO from "../resources/icons/oekotexlogo.svg"
 
 
 const availableIcons = [
@@ -129,6 +130,7 @@ const availableIcons = [
     { id: "soil_logo", label: "Certified Organic by the Soil Association", src: soil, title: "Soil Association" },
     { id: "napa_green_logo", label: "Napa Green Certified Winery", src: napaGreen, title: "Napa Green" },
     { id: "sustainable_winegrowing_logo", label: "Sustainable Winegrowing Certification", src: CSWA, title: "Sustainable Winegrowing" },
+    { id: "oeko_tex_logo", label: "OEKO-TEX Standard 100 Certified", src: OEKO, title: "OEKO-TEX" },
   ]
 
 const AdminCompaniesPage = () => {

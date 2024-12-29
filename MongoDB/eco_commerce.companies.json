@@ -2126,4 +2126,99 @@
     "b_corp"
   ],
   "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67709ff4c03f0f990e4d5773"
+  },
+  "name": "ettitude",
+  "description": "A sustainable lifestyle brand known for its innovative use of CleanBamboo™, a proprietary fabric made from 100% organic bamboo. Specializing in eco-friendly bedding, bath, and sleepwear products, Ettitude combines luxury, comfort, and sustainability to create items that are soft on the skin and gentle on the planet. The brand is committed to reducing its environmental impact by using sustainable materials and ethical practices in all aspects of production. With a mission to inspire eco-conscious living, Ettitude prioritizes transparency, resource efficiency, and carbon neutrality. The company’s products are crafted to minimize water use, chemical inputs, and waste, making them a sustainable choice for modern households. Ettitude also actively gives back to the environment through partnerships with reforestation and carbon offset initiatives.",
+  "qualifications": [
+    "Innovative Materials",
+    "Low Impact Production",
+    "Carbon Neutral",
+    "Ethical Practices"
+  ],
+  "logo": "https://www.ettitude.com/cdn/shop/files/ettitude_holiday_logo.png?v=1732306864&width=95",
+  "website": "https://www.ettitude.com/",
+  "createdAt": {
+    "$date": "2024-12-29T01:03:48.860Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6770a45ec03f0f990e4d5774"
+  },
+  "name": "Athletic Brewing Co.",
+  "description": "A leading craft brewery specializing in non-alcoholic beers that deliver the same full-bodied flavor and experience as traditional brews. Founded in 2017, the company has revolutionized the non-alcoholic beer market by creating a diverse range of award-winning, high-quality beers designed for active, health-conscious individuals. Athletic Brewing offers a refreshing alternative that complements a balanced lifestyle, without compromising on taste or social enjoyment. Rooted in sustainability and community, Athletic Brewing Co. is committed to making a positive impact on the planet and people. Through its “Two for the Trails” initiative, the company donates a portion of its sales to trail and park cleanups. Its operations also emphasize sustainability, from energy-efficient brewing processes to eco-friendly packaging. Athletic Brewing is dedicated to redefining the role of beer in an active, mindful lifestyle.",
+  "qualifications": [
+    "Pioneers of Non-Alcoholic Craft Beer",
+    "Sustainability Leadership",
+    "Customer-Centric"
+  ],
+  "logo": "https://athleticbrewing.com/cdn/shop/files/secondary-logo.svg?v=1724884429&width=150",
+  "website": "https://athleticbrewing.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-29T01:22:38.453Z"
+  },
+  "icons": [
+    "b_corp",
+    "nongmo_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6770a794c03f0f990e4d5775"
+  },
+  "name": "Samara & Co",
+  "description": "A Canadian-based online marketplace dedicated to curating sustainable, eco-friendly, and ethically made products. The company collaborates with innovative brands and artisans who share its vision of creating a greener, more socially responsible world. From clothing and accessories to home goods and personal care items, Samara & Co offers a thoughtfully selected range of products that help consumers make conscious choices without sacrificing style or quality. Guided by its mission to inspire sustainable living, Samara & Co emphasizes zero-waste practices, plastic-free packaging, and supporting local communities. Each product is chosen not only for its quality and functionality but also for its alignment with values of sustainability, fair labor, and environmental stewardship. Samara & Co strives to empower consumers to lead eco-conscious lives while supporting ethical businesses.",
+  "qualifications": [
+    "Eco-Friendly Product Curation",
+    "Zero Waste Commitment",
+    "Support for Local Artisans",
+    "Transparent Sourcing"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0279/2279/2545/files/logo_samara_and_co2022.png?v=1654727698",
+  "website": "https://samara-co.com/en",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-29T01:36:20.366Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6770bb32c03f0f990e4d5776"
+  },
+  "name": "Ombraz",
+  "description": "A revolutionary eyewear brand that combines innovative design with a steadfast commitment to sustainability. Known for its unique armless sunglasses, Ombraz offers a durable, lightweight, and comfortable alternative to traditional eyewear. The brand’s signature design eliminates the need for fragile hinges, making its sunglasses virtually unbreakable and perfect for outdoor enthusiasts and adventurers. Rooted in environmental stewardship, Ombraz goes beyond crafting high-quality sunglasses by integrating sustainability into every aspect of its business. For every pair of sunglasses sold, the company plants 20 mangrove trees, offsetting carbon emissions and restoring vital ecosystems. With its innovative products and eco-conscious ethos, Ombraz is reshaping the future of eyewear while protecting the planet.",
+  "qualifications": [
+    "Innovative Design",
+    "Eco-Friendly Commitment",
+    "Sustainable Materials",
+    "Environmental Advocacy"
+  ],
+  "logo": "https://ombraz.com/cdn/shop/t/232/assets/logo.svg?v=38641790458067198361734633780",
+  "website": "https://ombraz.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-29T03:00:02.924Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
 }]
