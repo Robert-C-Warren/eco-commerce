@@ -57,7 +57,7 @@ body {
 }
 
 .product-card {
-    border: 1px solid #ddd;
+    border: 1px solid #007b33;
     border-radius: 8px;
     padding: 10px;
     margin: 10px;
@@ -68,7 +68,7 @@ body {
     width: 300px;
     height: auto;
     text-align: center;
-    background-color: #fff;
+    background-color: #75ba6c !important; 
     transition: transform 0.3s ease, box-shadow 0.3 ease;
 }
 

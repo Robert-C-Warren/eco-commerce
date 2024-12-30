@@ -43,4 +43,9 @@
 
 .icon-selector .form-check {
     margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+body.dark-mode p, .form-check {
+    color: black;
 }

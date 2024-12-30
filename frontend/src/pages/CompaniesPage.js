@@ -63,6 +63,13 @@ import soil from "../resources/icons/soilassociationlogo.jpg"
 import napaGreen from "../resources/icons/napagreenlogo.png"
 import CSWA from "../resources/icons/sustainablewinegrowinglogo.svg"
 import OEKO from "../resources/icons/oekotexlogo.svg"
+import goodWeave from "../resources/icons/goodweavelogo.png"
+import compostable from "../resources/icons/compostablelogo.svg"
+import Agave from "../resources/icons/agavelogo.png"
+import MCS from "../resources/icons/marineconservationlogo.gif"
+import jpma from "../resources/icons/jpmalogo.png"
+import carbonNeutral from "../resources/icons/carbonneutrallogo.png"
+import usdaOrganic from "../resources/icons/usdaorganiclogo.gif"
 
 
 const availableIcons = [
@@ -128,6 +135,13 @@ const availableIcons = [
   { id: "napa_green_logo", label: "Napa Green Certified Winery", src: napaGreen, title: "Napa Green" },
   { id: "sustainable_winegrowing_logo", label: "Sustainable Winegrowing Certification", src: CSWA, title: "Sustainable Winegrowing" },
   { id: "oeko_tex_logo", label: "OEKO-TEX Standard 100 Certified", src: OEKO, title: "OEKO-TEX" },
+  { id: "good_weave_logo", label: "GoodWeave Certified", src: goodWeave, title: "GoodWeave" },
+  { id: "compostable_logo", label: "Certified Compostable", src: compostable, title: "Compostable" },
+  { id: "100%_agave_logo", label: "Certified 100% Agave Tequila", src: Agave, title: "Agave" },
+  { id: "mcs_logo", label: "Recognized by the Marine Conservation Society", src: MCS, title: "MSC" },
+  { id: "jpma_logo", label: "Juvenile Products Manufacturers Association (JPMA)", src: jpma, title: "jpma" },
+  { id: "carbon_neutral_logo", label: "Certified Carbon-Neutral", src: carbonNeutral, title: "Carbon Neutral" },
+  { id: "usda_organic_logo", label: "USDA Organic Certification", src: usdaOrganic, title: "USDA Organic" },
 ];
 
 const CompaniesPage = () => {

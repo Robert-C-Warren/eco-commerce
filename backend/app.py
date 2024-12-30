@@ -17,6 +17,7 @@ CORS(app)
 
 db = get_database()
 products_collection = db["products"]
+companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
 @app.route("/")
@@ -181,6 +182,24 @@ def search_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@app.route("/companies/search", methods=["GET"])
+def search_companies():
+    query = request.args.get("q", "").strip()
+    try:
+        companies = list(companies_collection.find(
+            {
+                "$or": [
+                    {"name": {"$regex": query, "$options": "i"}},
+                    {"description": {"$regex": query, "$options": "i"}}
+                ]
+            }
+        ))
+        for company in companies:
+            company["_id"] = str(company["_id"])
+        return jsonify(companies), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/products/filter", methods=["GET"])
 def filter_products():
     try:

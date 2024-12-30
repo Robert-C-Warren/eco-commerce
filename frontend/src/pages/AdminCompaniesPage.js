@@ -66,6 +66,14 @@ import soil from "../resources/icons/soilassociationlogo.jpg"
 import napaGreen from "../resources/icons/napagreenlogo.png"
 import CSWA from "../resources/icons/sustainablewinegrowinglogo.svg"
 import OEKO from "../resources/icons/oekotexlogo.svg"
+import goodWeave from "../resources/icons/goodweavelogo.png"
+import compostable from "../resources/icons/compostablelogo.svg"
+import Agave from "../resources/icons/agavelogo.png"
+import MCS from "../resources/icons/marineconservationlogo.gif"
+import jpma from "../resources/icons/jpmalogo.png"
+import carbonNeutral from "../resources/icons/carbonneutrallogo.png"
+import usdaOrganic from "../resources/icons/usdaorganiclogo.gif"
+
 
 
 const availableIcons = [
@@ -131,6 +139,13 @@ const availableIcons = [
     { id: "napa_green_logo", label: "Napa Green Certified Winery", src: napaGreen, title: "Napa Green" },
     { id: "sustainable_winegrowing_logo", label: "Sustainable Winegrowing Certification", src: CSWA, title: "Sustainable Winegrowing" },
     { id: "oeko_tex_logo", label: "OEKO-TEX Standard 100 Certified", src: OEKO, title: "OEKO-TEX" },
+    { id: "good_weave_logo", label: "GoodWeave Certified", src: goodWeave, title: "GoodWeave" },
+    { id: "compostable_logo", label: "Certified Compostable", src: compostable, title: "Compostable" },
+    { id: "100%_agave_logo", label: "Certified 100% Agave Tequila", src: Agave, title: "Agave" },
+    { id: "mcs_logo", label: "Recognized by the Marine Conservation Society", src: MCS, title: "MSC" },
+    { id: "jpma_logo", label: "Juvenile Products Manufacturers Association (JPMA)", src: jpma, title: "jpma" },
+    { id: "carbon_neutral_logo", label: "Certified Carbon-Neutral", src: carbonNeutral, title: "Carbon Neutral" },
+    { id: "usda_organic_logo", label: "USDA Organic Certification", src: usdaOrganic, title: "USDA Organic" },
   ]
 
 const AdminCompaniesPage = () => {
@@ -379,48 +394,6 @@ const AdminCompaniesPage = () => {
             }
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Certifications</label>
-          <div className="row">
-            {availableIcons.map((icon) => (
-              <div key={icon.id} className="col-6 col-md-4">
-                <div className="form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id={`newCompany-${icon.id}`}
-                    onChange={(e) => {
-                      setNewCompany((prevState) => ({
-                        ...prevState,
-                        certifications: e.target.checked
-                          ? [...(prevState.icons || []), icon.id]
-                          : prevState.icons.filter((id) => id !== icon.id),
-                      }))
-                    }}
-                  />
-                  <label 
-                    htmlFor={`newCompany-${icon.id}`}
-                    className="form-check-label"
-                  >
-                    <img
-                      src={icon.src}
-                      alt={icon.label}
-                      style={{ width: "30px", marginRight: "5px" }}
-                    />
-                    {icon.label}
-                  </label>
-                </div>
-              </div>
-            ))}
-                <div>
-                  <button 
-                    className="btn btn-secondary" 
-                    onClick={() => saveIcons(newCompany._id)}>
-                    Save Icons
-                  </button>
-                </div>
-          </div>
-        </div>
         <button type="submit" className="btn btn-success">
           Add Company
         </button>
@@ -449,9 +422,9 @@ const AdminCompaniesPage = () => {
                 <a href={company.website} target="_blank" rel="noopener noreferrer">
                   Visit Website
                 </a>
-                <div className="icon-selector">
+                <div className="icon-selector row">
                   {availableIcons.map((icon) => (
-                    <div key={icon.id} className="form-check">
+                    <div key={icon.id} className="form-check col-md-4 mb-1">
                       <input
                         type="checkbox"
                         className="form-check-input"
