@@ -5,6 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from scrapers.ecoternativesScraper import scrape_ecoternatives
 from scrapers.lochtreeScraper import scrape_lochtree
 from scrapers.earttheroScraper import scrape_earthhero
+from scrapers.ecoRootsScraper import scrape_ecoroot
 from removeDuplicates import removeDuplicates
 from pymongo import MongoClient
 
@@ -27,15 +28,18 @@ def run_scrapers(db):
         "ecoternatives": "https://ecoternatives.co/collections/all?sort_by=created-descending",
         "lochtree": "https://lochtree.com/collections/new-at-lochtree",
         "earthhero": "https://earthhero.com/collections/new-arrivals",
+        "ecoroot": "https://ecoroots.us/collections/shop-all",
     }
     try:
         for site, url in urls.items():
-            if site == "ecoternatives":
-                scrape_ecoternatives(driver, url, db)
-            elif site == "lochtree":
-                scrape_lochtree(driver, url, db)
-            elif site == "earthhero":
-                scrape_earthhero(driver, url, db)
+            # if site == "ecoternatives":
+            #     scrape_ecoternatives(driver, url, db)
+            # elif site == "lochtree":
+            #     scrape_lochtree(driver, url, db)
+            # elif site == "earthhero":
+            #     scrape_earthhero(driver, url, db)
+            if site == "ecoroot":
+                scrape_ecoroot(driver, url, db)
     finally:
         driver.quit()
 

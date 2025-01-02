@@ -1,11 +1,13 @@
 .company-card {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 10px;
-    margin-bottom: 10px;
     background-color: #f9f9f9;
     cursor: pointer;
     transition: all 0.5s ease;
+    margin-left: 60px;
+    width: 350px;
+    height: auto;
 }
 
 .category-drop.expanded {
@@ -18,10 +20,6 @@
     text-align: left;
 }
 
-.btn.expanded {
-    display: inline-block;
-}
-
 .company-card.expanded {
     max-height: 800px;
     background-color: #fff;
@@ -32,8 +30,10 @@
 }
 
 .company-header {
-    font-size: 1.2rem;
-    margin-left: 10px;
+    text-align: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: black;
 }
 
 .company-details {

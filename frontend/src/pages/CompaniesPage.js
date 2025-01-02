@@ -70,6 +70,8 @@ import MCS from "../resources/icons/marineconservationlogo.gif"
 import jpma from "../resources/icons/jpmalogo.png"
 import carbonNeutral from "../resources/icons/carbonneutrallogo.png"
 import usdaOrganic from "../resources/icons/usdaorganiclogo.gif"
+import craftDistillery from "../resources/icons/craftdistillery.png"
+import ecoboard from "../resources/icons/ecoboardlogo.png"
 
 
 const availableIcons = [
@@ -142,6 +144,8 @@ const availableIcons = [
   { id: "jpma_logo", label: "Juvenile Products Manufacturers Association (JPMA)", src: jpma, title: "jpma" },
   { id: "carbon_neutral_logo", label: "Certified Carbon-Neutral", src: carbonNeutral, title: "Carbon Neutral" },
   { id: "usda_organic_logo", label: "USDA Organic Certification", src: usdaOrganic, title: "USDA Organic" },
+  { id: "craft_distillery_logo", label: "Certified Craft Distillery", src: craftDistillery, title: "Craft Distillery" },
+  { id: "ecoboard_logo", label: "ECOBOARD Project Certified", src: ecoboard, title: "ecoboard logo" },
 ];
 
 const CompaniesPage = () => {

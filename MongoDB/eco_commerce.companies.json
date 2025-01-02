@@ -2958,4 +2958,540 @@
     "vegan"
   ],
   "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "677343e573545fb9ec33e0bb"
+  },
+  "name": "Project Hive Pet Company",
+  "description": "A forward-thinking enterprise dedicated to crafting sustainable and innovative pet products that cater to the needs of pets and the planet. With a mission to promote environmental consciousness in pet ownership, the company offers a diverse range of toys, treats, and accessories designed to engage pets while leaving a minimal environmental footprint. Through rigorous sustainability initiatives, Project Hive Pet Company has become a trusted name for eco-conscious pet owners who value quality, ethics, and sustainability. At the heart of their operations is a commitment to sustainability and ethical practices, ensuring that every product is responsibly sourced and produced. The company integrates innovative materials such as recycled plastics and biodegradable components into its designs, prioritizing the well-being of pets and the environment. Project Hive Pet Company continually invests in eco-friendly practices, contributing to a healthier planet and fostering an ever-growing community of environmentally responsible pet owners.",
+  "qualifications": [
+    "Sustainability Focus",
+    "Community Engagement",
+    "Innovative Designs",
+    "Ethical Manufacturing",
+    "Pet Health Advocacy"
+  ],
+  "logo": "https://projecthivepetcompany.com/cdn/shop/t/9/assets/logo-mobile.svg?v=134011475740366159721689709817",
+  "website": "https://projecthivepetcompany.com/",
+  "createdAt": {
+    "$date": "2024-12-31T01:07:49.689Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "usda_organic_logo"
+  ],
+  "category": "Pet"
+},
+{
+  "_id": {
+    "$oid": "6773450e73545fb9ec33e0bc"
+  },
+  "name": "Marine Layer",
+  "description": "A lifestyle apparel brand renowned for its focus on creating ultra-soft, sustainable clothing that combines comfort and style. Founded with the mission to offer high-quality, eco-conscious casual wear, the company has carved out a niche for producing timeless pieces designed to become wardrobe staples. Marine Layer emphasizes sustainability at every step, from sourcing renewable materials to implementing innovative recycling programs, making it a favorite among environmentally aware consumers. At its core, Marine Layer is dedicated to reducing environmental impact while maintaining impeccable quality. Through initiatives like their Re-Spun recycling program, the company collects old T-shirts and gives them new life, turning waste into a resource. Marine Layer blends laid-back aesthetics with a commitment to sustainability, ensuring that their clothing is as good for the planet as it is for their customers.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Re-Spun Program",
+    "Ethical Production",
+    "Timeless Design",
+    "Community Involvment"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0831/9103/files/desktop-nav-logo.png?v=1713211028",
+  "website": "https://www.marinelayer.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T01:12:46.291Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "oeko_tex_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "677353e573545fb9ec33e0bd"
+  },
+  "name": "Orgain",
+  "description": "a leading health and wellness company specializing in clean, organic nutritional products designed to support active and healthy lifestyles. Founded by a cancer survivor and medical doctor, Orgain's mission is to provide high-quality, plant-based, and organic nutrition without compromising on taste or efficacy. Their product line includes protein powders, meal replacements, shakes, and bars crafted with thoughtfully selected ingredients, free from artificial additives, GMOs, and preservatives. At its core, Orgain emphasizes the connection between wholesome nutrition and well-being, striving to make clean eating accessible to everyone. The company combines scientific expertise with sustainable practices, ensuring that their products not only nourish the body but also respect the planet. By catering to a wide range of dietary needs, including vegan, gluten-free, and keto, Orgain has become a trusted name in the realm of health-conscious nutrition.",
+  "qualifications": [
+    "Clean Ingredients",
+    "Plant-Based Nutrition",
+    "Community Focus",
+    "Versatile Product Range"
+  ],
+  "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAABACAYAAADI6p/xAAAM3klEQVR4Xu2dB9AlRRHHDzGACUUMGM8EgqigYFZOzJiQJGI6oEBFjBhQsTwwghEULcAEKggoUcoInhkVUMyoCGJGMYGCgdL/r26nqu3q2Z19u6/uvfdNV3W97+3OTujp6bzvW2dZhUqBHhRYp0fb2rRSYFllmMoEvShQGaYXuWrjyjCVB3pRoDJML3LVxpVhKg/0okBlmF7kqo0rw8wWDyzXdF4ivIfwv8L3CD8+S1PswzDbaOIPFT5YuKnw9sJ/Cn8m/IHwK8JPC38zSwuco7ncVnP9kfCGbs731/dvzMo6uhjmlprowcKnCDconPRn1e6Dwo8Vtq/N1lDglcI3BsSAlnvOCpHaGGY3TfJI4Y0nnOz39NxzhF+b8Pml9thRWvDewaI5gI+eFWLkGOZ1muCBwST/oGs/F14lvI7wrsJbdCzmHbqPXq7QToFX6Pabgybv1LUXzwrxIoY5QpPbt5ngufp8t/BbwosbRvFzv4suPEO4l/A2mYWdqOuotQp5CmC7QOe7mSaX6+97CX89K4TzDPNqTez1wk8K3yL8kpnoVs1i7qDPvwh/Kfyy8G9NmxvpEx28X2ZxZ+n6I2Zl4TM6D6T1qxom+UVDz5/M0lwtw2yiib1LiB69tJnkTfSJqER63DyY+JW6hlGGCkNdAQ8UIlEiaTNTBtwsbcS8zMUyzBaa9PfNxPfQ328T3rRgMYjMJwnPa9riUZ0tvHfwLPoYvVxhDimQM3pxiSexOR6g585p6IBLTvwAFWbhH/qCnkalJfic/rhaeJLwNOFfW2gJMyINMbp/KkySrQ/5iSEhMVGjlwl/2Odh13a9Zj0E2+4k/I/wt836ztcndsgsAIcXj/ffQuzRieJlnmHWbzbskZkVooIILl0ivEhI4O66QjaATcRw29w8u7X+/qbQj/MJXdvZtFutv7dtvuOBIYVw6S3gkb1V+ER3HaY5RviGzJy5zPyeJtxFiC3mgU1lc5krfdFnF8BwBwmf29EQG+RkIeq+a5NoZyX6Nfr+VKE/FBvpGod6XTM2c97HzWU7fYfO0MybCL9q5oU58ceuxab7fiNP0I1dg4eZDMZYV5gaacLJJ/qbgI33C+Ee0eJk0N1Tf1/gxsVu+kBzDQZ6e8eiVuk+G2iBUw9BUJd9AInHmESwIyDaDS2QoqWAZIW2Z2YeQFJxWDxYqZ3uIS2S+k/X/qw/Nmy+PEifqH0ObBcgYR8l9PQPn7MM8yy1+FDQioDSs7tGbbkPUeHma7s2Pj7D6Sb9kADiobo4wQcUjA9zWBsMabR/wXO5Jpw6xvcqhYDm8QP6fayeJYXi4fq68Pfg+kN0jbSLBaQkEtEC3irq+jDhC3rOD2bZsuSZxDA3UONLhIg6C2MZqEgKjGgL2Cl4YQkQ2d4lhwEwxrvAzhO1igvPycwB9hPrRacT58jBk3XjVHOT+WLgs7kJUBfYQBcK2fDNGvS2W2qPWoIRr3CDDmUYxv6qEGkxCeAdv6/rwcQwqBtvA4wZYSS0HZ0qXPCvN5MkjfDelgkT+/mokJN/a+FOQkQwkul+5jnsox2DflCTxIlgAMR3Ak4lajMy8rF5rBpGtSUG4hOaEdyM4M66eKyQNXrALvG5tj4MgzT4dmZcexnJwfxJz5D9frjwhUKf4OQZgob37eozMQxcv7FpzOawKZFO7eozuo83Qp/XcjeJ8RzaXHu8Ps/IdI6+humseuAEHy4k2JhUEcSIXHbsBow/PLEccEKt5KAdNgeeWwJOIWM8X/iFAkKwMdhplrY8FsWj+jBMpJLsdHBIXiQkAOsBiQpzYGt6wOBmn7IAwzxG+CnXgk2IMqcFNMo2wYC0HhQN8QqQFABe0urgadzAOwq7wuMwEKrBb/p3dI1T3sX8uMK3cuN7CXMz3e/rJr9Wz6xy/SKVrL3G7bEY5nT1hQTDyM5BpP5pizHdKrlgGIxPuNEC0gUCjglfVGfU01iw6uQ+uhGJ99LkJTmv5wUTxlPwHkW0LmwRb8OhpohaDwGrxlI/jOWTtmMwjFfPuXnjbmPneYgM7P9rA8MQXLO6ixMZxSqGEI1nEe029sI1Mt/oeoCNRVR6yHkVth2GLraNly62/675j80w22vAlUKkVAQ+pDEGwxA/+3zXQnUfiQ1tPBQxzO/1lOV2YjG4jmMDEVwfdEO8p1OdkzDL1YZEXBvQL/17wJjFmC6BMRgG5gBR89htbQCDWDXZh2FyRi8BShtBz41PdV/UDg1AQjkLcDnWswUMSQy7sQFL3bu6MMLyZqCchLmd7hPHaQMM3WjOkTeS62dShiEASTnIM4U2TNBFPwxiG3fpwzBR4I7xsONS4rht/FEZhsLjyBboIkDXfVQGRqMF68oNYRjEMC6jB5ixSzqlZ/oyDHbAa4QruhaeuT+3DONVEqJ9hwmJkHuMIqsoP0Msg+AYMIRhiLEkW8jOIZdcjeb5O130oX7vVvMcTEg01atX3ye2IO48ajdKa8wtw1B7a6OpiH/UwJiQywVZ930Iw0TSweZWStbyJzXypRzeSyIsQPwlV5aK/ucQgMmo5JkoJzW3DEP0dHdHUQxQn6soIXquDW5tVBvzMF1f3Tw0NsMgOX1cpW0N5GK8oWoZBgmG2x/ZKUfr+puElA14yDEMY5H9TzA3NgyJKkSshQ/rC0bcGJALyBFYwqZJ0dchDEPJha2FZd54IN7NblsPm0dOzYJlGKKmj3P3yYfhFZHdzsHCMUzOviAWgx4eCj4LnfrzxvUQhkFNrAgmioRB0pRAm4RButiSjdRfScIu5wLPrUpi8XgrvnYCApF3aAsxd20EBeXYKRFASFuDMYRhkIhPDwYpDWTxKHUhvm45Gb1k2lNtjh2mxKgmBcCh8TDXDEOBk69wY4HkJfoWHyXC5IjMfewmv8FDGCZXy0NNzMu6uLq5z8EgYmwhqSTcZ94AtVBqI0XFYfQz1wzDAlA/UW0IXhQh/dLXHSAEWejoRTjGwbZAxPtc1RCGwYDEK7Ili4xFYIzoJx5QG1B89d2gQZIwrIXKPQ8EwLqSosSHonD93DNMLjSfiEQEGCR1ngMkFTUiPoln25OdJkvtYQjD0FeuDoa3F6Kgnh3/M/oSFR4lhkEaovY8IHXIRucAoxv7Kqoz8QyTK9GkHJTCKAtrNdJrJ5KrJ7FtfqwvSB0YJ3k4FCFhL3RVx7WVTQxlGCr2c8yMrYSB6pObqAvqgHOBylTeQBVd7s0C+iXza11qNp8+eU2HzH8EFM37YKZP0/AcJgGmwZgMA7P6ij/6JwfG4bHA3iKl8QgvjYw2intWZhY55DJ2AEZwDoYyDP2+VMgbmzmg1iMl1zi5UWzIPmvrYagM5Kc3coBKTExFEXYXsDHvF5KNJ9AHU0TOB8xONJwMM4VY2H9DJQxzi+p/qFUmyMobqhwAhAPmA5l3JOXlOSs/MvK6CNB2H5HOQttgDIah/0nfqYrmZuMwOW+nhC7YObn3znk+BUqjUlnb/yp9QSKOwTC5X4tI45Er+xdMIiQmh3o9qc0tpEoNV5Js7KTAaV4pjGovfJ85IkDorvd5fF/kbjgpJYA7TcklZR0efGoANXOc0HtTuXGQOJRXUEKK9IjyXbacBFWGvRJJPuJEqF02MFeiWVrewHyRVkiv6BVocmCUzFLuAH1YA4HNU0riCLwABiI6S4BcFCWf1OfmanSjfjCUMVxTVR46liq9J5QMGrSB4Yli597ghACHCCmN4IWxKN4UJR85QC8XUjqRYxy8omOEHzHzIogIs5EOAZA6fKcvC+SzThGmF/u4R66M9E3ytoiQI0ntqzt4hGxyH6Ac4ghhimAzDgxMKCLZp0hWmJ0x1ythmDQBRBIPozqSPqVqn1dDKSHgNLGgyD3ts4hptOXEEqJPr7Jij9gi7usZAtnx20o0ySlhqyAByXLj0iNJMYC7XO2SNUJrUhUwQlSJWNJHaRvG4cDmSkHu3ty7sg/DlA4+r+0iD8UXgc/r2kabd2WYNaQk8Jd+58YSF8Ov5HWS0TZk1juqDLNmhwisRb9UGcVKZn1Ppzq/yjBryEvY36cyeKHLF1RNdTPmofPKMMuWYdDh9nro88bBPOz1KHNcRIahzgY3keAj7za3wQrdxIWNqujGrjocZcPWdieLyDD2TUNiLfwIAK4uZaK4p6gZbBbe1c4F9yi5jH7TZm3v11offxEZBqLys2n2Fx36EJqgI7mTCgEFFpVhCChS1tD22y+eHATIyKb7+ubKOIYCi8owaYlkrslgtwEhcLK0/NZ/af3vkmWiRWcYNpawPf/cgYQdiTbyRoTw+cUo3jZYLRxSt7ykmGcpMMyS2tBpL7YyzLQpvGD9V4ZZsA2d9nIqw0ybwgvWf2WYBdvQaS+nMsy0Kbxg/VeGWbANnfZyKsNMm8IL1v//AETGyRMs6LxbAAAAAElFTkSuQmCC",
+  "website": "https://orgain.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T02:16:05.113Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "nsf_ansi_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6774059e660e120402c58108"
+  },
+  "name": "TWOTHIRDS",
+  "description": "An eco-conscious fashion brand deeply rooted in sustainability and ocean preservation. Inspired by the fact that two-thirds of our planet is covered by water, the brand’s mission is to create high-quality, timeless clothing that minimizes environmental impact. TwoThirds focuses on sustainable materials, ethical production practices, and transparency to ensure their apparel aligns with their vision of protecting the oceans. Dedicated to reducing overproduction and waste, TwoThirds operates on a pre-order model, crafting products only when they are ordered. This unique approach eliminates excess inventory and ensures every piece is made with care and precision. By using organic and recycled fabrics, TwoThirds helps its customers make environmentally friendly choices without sacrificing style or quality.",
+  "qualifications": [
+    "Pre-Order Model",
+    "Sustainable Materials",
+    "Ocean Advocacy",
+    "Plastic-Free Packaging"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://twothirds.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T14:54:22.773Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "oeko_tex_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "677406a0660e120402c58109"
+  },
+  "name": "Pure Table Top",
+  "description": "A leading innovator in stylish and sustainable homeware, specializing in thoughtfully designed tableware, kitchen accessories, and home décor. With a mission to blend modern aesthetics with sustainability, Pure Table Top offers high-quality products that bring elegance and eco-consciousness into homes. Their collections are carefully crafted using sustainable materials like bamboo, recycled glass, and organic fabrics, aligning with their commitment to protecting the planet. The company stands out for its dedication to transparency and responsible practices, working with ethical suppliers and minimizing waste in its production processes. Pure Table Top aims to inspire customers to make mindful choices by offering timeless, durable products that enrich daily living while reducing environmental impact.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Manufacturing",
+    "Innovation in Sustainability"
+  ],
+  "logo": "https://puretabletop.com/cdn/shop/files/pure_table_top_logo.png?height=50&v=1680173763",
+  "website": "https://puretabletop.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T14:58:40.514Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "iso_logo",
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67740d95660e120402c5810a"
+  },
+  "name": "Topiku",
+  "description": "An eco-conscious fashion brand specializing in sustainable headwear crafted from upcycled and recycled materials. Rooted in its commitment to environmental responsibility, the company transforms waste such as fabric scraps, plastic bottles, and other discarded materials into stylish and durable hats. Topiku’s mission extends beyond sustainable production; it also aims to empower local communities by partnering with skilled artisans in Indonesia, ensuring fair wages and ethical working conditions. Every Topiku product reflects a dedication to quality, creativity, and sustainability. By focusing on upcycling and minimizing environmental impact, the company provides an eco-friendly alternative to traditional fashion, encouraging consumers to make mindful choices. Topiku is more than a brand—it's a movement to reimagine waste as a valuable resource and to promote sustainable fashion practices globally.",
+  "qualifications": [
+    "Upcycled Materials",
+    "Community Empowerment",
+    "Ethical Practices",
+    "Low Carbon Footprint"
+  ],
+  "logo": "https://images.squarespace-cdn.com/content/v1/55ccebf2e4b03e8de40a82ba/1536992388666-4LUSN6IC9ILLFJ9F38J1/topiku-site-logo.png?format=1500w",
+  "website": "https://www.topiku.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T15:28:21.919Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67740fef660e120402c5810b"
+  },
+  "name": "ooni",
+  "description": "A trailblazing company revolutionizing the art of outdoor cooking with its high-performance, portable pizza ovens. Founded on a passion for delicious, wood-fired pizza, Ooni empowers pizza enthusiasts to create restaurant-quality pies at home in as little as 60 seconds. Known for their innovative designs, Ooni ovens are versatile, easy to use, and fueled by sustainable energy sources like wood pellets, gas, and charcoal. Beyond their product excellence, Ooni is deeply committed to sustainability and social responsibility. The company actively participates in environmental initiatives, such as planting trees for every oven sold, and advocates for reducing carbon footprints through thoughtful design and operations. By blending functionality, style, and eco-consciousness, Ooni has become a global leader in the outdoor cooking space.",
+  "qualifications": [
+    "Innovatice Design",
+    "Sustainable Fuels",
+    "Eco Friendly Practices",
+    "Quality Craftsmanship"
+  ],
+  "logo": "https://ooni.com/cdn/shop/files/Ooni-PrimaryLogo-301x182-c1fe72b.png?v=1717008879",
+  "website": "https://ooni.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T15:38:23.239Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "fsc_logo"
+  ],
+  "category": "Kitchen"
+},
+{
+  "_id": {
+    "$oid": "67742a28660e120402c5810c"
+  },
+  "name": "Aveda",
+  "description": "A global leader in the beauty industry, renowned for its commitment to sustainability, wellness, and naturally derived products. Established with the philosophy of combining beauty with environmental responsibility, Aveda creates high-performance hair, skin, and body care products using botanically based ingredients. The brand is dedicated to minimizing its ecological footprint while delivering luxurious, salon-quality results. Aveda’s holistic approach extends beyond its products to encompass sustainable manufacturing, renewable energy use, and philanthropic initiatives that support global environmental causes. As a pioneer in eco-conscious beauty, Aveda sets the standard for blending natural elements with cutting-edge science to provide products that are both effective and environmentally responsible.",
+  "qualifications": [
+    "Naturally Derived Ingredients",
+    "Sustainable Packaging",
+    "Renewable Energy",
+    "Salon-Quality Performance"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://www.aveda.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T17:30:16.256Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "usda_organic_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67742bee660e120402c5810d"
+  },
+  "name": "Ancient Nutrition",
+  "description": "A wellness brand dedicated to delivering high-quality nutritional products inspired by ancient traditions and backed by modern science. Specializing in supplements, collagen, and protein powders, the company integrates whole-food ingredients and traditional remedies to support optimal health and well-being. Ancient Nutrition’s mission is to empower individuals to live healthier, more vibrant lives by reconnecting them with the benefits of natural, nutrient-dense products. At the heart of its philosophy is a commitment to sustainability and regenerative farming practices. Ancient Nutrition sources ingredients responsibly and incorporates environmentally friendly methods to reduce its ecological footprint. The brand is a trusted leader in health and wellness, offering a range of products that cater to diverse dietary needs and health goals.",
+  "qualifications": [
+    "Whole-Food Ingredients",
+    "Regenerative Agriculture",
+    "Clean Label",
+    "Comprehensive Wellness",
+    "Charitable Giving"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://ancientnutrition.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T17:37:50.912Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "67742f20660e120402c5810e"
+  },
+  "name": "Project Reef",
+  "description": "A forward-thinking skincare brand dedicated to providing reef-safe, eco-friendly products that protect both your skin and the planet. Specializing in sunscreen and skincare products, the company emphasizes using clean, natural ingredients that are free from harmful chemicals like oxybenzone and octinoxate, which can damage coral reefs. Project Reef is committed to creating high-performance, non-toxic products that cater to environmentally conscious consumers without compromising on quality. Beyond skincare, Project Reef actively contributes to marine conservation efforts, partnering with organizations to restore coral reefs and promote ocean health. By blending effective skincare solutions with a strong environmental mission, Project Reef empowers individuals to make choices that are better for their skin and the oceans.",
+  "qualifications": [
+    "Reef-Safe Formulas",
+    "Sustainable Packaging",
+    "Marine Conservation Advocacy",
+    "Natural Ingredients",
+    "Carbon Neutral Commitment"
+  ],
+  "logo": "https://projectreef.com/cdn/shop/files/reef-logo.png?v=1707751125",
+  "website": "https://projectreef.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T17:51:28.413Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "nongmo_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "677430b7660e120402c5810f"
+  },
+  "name": "Cariloha",
+  "description": "A luxury lifestyle brand that blends comfort and sustainability through its unique bamboo-based products. From bedding and bath essentials to clothing and accessories, Cariloha transforms bamboo into luxuriously soft and eco-friendly fabrics that are both durable and sustainable. The company is dedicated to promoting sustainable living, leveraging bamboo’s naturally renewable qualities to craft products that benefit consumers and the planet alike. Cariloha’s commitment to sustainability extends beyond its materials. The brand employs eco-conscious practices across its manufacturing and operations, ensuring minimal environmental impact. With a focus on providing high-quality, stylish, and sustainable products, Cariloha has become a trusted choice for individuals seeking to enhance their comfort while supporting environmentally responsible practices.",
+  "qualifications": [
+    "Bamboo Sustainability",
+    "Eco-Friendly Manufacturing",
+    "Luxurious Comfort",
+    "Plastic-Free Packaging"
+  ],
+  "logo": "https://cdn11.bigcommerce.com/s-ph0s11yw4g/images/stencil/250x63/cariloha-logo_1706911760__95516.original.png",
+  "website": "https://www.cariloha.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T17:58:15.475Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67743224660e120402c58110"
+  },
+  "name": "Bambino Mio",
+  "description": "A globally recognized brand specializing in reusable cloth diapers and eco-friendly baby products. Founded on the principles of sustainability and quality, Bambino Mio provides parents with an environmentally friendly alternative to disposable diapers, helping reduce waste while offering comfort and functionality. Their products are designed with both babies and the planet in mind, featuring soft, safe materials and stylish designs that cater to modern families. Bambino Mio is committed to making sustainable parenting accessible by offering a wide range of reusable nappies, swimwear, and accessories. The company actively promotes eco-conscious practices and educates parents about the environmental and financial benefits of reusable diapering. With a mission to protect the planet for future generations, Bambino Mio combines innovative design with a passion for sustainability.",
+  "qualifications": [
+    "Eco-Friendly Diapering",
+    "Safe Materials",
+    "Global Impact"
+  ],
+  "logo": "https://www.bambinomio.com/cdn/shop/files/logo_bambino.png?v=1685819208&width=360",
+  "website": "https://www.bambinomio.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T18:04:20.813Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677434c1660e120402c58111"
+  },
+  "name": "Ethanology Distillation",
+  "description": "A boutique craft distillery celebrated for its artisanal approach to creating high-quality, small-batch spirits. Located in the heart of Michigan, the distillery is dedicated to using locally sourced, organic ingredients and innovative techniques to produce distinctive spirits that honor the region's rich agricultural heritage. Ethanology takes pride in its commitment to craftsmanship, sustainability, and community, making it a standout in the craft distilling industry. At Ethanology, every bottle tells a story of dedication to quality and the environment. The distillery emphasizes eco-conscious practices, from sourcing grains and botanicals from nearby farms to using energy-efficient distillation methods. By combining artistry and sustainability, Ethanology delivers a premium drinking experience that reflects its values and passion for innovation.",
+  "qualifications": [
+    "Locally Sourced Ingredients",
+    "Sustainability Focus",
+    "Small-Batch Production",
+    "Unique Flavors"
+  ],
+  "logo": "https://www.ethanologydistillation.com/uploads/7/5/9/1/75911369/published/ethanology-mark-r.png?1710545238",
+  "website": "https://www.ethanologydistillation.com/#/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2024-12-31T18:15:29.531Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6774a669417696ba1a7b472e"
+  },
+  "name": "Plank Hardware",
+  "description": "A design-forward brand specializing in high-quality, stylish hardware for homes and interiors. Focused on blending functionality with aesthetics, the company offers a wide range of cabinet handles, drawer pulls, hooks, and other hardware pieces designed to elevate any space. Plank Hardware’s commitment to thoughtful design and craftsmanship ensures that its products are not only durable but also timelessly elegant. The brand places a strong emphasis on sustainability, employing environmentally friendly materials and practices throughout its operations. By focusing on both innovative design and eco-conscious production, Plank Hardware has become a trusted choice for homeowners, interior designers, and renovators who value style, quality, and environmental responsibility.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Timeless Design",
+    "Durable Craftsmanship",
+    "Customer-Centric Approach"
+  ],
+  "logo": "https://plankhardware.com/cdn/shop/files/Black-Logo-with-Transparent-Background_180x.png?v=1689175934",
+  "website": "https://plankhardware.com/",
+  "createdAt": {
+    "$date": "2025-01-01T02:20:25.076Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "1_for_the_planet",
+    "iso_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6774a853417696ba1a7b472f"
+  },
+  "name": "The Boatyard Distillery",
+  "description": "A craft distillery known for producing premium spirits with a deep connection to its coastal heritage. Located on the shores of Fermanagh in Northern Ireland, the distillery combines traditional techniques with modern innovation to create award-winning gin, whiskey, and other spirits. Each product is carefully crafted using locally sourced botanicals and pure water from nearby lakes, ensuring a distinctive flavor that reflects its origin. Sustainability and craftsmanship are at the heart of The Boatyard Distillery’s operations. The distillery is committed to minimizing its environmental footprint through sustainable practices, such as sourcing ingredients locally and utilizing eco-friendly packaging. By combining its passion for exceptional spirits with a respect for the environment, The Boatyard Distillery has established itself as a leading name in artisanal distilling.",
+  "qualifications": [
+    "Locally Sourced Ingredients",
+    "Traditional Technique",
+    "Heritage Connection",
+    "Eco Friendly Packaging"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://www.boatyarddistillery.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T02:28:35.652Z"
+  },
+  "icons": [
+    "b_corp",
+    "craft_distillery_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6774adca417696ba1a7b4730"
+  },
+  "name": "goodbuy",
+  "description": "An innovative online platform that connects conscious consumers with small, independent businesses offering sustainable and ethically made products. By curating a diverse marketplace of goods ranging from home essentials to fashion, GoodBuy empowers shoppers to make choices that support local economies and environmentally friendly practices. The platform’s mission is to create a more equitable and sustainable future by making it easy for consumers to shop responsibly. GoodBuy takes pride in its commitment to transparency and community building. Each business featured on the platform is carefully vetted to ensure alignment with ethical standards, such as fair labor practices, sustainable sourcing, and eco-friendly packaging. Through education and advocacy, GoodBuy inspires a shift towards mindful consumption, fostering a marketplace that prioritizes people and the planet over profit.",
+  "qualifications": [
+    "Support for Small Businesses",
+    "Sustainability Focus",
+    "Transparency",
+    "Community-Centered",
+    "Diverse Product Range"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://www.trygoodbuy.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T02:51:54.337Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "fair_trade",
+    "nongmo_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67755016051cfe55bf119d59"
+  },
+  "name": "Pyzel Surfboards",
+  "description": "A world-renowned surfboard brand celebrated for its high-performance designs and commitment to quality craftsmanship. Founded by master shaper Jon Pyzel in Hawaii, the brand has become a favorite among professional surfers and enthusiasts alike, offering a wide range of boards tailored to different surf styles and conditions. From shortboards to big wave guns, Pyzel Surfboards combines innovative design with decades of expertise to deliver boards that enhance performance and provide unparalleled wave-riding experiences. Beyond performance, Pyzel Surfboards embraces sustainability and eco-conscious practices, striving to minimize its environmental impact. The company incorporates sustainable materials, such as eco-friendly resins and recycled foam blanks, into its manufacturing process and continually explores new methods to reduce waste. By balancing performance and sustainability, Pyzel Surfboards has established itself as a leader in the surfing community.",
+  "qualifications": [
+    "Hi-Performance Boards",
+    "Innovative Craftsmanship",
+    "Sustainability Commitment",
+    "Global Reach",
+    "Collaborative Design"
+  ],
+  "logo": "https://pyzelsurfboards.com/cdn/shop/files/logo_1.png?v=1708989668&width=300",
+  "website": "https://pyzelsurfboards.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T14:24:22.546Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "ecoboard_logo"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "677551d8051cfe55bf119d5a"
+  },
+  "name": "818 Tequila",
+  "description": "A premium tequila brand known for its commitment to craftsmanship, sustainability, and social responsibility. Crafted in Jalisco, Mexico, 818 Tequila offers a range of smooth, high-quality tequilas made from 100% Blue Weber agave. The brand emphasizes traditional production methods, including slow cooking and fermentation, to create a refined taste profile that appeals to tequila enthusiasts worldwide. Beyond its exceptional spirits, 818 Tequila is deeply committed to sustainable and ethical practices. The company partners with local farmers and distillers, ensuring fair wages and supporting the local community. Additionally, 818 implements eco-conscious measures, such as recycling agave waste and using renewable energy in its production process, reflecting its dedication to environmental stewardship.",
+  "qualifications": [
+    "Premium Tequila",
+    "Sustainable Practices",
+    "Traditional Methods",
+    "Philanthropic Initiatives"
+  ],
+  "logo": "https://drink818.com/cdn/shop/files/818_b1553dc0-948f-45eb-97a3-39982e03d3c7.png?v=1664294354&width=70",
+  "website": "https://drink818.com/",
+  "createdAt": {
+    "$date": "2025-01-01T14:31:52.541Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "fair_trade",
+    "100%_agave_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67755654051cfe55bf119d5b"
+  },
+  "name": "Back Market",
+  "description": "A leading online marketplace specializing in refurbished electronics, offering consumers a sustainable and cost-effective alternative to purchasing new devices. Founded with the mission to reduce e-waste and promote circular economy practices, Back Market connects customers with certified refurbishers who restore devices to like-new condition. The platform features a wide range of products, including smartphones, laptops, tablets, and home appliances, all backed by warranties and stringent quality standards. As a pioneer in sustainable technology, Back Market is committed to combating the environmental impact of electronic waste by extending the lifecycle of devices. The company actively promotes responsible consumption and transparency, empowering customers to make eco-friendly choices without compromising quality or performance. Back Market is more than just a marketplace—it's a movement toward a more sustainable tech industry.",
+  "qualifications": [
+    "Sustainability Focus",
+    "Quality Assurance",
+    "Cost-Effective",
+    "Customer-Centric Approach",
+    "Eco-Friendly Advocacy"
+  ],
+  "logo": "https://front-office.statics.backmarket.com/91c74a42d6d7aa3f88b73021db8c52622b930fa4/img/header/Logo.svg",
+  "website": "https://www.backmarket.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T14:51:00.578Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67756acb051cfe55bf119d5c"
+  },
+  "name": "Marphyl",
+  "description": "A sustainable and eco-conscious brand specializing in all-natural, multi-purpose marine phytoplankton products. Harnessing the power of the ocean, Marphyl offers a range of organic soil enhancers, pet supplements, and health products that are rich in nutrients and derived from 100% pure marine phytoplankton. The company’s mission is to promote environmental sustainability and healthy living by utilizing one of nature’s most powerful and renewable resources. Marphyl is committed to maintaining the delicate balance of marine ecosystems. By sustainably harvesting marine phytoplankton and employing environmentally friendly production practices, the company ensures that its products are not only effective but also contribute to the health of the planet. Marphyl empowers individuals to make greener choices, whether nurturing their plants, pets, or personal well-being.",
+  "qualifications": [
+    "Marine-Based Sustainability",
+    "Eco-Friendly Practices",
+    "Versatile Applications",
+    "Natural Ingredients"
+  ],
+  "logo": "https://marphyl.com/cdn/shop/files/Logo-Marphyl_Authorized-AbbreviatedName_Horizontal_copy.png?v=1714979149&width=200",
+  "website": "https://marphyl.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T16:18:19.426Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "67756d5d051cfe55bf119d5d"
+  },
+  "name": "FatFace",
+  "description": "A British lifestyle clothing and accessories brand known for its relaxed, comfortable, and versatile designs. Inspired by a love of the outdoors and a spirit of adventure, FatFace creates clothing that seamlessly blends practicality and style, catering to men, women, and children. The brand focuses on providing high-quality, timeless pieces that support active and casual lifestyles, from coastal walks to city outings. FatFace is also committed to sustainability, actively integrating eco-conscious materials and ethical practices into its operations. The company works toward reducing its environmental impact by using sustainable fabrics, adopting circular fashion initiatives, and partnering with ethical suppliers. With a mission to deliver stylish yet responsible products, FatFace is a brand that values both people and the planet.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Supply Chain",
+    "Durable Design",
+    "Circular Fashion"
+  ],
+  "logo": "https://www.fatface.com/static-content/icons/header/fatface/v2/default/fatface-wide.svg",
+  "website": "https://www.fatface.com/us/en",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-01T16:29:17.293Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "oeko_tex_logo",
+    "1_for_the_planet",
+    "fair_trade"
+  ],
+  "category": "Clothing"
 }]

@@ -11,6 +11,10 @@
     text-align: center;
 }
 
+.company-card {
+    margin-bottom: 15px;
+}
+
 .card-header {
     align-items: center;
     background-color: #75ba6c;
