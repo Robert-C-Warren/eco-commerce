@@ -5013,4 +5013,78 @@
     "carbon_neutral_logo"
   ],
   "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "677717183b0f82126ff0341d"
+  },
+  "name": "Westland Distillery",
+  "description": "An artisanal spirits company dedicated to producing high-quality, sustainably crafted beverages that honor the natural environment. Rooted in eco-conscious practices, the distillery sources locally grown ingredients and uses innovative techniques to minimize its environmental footprint. By blending tradition with sustainability, Wetland Distillery creates premium spirits that reflect their commitment to preserving wetlands and promoting biodiversity.",
+  "qualifications": [
+    "Locally Sourced Ingredients",
+    "Eco-Friendly Operations",
+    "Community Engagement",
+    "Artisan Craftsmanship",
+    "Biodiversity Advocacy"
+  ],
+  "logo": "https://cdn.brandfetch.io/idWjuf8AER/w/400/h/400/theme/dark/icon.jpeg?c=1bx1738536206880id64Mup7acUwtqU9Er&t=1732620206374",
+  "website": "https://westlanddistillery.com/",
+  "createdAt": {
+    "$date": "2025-01-02T22:45:44.571Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "677719143b0f82126ff0341e"
+  },
+  "name": "DOG",
+  "description": "A luxury pet care brand founded by veterinarian Dr. Lisa Chimes, specializing in high-quality grooming products that are safe, effective, and eco-friendly. Designed to meet the specific needs of pets and their owners, the brand’s product line includes shampoos, grooming wipes, and sprays crafted from natural, non-toxic ingredients. DOG by Dr. Lisa combines expert veterinary knowledge with a commitment to sustainability, offering products that promote the health and well-being of pets while caring for the environment.",
+  "qualifications": [
+    "Veterinarian Approved",
+    "Natural Ingredients",
+    "Cruelty-Free Commitment",
+    "Convenient & Luxurious"
+  ],
+  "logo": "https://cdn.brandfetch.io/id1UfXToOu/theme/dark/logo.svg?c=1bx1738536735689id64Mup7ac1u_g_jcC&t=1731585500419",
+  "website": "https://us.dogbydrlisa.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T22:54:12.801Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo"
+  ],
+  "category": "Pet"
+},
+{
+  "_id": {
+    "$oid": "67771abc3b0f82126ff0341f"
+  },
+  "name": "Tomorrow Farms",
+  "description": "A food innovation company dedicated to transforming the way we produce and consume food. Leveraging cutting-edge technology and sustainable practices, the company partners with trailblazing startups to develop animal-free and environmentally friendly food alternatives. Tomorrow Farms envisions a future where delicious, nutritious, and affordable foods are created with minimal impact on the planet, contributing to a more sustainable food system for future generations.",
+  "qualifications": [
+    "Food Tech Innovation",
+    "Sustainability Focus",
+    "Accessible Alternatives",
+    "Animal-Free Commitment",
+    "Advocacy for Change"
+  ],
+  "logo": "https://cdn.brandfetch.io/idML8mD0Yp/w/200/h/200/theme/dark/icon.jpeg?c=1bx1738537162095id64Mup7acK6uw_qTm&t=1725073064576",
+  "website": "https://tomorrowfarms.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T23:01:16.121Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo"
+  ],
+  "category": "Beverage"
 }]
