@@ -14,11 +14,9 @@
   "website": "https://www.patagonia.com/home/",
   "icons": [
     "b_corp",
-    "1_for_the_planet",
-    "fair_trade",
     "bluesign_logo",
-    "GOTS_logo",
-    "recycled_materials"
+    "fair_trade",
+    "1_for_the_planet"
   ],
   "category": "Clothing"
 },
@@ -39,8 +37,8 @@
   "website": "https://www.fjallraven.com/us/en-us/",
   "icons": [
     "b_corp",
-    "fla_association",
-    "cascale"
+    "cascale",
+    "fla_association"
   ],
   "category": "Clothing"
 },
@@ -103,7 +101,7 @@
   "website": "https://livesozy.com/",
   "icons": [
     "b_corp",
-    "change_climate",
+    "carbon_neutral_logo",
     "1_for_the_planet",
     "RAINN_logo",
     "One_Tree_Planted_Logo"
@@ -125,7 +123,6 @@
   "website": "https://someonesomewhere.mx/",
   "icons": [
     "b_corp",
-    "small_business",
     "change_climate",
     "EcoVadis_logo"
   ],
@@ -145,10 +142,10 @@
   "logo": "https://www.pakaapparel.com/cdn/shop/files/logo_80x.png?v=1633919352",
   "website": "https://www.pakaapparel.com/",
   "icons": [
-    "oeko_tex_logo",
     "b_corp",
-    "SeaLegacy_logo",
-    "Peruvian_Hearts_logo"
+    "Peruvian_Hearts_logo",
+    "fair_trade",
+    "SeaLegacy_logo"
   ],
   "category": "Clothing"
 },
@@ -189,8 +186,8 @@
   "logo": "https://jettylife.com/cdn/shop/files/jetty_logo_deep_sea_nav_200x.png?v=1722883690",
   "website": "https://jettylife.com/",
   "icons": [
-    "jetty_rock_foundation_logo",
-    "b_corp"
+    "b_corp",
+    "jetty_rock_foundation_logo"
   ],
   "category": "Clothing"
 },
@@ -210,10 +207,9 @@
   "icons": [
     "b_corp",
     "epa_green_power_logo",
-    "asbc_logo",
-    "recycled_materials"
+    "asbc_logo"
   ],
-  "category": "Home"
+  "category": "Food"
 },
 {
   "_id": {
@@ -3494,4 +3490,1527 @@
     "fair_trade"
   ],
   "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67768efd12fa53868a3ed43e"
+  },
+  "name": "Dr. Squatch",
+  "description": "A natural personal care brand dedicated to crafting high-quality grooming products for men. Known for its signature natural soaps, shampoos, deodorants, and other hygiene essentials, Dr. Squatch uses only sustainably sourced ingredients to create products that are gentle on the skin and free from harsh chemicals. The brand’s mission is to elevate men’s grooming routines with products that are effective, eco-friendly, and distinctly masculine. Rooted in transparency and environmental responsibility, Dr. Squatch takes pride in delivering products that prioritize health and sustainability. With fun, relatable branding and a commitment to clean ingredients, the company has become a trusted name in natural men’s grooming. Dr. Squatch empowers men to embrace self-care while making environmentally responsible choices.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Effective & Unique Scents",
+    "Health-Conscious",
+    "Transparency"
+  ],
+  "logo": "https://www.drsquatch.com/cdn/shop/files/drsq_horiz_logo_white_3.svg?v=1735805319",
+  "website": "https://www.drsquatch.com/",
+  "createdAt": {
+    "$date": "2025-01-02T13:05:01.110Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "made_safe_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776908c12fa53868a3ed43f"
+  },
+  "name": "The Honest Bison",
+  "description": "A premium meat company dedicated to providing 100% grass-fed, ethically raised bison, elk, and beef products. Founded on the principles of honesty and transparency, the company partners with small, sustainable ranchers to ensure its animals are raised in open pastures without hormones, antibiotics, or feedlots. With a mission to promote regenerative agriculture and nutrient-dense diets, The Honest Bison offers high-quality meats that are as good for the planet as they are for your health. The company’s commitment to sustainability extends beyond its farming practices. By supporting regenerative farming, The Honest Bison helps restore soil health, reduce carbon emissions, and maintain ecological balance. The brand empowers consumers to make responsible food choices by offering clean, responsibly sourced meats with full traceability.",
+  "qualifications": [
+    "100% Grass Fed Meat",
+    "Ethical Ranching",
+    "Regenerative Agriculture",
+    "Nutrient-Dense Products",
+    "Transparent Sourcing"
+  ],
+  "logo": "https://thehonestbison.com/wp-content/uploads/THB_Bison_Logo_BLK.svg#64804",
+  "website": "https://thehonestbison.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T13:11:40.787Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "certified_humane_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6776934512fa53868a3ed440"
+  },
+  "name": "Kase Custom",
+  "description": "a design-focused brand specializing in creating bespoke, handcrafted furniture tailored to individual tastes and needs. Known for its exceptional craftsmanship and attention to detail, the company offers custom-made furniture pieces ranging from tables and chairs to shelving and cabinetry. Kase Custom Furniture combines timeless aesthetics with functionality, making each piece a unique addition to any home or workspace. Sustainability lies at the heart of Kase Custom Furniture's ethos. The company prioritizes eco-friendly practices by sourcing responsibly harvested wood, incorporating reclaimed materials, and utilizing low-VOC finishes. By blending innovative design with sustainable production, Kase Custom Furniture delivers products that are built to last while contributing to a healthier planet.",
+  "qualifications": [
+    "Bespoke Design",
+    "Sustainable Materials",
+    "Craftsmanship Excellence",
+    "Versatile Product Range"
+  ],
+  "logo": "https://kasecustom.com/cdn/shop/files/KC-PrimaryLogo-Iron-Large_a5ecad2b-03fd-46da-8612-b25960195c03.png?v=1735680107&width=1200",
+  "website": "https://kasecustom.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T13:23:17.984Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776940412fa53868a3ed441"
+  },
+  "name": "Every Man Jack",
+  "description": "A leading personal care brand dedicated to crafting high-quality grooming products for men using naturally derived and eco-friendly ingredients. With a mission to provide clean, effective, and affordable solutions, the brand offers a comprehensive range of products, including shampoos, body washes, deodorants, skincare, and shaving essentials. Every Man Jack stands out for its commitment to creating products that cater to the needs of men while prioritizing the health of the planet. At the core of its philosophy is a focus on sustainability and transparency. Every Man Jack utilizes responsibly sourced materials, recyclable packaging, and manufacturing practices that minimize environmental impact. By blending performance with purpose, the brand has become a trusted name for men seeking natural, ethical grooming products.",
+  "qualifications": [
+    "Clean Ingredients",
+    "Sustainable Practices",
+    "Comprehensive Product Line",
+    "Accessible Clean Care"
+  ],
+  "logo": "https://www.everymanjack.com/cdn/shop/files/Property_1_bw_Property_2_vertical_Property_3_negative.png?v=1708092367&width=256",
+  "website": "https://www.everymanjack.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T13:26:28.375Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776950912fa53868a3ed442"
+  },
+  "name": "Tru Earth",
+  "description": "An innovative eco-friendly brand specializing in zero-waste household cleaning products. Best known for its laundry detergent strips, Tru Earth offers a revolutionary approach to cleaning with compact, lightweight, and biodegradable solutions that significantly reduce plastic waste. Committed to sustainability and simplicity, Tru Earth empowers consumers to make environmentally responsible choices without compromising on cleaning performance. With a mission to combat the global plastic crisis, Tru Earth incorporates sustainable practices in every aspect of its operations. The brand focuses on reducing carbon emissions, eliminating single-use plastics, and promoting education on the environmental benefits of zero-waste living. Tru Earth’s products are designed to be effective, affordable, and accessible, inspiring a movement toward a cleaner planet.",
+  "qualifications": [
+    "Zero Waste Products",
+    "Biodegradable & Non-Toxic",
+    "Compact",
+    "Social Responsibility",
+    "Global Reach"
+  ],
+  "logo": "https://tru.earth/cdn/shop/files/logo_updated.png?v=1711914726&width=140",
+  "website": "https://tru.earth/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T13:30:49.014Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Cleaning"
+},
+{
+  "_id": {
+    "$oid": "67769d2212fa53868a3ed443"
+  },
+  "name": "OLPRO",
+  "description": "A leading UK-based brand specializing in high-quality outdoor leisure products, including tents, campervan awnings, and camping accessories. Designed for outdoor enthusiasts, OLPRO’s products combine innovative features, stylish designs, and durability to enhance camping and outdoor experiences. With a strong focus on customer satisfaction, OLPRO offers gear that is easy to use, functional, and perfect for families, adventurers, and festival-goers alike. OLPRO is committed to sustainability and environmental responsibility. The brand incorporates eco-friendly materials and manufacturing practices while actively participating in tree-planting initiatives to offset its carbon footprint. By blending innovation with eco-consciousness, OLPRO ensures that adventurers can enjoy the great outdoors responsibly.",
+  "qualifications": [
+    "Innovative Outdoor Gear",
+    "Durable & Reliable",
+    "Eco-Friendly Practices",
+    "Community Engagement"
+  ],
+  "logo": "https://cdn11.bigcommerce.com/s-8hl787wvsy/images/stencil/92x92/ol_identity_white_aw_1616598925__69130.original.png",
+  "website": "https://olproshop.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:05:22.819Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "67769dff12fa53868a3ed444"
+  },
+  "name": "Goodnature",
+  "description": "A pioneering brand specializing in humane, automatic pest control solutions designed to protect homes, farms, and natural ecosystems. Known for its innovative self-resetting traps, Goodnature offers an eco-friendly and non-toxic approach to pest control, effectively targeting species such as rats and mice without the use of harmful chemicals. Built for durability and ease of use, Goodnature traps are powered by CO₂ canisters, ensuring consistent, humane operation. Committed to sustainability, Goodnature creates products that align with its vision of a balanced coexistence between humans and wildlife. By reducing the reliance on poisons and single-use traps, the company helps minimize harm to non-target species and the environment. Trusted globally, Goodnature is dedicated to making pest control safe, effective, and sustainable.",
+  "qualifications": [
+    "Humane Pest Control",
+    "Eco Friendly Design",
+    "Self-Resetting Technology",
+    "Durable & Weather Resistant"
+  ],
+  "logo": "https://goodnature.co/cdn/shop/files/GN_Logotype-Web_Orange_aad5c4e8-5125-40de-8805-02aa5ff69178.png?v=1614299574&width=90",
+  "website": "https://goodnature.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:09:03.834Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "iso_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67769ed412fa53868a3ed445"
+  },
+  "name": "ROKA London",
+  "description": "A contemporary lifestyle brand celebrated for its stylish, functional, and sustainable backpacks, bags, and accessories. Known for blending innovative design with practicality, Roka London’s products are crafted to suit modern, on-the-go lifestyles. From commuters and travelers to students and parents, Roka’s collections cater to individuals seeking versatile and durable bags that make a statement. At the core of Roka London’s ethos is a commitment to sustainability and ethical practices. The brand incorporates recycled materials, such as recycled PET (rPET) bottles, into its manufacturing process, creating eco-conscious products that minimize environmental impact. With a focus on quality, design, and sustainability, Roka London empowers customers to choose products that are as kind to the planet as they are to their personal style.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Innovative Design",
+    "Ethical Production",
+    "Versatile Collection",
+    "Durability & Quality"
+  ],
+  "logo": "https://rokalondon.com/cdn/shop/files/ROKA-LONDON-LOGO-WHITE-500.png?v=1681374353&width=120",
+  "website": "https://rokalondon.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:12:36.545Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67769fc112fa53868a3ed446"
+  },
+  "name": "Cleanery",
+  "description": "A sustainable cleaning products brand that prioritizes eco-friendly innovation and effectiveness. With a mission to transform the way people clean, Cleanery offers a range of non-toxic, biodegradable, and refillable cleaning solutions for homes and businesses. Their products are designed to minimize environmental impact while delivering exceptional cleaning performance, making it easier for consumers to adopt greener practices in their everyday lives. Committed to sustainability, Cleanery emphasizes the use of plant-based ingredients, recyclable packaging, and a closed-loop refill system to reduce plastic waste. By focusing on transparency, safety, and environmental responsibility, Cleanery empowers customers to maintain a clean home while contributing to a cleaner planet.",
+  "qualifications": [
+    "Non-Toxic Formulas",
+    "Sustainable Packaging",
+    "Eco-Friendly Ingredients",
+    "Refill & Reuse System"
+  ],
+  "logo": "https://www.cleaneryonline.com/cdn/shop/files/Cleanery_Logo_-_dark_teal_brand_-_small_f7c153d2-ba90-4fb5-83b2-f0c65ce26457.png?v=1727860826&width=250",
+  "website": "https://www.cleaneryonline.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:16:33.246Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Cleaning"
+},
+{
+  "_id": {
+    "$oid": "6776a06e12fa53868a3ed447"
+  },
+  "name": "GOT BAG",
+  "description": "A pioneering eco-conscious brand known for creating the world’s first backpacks made from recycled ocean plastic. Founded with a mission to fight plastic pollution, the company transforms collected marine debris into durable, stylish, and functional bags and accessories. Got Bag’s innovative approach combines sustainability with high-quality craftsmanship, appealing to environmentally conscious consumers seeking products that make a positive impact. With sustainability at its core, Got Bag partners with coastal communities and cleanup initiatives to retrieve plastic waste from the oceans. The company promotes a circular economy by giving discarded materials a second life, helping to reduce environmental harm while raising awareness about the global plastic crisis. Got Bag empowers individuals to join the movement toward cleaner oceans and more sustainable living.",
+  "qualifications": [
+    "Ocean Plastic Recycling",
+    "Sustainable Manufacturing",
+    "Durable & Versatile",
+    "Minimalist Design"
+  ],
+  "logo": "https://us.got-bag.com/cdn/shop/files/GOT_BAG_Logo_Square_black_1_fbe56d39-d711-4f4e-b4dd-18c181958ce0_120x.png?v=1696021522",
+  "website": "https://us.got-bag.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:19:26.964Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "carbon_neutral_logo",
+    "1_for_the_planet",
+    "oeko_tex_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776a2b812fa53868a3ed448"
+  },
+  "name": "Ekster",
+  "description": "A leading innovator in smart wallets and everyday carry accessories, blending sleek design with advanced technology. Known for its minimalist, RFID-blocking wallets with built-in tracking capabilities, Ekster has revolutionized the way people organize and protect their essentials. The brand combines premium materials such as leather and aluminum with state-of-the-art features, creating functional, stylish solutions for modern lifestyles. Sustainability is at the heart of Ekster’s operations. The company uses eco-friendly materials, including recycled aluminum and sustainably sourced leather, while incorporating solar-powered tracking technology to reduce reliance on disposable batteries. With a commitment to quality, innovation, and environmental responsibility, Ekster offers products that align with the values of convenience, security, and sustainability.",
+  "qualifications": [
+    "Smart Features",
+    "Sustainable Materials",
+    "Compact Design",
+    "Solar-Powered Technology",
+    "Versatile Product Range"
+  ],
+  "logo": "https://cdn.brandfetch.io/idK_sD4xU-/theme/dark/logo.svg?c=1bx1738506388909id64Mup7acpaNIOBRX&t=1732617508264",
+  "website": "https://www.ekster.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:29:12.337Z"
+  },
+  "icons": [
+    "b_corp",
+    "lwg_logo",
+    "carbon_neutral_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776a5af12fa53868a3ed449"
+  },
+  "name": "Fraser tea",
+  "description": "A family-owned company dedicated to crafting premium, organic teas that promote wellness and sustainability. With a deep passion for tea culture, Fraser Tea offers an extensive collection of handcrafted blends, ranging from classic black and green teas to innovative herbal infusions. Each tea is thoughtfully curated using the finest organic ingredients, ensuring exceptional taste and quality. At the core of Fraser Tea’s mission is a commitment to environmental responsibility and ethical sourcing. The company partners with certified organic and fair-trade farms to support sustainable agriculture while maintaining the highest standards of purity. By combining artisanal craftsmanship with eco-conscious practices, Fraser Tea provides a guilt-free indulgence for tea lovers around the globe.",
+  "qualifications": [
+    "Organic Excellence",
+    "Sustainability Focus",
+    "Handcrafted Blends",
+    "Health & Wellness",
+    "Community Engagement"
+  ],
+  "logo": "https://frasertea.com/cdn/shop/t/32/assets/fraser-tea-logo-yellow.png?v=64692888445007600821691680078",
+  "website": "https://frasertea.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:41:51.469Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "fair_trade",
+    "nongmo_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776a68412fa53868a3ed44a"
+  },
+  "name": "BeatBox",
+  "description": "A vibrant and innovative beverage brand that has redefined party drinks with its range of delicious, portable, and eco-conscious alcohol products. Known for its unique, ready-to-drink wine-based cocktails, BeatBox offers bold flavors like Blue Razzberry and Pink Lemonade in convenient, eco-friendly packaging. The brand’s mission is to deliver fun, flavorful beverages that elevate social gatherings while prioritizing sustainability. Committed to reducing its environmental impact, BeatBox uses recyclable, carbon-neutral packaging and actively supports environmental and social initiatives. With its fresh approach to beverages and a dedication to sustainability, BeatBox has become a go-to choice for consumers seeking a mix of fun, convenience, and environmental responsibility.",
+  "qualifications": [
+    "Flavorful Cocktails",
+    "Eco-Friendly Packaging",
+    "Portable & Convenient",
+    "Low Carbon Footprint",
+    "Socially Conscious Brand"
+  ],
+  "logo": "https://cdn.brandfetch.io/idC48HTX5v/w/500/h/149/theme/dark/logo.png?c=1bx1738507397239id64Mup7ac4BGcrWvU&t=1668791626510",
+  "website": "https://beatboxbeverages.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:45:24.245Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776a76412fa53868a3ed44b"
+  },
+  "name": "Huel",
+  "description": "A globally recognized brand that offers nutritionally complete, plant-based meals designed to provide convenience, sustainability, and balanced nutrition. With a mission to make healthy eating effortless, Huel produces ready-to-drink meals, powders, and bars that contain all 26 essential vitamins and minerals, as well as a perfect blend of protein, carbs, fats, and fiber. Its products are ideal for busy individuals seeking a convenient yet nutritious alternative to traditional meals. Huel stands out not only for its commitment to health but also for its dedication to sustainability. The company prioritizes the use of vegan ingredients, minimal packaging, and carbon-conscious production processes to reduce its environmental footprint. By combining science-backed nutrition with eco-conscious practices, Huel empowers consumers to live healthier, more sustainable lifestyles.",
+  "qualifications": [
+    "Complete Nutrition",
+    "Plant-Based Ingredients",
+    "Convenient Options",
+    "Sustainability Commitment",
+    "Science-Driven"
+  ],
+  "logo": "https://cdn.brandfetch.io/idoIpYq1zg/theme/dark/logo.svg?c=1bx1738507650488id64Mup7acP02Wm9VO&t=1685193047612",
+  "website": "https://huel.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:49:08.619Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "vegan",
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776a85b12fa53868a3ed44c"
+  },
+  "name": "OnceUpon",
+  "description": "A modern storytelling platform dedicated to helping people preserve and share their cherished memories through beautifully crafted photo books. With an easy-to-use app, OnceUpon empowers users to turn their photos and stories into elegant, high-quality albums in just a few clicks. The brand is rooted in the belief that every story deserves to be told and preserved, offering a seamless way to celebrate life’s moments. OnceUpon is committed to sustainability and quality. All photo books are made using responsibly sourced materials and eco-friendly printing processes, ensuring a minimal environmental footprint. With its combination of simplicity, personalization, and environmental consciousness, OnceUpon has become a trusted choice for creating timeless keepsakes.",
+  "qualifications": [
+    "User-Friendly App",
+    "High Quality Materials",
+    "Sustainably Sourced",
+    "Personalized Storytelling",
+    "Global Reach"
+  ],
+  "logo": "https://cdn.brandfetch.io/idQtWCxpvy/theme/dark/logo.svg?c=1bx1738507894813id64Mup7acdZeA6vPs&t=1731670315814",
+  "website": "https://onceupon.photo/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T14:53:15.709Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "carbon_neutral_logo",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776aa8412fa53868a3ed44d"
+  },
+  "name": "Mary Ruth's",
+  "description": "A trusted wellness brand specializing in clean, high-quality vitamins, supplements, and health products for the whole family. Founded with a mission to support healthier lifestyles, MaryRuth’s offers an extensive range of products, including liquid vitamins, gummies, probiotics, and herbal blends. The brand emphasizes using non-GMO, plant-based ingredients that are free from common allergens, making its products accessible to a wide range of dietary needs and preferences. MaryRuth’s is deeply committed to transparency, sustainability, and customer well-being. By prioritizing eco-friendly practices and rigorous testing, the company ensures that every product is safe, effective, and environmentally responsible. With a focus on simplicity, purity, and care, MaryRuth’s has become a leading name in the health and wellness industry.",
+  "qualifications": [
+    "Clean Ingredients",
+    "Family-Friendly Formulas",
+    "Sustainability Focus",
+    "Transparency & Quality",
+    "Accessible Wellness"
+  ],
+  "logo": "https://www.maryruthorganics.com/cdn/shop/files/mro-logo1.png?v=1674606073&width=250",
+  "website": "https://www.maryruthorganics.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:02:28.894Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "vegan",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776adda12fa53868a3ed44f"
+  },
+  "name": "Definite Articles",
+  "description": "A sustainable clothing brand redefining the basics with eco-friendly, performance-driven underwear and essentials. Designed for comfort, durability, and minimal environmental impact, the brand uses innovative materials like recycled and biodegradable fabrics to craft products that look good, feel good, and are kind to the planet. Definite Articles caters to individuals who value high-quality essentials that align with their commitment to sustainability. At the heart of Definite Articles is a dedication to transparency, sustainability, and ethical production. By using cutting-edge technology and partnering with responsible manufacturers, the brand ensures its products are crafted with precision and care. Definite Articles is paving the way for a more conscious approach to everyday clothing, combining function, style, and environmental stewardship.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Comfort & Durability",
+    "Minimalist Aesthetic",
+    "Ethical Production",
+    "Transparency"
+  ],
+  "logo": "https://cdn.brandfetch.io/id1EL9UVhQ/w/937/h/937/theme/dark/icon.jpeg?c=1bx1738508738607id64Mup7acs1wukFsq&t=1733767291444",
+  "website": "https://www.definitearticles.com/",
+  "createdAt": {
+    "$date": "2025-01-02T15:16:42.839Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "oeko_tex_logo",
+    "carbon_neutral_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776af9312fa53868a3ed450"
+  },
+  "name": "Opella",
+  "description": "a global pharmaceutical company committed to improving health outcomes through innovative, high-quality medications and healthcare solutions. Focused on addressing a wide range of therapeutic needs, Opella Pharmaceuticals develops, manufactures, and distributes medicines that enhance patient care and well-being. The company’s mission is to make healthcare accessible and effective, driving advancements in medicine through research and development. Rooted in sustainability and corporate responsibility, Opella Pharmaceuticals integrates environmentally friendly practices into its operations while adhering to the highest ethical standards. By prioritizing patient needs, safety, and sustainability, Opella Pharmaceuticals strives to contribute to a healthier and more equitable world.",
+  "qualifications": [
+    "Comprehensive Portfolio",
+    "Innovation Driven",
+    "Global Accessibility",
+    "Sustainability Focus",
+    "Patient-Centric Approach"
+  ],
+  "logo": "https://www.opella.com/dam/jcr:a6c86de8-25cd-480c-a76e-5078fcbd0fa1/Opella%20logo.svg",
+  "website": "https://www.opella.com/en",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:24:03.622Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776b10912fa53868a3ed451"
+  },
+  "name": "OLIPOP",
+  "description": "A modern beverage brand redefining soda by offering a delicious, gut-friendly alternative that combines nostalgia with health benefits. Crafted with a blend of prebiotics, plant fiber, and botanicals, Olipop sodas support digestive health while delivering the classic taste of traditional sodas without excessive sugar or artificial ingredients. With flavors like Vintage Cola, Strawberry Vanilla, and Orange Cream, Olipop bridges the gap between indulgence and wellness. At its core, Olipop is committed to promoting healthier lifestyles and sustainability. The company uses eco-friendly practices, including recyclable packaging and responsibly sourced ingredients, to minimize its environmental impact. By balancing taste, nutrition, and sustainability, Olipop empowers consumers to make smarter, more enjoyable beverage choices.",
+  "qualifications": [
+    "Gut-Friendly Formula",
+    "Low Sugar Content",
+    "Clean Ingredients",
+    "Flavor Innovation",
+    "Transparency & Science-Backed"
+  ],
+  "logo": "https://drinkolipop.com/cdn/shop/files/Logo_Arch_HunterGreen-RGB_a35c2220-44a0-4937-bb2d-2dbfe58b3343.png?v=1658954956",
+  "website": "https://drinkolipop.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:30:17.274Z"
+  },
+  "icons": [
+    "b_corp",
+    "nongmo_logo",
+    "vegan",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776b24612fa53868a3ed452"
+  },
+  "name": "KaseMe",
+  "description": "A lifestyle brand specializing in high-quality, customizable phone cases and tech accessories that blend style, durability, and sustainability. Known for its bold, artistic designs, Kaseme offers a wide range of protective and stylish cases for various devices, allowing customers to express their individuality while protecting their technology. Each product is crafted with precision to ensure functionality and a premium feel. At the heart of Kaseme’s philosophy is a commitment to sustainability and local craftsmanship. The company utilizes eco-conscious materials and manufacturing practices, ensuring its products have a minimal environmental impact. By combining creativity, quality, and environmental responsibility, Kaseme has become a go-to choice for stylish, sustainable tech protection.",
+  "qualifications": [
+    "Customizable Designs",
+    "Ec0-Friendly Materials",
+    "Durable Protection",
+    "Artistic Appeal",
+    "Local Craftsmanship"
+  ],
+  "logo": "https://kasemedesign.com/cdn/shop/files/new_logo_430x_aca13387-2178-48f5-bbc4-41b5f49eb1d7_200x.webp?v=1715697855",
+  "website": "https://kasemedesign.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:35:34.280Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "iso_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776b30f12fa53868a3ed453"
+  },
+  "name": "Nantucket Spider",
+  "description": "A premium natural insect repellent brand committed to providing effective, eco-friendly solutions for outdoor enthusiasts. Known for its DEET-free formulas, the company offers a range of natural bug sprays and repellents crafted with essential oils to protect against mosquitoes, ticks, and other pests. Nantucket Spider’s mission is to make outdoor adventures safer and more enjoyable while minimizing environmental impact. Dedicated to sustainability, Nantucket Spider uses responsibly sourced ingredients and recyclable packaging in all its products. The brand’s emphasis on transparency, safety, and quality has made it a trusted choice for families, campers, and anyone seeking a natural alternative to conventional insect repellents.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Effective Protection",
+    "Family Friendly",
+    "Versatile Range"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0018/0980/9507/files/natucket_spider_nantucket_footprint_logo.svg?v=1639433842",
+  "website": "https://nantucketspider.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:38:55.077Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "nongmo_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776b3cc12fa53868a3ed454"
+  },
+  "name": "ecoright",
+  "description": "A sustainable lifestyle brand dedicated to crafting eco-friendly bags and accessories that blend style, functionality, and environmental responsibility. With a mission to combat single-use plastic pollution, EcoRight offers reusable alternatives like tote bags, backpacks, pouches, and lunch bags made from eco-conscious materials such as organic cotton and recycled fabric. Each product is designed to make sustainable living effortless and accessible. EcoRight is committed to reducing its environmental footprint through ethical manufacturing, recyclable packaging, and partnerships with global initiatives aimed at preserving the planet. The brand’s creative designs and commitment to sustainability have made it a favorite among eco-conscious consumers seeking products that are as kind to the environment as they are practical and stylish.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Stylish & Functional",
+    "Zero-Waste Packaging",
+    "Ethical Manufacturing",
+    "Environmental Advocacy"
+  ],
+  "logo": "https://global.ecoright.com/cdn/shop/files/Ecoright_New_Logo.webp?height=44&v=1716183062",
+  "website": "https://global.ecoright.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:42:04.493Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "fair_trade",
+    "carbon_neutral_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776b49d12fa53868a3ed455"
+  },
+  "name": "LouLou Lollipop",
+  "description": "A modern lifestyle brand specializing in premium baby products that combine functionality, safety, and style. Renowned for its innovative teething accessories, swaddles, and silicone tableware, Loulou Lollipop crafts products designed to simplify parenting while adding a touch of elegance. The brand’s playful designs, inspired by creativity and love for little ones, make their products a favorite among modern families. Sustainability and quality are central to Loulou Lollipop’s ethos. The company prioritizes using non-toxic, eco-friendly materials and adheres to rigorous safety standards. By focusing on ethically made, beautifully designed, and sustainable products, Loulou Lollipop supports parents in creating a safe, stylish, and nurturing environment for their children.",
+  "qualifications": [
+    "Non-Toxic Materials",
+    "Sustainability Commitment",
+    "Elegant & Playful Designs",
+    "Safety Focus",
+    "Versatile Product Range"
+  ],
+  "logo": "https://louloulollipop.ca/cdn/shop/files/LouLou-Logo-Colour_0f8399d0-c03a-413a-9d2b-d0ac64182934_220x.png?v=1697461990",
+  "website": "https://louloulollipop.ca/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:45:33.879Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776b6bf12fa53868a3ed456"
+  },
+  "name": "Guests on Earth",
+  "description": "A sustainable lifestyle brand dedicated to creating eco-friendly, reusable products that support a greener and more mindful way of living. Specializing in household and personal care items, Guests on Earth offers stylish, durable, and functional alternatives to single-use products, such as reusable bags, wraps, and cleaning essentials. The brand’s mission is to inspire individuals to embrace sustainability in their daily routines and treat the planet with care. Grounded in its commitment to environmental stewardship, Guests on Earth prioritizes the use of renewable resources, ethical manufacturing, and minimal-waste packaging. By blending thoughtful design with sustainability, the brand empowers consumers to make choices that benefit the environment while enhancing their everyday lives.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Reusable Alternatives",
+    "Eco-Friendly Packaging",
+    "Ethical Practices",
+    "Timeless Design"
+  ],
+  "logo": "https://www.guestsonearth.com/cdn/shop/files/GoE_ID-POS-horz_1.png?crop=center&height=20&v=1643320179&width=185",
+  "website": "https://www.guestsonearth.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T15:54:39.474Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "fair_trade",
+    "1_for_the_planet",
+    "carbon_neutral_logo"
+  ],
+  "category": "Cleaning"
+},
+{
+  "_id": {
+    "$oid": "6776b8d712fa53868a3ed457"
+  },
+  "name": "Brompton",
+  "description": "An iconic British brand specializing in designing and manufacturing high-quality folding bicycles that blend functionality, durability, and style. Founded in London in 1975, Brompton has revolutionized urban commuting with its compact and portable bikes, designed to adapt seamlessly to modern city living. Each Brompton bike is crafted with precision, offering riders a smooth, efficient, and customizable experience for navigating urban environments. Sustainability and innovation are at the heart of Brompton’s ethos. The brand is committed to reducing its environmental impact by promoting cycling as an eco-friendly mode of transportation. By offering sustainable mobility solutions, Brompton empowers individuals to embrace greener commuting habits while enjoying the freedom and convenience of cycling.",
+  "qualifications": [
+    "Compact Design",
+    "Customizable Options",
+    "Handcrafted Quality",
+    "Community Focus",
+    "Global Reach"
+  ],
+  "logo": "https://www.brompton.com/icons/brompton-logo.svg",
+  "website": "https://www.brompton.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:03:35.155Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "carbon_neutral_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6776b9b912fa53868a3ed458"
+  },
+  "name": "The Coconut Cult",
+  "description": "A health-focused food brand specializing in probiotic-rich coconut yogurt crafted to promote gut health and overall wellness. Made with organic coconut cream and powerful probiotic strains, The Coconut Cult’s products are designed to provide a delicious and nutrient-packed alternative to traditional yogurts. Known for its bold flavors and clean ingredients, the brand is beloved by health enthusiasts seeking functional foods that nourish the body. Rooted in sustainability and transparency, The Coconut Cult prioritizes organic, ethically sourced ingredients and eco-friendly packaging. The company’s commitment to creating high-quality, gut-friendly products reflects its mission to make healthy eating fun, accessible, and environmentally responsible.",
+  "qualifications": [
+    "Probiotic Powerhouse",
+    "Clean Ingredients",
+    "Sustainability Commitment",
+    "Delicious Flavors",
+    "Health and Wellness"
+  ],
+  "logo": "https://thecoconutcult.com/cdn/shop/files/coconut-cult-logo.svg?v=1711381535&width=180",
+  "website": "https://thecoconutcult.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:07:21.832Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "vegan",
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6776ba9712fa53868a3ed459"
+  },
+  "name": "Organico Realfoods",
+  "description": "A leading organic food brand dedicated to providing high-quality, ethically sourced, and sustainable products. Specializing in pantry staples, snacks, and condiments, the brand offers a wide range of organic and eco-friendly options that prioritize health, taste, and environmental responsibility. Organico Realfoods combines traditional culinary values with modern sustainability practices, ensuring every product is as good for the planet as it is for the consumer. With a focus on transparency and sustainability, Organico Realfoods partners with ethical farmers and producers to deliver organic, non-GMO products free from artificial additives. The brand’s commitment to sustainable agriculture and eco-conscious operations has made it a trusted name for individuals and families seeking wholesome, environmentally friendly food options.",
+  "qualifications": [
+    "Organic Excellence",
+    "Sustainably Sourced",
+    "Eco-Friendly Packaging",
+    "Diverse Product Range",
+    "Transparency & Integrity"
+  ],
+  "logo": "https://www.organicorealfoods.com/cdn/shop/files/Shp_logo_transparent.png?v=1718287440",
+  "website": "https://www.organicorealfoods.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:11:03.132Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "fair_trade",
+    "nongmo_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6776bc9e12fa53868a3ed45a"
+  },
+  "name": "Trash Panda",
+  "description": "A sustainability-driven brand dedicated to revolutionizing the sport of disc golf with eco-friendly products. Known for its discs made entirely from recycled materials, Trash Panda combines innovative design with a strong commitment to reducing plastic waste. The brand’s mission is to make disc golf accessible, fun, and environmentally responsible by offering high-quality gear that aligns with its zero-waste philosophy. Beyond its products, Trash Panda actively engages with the disc golf community and environmental advocates to promote sustainable practices both on and off the course. By blending passion for the sport with eco-consciousness, Trash Panda empowers players to enjoy the game while protecting the planet.",
+  "qualifications": [
+    "Recycled Materials",
+    "Zero-Waste Commitment",
+    "High-Performance Design",
+    "Community Engagement",
+    "Advocacy for Sustainability"
+  ],
+  "logo": "https://trashpandadiscgolf.com/cdn/shop/files/TP_Logo_for_website_250x.png?v=1710520677",
+  "website": "https://trashpandadiscgolf.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:19:42.165Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6776be0212fa53868a3ed45b"
+  },
+  "name": "Laughing Gull Chocolates",
+  "description": "A socially conscious craft chocolate company committed to creating delicious, high-quality confections while promoting sustainability and ethical practices. Specializing in handcrafted chocolates made from responsibly sourced cacao, Laughing Gull blends innovative flavors with traditional techniques to produce treats that delight the palate. The company’s mission is to craft chocolate that not only tastes exceptional but also supports a fair and environmentally friendly supply chain. Rooted in its dedication to sustainability, Laughing Gull Chocolates partners with farmers who prioritize eco-conscious and fair trade practices. The brand also emphasizes local ingredients and minimal packaging to reduce its environmental footprint. Through its chocolates, Laughing Gull inspires joy while contributing to a more equitable and sustainable world.",
+  "qualifications": [
+    "Ethical Sourcing",
+    "Handcrafted Excellence",
+    "Local Ingredients",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://laughinggullchocolates.com/wp-content/uploads/2021/06/LogoSized.png",
+  "website": "https://laughinggullchocolates.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:25:38.694Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6776c0b612fa53868a3ed45c"
+  },
+  "name": "Inspiro Tequila",
+  "description": "A premium tequila brand crafted by women, for women, with a focus on producing exceptional spirits that inspire confidence and connection. Handcrafted in Jalisco, Mexico, Inspiro Tequila uses 100% Blue Weber agave and traditional techniques to create smooth, additive-free tequilas that cater to the modern palate. The brand offers a refined and sophisticated tequila experience, ideal for sipping neat or enjoying in cocktails. At its core, Inspiro Tequila is dedicated to sustainability, authenticity, and empowerment. The brand is committed to environmentally conscious practices, from agave cultivation to eco-friendly packaging. By blending tradition with innovation, Inspiro Tequila celebrates the craftsmanship of tequila-making while encouraging women to explore and enjoy the tequila category.",
+  "qualifications": [
+    "Additive-Free Tequila",
+    "Sustainably Sourced",
+    "Crafted by Women",
+    "Empowerment Focus"
+  ],
+  "logo": "https://inspirotequila.com/wp-content/uploads/2022/05/Inspiro-Logo.svg",
+  "website": "https://inspirotequila.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:37:10.418Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776c26612fa53868a3ed45d"
+  },
+  "name": "Kimai",
+  "description": "A luxury jewelry brand redefining fine jewelry with a commitment to sustainability, transparency, and modern craftsmanship. Specializing in lab-grown diamonds and recycled gold, Kimai offers exquisite, timeless pieces that align with eco-conscious values. By combining innovative materials with traditional techniques, Kimai delivers jewelry that is as ethical as it is beautiful, appealing to consumers seeking sustainable luxury. At the heart of Kimai’s philosophy is a dedication to reducing the environmental and social impact of traditional jewelry production. The brand prioritizes responsible sourcing and transparent practices, ensuring every piece is crafted with care and integrity. By marrying ethics with elegance, Kimai empowers customers to make thoughtful, meaningful choices in their jewelry purchases.",
+  "qualifications": [
+    "Lab-Grown Diamonds",
+    "Recycled Gold",
+    "Sustainable Luxury",
+    "Transparency",
+    "Empowering Values"
+  ],
+  "logo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ1IiBoZWlnaHQ9IjQyIiB2aWV3Qm94PSIwIDAgMTQ1IDQyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTM5LjExNCAwTDM0Ljg3MyA0LjE5OTYxTDM5LjExNCA4LjRMNDMuMzU1NCA0LjE5OTg3TDM5LjExNSAwTDM5LjExNCAwWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMzkuOTYgMEwxMzUuNzE5IDQuMkwxMzkuOTYgOC40TDE0NC4yMDEgNC4yVjQuMTk5NDhMMTM5Ljk2IDBMMTM5Ljk2IDBaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzMC40NTggMC4wODY5MTQxTDEyNi4xOTMgNC4zMDIyM0wxMzAuNDU4IDguNTE4MzJMMTM0LjcyMyA0LjMwMjQ5TDEzMC40NTkgMC4wODY5MTQxSDEzMC40NThaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4LjE4MDYgMjcuMjM2SDEzLjAxNTVMMjEuNiAxOS4xMjc3QzIzLjcxMTIgMTcuMTYxNyAyNi45MDUzIDE1LjYyMDYgMjkuMjMzIDE1LjMwMTdWMTQuMTMyNkwxNS4zNzQ0IDE0LjEzMjZWMTUuMjQ4NEMxOC42MjI1IDE1LjI0ODQgMTkuOTIxOCAxNi4xNTE5IDE5LjkyMTggMTcuNDI3M0MxOS45MjE4IDE4LjMzMDggMTkuMjcyMSAxOS40NDY2IDE4LjI5NzYgMjAuNDAzMUw5Ljk2MDkyIDI4LjY2NTNMOS45NjA5MiAwLjIwOTk2MUwwLjIxNjU5MyAyLjA2OTkyTDAuMjE2NTkzIDMuMTg1NzNMMC45MjAzOSAzLjE4NTczQzMuMDg1NzkgMy4xODU3MyA0LjMzMDgxIDQuMzU0ODQgNC4zMzA4MSA2LjYzOTc1TDQuMzMwODEgMzYuMjkyQzQuMzMwODEgMzguODQzIDIuODE0OTIgMzkuNzQ2IDAuOTc0NDA2IDM5Ljg1MjNMMCAzOS45MDU2TDAgNDAuOTY4NEgxNC4yOTE3TDE0LjI5MTcgMzkuOTA1NkwxMy4zNzEzIDM5Ljg1MjNDMTEuMjYwMiAzOS43NDYgOS45NjA5MiAzOC40MTc2IDkuOTYwOTIgMzYuMjkyTDkuOTYwOTIgMzAuMDAzNkwxMS45Mzk5IDI4LjE2NDRMMjAuMjQ2NSAzNy45MzkzQzIxLjU0NTggMzkuNDgwNiAyMi45NjgyIDQwLjk2ODQgMjQuMTgwNiA0MC45Njg0SDI5LjgyODVWMzkuOTA1NkMyOC43NjUxIDM5LjU5MTEgMjcuOTg4IDM4LjQxNzYgMjYuMzYzOCAzNi41MDQ2TDE4LjE4MDYgMjcuMjM2WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNDAuNDczIDM5Ljg4ODJDMTM4LjUyNCAzOS43NzU5IDEzNy4zNzQgMzguNTQwMSAxMzcuMzc0IDM2LjE4MDNWMTIuMTM0OEwxMjguMzI4IDE0LjEwMTNWMTUuMjgwOUgxMjguOTc3QzEzMC45NzcgMTUuMjgwOSAxMzIuMTc2IDE2LjUxNyAxMzIuMTc2IDE4Ljk4OTFWMzYuMTgwM0MxMzIuMTc2IDM4Ljg3NzMgMTMwLjc3NiAzOS43NzU5IDEyOS4wMjcgMzkuODg4MkwxMjguMTc4IDM5Ljk0NDNWNDEuMDY4MUgxNDEuMzczVjM5Ljk0NDNMMTQwLjQ3MyAzOS44ODgyWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00NC4zNDQgMzkuODg4MkM0Mi4zOTQ3IDM5Ljc3NTkgNDEuMjQ1MSAzOC41NDAxIDQxLjI0NTEgMzYuMTgwM0w0MS4yNDUxIDEyLjEzNDhMMzIuMTk4NyAxNC4xMDEzVjE1LjI4MDlIMzIuODQ4NUMzNC44NDc4IDE1LjI4MDkgMzYuMDQ3MyAxNi41MTcgMzYuMDQ3MyAxOC45ODkxTDM2LjA0NzMgMzYuMTgwM0MzNi4wNDczIDM4Ljg3NzMgMzQuNjQ3NyAzOS43NzU5IDMyLjg5ODUgMzkuODg4MkwzMi4wNDg4IDM5Ljk0NDNWNDEuMDY4MUg0NS4yNDM2VjM5Ljk0NDNMNDQuMzQ0IDM5Ljg4ODJaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTk4LjAxMjMgMzkuODg4MkM5Ni4wMDc4IDM5Ljc3NTkgOTQuNTA0MSAzOC44MjExIDk0LjUwNDEgMzYuMTI0MVYyMS41MTc0Qzk0LjUwNDEgMTUuMzkzMiA5MS41NTMxIDEyLjEzNDggODYuNDMgMTIuMTM0OEM4Mi4zMDk1IDEyLjEzNDggNzguMDIxNyAxNC40OTQzIDc2LjAxNyAxNy44NjUzQzc1LjIzNzkgMTQuMjEzNiA3Mi4zOTc4IDEyLjEzNDggNjguMzg4NiAxMi4xMzQ4QzY0LjI2ODEgMTIuMTM0OCA2MC4wOTE5IDE0LjQzODIgNTguMDMxOCAxNy42NDA1VjEyLjEzNDhMNDguMjg2OCAxNC4xMDEzVjE1LjI4MDlINDkuMDExQzUxLjE4MjIgMTUuMjgwOSA1Mi41MTg5IDE2LjQ2MDggNTIuNTE4OSAxOC45MzI3TDUyLjUxODkgMzYuMTI0MUM1Mi41MTg5IDM4LjgyMTEgNTAuOTU5OSAzOS43NzU5IDQ5LjA2NjQgMzkuODg4Mkw0OC4wNjQ1IDM5Ljk0NDNWNDEuMDY4MUg2Mi4zNzQ5VjM5Ljk0NDNMNjEuNDI4MyAzOS44ODgyQzU5LjI1NjYgMzkuNzc1OSA1OC4zMSAzOC40ODQgNTguMzEgMzYuMTI0MUw1OC4zMSAxOC41Mzk0QzU5LjgxMzQgMTYuNjI5MyA2Mi41NDE4IDE1LjE2ODYgNjUuMDQ3NyAxNS4xNjg2QzY3Ljk5OTEgMTUuMTY4NiA3MC42MTYgMTcuMDc4NyA3MC42MTYgMjIuMTkxMVYzNi4xMjQxQzcwLjYxNiAzOC44MjExIDY5LjUwMjQgMzkuNzc1OSA2Ny41NTM2IDM5Ljg4ODJMNjYuNjA3IDM5Ljk0NDNWNDEuMDY4MUw4MC40MTYzIDQxLjA2ODFWMzkuOTQ0M0w3OS41MjUxIDM5Ljg4ODJDNzcuMzUzNCAzOS43NzU5IDc2LjQwNzEgMzguNDg0IDc2LjQwNzEgMzYuMTI0MVYxOC41Mzk0Qzc3LjkxMDQgMTYuNjI5MyA4MC42MzkyIDE1LjE2ODYgODMuMTQ0NSAxNS4xNjg2Qzg2LjA5NjEgMTUuMTY4NiA4OC43MTMgMTcuMDc4NyA4OC43MTMgMjIuMTkxMVYzNi4xMjQxQzg4LjcxMyAzOC44MjExIDg3LjU0MzYgMzkuNzc1OSA4NS41OTQ3IDM5Ljg4ODJMODQuNzA0MSAzOS45NDQzVjQxLjA2ODFIOTguOTU4NlYzOS45NDQzTDk4LjAxMjMgMzkuODg4MloiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTI0LjM1OSAzOS43OTk1QzEyMi4zMTUgMzkuNzk5NSAxMjEuNjUzIDM4LjAzOTMgMTIxLjY1MyAzNS42MTkxVjIxLjMxNzVDMTIxLjY1MyAxNS45MjY5IDExOC4zNCAxMy4wNjY0IDExMS45OSAxMy4wNjY0QzEwNS4xOTggMTMuMDY2NCAxMDAuMjg0IDE2LjIwMTggOTkuMzQ1NSAyMi41ODI0SDEwNS42NEMxMDYuMTM3IDE2LjU4NjggMTA4LjQwMSAxMy43ODE2IDExMi4wNDUgMTMuNzgxNkMxMTUuMTM3IDEzLjc4MTYgMTE3LjA3IDE1LjcwNjcgMTE3LjA3IDE5LjAwN0MxMTcuMDcgMjMuMDc3NyAxMTQuMTk5IDI0LjY3MjcgMTEwLjc3NSAyNS44MjgyQzEwNS42NCAyNy41MzM1IDk4Ljk1OSAyOC4yNDgxIDk4Ljk1OSAzNC45MDM5Qzk4Ljk1OSAzOS4wMjk2IDEwMS42MDkgNDEuOTk5NyAxMDYuMDgyIDQxLjk5OTdDMTA5LjE3NCA0MS45OTk3IDExMy4wOTQgNDAuNjI0NiAxMTYuMjk3IDM2LjcxOTFDMTE2LjYyOCA0MC4wMTk0IDExOC4yMjkgNDEuOTk5NyAxMjEuMjY2IDQxLjk5OTdDMTIyLjg2OCA0MS45OTk3IDEyNC44IDQxLjQ0OTcgMTI2LjI5MSA0MC40NTk0VjM5LjQxNDRDMTI1LjY4NCAzOS42MzQ2IDEyNS4wMjEgMzkuNzk5NSAxMjQuMzU5IDM5Ljc5OTVaTTExNS44NTQgMzUuOTQ4MkMxMTQuNjM5IDM3Ljc2MzMgMTEyLjIxIDM5LjAyODggMTEwLjAwMSAzOS4wMjg4QzEwNi45MDkgMzkuMDI4OCAxMDUuMTQyIDM2LjU1MzQgMTA1LjE0MiAzMi45NzhDMTA1LjE0MiAyOC40Njc1IDEwOC4wMTMgMjcuODA3NiAxMTEuMTYxIDI2LjgxNzJDMTEzLjAzOCAyNi4yMTIzIDExNC41ODQgMjUuNjYyMyAxMTUuODU0IDI0LjQ1MlYzNS45NDgyWiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==",
+  "website": "https://kimai.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:44:22.935Z"
+  },
+  "icons": [
+    "carbon_neutral_logo",
+    "gia_logo",
+    "rjc_logo",
+    "1_for_the_planet",
+    "b_corp"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776c4eb12fa53868a3ed45e"
+  },
+  "name": "Groupe L’Occitane",
+  "description": "A global, multi-brand company dedicated to creating and distributing high-quality, sustainably crafted beauty and wellness products. With a portfolio that includes L’Occitane en Provence, Melvita, and other renowned brands, the company emphasizes using natural and organic ingredients sourced responsibly from around the world. Known for its commitment to authenticity and environmental stewardship, Groupe L’Occitane blends traditional craftsmanship with modern innovation to provide luxurious products that respect people and the planet. Sustainability and social responsibility are at the heart of Groupe L’Occitane’s operations. The company focuses on reducing its ecological footprint through eco-friendly packaging, renewable energy use, and conservation initiatives. By fostering a culture of inclusivity and sustainability, Groupe L’Occitane continues to lead in the beauty industry with a strong commitment to ethical practices and environmental preservation.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Sustainability Leadership",
+    "Biodiversity Preservation",
+    "Global Impact",
+    "Innovative Products"
+  ],
+  "logo": "https://cdn.brandfetch.io/idjK9oqgRh/theme/dark/logo.svg?c=1bx1738515170926id64Mup7ac6x3nvUa7&t=1668076852477",
+  "website": "https://group.loccitane.com/group/our-brands",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T16:55:07.167Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "fsc_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776c6f412fa53868a3ed45f"
+  },
+  "name": "LOOM Imports",
+  "description": "An ethical home goods brand specializing in handcrafted textiles and décor that celebrate global artistry and craftsmanship. Partnering with skilled artisans from around the world, Loom Imports curates a collection of rugs, throws, pillows, and other home accents made with traditional techniques passed down through generations. Each piece tells a unique story, blending cultural heritage with modern design to create timeless and meaningful products. At the heart of Loom Imports is a commitment to sustainability, fair trade, and social impact. By working directly with artisans and using eco-friendly materials, the brand ensures its products are not only beautiful but also responsibly made. Loom Imports empowers artisans and supports sustainable practices, fostering a connection between consumers and the stories behind their homes.",
+  "qualifications": [
+    "Artisan Partnership",
+    "Sustainable Materials",
+    "Unique Designs",
+    "Fair Trade Practices",
+    "Eco-Friendly Operations"
+  ],
+  "logo": "https://loomimports.com/cdn/shop/files/LOOM_Imports_Transparent_Logo.png?v=1724425957&width=150",
+  "website": "https://loomimports.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:03:48.465Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "GOTS_logo",
+    "1_for_the_planet",
+    "carbon_neutral_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776c83912fa53868a3ed460"
+  },
+  "name": "Manitobah",
+  "description": "An Indigenous-owned Canadian brand renowned for crafting authentic, high-quality footwear that celebrates the rich traditions of Indigenous artisans. Specializing in moccasins, boots, and slippers, Manitobah combines time-honored techniques with modern design to create footwear that is both stylish and functional. Each product is crafted with exceptional attention to detail, reflecting the cultural heritage and artistry of Indigenous communities. Rooted in its commitment to community and sustainability, Manitobah works with Indigenous artists and makers to preserve traditional craftsmanship while supporting economic empowerment. The brand also prioritizes the use of natural and sustainable materials to minimize its environmental footprint. Manitobah’s mission is to share the beauty and culture of Indigenous traditions through products that honor their history and respect the planet.",
+  "qualifications": [
+    "Authentic Craftsmanship",
+    "Sustainably Made",
+    "Cultural Preservation",
+    "Timeless & Durable",
+    "Community Engagement"
+  ],
+  "logo": "https://www.manitobah.com/cdn/shop/files/Property_1_Vertical_Property_2_Blue_150x.png?v=1680214186",
+  "website": "https://www.manitobah.com/?_gl=1*kr9jsk*_gcl_au*NDk2MTc1MzIzLjE3MzU4Mzc2NDk.*_ga*MTUyMTI4NTAzLjE3MzU4Mzc2NTE.*_ga_BVN5FW71V4*MTczNTgzNzY1MC4xLjAuMTczNTgzNzY1MC42MC4wLjExOTA4ODQzMDI.",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:09:13.706Z"
+  },
+  "icons": [
+    "b_corp",
+    "ccib_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776cce712fa53868a3ed461"
+  },
+  "name": "SENDY",
+  "description": "An online marketplace and gear hub, enabling users across North America to buy, sell, and rent adventure sports equipment. Founded in late 2022 by professional snowboarder Travis Rice and freerider Cam Zink, Sendy aims to make outdoor sports more accessible and sustainable by promoting the reuse and sharing of high-quality gear.",
+  "qualifications": [
+    "Adventure Gear Marketplace",
+    "User-Friendly Platform",
+    "Community Engagement"
+  ],
+  "logo": "https://sendy.io/icons/logo.svg",
+  "website": "https://sendy.io/?status=active&page=1",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:29:11.384Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6776ce6312fa53868a3ed462"
+  },
+  "name": "Goods that Matter",
+  "description": "A New Orleans-based eco-conscious brand dedicated to creating everyday design goods with extraordinary impact. Founded in 2010 by Tippy Tippens, the company offers a range of handmade products, including candles, bags, tees, accessories, notebooks, cards, blankets, and soaps, all crafted from eco-friendly materials in the United States. Each product is designed for everyday use and contributes to unique social and environmental causes, with 10% of all proceeds donated to initiatives that enhance community health, happiness, and sustainability.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Handmade in the USA",
+    "Social Impact",
+    ""
+  ],
+  "logo": "https://www.goodsthatmatter.com/cdn/shop/files/Goods_that_Matter_Logo_Blue_round-2023.png?v=1687107524",
+  "website": "https://www.goodsthatmatter.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:35:31.754Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776cf0612fa53868a3ed463"
+  },
+  "name": "Sanpellegrino",
+  "description": "An iconic Italian beverage brand celebrated for its premium sparkling mineral water and a variety of flavored sparkling drinks. Established in 1899, the brand draws its water from natural springs in the Italian Alps, renowned for their exceptional purity and mineral balance. Sanpellegrino combines tradition and innovation to deliver refreshing beverages that pair effortlessly with fine dining and everyday moments alike. As a leader in sustainability, Sanpellegrino is committed to protecting natural resources, reducing its environmental footprint, and promoting recycling through its operations. The brand’s dedication to quality, heritage, and environmental stewardship has made it a global symbol of Italian excellence.",
+  "qualifications": [
+    "Premium Sparkling Water",
+    "Flavored Beverages",
+    "Sustainability Commitment",
+    "Global Presence"
+  ],
+  "logo": "https://www.sanpellegrino.com/us/themes/custom/sp/logo.svg",
+  "website": "https://www.sanpellegrino.com/us/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:38:14.487Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "carbon_neutral_logo",
+    "fsc_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776d0cc12fa53868a3ed464"
+  },
+  "name": "Coradorables",
+  "description": "A family-run, woman-owned, and Black-owned fashion brand based in Honolulu, Hawaii, specializing in heirloom-quality resort wear and accessories for children and adults. Founded in 2010 by designer Cora Spearman, the brand combines a classic design aesthetic with elements of innovation and fun, reflecting the vibrant local culture and beauty of diversity. Each piece is meticulously crafted from hand-selected textiles and custom patterns, ensuring exclusivity and timeless style.",
+  "qualifications": [
+    "Sustainable & Ethical Production",
+    "Limited-Run Collections",
+    "Cultural Inspiration",
+    "Community Engagement"
+  ],
+  "logo": "https://m.media-amazon.com/images/S/stores-image-uploads-na-prod/8/AmazonStores/ATVPDKIKX0DER/e81abd404e649b4c9f99d0ecf060b3bc.w800.h800._CR0%2C0%2C800%2C800_SX800_.jpg",
+  "website": "https://shop.coradorables.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T17:45:48.048Z"
+  },
+  "icons": [
+    "b_corp",
+    "wbenc_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776d7d012fa53868a3ed465"
+  },
+  "name": "Sachai Tea Company",
+  "description": "Founded in 2015 by Rebecca and Clint Denson, is a Birmingham, Alabama-based tea producer specializing in authentic masala chai concentrates and loose-leaf teas sourced directly from small-scale Indian tea farmers. The name \"Sachai\" is derived from the Hindi word \"sach,\" meaning \"truth,\" reflecting the company's commitment to transparency and authenticity in its products.",
+  "qualifications": [
+    "Authentic Chai Concentrate",
+    "Direct Trade Partnerships",
+    "Sustainable Practices",
+    "Community Engagement",
+    "Cultural Fusion"
+  ],
+  "logo": "https://sachaiteacompany.com/cdn/shop/files/removebg_black.png?v=1665740686&width=105",
+  "website": "https://sachaiteacompany.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T18:15:44.163Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776d90c12fa53868a3ed466"
+  },
+  "name": "Sportiqe",
+  "description": "An active lifestyle retail company that curates a diverse collection of over 500 brands from more than 30 countries, offering unique, functional, fashionable, and purposeful products for various aspects of life, including work, play, and home. Founded in 2009 and headquartered in San Francisco, California, Sportique's mission is to drive the discovery of thoughtfully designed items that cater to individuals who appreciate quality and reject the status quo.",
+  "qualifications": [
+    "Curated Global Selection",
+    "Lifestyle Integration",
+    "Commitment to Quality",
+    "Philanthropic Partnerships",
+    "Sustainability Focus"
+  ],
+  "logo": "https://sportiqe.com/cdn/shop/files/sportiqe-logo-280x80.png?v=1692304721&width=159",
+  "website": "https://sportiqe.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T18:21:00.648Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776d9c612fa53868a3ed467"
+  },
+  "name": "Bon Ton Toys",
+  "description": "Established in 1933 and based in Amsterdam, is a renowned plush toy manufacturer dedicated to creating high-quality, durable plush toys while championing environmental sustainability and ethical production practices. The company collaborates with iconic characters like Miffy and Snoopy, as well as partners with the World Wildlife Fund (WWF) to produce eco-friendly plush animals.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Production",
+    "Global Reach",
+    "Iconic Collaborations"
+  ],
+  "logo": "https://www.bontontoys.com/cdn/shop/files/BONTONTOYS_LOGO_3.png?v=1728479549",
+  "website": "https://www.bontontoys.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T18:24:06.895Z"
+  },
+  "icons": [
+    "b_corp",
+    "blue_angel_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776dc9012fa53868a3ed468"
+  },
+  "name": "VAHDAM India",
+  "description": "A digitally native, global wellness brand that brings the finest Indian teas, superfoods, and spices directly to consumers in over 130 countries. By eliminating intermediaries, VAHDAM ensures that its products are garden-fresh and of the highest quality. The company is committed to ethical sourcing and sustainability, with a portion of its revenue dedicated to supporting the education of its farmers' children.",
+  "qualifications": [
+    "Direct Trade Model",
+    "Global Reach",
+    "Sustainability Commitment",
+    "State-of-the-Art Facility"
+  ],
+  "logo": "https://www.vahdam.com/cdn/shop/files/Vahdam_Logo_G.svg?v=1728542397&width=178",
+  "website": "https://www.vahdam.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T18:36:00.896Z"
+  },
+  "icons": [
+    "b_corp",
+    "brcgs_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776dff712fa53868a3ed469"
+  },
+  "name": "Room & Board",
+  "description": "An American furniture and home décor brand specializing in modern, timeless designs crafted with quality and sustainability in mind. Founded in 1980 and headquartered in Minneapolis, Minnesota, the company is renowned for its commitment to American craftsmanship, partnering with skilled artisans and manufacturers across the United States to create furniture built to last. Room & Board’s product range includes living room, bedroom, dining, office furniture, and customizable options to suit diverse lifestyles and spaces. Sustainability is at the core of Room & Board’s mission. The company uses responsibly sourced materials, minimizes waste, and invests in eco-conscious practices to reduce its environmental footprint. With its dedication to quality, ethical production, and sustainability, Room & Board has become a trusted choice for those seeking furniture that blends style with substance.",
+  "qualifications": [
+    "American Craftsmanship",
+    "Modern Timeless Design",
+    "Sustainable Practices",
+    "Customizeable Options"
+  ],
+  "logo": "https://rnb.scene7.com/is/content/roomandboard/rnb-logo-black",
+  "website": "https://www.roomandboard.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T18:50:31.336Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "iso_logo",
+    "greenguard_logo",
+    "sfc_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776e2e512fa53868a3ed46a"
+  },
+  "name": "ID Geneve",
+  "description": "A pioneering Swiss watchmaking company founded in 2020, dedicated to merging traditional craftsmanship with sustainable innovation. Based in Geneva, the company specializes in creating luxury timepieces crafted from 100% recycled stainless steel and other eco-friendly materials, embodying a commitment to circular economy principles. By focusing on environmental responsibility, ID Genève aims to redefine the luxury watch industry, offering products that resonate with individuals concerned about climate change and seeking to make a positive social and environmental impact.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Circular Economy Commitment",
+    "Innovative Design",
+    "Notable Collaborations"
+  ],
+  "logo": "https://images.squarespace-cdn.com/content/v1/5f05be8730af2749d3758cf1/1e89b357-0551-4899-945c-243b262f4cfc/Capture+d%E2%80%99e%CC%81cran+2024-12-05+a%CC%80+16.24.44.png?format=1500w",
+  "website": "https://www.idwatch.ch/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:03:01.493Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6776e3c112fa53868a3ed46b"
+  },
+  "name": "Earth Breeze",
+  "description": "An eco-friendly consumer goods company specializing in sustainable laundry detergent solutions. Founded in 2020 by Jon Wedel, the company offers innovative products such as Eco Sheets—concentrated, biodegradable laundry detergent sheets designed to reduce plastic waste and minimize environmental impact. Earth Breeze is committed to providing effective cleaning solutions while promoting environmental regeneration and social responsibility.",
+  "qualifications": [
+    "Plastic-Free Packaging",
+    "Sustainable Manufacturing",
+    "Community Engagement",
+    "Global Reach"
+  ],
+  "logo": "https://earthbreeze.com/cdn/shop/t/493/assets/EB_Logo_Vector_Blue.svg?v=62493503552750838691735325899",
+  "website": "https://earthbreeze.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:06:41.311Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776e56a12fa53868a3ed46c"
+  },
+  "name": "Coop's",
+  "description": "Established in 2008 and based in Boston, Massachusetts, is a family-owned producer of all-natural dessert toppings, renowned for their award-winning hot fudge and caramel sauces. Handcrafted in small batches, Coop's products are made with meticulously sourced, high-quality ingredients, ensuring rich and indulgent flavors without the use of artificial additives or preservatives. Their offerings include Original Hot Fudge, Mocha Hot Fudge, Salted Caramel Sauce, and a vegan hot fudge option, catering to a diverse range of taste preferences.",
+  "qualifications": [
+    "All-Natural Ingredients",
+    "Handcrafted Quality",
+    "Vegan Options",
+    "Community Engagement"
+  ],
+  "logo": "https://static.wixstatic.com/media/736255_95d680f8ddd34e06a97a33af5f237466~mv2.png/v1/fill/w_151,h_100,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Coop's_LOGO_Final_ForShopify_Green_V1_070722.png",
+  "website": "https://www.enjoycoops.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:13:46.363Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6776e87512fa53868a3ed46d"
+  },
+  "name": "Partake Brewing",
+  "description": "Founded in 2017 by Ted Fleming, is a Canadian company specializing in non-alcoholic craft beers that offer the authentic taste of traditional brews without the alcohol content. Headquartered in Calgary, Alberta, Partake Brewing has become a leader in the non-alcoholic beer market across North America, providing a range of styles that cater to beer enthusiasts seeking a healthier or alcohol-free lifestyle.",
+  "qualifications": [
+    "Diverse Product Range",
+    "Award-Winning Brews",
+    "Extensive Distribution",
+    "Health-Conscious Options"
+  ],
+  "logo": "https://drinkpartake.com/cdn/shop/files/logo_441680b4-0ed7-4e5e-9d37-c6c45366830e.svg?v=1682434825&width=100",
+  "website": "https://drinkpartake.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:26:45.851Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6776e99912fa53868a3ed46e"
+  },
+  "name": "Gibsons Games",
+  "description": "Established in 1919 by Harry Percy Gibson, is a family-owned UK company renowned for producing high-quality board games and jigsaw puzzles. Headquartered in Sutton, England, the company is now managed by the fourth generation of the Gibson family, maintaining a legacy of bringing people together through engaging and entertaining products.",
+  "qualifications": [
+    "Rich Heritage",
+    "Commitment to Quality",
+    "Sustainability Initiatives",
+    "Diverse Product Range",
+    "Community Engagement"
+  ],
+  "logo": "https://gibsonsgames.com/cdn/shop/files/gobn.png?v=1700826402",
+  "website": "https://gibsonsgames.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:31:37.278Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776ebe812fa53868a3ed46f"
+  },
+  "name": "Sheet Society",
+  "description": "An Australian bedding brand founded in 2017 by Hayley and Andy Worley, specializing in high-quality, stylish, and sustainable bed linens. Based in Melbourne, the company offers a diverse range of products, including fitted sheets, flat sheets, pillowcases, and quilt covers, crafted from premium materials such as long-staple cotton and French flax linen. With a focus on design and functionality, The Sheet Society provides customers the freedom to mix and match bedding pieces, allowing for personalized and contemporary bedroom aesthetics.",
+  "qualifications": [
+    "Innovative Design",
+    "Premium Materials",
+    "Sustainability Commitment",
+    "Customer-Centric Approach"
+  ],
+  "logo": "https://cdn.brandfetch.io/idNB-aD7uT/w/258/h/258/theme/dark/icon.png?c=1bx1738525186678id64Mup7acimJsme86&t=1732395059683",
+  "website": "https://sheetsociety.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:41:28.214Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776ed5d12fa53868a3ed470"
+  },
+  "name": "Medik8",
+  "description": "A British skincare brand committed to providing scientifically-backed, results-driven products tailored to meet various skin concerns. Known for their \"CSA Philosophy\"—Vitamin C in the morning, sunscreen during the day, and Vitamin A at night—Medik8 emphasizes simplifying skincare regimens while delivering maximum efficacy. They integrate sustainable practices across their operations, such as eco-friendly packaging and ethically sourced ingredients, positioning themselves as leaders in green innovation within the beauty industry.",
+  "qualifications": [
+    "Eco-Friendly Packaging",
+    "Science-Driven Products",
+    "Sustainable Practices",
+    "Ethically Sourced Ingredients"
+  ],
+  "logo": "https://cdn.brandfetch.io/id_vPdnCJ1/theme/dark/logo.svg?c=1bx1738525543092id64Mup7acpu6c154B&t=1732231022807",
+  "website": "https://us.medik8.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:47:41.649Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776ef1512fa53868a3ed471"
+  },
+  "name": "YuMOVE",
+  "description": "A UK-based pet supplement company dedicated to enhancing the health and mobility of dogs, cats, and other animals. Known for its scientifically backed formulations, YuMove specializes in joint health supplements designed to support pets of all ages and activity levels. The company combines high-quality natural ingredients with rigorous testing to deliver safe and effective products that are trusted by veterinarians and pet owners worldwide. YuMove is committed to sustainability, using eco-friendly packaging and renewable resources to minimize its environmental footprint.",
+  "qualifications": [
+    "Natural & Proven Ingredients",
+    "Veterinarian Recommended",
+    "Eco-Friendly Practices",
+    "Rigorous Testing & Quality Assurance"
+  ],
+  "logo": "https://us.yumove.com/cdn/shop/files/yumove-logo_2.png?v=1675269121&width=260",
+  "website": "https://us.yumove.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T19:55:01.390Z"
+  },
+  "icons": [
+    "b_corp",
+    "nasc_logo"
+  ],
+  "category": "Pet"
+},
+{
+  "_id": {
+    "$oid": "6776f2f412fa53868a3ed472"
+  },
+  "name": "Ricola",
+  "description": "A Swiss company globally recognized for its premium herbal drops and natural remedies. Founded in 1930, the family-owned business combines tradition and innovation to craft soothing products made from a proprietary blend of 13 Swiss alpine herbs. Ricola’s commitment to sustainability is at the core of its operations, from cultivating herbs through sustainable farming practices to reducing its ecological footprint with eco-conscious production methods. With a focus on quality, taste, and health, Ricola continues to provide natural solutions for throat and cough relief.",
+  "qualifications": [
+    "Herbal Expertise",
+    "Natural & Effective Remedies",
+    "Eco-Friendly Packaging",
+    "Sustainable Farming",
+    "Global Recognition"
+  ],
+  "logo": "https://cdn.brandfetch.io/id-X2Fwzc0/theme/light/logo.svg?c=1bx1738526998595id64Mup7acnbl6Pjnl&t=1703853043464",
+  "website": "https://www2.ricola.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:11:32.508Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776f53d12fa53868a3ed473"
+  },
+  "name": "Timo and Violet",
+  "description": "A boutique company specializing in eco-friendly, artisanal products designed to bring beauty and sustainability into everyday living. Focused on handmade goods, the brand combines natural materials with thoughtful design, offering a wide range of items such as home decor, accessories, and skincare. Each product is crafted with a commitment to minimizing environmental impact, ensuring that quality and sustainability go hand-in-hand. Timo and Violet's mission is to inspire conscious living through sustainable practices and timeless designs.",
+  "qualifications": [
+    "Handmade Craftsmanship",
+    "Natural Materials",
+    "Eco-Friendly Packaging",
+    "Small-Batch Production",
+    "Community Engagement"
+  ],
+  "logo": "https://timoandviolet.com/cdn/shop/files/Timo_Violet_Logo_TextOnly_500.png?v=1671490012&width=500",
+  "website": "https://timoandviolet.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:21:17.994Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776f65a12fa53868a3ed474"
+  },
+  "name": "The Bare Home",
+  "description": "A Canadian-based company specializing in eco-friendly home and personal care products. Known for their dedication to sustainability, the brand offers refillable and biodegradable solutions for everyday cleaning and personal hygiene. The Bare Home's products are made with plant-based, non-toxic ingredients that are both safe for the home and the planet. By combining aesthetics with sustainability, they aim to make eco-conscious living accessible and stylish.",
+  "qualifications": [
+    "Refillable Solutions",
+    "Plant-Based Ingredients",
+    "Carbon-Neutral Shipping",
+    "Community Impact"
+  ],
+  "logo": "https://thebarehome.ca/cdn/shop/files/TheBareHomeLogo_HouseOnly_100x.png?v=1640821091",
+  "website": "https://thebarehome.ca/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:26:02.614Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "ECOLOGO_logo"
+  ],
+  "category": "Cleaning"
+},
+{
+  "_id": {
+    "$oid": "6776f71d12fa53868a3ed475"
+  },
+  "name": "Here I Am",
+  "description": "A subscription-based company committed to empowering individuals during life’s transitions with thoughtfully curated self-care and wellness products. Designed to support mental and emotional well-being, each box is personalized with items sourced from eco-friendly and socially responsible businesses. By focusing on sustainability, inclusivity, and positive impact, Here I Am Box helps people feel seen, cared for, and celebrated during pivotal moments in their lives.",
+  "qualifications": [
+    "Personalized Wellness",
+    "Eco-Conscious Sourcing",
+    "Empowerment Focus",
+    "Community Impact",
+    "Sustainable Packaging"
+  ],
+  "logo": "https://hereiambox.com/cdn/shop/files/HereIAm_Logo-05.png?v=1716837735&width=220",
+  "website": "https://hereiambox.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:29:17.105Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo",
+    "fair_trade"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6776f85b12fa53868a3ed476"
+  },
+  "name": "Perlimpinpin",
+  "description": "A family-oriented brand specializing in high-quality, eco-friendly products for babies and children. With a focus on comfort, safety, and sustainability, the company offers a range of thoughtfully designed clothing, bedding, and accessories crafted from organic and sustainable materials. Based in Canada, Perlinpinpin is renowned for its timeless designs and commitment to supporting families in creating safe and nurturing environments for their little ones.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Safety First",
+    "Ethical Manufacturing",
+    "Durable & Timeless Design",
+    "Community Support"
+  ],
+  "logo": "https://perlimpinpin.com/cdn/shop/files/logo-PERLIM-2024_140x.png?v=1710773716",
+  "website": "https://perlimpinpin.com/en-us/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:34:35.710Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo",
+    "GOTS_logo",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776f9c612fa53868a3ed477"
+  },
+  "name": "Zusa",
+  "description": "A sustainability-driven fashion brand specializing in high-performance, eco-friendly apparel for modern professionals. Founded with the mission to create durable, stylish clothing with minimal environmental impact, Zusa incorporates innovative materials and responsible production practices into every garment. From activewear to business casual staples, Zusa delivers products that blend comfort, functionality, and sustainability, empowering individuals to look and feel great while supporting a greener planet.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Carbon-Neutral Operations",
+    "Durable & Versatile Design",
+    "Transparency & Ethical Practices",
+    "Eco-Conscious Packaging"
+  ],
+  "logo": "https://zusa.com/cdn/shop/files/Zusa_logo_140x.png?v=1614744386",
+  "website": "https://zusa.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:40:38.372Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "bluesign_logo",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6776fad012fa53868a3ed478"
+  },
+  "name": "HoldOn",
+  "description": "A sustainability-focused company offering innovative alternatives to traditional plastic bags. Committed to combating plastic pollution, HoldOn Bags provides a range of fully compostable and biodegradable storage and trash bags made from renewable plant-based materials. By prioritizing eco-consciousness and convenience, HoldOn Bags empowers individuals and businesses to reduce their environmental footprint without compromising on quality or functionality.",
+  "qualifications": [
+    "Compostable Materials",
+    "Certified Biodegradability",
+    "Durable & Reliable Design",
+    "Carbon-Neutral Shipping",
+    "Community Engagement"
+  ],
+  "logo": "https://holdonbags.com/cdn/shop/files/HoldonLogoUpdate_dark_a7b20887-be6f-4987-8b71-35ab3e3f1d91_250x.png?v=1687966941",
+  "website": "https://holdonbags.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:45:04.404Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "bpi_logo",
+    "ok_compost_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6776fd2512fa53868a3ed479"
+  },
+  "name": "MITA Eyewear",
+  "description": "A trailblazing eyewear brand combining fashion, innovation, and sustainability to redefine the eyewear industry. Headquartered in Miami, MITA Eyewear is dedicated to creating stylish, high-quality frames made from recycled materials, including discarded water bottles and aluminum. With a mission to reduce environmental impact while offering premium designs, MITA Eyewear bridges the gap between sustainability and modern style, inspiring conscious consumerism.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Stylish & Innovative Designs",
+    "Sustainably Packaging",
+    "Carbon-Neutral Commitment"
+  ],
+  "logo": "https://mita-eyewear.com/cdn/shop/files/logo_b1140c8f-be4c-4623-b81d-edf4d8e5e332.png?v=1638551786",
+  "website": "https://mita-eyewear.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-02T20:55:01.226Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Accessories"
 }]

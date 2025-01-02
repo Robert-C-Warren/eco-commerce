@@ -75,7 +75,17 @@ import carbonNeutral from "../resources/icons/carbonneutrallogo.png"
 import usdaOrganic from "../resources/icons/usdaorganiclogo.gif"
 import craftDistillery from "../resources/icons/craftdistillery.png"
 import ecoboard from "../resources/icons/ecoboardlogo.png"
-
+import GIA from "../resources/icons/gialogo.svg"
+import RJC from "../resources/icons/rjclogo.png"
+import CCIB from "../resources/icons/cciblogo.png"
+import WBENC from "../resources/icons/wbenclogo.svg"
+import blueAngel from "../resources/icons/blueangellogo.svg"
+import BRCGS from "../resources/icons/brcgslogo.png"
+import greenGuard from "../resources/icons/greenguardlogo.png"
+import sfc from "../resources/icons/sfclogo.svg"
+import nasc from "../resources/icons/nasclogo.svg"
+import BPI from "../resources/icons/bpilogo.svg"
+import okCompost from "../resources/icons/okcompostlogo.jpg"
 
 
 const availableIcons = [
@@ -150,6 +160,17 @@ const availableIcons = [
   { id: "usda_organic_logo", label: "USDA Organic Certification", src: usdaOrganic, title: "USDA Organic" },
   { id: "craft_distillery_logo", label: "Certified Craft Distillery", src: craftDistillery, title: "Craft Distillery" },
   { id: "ecoboard_logo", label: "ECOBOARD Project Certified", src: ecoboard, title: "ecoboard logo" },
+  { id: "gia_logo", label: "GIA (Gemological Institute of America) Certified lab-grown diamonds", src: GIA, title: "GIA" },
+  { id: "rjc_logo", label: "Responsible Jewellery Council (RJC) Member", src: RJC, title: "RJC" },
+  { id: "ccib_logo", label: "Member of the Canadian Council for Aboriginal Business", src: CCIB, title: "CCIB" },
+  { id: "wbenc_logo", label: "WBENC Certification", src: WBENC, title: "wbenc" },
+  { id: "blue_angel_logo", label: "Blue Angel Certification", src: blueAngel, title: "Blue Angel" },  { id: "brcgs_logo", label: "BRC Certification", src: BRCGS, title: "BRCGS" },
+  { id: "brcgs_logo", label: "BRC Certification", src: BRCGS, title: "BRCGS" },
+  { id: "greenguard_logo", label: "GREENGUARD Certified", src: greenGuard, title: "Greenguard" },
+  { id: "sfc_logo", label: "Sustainable Furnishings Council (SFC) Member", src: sfc, title: "SFC" },
+  { id: "nasc_logo", label: "Certified by National Animal Supplement Council (NASC)", src: nasc, title: "NASC" },
+  { id: "bpi_logo", label: "BPI (Biodegradable Products Institute) Certified", src: BPI, title: "BPI" },
+  { id: "ok_compost_logo", label: "OK Compost Certified", src: okCompost, title: "OK Compost" },
 ]
 
 const AdminCompaniesPage = () => {
