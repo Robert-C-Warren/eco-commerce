@@ -86,6 +86,14 @@ import sfc from "../resources/icons/sfclogo.svg"
 import nasc from "../resources/icons/nasclogo.svg"
 import BPI from "../resources/icons/bpilogo.svg"
 import okCompost from "../resources/icons/okcompostlogo.jpg"
+import floristry from "../resources/icons/floristrylogo.webp"
+import LIVE from "../resources/icons/livelogo.svg"
+import salmonSafe from "../resources/icons/salmonsafelogo.jpg"
+import OMRI from "../resources/icons/omrilogo.png"
+import AWG from "../resources/icons/awglogo.png"
+import fairmined from "../resources/icons/fairminedlogo.png"
+import ecolabel from "../resources/icons/ecolabellogo.jpg"
+import PDO from "../resources/icons/pdologo.jpg"
 
 
 const availableIcons = [
@@ -171,6 +179,14 @@ const availableIcons = [
   { id: "nasc_logo", label: "Certified by National Animal Supplement Council (NASC)", src: nasc, title: "NASC" },
   { id: "bpi_logo", label: "BPI (Biodegradable Products Institute) Certified", src: BPI, title: "BPI" },
   { id: "ok_compost_logo", label: "OK Compost Certified", src: okCompost, title: "OK Compost" },
+  { id: "floristry_logo", label: "Sustainable Floristry Certification", src: floristry, title: "floristry" },
+  { id: "live_logo", label: "LIVE Certified Sustainable", src: LIVE, title: "LIVE" },
+  { id: "salmon_safe_logo", label: "Salmon-Safe Certified", src: salmonSafe, title: "Salmon Safe" },
+  { id: "omri_logo", label: "OMRI (Organic Materials Review Institute) Listed", src: OMRI, title: "OMRI" },
+  { id: "awg_logo", label: "Animal Welfare Approved", src: AWG, title: "AWG" },
+  { id: "fairmined_logo", label: "Fairmined Certified", src: fairmined, title: "fairmined" },
+  { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
+  { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
 ]
 
 const AdminCompaniesPage = () => {

@@ -5087,4 +5087,1254 @@
     "carbon_neutral_logo"
   ],
   "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6777df68e109a0b3fdf4fdf3"
+  },
+  "name": "Tribe Organics",
+  "description": "A wellness brand focused on creating natural, plant-based supplements that enhance physical, mental, and emotional well-being. Committed to sustainability and transparency, the company sources premium ingredients from ethical and organic suppliers. Tribe Organics specializes in adaptogenic blends and functional supplements designed to support energy, immunity, and stress management, empowering individuals to lead healthier and more balanced lives.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Ethical Sourcing",
+    "Sustainable Packaging",
+    "Adaptogenic Expertise"
+  ],
+  "logo": "https://cdn.brandfetch.io/idb6DwjV5f/theme/light/logo.svg?c=1bx1738587524485id64Mup7acncMUjIzh&t=1729049479491",
+  "website": "https://www.tribe-organics.com/",
+  "createdAt": {
+    "$date": "2025-01-03T13:00:24.938Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "fair_trade"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6777e13be109a0b3fdf4fdf4"
+  },
+  "name": "Bear Lake Coffee Co.",
+  "description": "Based in Wisconsin, is a specialty coffee roaster focused on providing high-quality, sustainably sourced coffee to its community and beyond. Known for its small-batch roasting and artisanal approach, the company emphasizes freshness, flavor, and a deep connection to the environment. Bear Lake Coffee Co. prides itself on fostering relationships with ethical suppliers and supporting eco-friendly practices, creating a coffee experience that’s as conscious as it is delicious.",
+  "qualifications": [
+    "Locally Roasted",
+    "Ehtical Sourcing",
+    "Environmentally Friendly Packaging",
+    "Community Engagement",
+    "Artisan Craftsmanship"
+  ],
+  "logo": "https://bearlakecoffee.com/cdn/shop/files/white_logo.png?height=120&v=1710166998",
+  "website": "https://bearlakecoffee.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:08:11.519Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "usda_organic_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6777e2d7e109a0b3fdf4fdf5"
+  },
+  "name": "BLUNT Umbrellas",
+  "description": "A New Zealand-based company revolutionizing the umbrella industry with high-performance, stylish, and durable designs. Engineered for extreme weather conditions, BLUNT Umbrellas are built to last, combining functionality with sustainability. With a focus on reducing waste and creating products that withstand the test of time, BLUNT aims to provide a reliable and eco-conscious solution to traditional disposable umbrellas.",
+  "qualifications": [
+    "Innovative Design",
+    "Built to Last",
+    "Sustainable Practices",
+    "Repairable Components",
+    "Stylish & Functional"
+  ],
+  "logo": "https://cdn.brandfetch.io/idxT3bUacH/w/1200/h/1350/theme/dark/idv2vZta9j.png?c=1bx1738588385762id64Mup7acZzK86aso&t=1696285476753",
+  "website": "https://bluntumbrellas.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:15:03.396Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6777e38fe109a0b3fdf4fdf6"
+  },
+  "name": "Pacific Harvest",
+  "description": "A New Zealand-based company specializing in premium seaweed products that promote health and sustainability. For over two decades, Pacific Harvest has harnessed the nutritional benefits of seaweed, offering a range of natural, sustainably harvested products for culinary and wellness purposes. With a mission to educate and inspire, the company aims to make seaweed a staple ingredient in homes worldwide, championing its potential as a nutritious and environmentally friendly food source.",
+  "qualifications": [
+    "Sustainably Harvested Seaweed",
+    "Nutrient-Rich Products",
+    "Eco-Friendly Packaging",
+    "Educational Advocacy",
+    "Commitment to Quality"
+  ],
+  "logo": "https://pacificharvest.co/cdn/shop/files/PH-Logo_Vert-RGB-400h.png?v=1676240977&width=150",
+  "website": "https://pacificharvest.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:18:07.855Z"
+  },
+  "icons": [
+    "b_corp",
+    "nongmo_logo",
+    "usda_organic_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6777e413e109a0b3fdf4fdf7"
+  },
+  "name": "686 Technical Apparel",
+  "description": "A premier outerwear and lifestyle brand that merges technical innovation with modern style. Founded in Southern California in 1992, the company specializes in high-performance snowboarding and skiing apparel, as well as versatile gear for outdoor enthusiasts. 686 is renowned for its commitment to sustainability, functionality, and inclusivity, ensuring its products meet the needs of diverse adventurers while minimizing environmental impact.",
+  "qualifications": [
+    "Technical Innovation",
+    "Sustainable Practices",
+    "Inclusive Design",
+    "Durability & Versatility",
+    "Community Engagement"
+  ],
+  "logo": "https://www.686.com/cdn/shop/files/686-LOGO-SQUARE-ALLCOLORS_052df2f9-9dce-41db-8789-f8aef7047f86.jpg?v=1678366186&width=500",
+  "website": "https://www.686.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:20:19.164Z"
+  },
+  "icons": [
+    "b_corp",
+    "bluesign_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6777e4b6e109a0b3fdf4fdf8"
+  },
+  "name": "FLOWERBX",
+  "description": "A luxury floral delivery service revolutionizing how people shop for flowers. Founded in London, the company focuses on providing fresh, single-variety blooms sourced directly from growers to ensure exceptional quality and longevity. FLOWERBX emphasizes simplicity, elegance, and sustainability, offering a seamless online shopping experience and a commitment to eco-friendly practices. Their curated selection includes seasonal bouquets, houseplants, and floral accessories, perfect for both personal and corporate needs.",
+  "qualifications": [
+    "Farm-to-Door Freshness",
+    "Sustainably Minded",
+    "Curated Elegance",
+    "Global Reach",
+    "Customizable Solutions"
+  ],
+  "logo": "https://www.flowerbx.com/static/version1734433701/frontend/Flowerbx/default_hyva/en_US/images/logo.svg",
+  "website": "https://www.flowerbx.com/us/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:23:02.134Z"
+  },
+  "icons": [
+    "b_corp",
+    "floristry_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6777e642e109a0b3fdf4fdf9"
+  },
+  "name": "PLAYin CHOC",
+  "description": "A UK-based company combining the joy of chocolate with the values of sustainability, creativity, and health-conscious living. Known for its organic, allergen-free chocolates, the brand offers a range of playful and ethical products that are perfect for families and environmentally minded individuals. Each product includes a fun and educational toy or collectible, making PLAYin CHOC a delightful treat for children and adults alike. The company is dedicated to using eco-friendly materials and ethical sourcing to create a guilt-free indulgence.",
+  "qualifications": [
+    "Organic & Allergen Free",
+    "Eco Friendly Packaging",
+    "Sustainable Sourcing",
+    "Educational & Fun",
+    "Family & Planet Friendly"
+  ],
+  "logo": "https://cdn.brandfetch.io/idzsQjGJcs/w/960/h/960/theme/dark/icon.jpeg?c=1bx1738589465461id64Mup7acHrGD5wZ6&t=1728334832438",
+  "website": "https://playinchoc.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:29:38.324Z"
+  },
+  "icons": [
+    "b_corp",
+    "soil_logo",
+    "fair_trade"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6777e792e109a0b3fdf4fdfa"
+  },
+  "name": "I was a Sari",
+  "description": "A social enterprise transforming pre-loved saris into contemporary, stylish fashion and accessories while empowering underprivileged women in India. Combining sustainability with social impact, the company repurposes traditional saris into unique products, promoting a circular economy and preserving cultural heritage. With each purchase, customers contribute to meaningful change, supporting artisans in building a better future for themselves and their families.",
+  "qualifications": [
+    "Sustainable Fashion",
+    "Empowering Women",
+    "Circular Economy Advocate",
+    "Preserving Heritage",
+    "Global Recognition"
+  ],
+  "logo": "https://iwasasari.com/cdn/shop/files/IWAS_horizontal_Teracotta_Mum_Milan_1.png?v=1694409413&width=250",
+  "website": "https://iwasasari.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:35:14.041Z"
+  },
+  "icons": [
+    "b_corp",
+    "recycled_materials"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6777e851e109a0b3fdf4fdfb"
+  },
+  "name": "California Naturals",
+  "description": "A wellness brand dedicated to creating clean, plant-based products inspired by the natural beauty and abundance of California. Specializing in organic, non-GMO supplements and personal care items, the company combines cutting-edge science with sustainably sourced ingredients to promote health and vitality. California Naturals is committed to environmental stewardship and transparency, ensuring that every product aligns with their mission of delivering wellness solutions that are as good for the planet as they are for their customers.",
+  "qualifications": [
+    "Plant-Based Products",
+    "Sustainability Focus",
+    "Transparent Formulas",
+    "Eco-Friendly Packaging",
+    "Commitment to Wellness"
+  ],
+  "logo": "https://cdn.brandfetch.io/ide9BuDb0E/theme/dark/logo.svg?c=1bx1738589816085id64Mup7acaQjtotCg&t=1730255908343",
+  "website": "https://thecalifornianaturals.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:38:25.682Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6777e909e109a0b3fdf4fdfc"
+  },
+  "name": "Union Wine Co.",
+  "description": "An Oregon-based winery known for its innovative approach to winemaking that combines quality craftsmanship with accessibility. Renowned for its canned wines, the company challenges traditional norms, making wine approachable and portable without compromising flavor or integrity. With a commitment to sustainability, Union Wine Co. focuses on eco-friendly practices throughout its operations, from vineyard management to packaging, ensuring great wine with minimal environmental impact.",
+  "qualifications": [
+    "Innovative Packaging",
+    "Sustainably Sourced Grapes",
+    "Quality Meets Accessibility",
+    "Eco-Friendly Practices",
+    "Community Involvement"
+  ],
+  "logo": "https://cdn.brandfetch.io/idn2IaKQLc/w/129/h/129/theme/dark/logo.png?c=1bx1738589995885id64Mup7aceoUOyPVK&t=1729119185795",
+  "website": "https://unionwinecompany.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:41:29.888Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "live_logo",
+    "salmon_safe_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6777eb77e109a0b3fdf4fdfd"
+  },
+  "name": "Endura",
+  "description": "A Scottish brand specializing in high-performance cycling apparel and accessories, engineered for professionals and enthusiasts alike. Founded in 1993, the company is renowned for its innovative designs and commitment to quality, delivering gear that enhances performance in the most demanding conditions. With a strong focus on sustainability, Endura Sport integrates eco-friendly practices into its production processes, ensuring that their cutting-edge products are as kind to the planet as they are to riders.",
+  "qualifications": [
+    "High-Performance Gear",
+    "Sustainability Commitment",
+    "Innovative Designs",
+    "Global Reputation",
+    "Eco-Friendly Initiatives"
+  ],
+  "logo": "https://s1.thcdn.com/enterprise/assets/endurasport-global-d59d175e-094d-4c43-ab88-979d1e2b8654-logo-default.svg",
+  "website": "https://us.endurasport.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:51:51.820Z"
+  },
+  "icons": [
+    "b_corp",
+    "bluesign_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6777ed21e109a0b3fdf4fdfe"
+  },
+  "name": "Kingdom of Wow",
+  "description": "A sustainable footwear and lifestyle brand specializing in premium handcrafted slippers and house shoes. With a focus on quality, comfort, and eco-consciousness, the company blends traditional craftsmanship with contemporary design to create products that are both stylish and sustainable. Kingdom of WOW is committed to ethical manufacturing practices, ensuring that their artisans work in fair and supportive environments while producing footwear that is kind to the planet.",
+  "qualifications": [
+    "Handcrafted Excellence",
+    "Eco-Friendly Materials",
+    "Ethical Manufacturing",
+    "Timeless Design",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://cdn.brandfetch.io/idcZRZ2Cj-/w/400/h/400/theme/dark/icon.jpeg?c=1bx1738591050668id64Mup7aciktN40Ng&t=1731434540225",
+  "website": "https://kingdomofwow.com/#",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T13:58:57.442Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6777edfce109a0b3fdf4fdff"
+  },
+  "name": "Nutratea",
+  "description": "A global wellness brand specializing in herbal teas formulated to support health and well-being. Combining traditional herbal remedies with modern research, NutraTea offers a unique range of teas designed to address specific health concerns, such as immunity, digestion, and sleep. Committed to sustainability, the company prioritizes natural ingredients, eco-friendly packaging, and ethical sourcing to deliver products that are good for both people and the planet.",
+  "qualifications": [
+    "Health-Focused Blends",
+    "Natural & Caffeine Free",
+    "Eco-Friendly Packaging",
+    "Ethical Sourcing",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://nutratea.co/wp-content/uploads/2023/07/Nutratea-logo-1.webp",
+  "website": "https://nutratea.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:02:36.712Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6777f185e109a0b3fdf4fe00"
+  },
+  "name": "KraveBeauty",
+  "description": "A skincare brand dedicated to simplifying beauty routines with effective, gentle, and eco-conscious products. Founded by beauty influencer Liah Yoo, the company champions the idea of \"less, but better,\" encouraging consumers to focus on essential, skin-friendly solutions. With a commitment to sustainability and transparency, KraveBeauty integrates eco-friendly practices into its operations, ensuring that its products are kind to both the skin and the planet.",
+  "qualifications": [
+    "Skin-Friendly Formulations",
+    "Sustainability Commitment",
+    "Simplified Skincare",
+    "Transparent Practices",
+    "Community Engagement"
+  ],
+  "logo": "https://kravebeauty.com/cdn/shop/files/krave_logo.svg?v=1713833319&width=340",
+  "website": "https://kravebeauty.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:17:41.665Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6777f216e109a0b3fdf4fe01"
+  },
+  "name": "Chosen Foods",
+  "description": "A health-conscious food brand specializing in avocado-based products that promote wellness and sustainability. Founded in San Diego, California, the company is dedicated to crafting high-quality cooking oils, dressings, and snacks made from responsibly sourced ingredients. With a mission to support clean eating and eco-friendly practices, Chosen Foods bridges the gap between delicious flavor and mindful living, empowering consumers to make healthier, more sustainable choices.",
+  "qualifications": [
+    "Avocado-Centric Products",
+    "Sustainably Sourced",
+    "High-Quality Standards",
+    "Eco-Friendly Practices",
+    "Commitment to Wellness"
+  ],
+  "logo": "https://chosenfoods.com/cdn/shop/t/102/assets/chosen-logo.svg?v=99083480302340512451730218389",
+  "website": "https://chosenfoods.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:20:06.716Z"
+  },
+  "icons": [
+    "b_corp",
+    "nongmo_logo",
+    "usda_organic_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6777f360e109a0b3fdf4fe02"
+  },
+  "name": "Bragg",
+  "description": "A pioneering health and wellness brand with over 100 years of history dedicated to promoting natural and holistic living. Renowned for its iconic apple cider vinegar, Bragg offers a wide range of organic and plant-based products, including nutritional supplements, dressings, and seasonings. With a mission to inspire healthier lifestyles, Bragg combines time-tested formulas with modern nutrition science to deliver high-quality, nutrient-rich products that empower individuals to thrive naturally.",
+  "qualifications": [
+    "Iconic Apple Cider Vinegar",
+    "Organic and Plant-Based",
+    "Sustainability Focused",
+    "Holistic Heath Advocacy",
+    "Centuries of Experience"
+  ],
+  "logo": "https://www.bragg.com/cdn/shop/t/126/assets/logo-desktop.svg?v=102295330206640306461715238838",
+  "website": "https://www.bragg.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:25:36.563Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "nongmo_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6777f408e109a0b3fdf4fe03"
+  },
+  "name": "Baskits",
+  "description": "A premier gifting company based in Canada, specializing in thoughtfully curated gift baskets for every occasion. Renowned for their quality and elegance, Baskits offers a wide range of collections featuring gourmet foods, artisanal products, and luxurious items designed to leave a lasting impression. With a commitment to excellence and convenience, the company ensures that each gift basket is beautifully packaged and delivered with care. Baskits also focuses on sustainability, incorporating eco-friendly practices into their operations.",
+  "qualifications": [
+    "Curated Selection",
+    "Personalized Options",
+    "Sustainability Commitment",
+    "Seamless Delivery",
+    "Support for Local Businesses"
+  ],
+  "logo": "https://cdn.brandfetch.io/idntPz4dNy/w/2231/h/656/theme/dark/logo.png?c=1bx1738592822786id64Mup7acaKJsFI-8&t=1729802225030",
+  "website": "https://baskits.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:28:24.280Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6777f4c8e109a0b3fdf4fe04"
+  },
+  "name": "R.M. Williams",
+  "description": "An iconic Australian heritage brand specializing in handcrafted leather boots, apparel, and accessories that embody durability, style, and timeless craftsmanship. Founded in 1932, the company is renowned for its commitment to quality, producing goods designed to withstand the rugged Australian outback while appealing to a global audience. Combining traditional techniques with contemporary designs, R.M. Williams has become a symbol of authenticity and excellence in footwear and lifestyle fashion.",
+  "qualifications": [
+    "Handcrafted Excellence",
+    "Premium Materials",
+    "Sustainability Focus",
+    "Heritage & Innovation",
+    "Global Appeal"
+  ],
+  "logo": "https://www.rmwilliams.com/on/demandware.static/-/Library-Sites-rmw-shared-library/default/dwb65ee7ba/images/logo/RMW-logo-dark-desktop.svg",
+  "website": "https://www.rmwilliams.com/Home?lang=en_US",
+  "icon": "",
+  "createdAt": "Fri, 03 Jan 2025 14:31:36 GMT",
+  "icons": [
+    "b_corp",
+    "lwg_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6777f603e109a0b3fdf4fe05"
+  },
+  "name": "Kuishi",
+  "description": "A premium homeware and lifestyle brand dedicated to creating simple, elegant, and sustainable solutions for modern living. Specializing in high-quality bathroom, kitchen, and storage accessories, Kuishi emphasizes the use of natural materials and minimalist designs to enhance everyday spaces. The company is committed to sustainability, offering products that are environmentally conscious without compromising style or functionality.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Minimalist Aesthetic",
+    "Eco-Friendly Practices",
+    "Customizable Options",
+    "Global Ethos"
+  ],
+  "logo": "https://kuishi.com/cdn/shop/files/Kuishi_Logo_Web_Teal.png?v=1719848266",
+  "website": "https://kuishi.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:36:51.935Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6777f79ae109a0b3fdf4fe06"
+  },
+  "name": "Straightaway Cocktails",
+  "description": "A premium craft cocktail brand dedicated to delivering ready-to-enjoy beverages that embody quality, authenticity, and convenience. Based in Portland, Oregon, the company carefully handcrafts each cocktail using artisanal techniques, high-quality spirits, and natural ingredients. Inspired by classic recipes and innovative flavors, Straightaway Cocktails offers an elevated drinking experience designed for discerning palates.",
+  "qualifications": [
+    "Artisanal Craftsmanship",
+    "Convenience Without Compromise",
+    "Sustainable Practices",
+    "Innovative Flavors",
+    "Community Focus"
+  ],
+  "logo": "https://straightawaycocktails.com/cdn/shop/files/SAW_PrimaryLockup_TriColorCream_Tagline_790c3301-6061-4167-a8fc-d74f0a8df600.png?v=1713307076&width=90",
+  "website": "https://straightawaycocktails.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:43:38.993Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6777faa9e109a0b3fdf4fe07"
+  },
+  "name": "Avocado Green Mattress ",
+  "description": "A pioneering eco-luxury brand committed to producing sustainably crafted mattresses and bedding products. Based in the United States, the company specializes in organic, non-toxic materials to create high-quality sleep solutions that are both comfortable and environmentally friendly. With a mission to lead the green living movement, Avocado Green Mattress blends innovative design, ethical practices, and a passion for sustainability to redefine the modern sleep experience.",
+  "qualifications": [
+    "Certified Organic Materials",
+    "Sustainability Leadership",
+    "Handcrafted in the USA",
+    "Zero-Waste Practices",
+    "Social Responsibility"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0444/9488/0918/files/Avocado_Green_Mattress_Logo.svg?v=1676482151",
+  "website": "https://www.avocadogreenmattress.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T14:56:41.676Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "carbon_neutral_logo",
+    "greenguard_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6777fbbce109a0b3fdf4fe08"
+  },
+  "name": "Alpine",
+  "description": "A globally recognized brand specializing in innovative hearing protection solutions. Based in the Netherlands, the company is dedicated to preserving auditory health through a range of high-quality, comfortable, and reusable earplugs designed for various activities and environments. Alpine’s mission is to create awareness about hearing health while providing effective and sustainable solutions that enhance quality of life without compromising on sound experience.",
+  "qualifications": [
+    "Innovative Technology",
+    "Versatile Solutions",
+    "Eco-Friendly Materials",
+    "Global Reach",
+    "Health Advocacy"
+  ],
+  "logo": "https://www.alpinehearingprotection.com/cdn/shop/files/alpine-logo-light.svg?v=1716993733&width=128",
+  "website": "https://www.alpinehearingprotection.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:01:16.867Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6777fdd7e109a0b3fdf4fe09"
+  },
+  "name": "TOSSWARE",
+  "description": "A leading sustainable drinkware company specializing in elegant, shatterproof, and recyclable glasses designed for any occasion. Headquartered in the United States, TOSSWARE combines convenience with eco-consciousness, offering premium-quality drinkware that minimizes environmental impact. With a focus on modern design and sustainability, TOSSWARE aims to redefine disposable drinkware by creating stylish, functional, and planet-friendly alternatives.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Shatterproof Design",
+    "Sustainable Practices",
+    "Stylish & Functional",
+    "Community Engagement"
+  ],
+  "logo": "https://www.tossware.com/cdn/shop/files/Group_cee1b9e8-e264-4777-9541-2a4c5f966656.svg?v=1694091043",
+  "website": "https://www.tossware.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:10:15.009Z"
+  },
+  "icons": [
+    "b_corp",
+    "recycled_materials"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6777fe95e109a0b3fdf4fe0a"
+  },
+  "name": "Open Farm",
+  "description": "A premium pet food company dedicated to creating ethically sourced, sustainable, and nutritious food for pets. Based in Canada, Open Farm emphasizes transparency, ensuring pet owners know exactly where their ingredients come from and how their products are made. By prioritizing animal welfare, environmentally friendly practices, and high-quality nutrition, Open Farm empowers pet owners to make choices that are as good for their pets as they are for the planet.",
+  "qualifications": [
+    "Ethically Sourced Ingredients",
+    "Sustainability Commitment",
+    "Transparency in Sourcing",
+    "High-Quality Nutrition",
+    "Animal Welfare Advocacy"
+  ],
+  "logo": "https://cdn.brandfetch.io/idsitDgZkl/theme/light/logo.svg?c=1bx1738595494986id64Mup7acwEkjQY4s&t=1667607006676",
+  "website": "https://openfarmpet.com/?pet=dog",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:13:25.337Z"
+  },
+  "icons": [
+    "b_corp",
+    "certified_humane_logo",
+    "msc_logo"
+  ],
+  "category": "Pet"
+},
+{
+  "_id": {
+    "$oid": "6778002de109a0b3fdf4fe0b"
+  },
+  "name": "etta loves",
+  "description": " A UK-based brand specializing in scientifically designed sensory baby products that promote early development and engagement. Combining thoughtful aesthetics with functionality, the company creates items such as muslins, playmats, and blankets with high-contrast patterns tailored to stimulate a baby’s vision during different stages of growth. Etta Loves is committed to sustainability, using eco-friendly materials and ethical practices to deliver products that are as kind to the planet as they are to babies.",
+  "qualifications": [
+    "Sensory Expertise",
+    "Sustainable Materials",
+    "Aesthetic & Functional",
+    "Ethical Practices",
+    "Support for Parents"
+  ],
+  "logo": "https://us.ettaloves.com/cdn/shop/files/ettaloves_stacked_logo_copy_136cd7ca-0d16-4278-8f51-c51db2df5321_200x.png?v=1614381681",
+  "website": "https://us.ettaloves.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:20:13.389Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677802a6e109a0b3fdf4fe0c"
+  },
+  "name": "Scout & Cellar",
+  "description": "A clean-crafted wine company committed to providing high-quality, ethically produced wines free from synthetic additives, pesticides, and added sugars. Founded in Texas, the company carefully curates wines from small family-owned vineyards around the world, ensuring each bottle meets their stringent clean-crafted standards. By promoting sustainability and transparency, Scout & Cellar offers a wine experience that is better for consumers and the environment.",
+  "qualifications": [
+    "Clean-Crafted Commitment",
+    "Sustainable Sourcing",
+    "Transparency in Production",
+    "Ethical Practices",
+    "Eco-Friendly Packaging"
+  ],
+  "logo": "https://scoutandcellar.com/_next/image?url=%2Fupdated-logo.png&w=256&q=75",
+  "website": "https://scoutandcellar.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:30:46.039Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "sustainable_winegrowing_logo",
+    "fair_trade"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67780348e109a0b3fdf4fe0d"
+  },
+  "name": "Bumboo",
+  "description": "A sustainable personal care brand specializing in eco-friendly toilet paper and hygiene products made from 100% bamboo. Committed to reducing deforestation and environmental impact, Bumboo offers a renewable, biodegradable alternative to traditional paper products. With a focus on ethical sourcing, sustainability, and community support, Bumboo provides high-quality, soft, and durable products that are gentle on the planet and its people.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Plastic-Free Packaging",
+    "Carbon-Neutral Shipping",
+    "Community Engagement",
+    "Premium Quality"
+  ],
+  "logo": "https://www.bumboo.eco/cdn/shop/files/Bumboo_logo_updated_lanscape.jpg?height=50&v=1680009475",
+  "website": "https://www.bumboo.eco/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:33:28.707Z"
+  },
+  "icons": [
+    "b_corp",
+    "fsc_logo",
+    "carbon_neutral_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6778054ae109a0b3fdf4fe0e"
+  },
+  "name": "Backyard Beans Coffee Company",
+  "description": "A Pennsylvania-based specialty coffee roaster committed to producing ethically sourced, sustainably roasted coffee. Founded with a passion for quality and community, the company partners with small-scale farmers to bring responsibly grown beans to coffee enthusiasts. Backyard Beans emphasizes eco-conscious practices and innovative roasting techniques, delivering fresh, flavorful coffee while supporting sustainable agriculture and local communities.",
+  "qualifications": [
+    "Ethically Sourced Coffee",
+    "Sustainable Roasting",
+    "Community-Centric",
+    "Diverse Offerings",
+    "Eco-Friendly Packaging"
+  ],
+  "logo": "https://backyardbeans.com/cdn/shop/files/Logo_Backyard_Beans_Web_white-02.png?v=1701723052&width=240",
+  "website": "https://backyardbeans.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:42:02.751Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "usda_organic_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67780613e109a0b3fdf4fe0f"
+  },
+  "name": "Mepal",
+  "description": "A Dutch brand specializing in high-quality, functional food storage solutions and on-the-go products that make everyday life easier and more sustainable. Renowned for their innovative designs and durable materials, Mepal offers a wide range of lunchboxes, food containers, and drinkware crafted with convenience and style in mind. With a strong commitment to sustainability, the company prioritizes eco-friendly practices and long-lasting products that reduce waste and promote mindful consumption.",
+  "qualifications": [
+    "Innovative Design",
+    "Durable & Reusable",
+    "Eco-Friendly Materials",
+    "Easy Maintenance",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://cdn.mepal.com/551/0/0/1/ffffff00/9fe76f34/2a6d871ba62abba2cacabc9d48b4681295dd03f85b686a285928bfced470bde2/logo.png",
+  "website": "https://www.mepal.com/us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:45:23.425Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677806f5e109a0b3fdf4fe10"
+  },
+  "name": "Eclectic Array",
+  "description": "A socially conscious lifestyle brand that celebrates artisanal craftsmanship and cultural heritage. Specializing in handmade, ethically sourced products, the company partners with artisans from around the world to bring unique, high-quality items to conscious consumers. From fashion and accessories to home decor, Eclectic Array is committed to empowering artisans, preserving traditional techniques, and promoting sustainable practices, all while offering beautifully curated collections.",
+  "qualifications": [
+    "Handmade Artisanal Products",
+    "Ethical Sourcing",
+    "Cultural Preservations",
+    "Community Empowerment"
+  ],
+  "logo": "https://eclecticarray.com/cdn/shop/files/EA_Nude_1.png?v=1673390083&width=180",
+  "website": "https://eclecticarray.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:49:09.849Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6778083de109a0b3fdf4fe11"
+  },
+  "name": "Rosy Soil ",
+  "description": "An eco-conscious brand specializing in sustainable, nutrient-rich soil blends designed to support healthy plant growth. By utilizing innovative recycling methods and responsibly sourced ingredients, Rosy Soil creates high-quality products that are good for both plants and the planet. With a mission to make gardening and plant care more sustainable, Rosy Soil empowers plant enthusiasts and professionals to cultivate vibrant, thriving greenery while minimizing environmental impact.",
+  "qualifications": [
+    "Sustainable Ingredients",
+    "Eco-Friendly Practices",
+    "Plant-Optimized Blends",
+    "Packaging Consciousness",
+    "Community Support"
+  ],
+  "logo": "https://rosysoil.com/cdn/shop/files/logo-rosy-soil-rev_200x.png?v=1648488179",
+  "website": "https://rosysoil.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:54:37.664Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "omri_logo"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "67780979e109a0b3fdf4fe12"
+  },
+  "name": "Horizon Organic",
+  "description": "A leading brand in the organic dairy industry, committed to providing high-quality, sustainably produced dairy products. As one of the pioneers of organic farming in the United States, Horizon Organic partners with family farms to deliver milk, cheese, yogurt, and other dairy items free from synthetic pesticides, antibiotics, and growth hormones. With a focus on environmental stewardship and animal welfare, the company plays a vital role in advancing sustainable agriculture while supporting the health and well-being of families.",
+  "qualifications": [
+    "Certified Organic",
+    "Family Farm Partnership",
+    "Animal Welfare Commitment",
+    "Sustainability Focus",
+    "Nutritional Quality"
+  ],
+  "logo": "https://horizon.com/wp-content/themes/horizon/assets/images/global/navigation/logo-v2.png",
+  "website": "https://horizon.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T15:59:53.534Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "carbon_neutral_logo",
+    "awg_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "67780acfe109a0b3fdf4fe13"
+  },
+  "name": "Kind Bag",
+  "description": "A London-based brand committed to creating sustainable, stylish, and functional bags from 100% recycled materials. Specializing in reusable bags made from recycled plastic bottles, Kind Bag aims to reduce single-use plastic waste while offering versatile designs that fit into everyday life. With a focus on sustainability and innovation, the company inspires conscious consumers to make eco-friendly choices without compromising on quality or style.",
+  "qualifications": [
+    "Recycled Materials",
+    "Stylish & Practical",
+    "Eco-Friendly Mission",
+    "Reusable Alternatives",
+    "Social Impact"
+  ],
+  "logo": "https://us.kindbag.co/cdn/shop/files/2023KINDBAG_LOGO-White_124d82b5-7cbc-454b-9779-6101efd95ce4_500x.png?v=1719417500",
+  "website": "https://us.kindbag.co/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:05:35.431Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "recycled_materials"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67780d82e109a0b3fdf4fe14"
+  },
+  "name": "Faherty Brand",
+  "description": "A family-run lifestyle clothing brand dedicated to crafting high-quality, sustainably made apparel inspired by a love for the outdoors. Combining timeless designs with eco-friendly practices, Faherty creates versatile clothing that blends comfort, durability, and style. With a commitment to sustainability and community, the brand prioritizes organic fabrics, ethical production methods, and initiatives that give back to people and the planet.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Timeless Design",
+    "Ethical Manufacturing",
+    "Eco-Friendly Practices",
+    "Community-Focused"
+  ],
+  "logo": "https://cdn.brandfetch.io/idysE3KGI8/theme/dark/logo.svg?c=1bx1738599348155id64Mup7ac7PKS3dxK&t=1735767375225",
+  "website": "https://fahertybrand.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:17:06.073Z"
+  },
+  "icons": [
+    "b_corp",
+    "GOTS_logo",
+    "fair_trade"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "677810ace109a0b3fdf4fe15"
+  },
+  "name": "Other Foods",
+  "description": "A plant-based snack company dedicated to crafting delicious, nutritious, and sustainable alternatives to traditional snacks. Specializing in natural and minimally processed ingredients, the brand offers a range of innovative snacks made from vegetables, fruits, and other plant-based sources. With a commitment to sustainability and health-conscious living, Other Foods UK provides guilt-free snacking options that are better for consumers and the planet.",
+  "qualifications": [
+    "Plant-Based Ingredients",
+    "Minimal Processing",
+    "Innovative Flavors",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://static.wixstatic.com/media/5ae68f_0963e94a2a314d90bd29b984f96d4349~mv2.png/v1/fill/w_293,h_92,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/OTHERFOODS-STRIP-LOGO-V2.png",
+  "website": "https://www.otherfoodsuk.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:30:36.583Z"
+  },
+  "icons": [
+    "b_corp",
+    "vegan"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "67781314e109a0b3fdf4fe16"
+  },
+  "name": "Curator Paints ",
+  "description": "A premium paint brand that combines artistic inspiration with exceptional quality and sustainability. Rooted in craftsmanship, the company offers a meticulously curated palette of over 140 unique colors, each designed to inspire creativity and elevate interior spaces. With a commitment to eco-conscious practices, Curator Paints delivers high-performance, low-VOC paints that are safe for homes and the environment, making them a top choice for discerning homeowners and designers.",
+  "qualifications": [
+    "Curated Color Palette",
+    "Eco-Friendly Formulations",
+    "Exceptional Quality",
+    "Sustainability Commitment",
+    "Creative Collaboration"
+  ],
+  "logo": "https://pollackgroup.com/wp-content/uploads/2023/07/5c9d58a3d7fb892d3b5671ae_Curator-logo-jpg.webp",
+  "website": "https://www.curatorpaints.ie/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:40:52.643Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677814e3e109a0b3fdf4fe17"
+  },
+  "name": "Hairlust",
+  "description": "A Scandinavian beauty brand specializing in natural, sustainable hair care products designed to promote healthy and strong hair. Committed to combining innovation with eco-conscious practices, Hairlust offers a range of shampoos, conditioners, hair masks, and supplements made from organic and vegan ingredients. With a focus on transparency and quality, Hairlust empowers individuals to prioritize their hair's health while supporting environmentally responsible practices.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Sustainability Commitment",
+    "Holistic Hair Care",
+    "Innovative Solutions",
+    "Transparency & Education"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0436/2181/0327/files/Logomark_HL_black.svg?v=4270808304982801023",
+  "website": "https://hairlust.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:48:35.190Z"
+  },
+  "icons": [
+    "b_corp",
+    "vegan",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67781611e109a0b3fdf4fe18"
+  },
+  "name": "Slowear",
+  "description": "An Italian fashion brand dedicated to timeless style, impeccable craftsmanship, and sustainability. Specializing in premium menswear and accessories, Slowear is a collective of four iconic brands—Incotex, Zanone, Glanshirt, and Montedoro—each offering high-quality pieces that blend innovation with tradition. With a commitment to slow fashion, Slowear prioritizes durability, ethical production, and s",
+  "qualifications": [
+    "Timeless Design",
+    "Ethical Manufacturing",
+    "Sustainability Focus",
+    "Heritage & Innovation",
+    "Global Recognition"
+  ],
+  "logo": "https://www.slowear.com/cdn/shop/files/logo.svg?v=1722640814&width=190",
+  "website": "https://www.slowear.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T16:53:37.798Z"
+  },
+  "icons": [
+    "b_corp",
+    "oeko_tex_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67781b1be109a0b3fdf4fe19"
+  },
+  "name": "Jennifer Manners",
+  "description": "A luxury rug and textile brand renowned for its innovative, sustainable designs that combine elegance with eco-consciousness. Based in London, the company specializes in handcrafted rugs made from recycled and responsibly sourced materials, offering bespoke and ready-to-order collections. With a commitment to preserving traditional craftsmanship while embracing modern sustainability, Jennifer Manners creates beautiful, timeless pieces that transform interiors and support ethical practices.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Handcrafted Excellence",
+    "Innovative Design",
+    "Eco-Friendly Practices",
+    "Ethical Commitment"
+  ],
+  "logo": "https://jennifermanners.co.uk/cdn/shop/files/JM_Logotype_w_Weave_White_500x.png?v=1643715776",
+  "website": "https://jennifermanners.co.uk/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:15:07.624Z"
+  },
+  "icons": [
+    "b_corp",
+    "good_weave_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67781c69e109a0b3fdf4fe1a"
+  },
+  "name": "Lylie",
+  "description": "A sustainable fine jewelry brand committed to crafting timeless pieces while prioritizing environmental responsibility and ethical practices. Based in London, the company specializes in creating jewelry from recycled precious metals and salvaged gemstones, turning waste into wearable art. With a focus on transparency, innovation, and craftsmanship, Lylie redefines luxury by aligning beauty with sustainability.",
+  "qualifications": [
+    "Circular Jewelry",
+    "Sustainability Focus",
+    "Timeless Design",
+    "Ethical Practices",
+    "Transparent Approach"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/2213/3555/files/2024-Logo-LYLIE-01.svg?v=1727454671",
+  "website": "https://lylies.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:20:41.785Z"
+  },
+  "icons": [
+    "b_corp",
+    "carbon_neutral_logo",
+    "fairmined_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67781dbfe109a0b3fdf4fe1b"
+  },
+  "name": "The Solidbar Company",
+  "description": "An eco-friendly personal care brand specializing in high-quality, plastic-free products. Based in the United Kingdom, the company offers a range of solid shampoos, conditioners, and skincare bars that prioritize sustainability without compromising on effectiveness. Using natural, vegan, and cruelty-free ingredients, The Solid Bar Company provides innovative solutions for reducing waste while promoting healthier lifestyles and a cleaner planet.",
+  "qualifications": [
+    "Plastic-Free Products",
+    "Natural Ingredients",
+    "Sustainable Practices",
+    "Vegan & Cruelty Free",
+    "Convenient & Travel-Friendly"
+  ],
+  "logo": "https://thesolidbarcompany.com/cdn/shop/files/TSBC-logo-WHITE_0209d41d-ea90-4385-94c6-1b816186f37a_410x.png?v=1614373931",
+  "website": "https://thesolidbarcompany.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:26:23.707Z"
+  },
+  "icons": [
+    "b_corp",
+    "vegan",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67781edae109a0b3fdf4fe1c"
+  },
+  "name": "Merchants of the Sun",
+  "description": "A lifestyle brand specializing in ethically crafted, artisanal goods inspired by global traditions and cultures. The company curates a diverse range of home decor, fashion, and accessories, each piece handcrafted by skilled artisans using sustainable materials and practices. With a commitment to preserving cultural heritage and promoting fair trade, Merchants of the Sun empowers artisans worldwide while offering unique, high-quality products to conscious consumers.",
+  "qualifications": [
+    "Artisinal Craftsmanship",
+    "Ethical Sourcing",
+    "Sustainable Materials",
+    "Cultural Preservation",
+    "Global Impact"
+  ],
+  "logo": "https://merchantsofthesun.com.au/cdn/shop/files/BLACK-MERCHANTS_09c2e4c7-5ad4-4f57-97f7-ee3992815dfd_200x.png?v=1700008246",
+  "website": "https://merchantsofthesun.com.au/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:31:06.846Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67781f68e109a0b3fdf4fe1d"
+  },
+  "name": "Nabs and Babs",
+  "description": "A boutique brand specializing in unique, handcrafted gifts and lifestyle products that add charm and personality to everyday living. Based in the United States, the company curates a delightful selection of artisanal goods, ranging from home decor and stationery to curated gift sets. Nabs and Babs prides itself on supporting small businesses and artisans while delivering products that celebrate creativity, craftsmanship, and sustainability.",
+  "qualifications": [
+    "Handpicked Artisanal Goods",
+    "Thoughtful Gifting",
+    "Support for Small Businesses",
+    "Sustainable Practices",
+    "Charming & Versatile Designs"
+  ],
+  "logo": "https://nabsandbabs.com/cdn/shop/files/N_B_Web_logo-05_33cde84d-f2b8-4830-aea3-7e4e2c7400d1.png?v=1664970420&width=440",
+  "website": "https://nabsandbabs.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:33:28.341Z"
+  },
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67782148e109a0b3fdf4fe1e"
+  },
+  "name": "Shielded Beauty",
+  "description": "A skincare brand dedicated to protecting and enhancing skin health with innovative, science-driven formulations. Focused on combining skincare and defense, the brand creates multifunctional products designed to shield skin from environmental aggressors, pollutants, and pathogens. With a commitment to clean beauty, Shielded Beauty prioritizes sustainable practices and transparent ingredient sourcing, offering effective and safe skincare solutions for all skin types.",
+  "qualifications": [
+    "Innovative Formulas",
+    "Clean Beauty Standards",
+    "Sustainable Packaging",
+    "Holistic Protection",
+    "Inclusive & Effective"
+  ],
+  "logo": "https://shieldedbeauty.com/cdn/shop/files/footer_logo_8946b013-5489-4dc6-8e29-9ce039b204c3_150x.png?v=1696441459",
+  "website": "https://shieldedbeauty.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:41:28.123Z"
+  },
+  "icons": [
+    "b_corp",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6778237ee109a0b3fdf4fe1f"
+  },
+  "name": "Farrow & Ball",
+  "description": "A distinguished British paint and wallpaper brand renowned for its meticulously crafted, eco-friendly products that embody timeless elegance and sophistication. Founded in 1946, the company offers a curated palette of richly pigmented paints and artisanal wallpapers, creating unique finishes that transform interiors with depth and character. With a steadfast commitment to sustainability, Farrow & Ball uses water-based formulations and responsibly sourced materials, making their products as kind to the environment as they are to homes.",
+  "qualifications": [
+    "Iconic Color Pallete",
+    "Eco-Friendly Formulations",
+    "Artisan Wallpapers",
+    "Sustainability Commitment",
+    "Exceptional Quality"
+  ],
+  "logo": "https://www.farrow-ball.com/static/version1733388552/frontend/FarrowAndBall/theme-frontend-farrow-and-ball/default/images/logo-white.svg",
+  "website": "https://www.farrow-ball.com/us/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:50:54.447Z"
+  },
+  "icons": [
+    "b_corp",
+    "iso_logo",
+    "ecolabel_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "677824f5e109a0b3fdf4fe20"
+  },
+  "name": "Heavenly London",
+  "description": "A luxury jewelry brand renowned for its timeless designs, exceptional craftsmanship, and commitment to sustainability. Specializing in unique, customizable pieces, the brand creates jewelry that is both meaningful and ethically sourced. Based in London, Heavenly London offers a curated collection of rings, necklaces, and bracelets designed to celebrate individuality while promoting responsible practices and high-quality artistry.",
+  "qualifications": [
+    "Timeless & Customizable Design",
+    "Ethical Sourcing",
+    "Sustainability Commitment",
+    "Exceptional Craftsmanship"
+  ],
+  "logo": "https://www.heavenlylondon.com/cdn/shop/files/logo-black.png?v=1700076719&width=280",
+  "website": "https://www.heavenlylondon.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T17:57:09.939Z"
+  },
+  "icons": [
+    "b_corp",
+    "fairmined_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6778272ae109a0b3fdf4fe21"
+  },
+  "name": "Seabass",
+  "description": "A sustainable swimwear brand dedicated to creating stylish, high-quality pieces that prioritize environmental responsibility. Combining timeless design with innovative materials, Seabass Swimwear offers a range of swimsuits and beachwear made from recycled fabrics, including ocean plastics and fishing nets. The brand’s commitment to sustainability extends to its production practices, ensuring minimal environmental impact while empowering conscious consumers to make eco-friendly choices.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Timeless Designs",
+    "Sustainable Practices",
+    "Ocean Conservation Commitment",
+    "Ethical Manufacturing"
+  ],
+  "logo": "https://seabass-official.com/cdn/shop/files/seabass-logo-koala.png?v=1733238056&width=370",
+  "website": "https://seabass-official.com/en-us",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T18:06:34.875Z"
+  },
+  "icons": [
+    "b_corp",
+    "grs_logo",
+    "oeko_tex_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67782ab6e109a0b3fdf4fe22"
+  },
+  "name": "The Kind Brand",
+  "description": "A purpose-driven lifestyle company committed to creating eco-friendly, ethical, and stylish products that inspire conscious living. With a focus on sustainability and community impact, The Kind Brand offers a diverse range of goods, from fashion and accessories to home essentials, all crafted with care and responsibility. By blending timeless design with sustainable practices, the brand empowers individuals to make choices that are kind to themselves, others, and the planet.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Manufacturing",
+    "Eco-Friendly Packaging",
+    "Community Engagement",
+    "Timeless Design"
+  ],
+  "logo": "https://thekindbrandcompany.com/wp-content/uploads/2021/05/7R7_ObUA-1024x512.png",
+  "website": "https://thekindbrandcompany.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T18:21:42.158Z"
+  },
+  "icons": [
+    "b_corp",
+    "fair_trade",
+    "grs_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67784d89e109a0b3fdf4fe23"
+  },
+  "name": "Abandoned Grove",
+  "description": "A premium producer of sustainably crafted olive oils, dedicated to delivering exceptional quality while respecting the environment. With a focus on traditional methods and innovative sustainability practices, the company transforms abandoned olive groves into thriving ecosystems. By restoring these groves, Abandoned Grove Olive Oil not only revitalizes the land but also produces rich, flavorful oils that reflect their commitment to craftsmanship, heritage, and sustainability.",
+  "qualifications": [
+    "Restored Groves",
+    "Exceptional Quality",
+    "Eco-Friendly Practices",
+    "Community Engagement",
+    "Sustainability Commitment"
+  ],
+  "logo": "https://abandonedgrove.com/cdn/shop/files/AG_logo_white.svg?v=1726855184&width=100",
+  "website": "https://abandonedgrove.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-03T20:50:17.573Z"
+  },
+  "icons": [
+    "b_corp",
+    "usda_organic_logo",
+    "pdo_logo"
+  ],
+  "category": "Food"
 }]
