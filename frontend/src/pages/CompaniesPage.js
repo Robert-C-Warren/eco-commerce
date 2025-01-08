@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./CompaniesPage.css"
+import "bootstrap-icons/font/bootstrap-icons.css";
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/vegan.png";
@@ -190,6 +191,7 @@ const CompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
   const [expandedCompany, setExpandedCompany] = useState(null)
   const [expandedCategories, setExpandedCategories] = useState({})
+  const contentRef = useRef({})
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -251,85 +253,70 @@ const CompaniesPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="container-fluid my-4">
+      <div className="container my-4">
         <h1 className="text-center mb-4">Recommended Companies</h1>
         {Object.keys(groupedCompanies).map((category) => (
-          <div key={category} className="card-grouping">
+          <div key={category}>
             <h2 className="mt-4">{category}</h2>
-            <i
-              className={`bi-toggle-icon bi ${expandedCategories[category]
-                  ? "bi-arrows-collapse"
-                  : "bi-arrows-expand"
-                }`}
-              onClick={() => toggleCategory(category)}
-            ></i>
-            <div
-              className={`category-content ${expandedCategories[category] ? "expanded" : ""}`}
-              style={{ height: expandedCategories[category] ? "auto" : "0" }}
-            >
-              {expandedCategories[category] && (
                 <div className="row">
                   {groupedCompanies[category].map((company, index) => (
-                    <div key={index} className={`col-lg-2 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
-                      <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
-                        <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
-                          <img
-                            src={company.logo}
-                            className="card-img-top"
-                            alt={`${company.name} logo`}
-                            style={{ objectFit: "contain", height: "150px", width: "100%" }}
-                          />
-                          <h5 className="card-title m-0">{company.name}</h5>
-                          <h6 className="card-specifics">{company.specifics}</h6>
-                        </div>
-                        {expandedCompany === company._id && (
-                          <div className="card-body ">
-                            <p className="card-text">{company.description}</p>
-                            <ul>
-                              {company.qualifications.map((qualification, i) => (
-                                <li className="qualifications" key={i}>{qualification}</li>
-                              ))}
-                            </ul>
-                            <a
-                              href={company.website}
-                              className="btn btn-primary"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Visit Website
-                            </a>
-                            <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
-                              {company.icons?.map((iconId) => {
-                                const icon = availableIcons.find((i) => i.id === iconId);
-                                return icon ? (
-                                  <img
-                                    className="icon_actual"
-                                    key={icon.id}
-                                    src={icon.src}
-                                    alt={icon.label}
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom"
-                                    data-bs-title={icon.label}
-                                  />
-                                ) : null;
-                              })}
-                            </div>
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                              <button className="collapse-button btn btn-outline-secondary" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
-                                  <path fillRule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z" />
-                                  <path fillRule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
-                                </svg>
-                              </button>
-                            </div>
+                      <div key={index} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                        <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
+                          <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer"}}>
+                            <img
+                              src={company.logo}
+                              className="card-img-top"
+                              alt={`${company.name} logo`}
+                              style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                            />
+                            <h5 className="card-title m-0">{company.name}</h5>
                           </div>
-                        )}
+                          {expandedCompany === company._id && (
+                            <div className="card-body ">
+                              <p className="card-text">{company.description}</p>
+                              <ul>
+                                {company.qualifications.map((qualification, i) => (
+                                  <li className="qualifications" key={i}>{qualification}</li>
+                                ))}
+                              </ul>
+                              <a
+                                href={company.website}
+                                className="btn btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Visit Website
+                              </a>
+                              <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
+                                {company.icons?.map((iconId) => {
+                                  const icon = availableIcons.find((i) => i.id === iconId);
+                                  return icon ? (
+                                    <img
+                                      className="icon_actual"
+                                      key={icon.id}
+                                      src={icon.src}
+                                      alt={icon.label}
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="bottom"
+                                      data-bs-title={icon.label}
+                                    />
+                                  ) : null;
+                                })}
+                              </div>
+                              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button className="collapse-button btn btn-outline-secondary" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z" />
+                                    <path fillRule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
                   ))}
                 </div>
-              )}
-            </div>
           </div>
         ))}
       </div>

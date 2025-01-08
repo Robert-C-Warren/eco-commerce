@@ -40,13 +40,56 @@
     object-fit: contain;
 }
 
+.company-title {
+    font-weight: 900;
+}
+
+.category-title {
+    margin-left: 30%;
+    margin-right: 30%;
+    transition: transform 0.3s ease;
+}
+
+.category-title:hover {
+    transform: scale(1.07);
+}
+
+.container {
+    margin:  0 auto; /* Center the content */
+    margin-left: 100px;
+    margin-right: 100px;
+    max-width: fit-content;
+    padding: 30px; /* Adjust padding as needed */
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .cards {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .company-card {
+        margin-left: 0;
+    }
+
+    .company-card.company-card.collapsed {
+        width: auto;
+    }
+}
+
 .card-title {
     padding-top: 10px;
     text-align: center;
 }
 
 .company-card {
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 .card-header {

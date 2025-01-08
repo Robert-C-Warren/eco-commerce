@@ -1,7 +1,7 @@
 import { React } from "react";
 import "./ProductList.css"
 import { Link, useNavigate } from "react-router-dom"
-import smallLogo from "../resources/eclogo.png";
+import smallLogo from "../resources/ECLogo.svg";
 import DarkModeToggle from "./DarkModeToggle";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,8 +24,8 @@ const Navbar = () => {
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <a className="navbar-brand d-flex align-items-center" href="/">
-                        <img src={smallLogo} alt="Logo" width="90" height="auto" className="d-inline-block align-text-top"/>
-                        {/* <span className="ms-2">Eco-Commerce</span> */}
+                        <img src={smallLogo} alt="Logo" width="50" height="35" className="d-inline-block align-text-top"/>
+                        <span className="ms-2">Eco-Commerce</span>
                     </a>
                     <button
                         className="navbar-toggler"
