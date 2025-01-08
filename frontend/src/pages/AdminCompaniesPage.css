@@ -1,3 +1,8 @@
+.container-fluid {
+    width: 98%;
+    text-align: left;
+}
+
 .company-card {
     border: 1px solid #ddd;
     border-radius: 20px;
@@ -5,8 +10,7 @@
     background-color: #f9f9f9;
     cursor: pointer;
     transition: all 0.5s ease;
-    margin-left: 60px;
-    width: 350px;
+    width: 330px;
     height: auto;
 }
 

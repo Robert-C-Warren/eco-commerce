@@ -172,7 +172,7 @@ const availableIcons = [
   { id: "rjc_logo", label: "Responsible Jewellery Council (RJC) Member", src: RJC, title: "RJC" },
   { id: "ccib_logo", label: "Member of the Canadian Council for Aboriginal Business", src: CCIB, title: "CCIB" },
   { id: "wbenc_logo", label: "WBENC Certification", src: WBENC, title: "wbenc" },
-  { id: "blue_angel_logo", label: "Blue Angel Certification", src: blueAngel, title: "Blue Angel" },  { id: "brcgs_logo", label: "BRC Certification", src: BRCGS, title: "BRCGS" },
+  { id: "blue_angel_logo", label: "Blue Angel Certification", src: blueAngel, title: "Blue Angel" },
   { id: "brcgs_logo", label: "BRC Certification", src: BRCGS, title: "BRCGS" },
   { id: "greenguard_logo", label: "GREENGUARD Certified", src: greenGuard, title: "Greenguard" },
   { id: "sfc_logo", label: "Sustainable Furnishings Council (SFC) Member", src: sfc, title: "SFC" },
@@ -202,6 +202,7 @@ const AdminCompaniesPage = () => {
   });
   const [selectedIcons, setSelectedIcons] = useState({});
   const [expandedCompany, setExpandedCompany] = useState(null);
+  const [specifics, setSpecifics] = useState([])
 
   const CategoryDropdown = ({ value, onChange }) => (
     <select className="form-control mb-2" value={value} onChange={onChange}>
@@ -336,8 +337,31 @@ const AdminCompaniesPage = () => {
     setExpandedCompany((prev) => (prev === id ? null : id));
   };
 
-  return (
-    <div className="container my-4">
+  const saveSpecifics = async (companyId) => {
+    if (!companyId) {
+      console.error("Company ID is undefined");
+      return;
+    }
+  
+    const specificsValue = specifics[companyId] || "";
+    if (!specificsValue.trim()) {
+      toast.error("Please enter specifics before saving.");
+      return;
+    }
+  
+    try {
+      await API.patch(`/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
+      fetchCompanies();
+      toast.success("Specifics updated successfully", { autoClose: 3000 });
+    } catch (error) {
+      console.error("Error saving specifics:", error);
+      toast.error("Failed to update specifics.");
+    }
+  };
+  
+
+  return ( 
+    <div className="container-fluid my-4">
       <ToastContainer />
       <h1 className="text-center mb-4">Admin: Manage Companies</h1>
       <div className="d-flex justify-content-end mb-3">
@@ -353,6 +377,7 @@ const AdminCompaniesPage = () => {
           addCompany();
         }}
       >
+      {/* Company Name */}
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Company Name
@@ -369,6 +394,7 @@ const AdminCompaniesPage = () => {
             required
           />
         </div>
+        {/* Company Description */}
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
             Company Description
@@ -384,6 +410,7 @@ const AdminCompaniesPage = () => {
             required
           ></textarea>
         </div>
+        {/* Qualifications */}
         <div className="mb-3">
           <label htmlFor="qualifications" className="form-label">
             Qualifications
@@ -401,6 +428,7 @@ const AdminCompaniesPage = () => {
             }
           />
         </div>
+        {/* Logo URL */}
         <div className="mb-3">
           <label htmlFor="logo" className="form-label">
             Logo URL
@@ -418,6 +446,7 @@ const AdminCompaniesPage = () => {
             }
           />
         </div>
+        {/* Website URL */}
         <div className="mb-3">
           <label htmlFor="website" className="form-label">
             Website URL
@@ -441,14 +470,14 @@ const AdminCompaniesPage = () => {
       </form>
 
       <h3>Existing Companies</h3>
-      <div className="container">
-        <div className="row">          
+      <div className="container-fluid my-4">
+        <div className="row company-container"> 
             {companies.map((company) => (
+              <div key={company._id} className="col-lg-3 col-md-4 col-sm-6 mb-3"> 
               <div
-                key={company._id}
-                className={`col-md-4 col-sm-6 mb-4 company-card ${expandedCompany === company._id ? "expanded" : "collapsed"
-                  }`}
-              >
+                className={`company-card ${expandedCompany === company._id ? "expanded" : "collapsed"
+              }`}
+              >         
                 <div className="company-header" onClick={() => toggleExpand(company._id)}>
                   {company.name}
                 </div>
@@ -460,9 +489,29 @@ const AdminCompaniesPage = () => {
                     <p>
                       <strong>Qualifications:</strong> {company.qualifications.join(", ")}
                     </p>
+                    <p>
+                      <strong>{company.specifics}</strong>
+                    </p>
                     <a href={company.website} target="_blank" rel="noopener noreferrer">
                       Visit Website
                     </a>
+                    <textarea
+                    className="form-control mb-2"
+                    placeholder="Enter specifics about what this company sells"
+                    value={specifics[company._id] || company.specifics || ""}
+                    onChange={(e) =>
+                      setSpecifics((prev) => ({
+                        ...prev,
+                        [company._id]: e.target.value,
+                      }))
+                    }
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => saveSpecifics(company._id)}
+                  >
+                      Save Specifics
+                    </button>
                     <div className="icon-selector row">
                       {availableIcons.map((icon) => (
                         <div key={icon.id} className="form-check col-md-4 mb-1">
@@ -532,6 +581,7 @@ const AdminCompaniesPage = () => {
                     </div>
                   </div>
                 )}
+              </div>
               </div>
             ))}
         </div>

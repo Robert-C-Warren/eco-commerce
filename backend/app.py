@@ -304,6 +304,29 @@ def update_company_icons(id):
         print(f"Error in update_product_icons: {e}")  # Log the error
         return jsonify({"error": str(e)}), 500
 
+@app.route("/admin/companies/<id>/specifics", methods=["PATCH"])
+def update_company_specifics(id):
+    try:
+        specifics = request.json.get("specifics")
+
+        if specifics is None or not isinstance(specifics, str):
+            return jsonify({"error": "'specifics' must be a non-empty string"}), 400
+        
+        result = db.companies.update_one(
+            {"_id":  ObjectId(id)},
+            {"$set": {"specifics": specifics}}
+        )
+
+        if result.matched_count == 0:
+            return jsonify({"error": "Company not found"}), 404
+        if result.modified_count == 0:
+            return jsonify({"message": "No changes made"}), 200
+        
+        return jsonify({"message": "Specifics updated successfully"}), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/companies', methods=['GET'])
 def get_companies():
     try:
@@ -384,7 +407,6 @@ def update_company_category(company_id):
         return jsonify({"message": "Category updated successfully"}), 200
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
-
 
 @app.route("/subscribe", methods=["POST"])
 def subscribe():
