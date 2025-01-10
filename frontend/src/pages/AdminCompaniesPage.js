@@ -12,7 +12,7 @@ import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"
 import fla from "../resources/icons/flalogo.png";
 import cascale from "../resources/icons/cascalelogo.png";
-import oneForThePlanet from "../resources/icons/1fortheplanet.png"
+import oneForThePlanet from "../resources/icons/1planetlogo.svg"
 import sai from "../resources/icons/sailogo.png"
 import changeclimate from "../resources/icons/changeclimatelogo.png"
 import RAINN from "../resources/icons/RAINNlogo.png"
@@ -94,7 +94,7 @@ import AWG from "../resources/icons/awglogo.png"
 import fairmined from "../resources/icons/fairminedlogo.png"
 import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
-
+import NFF from "../resources/icons/nfflogo.svg"
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -187,6 +187,7 @@ const availableIcons = [
   { id: "fairmined_logo", label: "Fairmined Certified", src: fairmined, title: "fairmined" },
   { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
   { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
+  { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
 ]
 
 const AdminCompaniesPage = () => {

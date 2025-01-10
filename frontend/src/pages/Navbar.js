@@ -19,7 +19,6 @@ const Navbar = () => {
         }
     };
 
-
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">

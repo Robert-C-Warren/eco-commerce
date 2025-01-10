@@ -14,11 +14,11 @@
   "website": "https://www.patagonia.com/home/",
   "icons": [
     "b_corp",
-    "bluesign_logo",
     "fair_trade",
     "1_for_the_planet"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Outdoor Gear & Apparel"
 },
 {
   "_id": {
@@ -36,11 +36,10 @@
   "logo": "https://goodlogo.com/images/logos/fjllrven_logo_3502.gif",
   "website": "https://www.fjallraven.com/us/en-us/",
   "icons": [
-    "b_corp",
-    "cascale",
-    "fla_association"
+    "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Accessories",
+  "specifics": "Outerwear & Clothing"
 },
 {
   "_id": {
@@ -60,7 +59,8 @@
     "recycled_materials",
     "1_for_the_planet"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing & Accessories"
 },
 {
   "_id": {
@@ -80,10 +80,10 @@
   "icons": [
     "b_corp",
     "fair_trade",
-    "vegan",
-    "social_accountability_international"
+    "vegan"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing & Apparel"
 },
 {
   "_id": {
@@ -106,7 +106,8 @@
     "RAINN_logo",
     "One_Tree_Planted_Logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Women's Apparel"
 },
 {
   "_id": {
@@ -123,10 +124,10 @@
   "website": "https://someonesomewhere.mx/",
   "icons": [
     "b_corp",
-    "change_climate",
     "EcoVadis_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing & Accessories"
 },
 {
   "_id": {
@@ -147,7 +148,8 @@
     "fair_trade",
     "SeaLegacy_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing"
 },
 {
   "_id": {
@@ -164,13 +166,10 @@
   "logo": "https://cdn.brandfetch.io/idVeN-QZAW/theme/dark/logo.svg?c=1bx1737384409722id64Mup7acVOnbkk4u&t=1728279077215",
   "website": "https://unitedbyblue.com/",
   "icons": [
-    "b_corp",
-    "change_climate",
-    "GOTS_logo",
-    "1_for_the_planet",
-    "bluesign_logo"
+    "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Apparel & Accessories"
 },
 {
   "_id": {
@@ -189,7 +188,8 @@
     "b_corp",
     "jetty_rock_foundation_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Apparel"
 },
 {
   "_id": {
@@ -205,11 +205,10 @@
   "logo": "https://dolphinblue.com/cdn/shop/files/Dolphin_Blue_-_DB_Logo_Color_9e95be73-d4c6-43bc-9ea0-354f9626b52b.jpg?v=1683838631&width=120",
   "website": "https://dolphinblue.com/",
   "icons": [
-    "b_corp",
-    "epa_green_power_logo",
-    "asbc_logo"
+    "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Office Supplies & Products"
 },
 {
   "_id": {
@@ -236,14 +235,12 @@
     "ewg_logo"
   ],
   "icons": [
-    "ewg_logo",
     "fsc_logo",
-    "ECOLOGO_logo",
     "cruelty_free_logo",
-    "b_corp",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Cleaning"
+  "category": "Cleaning",
+  "specifics": "Household & Personal Care Products"
 },
 {
   "_id": {
@@ -264,7 +261,8 @@
     "1_for_the_planet",
     "nongmo_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Baking Products"
 },
 {
   "_id": {
@@ -285,7 +283,8 @@
     "fsc_logo",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Artisan Marketplace"
 },
 {
   "_id": {
@@ -302,12 +301,11 @@
   "website": "https://numitea.com/",
   "icons": [
     "fsc_logo",
-    "change_climate",
     "b_corp",
-    "fair_trade",
-    "nongmo_logo"
+    "fair_trade"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Tea"
 },
 {
   "_id": {
@@ -326,7 +324,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "New & Used Books"
 },
 {
   "_id": {
@@ -343,12 +342,11 @@
   "website": "https://www.alimapure.com/",
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
-    "ewg_logo",
     "vegan",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Beauty Products"
 },
 {
   "_id": {
@@ -371,10 +369,10 @@
     "fair_trade",
     "1_for_the_planet",
     "cruelty_free_logo",
-    "reef_safe_logo",
-    "nongmo_logo"
+    "reef_safe_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Body Care & Wellness"
 },
 {
   "_id": {
@@ -396,7 +394,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Eyewear"
 },
 {
   "_id": {
@@ -414,12 +413,11 @@
   "website": "https://www.preserve.eco/",
   "icons": [
     "b_corp",
-    "change_climate",
-    "leed_logo",
     "cruelty_free_logo",
     "vegan"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Household Goods"
 },
 {
   "_id": {
@@ -439,7 +437,8 @@
     "vegan",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Menstrual Care"
 },
 {
   "_id": {
@@ -458,7 +457,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Wild Caught Fish"
 },
 {
   "_id": {
@@ -476,10 +476,10 @@
   "website": "https://www.kleankanteen.com/",
   "icons": [
     "b_corp",
-    "change_climate",
     "1_for_the_planet"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Reusable Bottles"
 },
 {
   "_id": {
@@ -499,7 +499,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Eyewear"
 },
 {
   "_id": {
@@ -520,7 +521,8 @@
     "fair_trade",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Hammocks"
 },
 {
   "_id": {
@@ -541,7 +543,8 @@
     "1_for_the_planet",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Refillable Household & Personal Care"
 },
 {
   "_id": {
@@ -559,12 +562,12 @@
   "website": "https://ethique.com/",
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "cruelty_free_logo",
     "vegan",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Beauty & Personal Care"
 },
 {
   "_id": {
@@ -586,7 +589,8 @@
     "fsc_logo",
     "recycled_materials"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Bags, Wallets & Accessories"
 },
 {
   "_id": {
@@ -608,7 +612,8 @@
     "vegan",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Personal Care & Cleaning"
 },
 {
   "_id": {
@@ -626,11 +631,11 @@
   "website": "https://www.toms.com/en-us",
   "icons": [
     "b_corp",
-    "fla_logo",
     "lwg_logo",
     "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Shoes"
 },
 {
   "_id": {
@@ -648,7 +653,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Kombucha"
 },
 {
   "_id": {
@@ -667,7 +673,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Coffee"
 },
 {
   "_id": {
@@ -690,7 +697,8 @@
     "cruelty_free_logo",
     "recycled_materials"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Personal Care"
 },
 {
   "_id": {
@@ -710,7 +718,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Socks"
 },
 {
   "_id": {
@@ -730,7 +739,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Footwear & Apparel"
 },
 {
   "_id": {
@@ -750,7 +760,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Toilet Paper & Paper Towels "
 },
 {
   "_id": {
@@ -770,7 +781,8 @@
     "b_corp",
     "psc_logo"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Food & Care"
 },
 {
   "_id": {
@@ -789,7 +801,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Personal Care"
 },
 {
   "_id": {
@@ -809,7 +822,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Blankets & Glassware"
 },
 {
   "_id": {
@@ -828,10 +842,10 @@
   "icon": "",
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "greenamerica_logo"
   ],
-  "category": "Kitchen"
+  "category": "Kitchen",
+  "specifics": "Plastic Wrap Alternative"
 },
 {
   "_id": {
@@ -851,7 +865,8 @@
     "b_corp",
     "rainforest_alliance_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Tea"
 },
 {
   "_id": {
@@ -871,7 +886,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Sparkling & Still Water"
 },
 {
   "_id": {
@@ -891,7 +907,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing"
 },
 {
   "_id": {
@@ -908,11 +925,10 @@
   "website": "https://prose.com/",
   "icon": "",
   "icons": [
-    "b_corp",
-    "change_climate",
-    "ewg_logo"
+    "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Hair Care"
 },
 {
   "_id": {
@@ -930,11 +946,11 @@
   "icon": "",
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "grs_logo",
     "fair_wear_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Snow Gear & Clothing"
 },
 {
   "_id": {
@@ -956,7 +972,8 @@
     "biodegradable",
     "recycled_materials"
   ],
-  "category": "Cleaning"
+  "category": "Cleaning",
+  "specifics": "Cleaning & Body Care Products"
 },
 {
   "_id": {
@@ -977,7 +994,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Used Books"
 },
 {
   "_id": {
@@ -1001,7 +1019,8 @@
     "fsc_logo",
     "recycled_materials"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Snow Gear & Clothing"
 },
 {
   "_id": {
@@ -1020,10 +1039,10 @@
   "icon": "",
   "icons": [
     "b_corp",
-    "change_climate",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Electronics Accessories"
 },
 {
   "_id": {
@@ -1042,10 +1061,10 @@
   "icon": "",
   "icons": [
     "b_corp",
-    "change_climate",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Countertop Composter"
 },
 {
   "_id": {
@@ -1064,11 +1083,11 @@
   "icon": "",
   "icons": [
     "b_corp",
-    "bluesign_logo",
     "fla_logo",
     "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Outdoor Clothing & Accessories Brands"
 },
 {
   "_id": {
@@ -1089,7 +1108,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Coconut Water"
 },
 {
   "_id": {
@@ -1111,7 +1131,8 @@
     "sdg_logo",
     "global_good_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Discounted Food"
 },
 {
   "_id": {
@@ -1133,7 +1154,8 @@
     "fsc_logo",
     "solar_aid_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Sunglasses"
 },
 {
   "_id": {
@@ -1153,10 +1175,10 @@
   "icons": [
     "b_corp",
     "fair_trade",
-    "GOTS_logo",
     "recycled_materials"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Casual Clothing"
 },
 {
   "_id": {
@@ -1178,7 +1200,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Lunch Boxes"
 },
 {
   "_id": {
@@ -1200,11 +1223,10 @@
     "$date": "2024-12-27T15:25:49.285Z"
   },
   "icons": [
-    "b_corp",
-    "nongmo_logo",
-    "cruelty_free_logo"
+    "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "CBD Products"
 },
 {
   "_id": {
@@ -1229,7 +1251,8 @@
     "recycled_materials",
     "ipso_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Ski & Snowboard Wax"
 },
 {
   "_id": {
@@ -1251,10 +1274,10 @@
   },
   "icons": [
     "b_corp",
-    "nongmo_logo",
     "fair_trade"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Frozen Meals"
 },
 {
   "_id": {
@@ -1277,9 +1300,9 @@
   "category": "Food",
   "icons": [
     "b_corp",
-    "nongmo_logo",
     "fair_trade"
-  ]
+  ],
+  "specifics": "Hot Sauce"
 },
 {
   "_id": {
@@ -1304,7 +1327,8 @@
     "real_seal_logo",
     "dfa_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Dairy Products"
 },
 {
   "_id": {
@@ -1328,7 +1352,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "First Aid"
 },
 {
   "_id": {
@@ -1350,7 +1375,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Eco-Friendly Tableware"
 },
 {
   "_id": {
@@ -1376,7 +1402,8 @@
     "certified_humane_logo",
     "msc_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Meat Subscription Service"
 },
 {
   "_id": {
@@ -1400,7 +1427,8 @@
   "icons": [
     "b_corp",
     "ocean_cycle_logo"
-  ]
+  ],
+  "specifics": "Reusable Bottle"
 },
 {
   "_id": {
@@ -1424,7 +1452,8 @@
     "b_corp",
     "sdvosb_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Men's Skin & Beard Care"
 },
 {
   "_id": {
@@ -1448,7 +1477,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Dog Beds & Accessories"
 },
 {
   "_id": {
@@ -1469,11 +1499,10 @@
     "$date": "2024-12-27T18:10:00.444Z"
   },
   "icons": [
-    "b_corp",
-    "change_climate",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Outdoor Blankets "
 },
 {
   "_id": {
@@ -1496,10 +1525,10 @@
   "icons": [
     "b_corp",
     "1_for_the_planet",
-    "change_climate",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Active Wear"
 },
 {
   "_id": {
@@ -1527,7 +1556,8 @@
     "ewg_logo",
     "made_safe_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Cleaning Supplies"
 },
 {
   "_id": {
@@ -1549,10 +1579,10 @@
   },
   "icons": [
     "b_corp",
-    "change_climate",
     "nsf_ansi_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Water Filtration"
 },
 {
   "_id": {
@@ -1574,7 +1604,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Gin"
 },
 {
   "_id": {
@@ -1598,7 +1629,8 @@
     "b_corp",
     "psc_logo"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Food"
 },
 {
   "_id": {
@@ -1621,7 +1653,8 @@
     "nongmo_logo",
     "vegan"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Sugar Free Soda"
 },
 {
   "_id": {
@@ -1643,11 +1676,11 @@
   },
   "icons": [
     "b_corp",
-    "change_climate",
     "vegan",
     "cruelty_free_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Personal Care"
 },
 {
   "_id": {
@@ -1673,7 +1706,8 @@
     "fsc_logo",
     "wrap_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Women's Apparel"
 },
 {
   "_id": {
@@ -1700,7 +1734,8 @@
     "grs_logo",
     "wrap_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Shoes"
 },
 {
   "_id": {
@@ -1723,10 +1758,10 @@
   "icons": [
     "b_corp",
     "fair_trade",
-    "fsc_logo",
-    "cruelty_free_logo"
+    "fsc_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Skin Care & Wellness"
 },
 {
   "_id": {
@@ -1753,7 +1788,8 @@
     "fsc_logo",
     "iso_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Bamboo Products"
 },
 {
   "_id": {
@@ -1778,60 +1814,8 @@
     "b_corp",
     "leed_logo"
   ],
-  "category": "Beverage"
-},
-{
-  "_id": {
-    "$oid": "677011da3793f38ad143b619"
-  },
-  "name": "CaliWoods",
-  "description": "A leading eco-friendly company that champions sustainability by offering high-quality reusable and biodegradable alternatives to single-use products. Founded in New Zealand, CaliWoods is driven by a mission to reduce plastic waste and inspire sustainable living practices worldwide. The company specializes in stainless steel straws, reusable cutlery, and eco-conscious household products, designed to be durable, practical, and kind to the planet. CaliWoods is more than just a product provider; it’s a movement for positive change. The company actively supports environmental initiatives, such as ocean conservation and waste reduction programs, while educating consumers on sustainable habits. With every product, CaliWoods empowers individuals to make eco-conscious choices that protect the environment for future generations.",
-  "qualifications": [
-    "Plastic Free Commitment",
-    "Eco-Innovative Materials",
-    "Waste Reduction Advocacy",
-    "Carbon-Conscious Operations",
-    "Community Engagement"
-  ],
-  "logo": "https://caliwoods.co.nz/cdn/shop/files/CALIWOODS_Wide_W02_2575b30b-e068-4d4d-adbc-7bc22a0b8196.png?v=1655688332&width=170",
-  "website": "https://caliwoods.co.nz/",
-  "icon": "",
-  "createdAt": {
-    "$date": "2024-12-28T14:57:30.694Z"
-  },
-  "icons": [
-    "b_corp",
-    "change_climate",
-    "fsc_logo"
-  ],
-  "category": "Home"
-},
-{
-  "_id": {
-    "$oid": "677012a23793f38ad143b61a"
-  },
-  "name": "58 and CO",
-  "description": "A sustainable lifestyle brand dedicated to crafting eco-friendly, ethically sourced products for the modern conscious consumer. The company focuses on creating high-quality goods that seamlessly blend style, functionality, and sustainability. From everyday essentials to luxury items, 58 and Co empowers individuals to reduce their environmental footprint without compromising on design or durability. Rooted in the philosophy of mindful living, 58 and Co prioritizes transparent supply chains, fair trade practices, and the use of sustainable materials. By fostering a culture of environmental responsibility and ethical production, the brand strives to inspire a global movement toward sustainable consumption and a healthier planet.",
-  "qualifications": [
-    "Sustainable Materials",
-    "Ethical Manufacturing",
-    "Plastic-Free Packaging",
-    "Eco-Innovative",
-    "Community Impact"
-  ],
-  "logo": "https://58andco.com/cdn/shop/files/58_AND_CO_Logo_Long_Copper_No_Background_1000x300_b8c2105e-030b-4ead-bf68-b6c034f59725.png?v=1716382098&width=200",
-  "website": "https://58andco.com/",
-  "icon": "",
-  "createdAt": {
-    "$date": "2024-12-28T15:00:50.382Z"
-  },
-  "icons": [
-    "b_corp",
-    "fair_trade",
-    "fsc_logo",
-    "change_climate"
-  ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Bourbon"
 },
 {
   "_id": {
@@ -1853,11 +1837,11 @@
   },
   "icons": [
     "b_corp",
-    "change_climate",
     "swa_logo",
     "soil_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Scottish Whisky"
 },
 {
   "_id": {
@@ -1878,10 +1862,10 @@
     "$date": "2024-12-28T21:51:12.768Z"
   },
   "icons": [
-    "b_corp",
-    "change_climate"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Rum"
 },
 {
   "_id": {
@@ -1906,7 +1890,8 @@
     "napa_green_logo",
     "sustainable_winegrowing_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Wine"
 },
 {
   "_id": {
@@ -1928,10 +1913,10 @@
   },
   "icons": [
     "b_corp",
-    "change_climate",
     "soil_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Alcohol Free Spirit"
 },
 {
   "_id": {
@@ -1956,7 +1941,8 @@
     "fsc_logo",
     "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Baby Products"
 },
 {
   "_id": {
@@ -1978,10 +1964,10 @@
   },
   "icons": [
     "b_corp",
-    "fair_trade",
-    "GOTS_logo"
+    "fair_trade"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Outdoor Rug"
 },
 {
   "_id": {
@@ -2005,7 +1991,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Alcohol Free Spirit"
 },
 {
   "_id": {
@@ -2029,7 +2016,8 @@
     "fsc_logo",
     "oeko_tex_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Bamboo Home Products"
 },
 {
   "_id": {
@@ -2052,7 +2040,8 @@
     "b_corp",
     "nongmo_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Non-Alcoholic Beer"
 },
 {
   "_id": {
@@ -2076,7 +2065,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Eco-Friendly Marketplace"
 },
 {
   "_id": {
@@ -2100,7 +2090,8 @@
     "b_corp",
     "1_for_the_planet"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Armless Sunglasses"
 },
 {
   "_id": {
@@ -2122,10 +2113,10 @@
   "icons": [
     "b_corp",
     "fsc_logo",
-    "GOTS_logo",
     "good_weave_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Rugs"
 },
 {
   "_id": {
@@ -2149,7 +2140,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Toilet Paper & Paper Towels"
 },
 {
   "_id": {
@@ -2172,10 +2164,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Women's Shoes"
 },
 {
   "_id": {
@@ -2202,7 +2194,8 @@
     "iso_logo",
     "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Shoes"
 },
 {
   "_id": {
@@ -2225,10 +2218,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "fsc_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Skis "
 },
 {
   "_id": {
@@ -2253,7 +2246,8 @@
     "b_corp",
     "compostable_logo"
   ],
-  "category": "Kitchen"
+  "category": "Kitchen",
+  "specifics": "Eco-Friendly Cling Wrap Alternative"
 },
 {
   "_id": {
@@ -2278,7 +2272,8 @@
     "compostable_logo",
     "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Diapers"
 },
 {
   "_id": {
@@ -2300,10 +2295,10 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "biodegradable"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Menstrual Care"
 },
 {
   "_id": {
@@ -2328,7 +2323,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Pregnancy & Postpartum Products"
 },
 {
   "_id": {
@@ -2353,7 +2349,8 @@
     "nongmo_logo",
     "vegan"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Coconut Water"
 },
 {
   "_id": {
@@ -2378,7 +2375,8 @@
     "b_corp",
     "sustainable_winegrowing_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Wine"
 },
 {
   "_id": {
@@ -2400,11 +2398,10 @@
     "$date": "2024-12-29T17:17:16.512Z"
   },
   "icons": [
-    "b_corp",
-    "1_for_the_planet",
-    "bluesign_logo"
+    "b_corp"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Skis & Snowboards"
 },
 {
   "_id": {
@@ -2427,13 +2424,14 @@
     "b_corp",
     "100%_agave_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Tequila"
 },
 {
   "_id": {
     "$oid": "6771a6583ffdd71fcac581ee"
   },
-  "name": "SunGod ",
+  "name": "SunGod",
   "description": "a performance eyewear brand that specializes in creating high-quality, durable, and sustainable sunglasses and goggles. Founded on the principles of customization, innovation, and eco-consciousness, SunGod allows customers to design their own eyewear, selecting colors and features that reflect their personal style. Renowned for its lifetime guarantee, SunGod’s products are engineered with cutting-edge materials to deliver exceptional performance and withstand the demands of outdoor adventures. Sustainability is a core value at SunGod. The company uses recyclable materials, minimizes waste in its manufacturing processes, and incorporates renewable energy into its operations. Additionally, SunGod partners with environmental organizations to protect and restore ecosystems, ensuring that its commitment to the planet matches its passion for creating industry-leading eyewear.",
   "qualifications": [
     "Customizable Eyewear",
@@ -2449,10 +2447,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
-    "bluesign_logo"
+    "1_for_the_planet"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Sunglasses & Goggles"
 },
 {
   "_id": {
@@ -2476,7 +2474,8 @@
     "b_corp",
     "biodegradable"
   ],
-  "category": "Kitchen"
+  "category": "Kitchen",
+  "specifics": "Eco-Friendly Plastic Bag Alternative"
 },
 {
   "_id": {
@@ -2498,10 +2497,10 @@
   },
   "icons": [
     "b_corp",
-    "iso_logo",
-    "epa_green_power_logo"
+    "iso_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Wagons"
 },
 {
   "_id": {
@@ -2523,11 +2522,10 @@
     "$date": "2024-12-29T20:22:48.064Z"
   },
   "icons": [
-    "b_corp",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Carbonated Powdered Drink Mix"
 },
 {
   "_id": {
@@ -2549,11 +2547,10 @@
     "$date": "2024-12-29T20:27:26.821Z"
   },
   "icons": [
-    "b_corp",
-    "bluesign_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Outerwear"
 },
 {
   "_id": {
@@ -2577,7 +2574,8 @@
     "b_corp",
     "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Lingerie"
 },
 {
   "_id": {
@@ -2601,7 +2599,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Sparkling Wine"
 },
 {
   "_id": {
@@ -2624,7 +2623,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Children's Clothing"
 },
 {
   "_id": {
@@ -2648,7 +2648,8 @@
     "b_corp",
     "GOTS_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Various Home Products"
 },
 {
   "_id": {
@@ -2671,7 +2672,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Irish Cream"
 },
 {
   "_id": {
@@ -2697,7 +2699,8 @@
     "b_corp",
     "mcs_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Gin, Vodka, Rum"
 },
 {
   "_id": {
@@ -2720,7 +2723,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Cold Weather Shoes"
 },
 {
   "_id": {
@@ -2740,10 +2744,10 @@
     "$date": "2024-12-30T12:15:19.258Z"
   },
   "icons": [
-    "b_corp",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Alcohol Free Spirits"
 },
 {
   "_id": {
@@ -2765,7 +2769,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Rum"
 },
 {
   "_id": {
@@ -2788,7 +2793,8 @@
     "b_corp",
     "jpma_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Car Seats"
 },
 {
   "_id": {
@@ -2811,7 +2817,8 @@
     "b_corp",
     "nongmo_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Dietary Supplements"
 },
 {
   "_id": {
@@ -2835,7 +2842,8 @@
     "b_corp",
     "lwg_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Shoes"
 },
 {
   "_id": {
@@ -2858,7 +2866,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Office Furniture"
 },
 {
   "_id": {
@@ -2880,10 +2889,10 @@
   },
   "icons": [
     "b_corp",
-    "rainforest_alliance_logo",
     "recycled_materials"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Chips & Salsa"
 },
 {
   "_id": {
@@ -2904,10 +2913,11 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
-    "grs_logo"
+    "oeko_tex_logo",
+    "iso_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Headwear & Accessories"
 },
 {
   "_id": {
@@ -2926,10 +2936,10 @@
     "$date": "2024-12-30T19:25:21.591Z"
   },
   "icons": [
-    "b_corp",
-    "usda_organic_logo"
+    "b_corp"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Food"
 },
 {
   "_id": {
@@ -2953,7 +2963,8 @@
     "nongmo_logo",
     "vegan"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Cookies"
 },
 {
   "_id": {
@@ -2975,10 +2986,10 @@
   },
   "icons": [
     "b_corp",
-    "iso_logo",
-    "usda_organic_logo"
+    "iso_logo"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Toys & Accessories"
 },
 {
   "_id": {
@@ -3004,7 +3015,8 @@
     "fair_trade",
     "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Casual Clothing"
 },
 {
   "_id": {
@@ -3030,7 +3042,8 @@
     "nongmo_logo",
     "nsf_ansi_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Nutrition & Supplements"
 },
 {
   "_id": {
@@ -3052,11 +3065,10 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
-    "oeko_tex_logo",
-    "1_for_the_planet"
+    "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Casual Clothing"
 },
 {
   "_id": {
@@ -3081,7 +3093,8 @@
     "iso_logo",
     "oeko_tex_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Tableware"
 },
 {
   "_id": {
@@ -3106,7 +3119,8 @@
     "fair_trade",
     "1_for_the_planet"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Hats"
 },
 {
   "_id": {
@@ -3128,10 +3142,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "fsc_logo"
   ],
-  "category": "Kitchen"
+  "category": "Kitchen",
+  "specifics": "Pizza Ovens"
 },
 {
   "_id": {
@@ -3153,10 +3167,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
     "usda_organic_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Hair & Skin Care"
 },
 {
   "_id": {
@@ -3178,11 +3192,10 @@
     "$date": "2024-12-31T17:37:50.912Z"
   },
   "icons": [
-    "b_corp",
-    "usda_organic_logo",
-    "nongmo_logo"
+    "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Protein & Health Supplements"
 },
 {
   "_id": {
@@ -3204,12 +3217,10 @@
     "$date": "2024-12-31T17:51:28.413Z"
   },
   "icons": [
-    "b_corp",
-    "cruelty_free_logo",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Suncare"
 },
 {
   "_id": {
@@ -3232,10 +3243,10 @@
   "icons": [
     "b_corp",
     "oeko_tex_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Mattresses & Bedding"
 },
 {
   "_id": {
@@ -3257,10 +3268,10 @@
   "icons": [
     "b_corp",
     "oeko_tex_logo",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Baby Products"
 },
 {
   "_id": {
@@ -3283,7 +3294,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "American Made Spirits"
 },
 {
   "_id": {
@@ -3305,10 +3317,10 @@
   "icons": [
     "b_corp",
     "fsc_logo",
-    "1_for_the_planet",
     "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Interior Hardware"
 },
 {
   "_id": {
@@ -3332,7 +3344,8 @@
     "b_corp",
     "craft_distillery_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Vodka & Gin"
 },
 {
   "_id": {
@@ -3355,11 +3368,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
-    "fair_trade",
-    "nongmo_logo"
+    "fair_trade"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Eco-Friendly Marketplace"
 },
 {
   "_id": {
@@ -3382,10 +3394,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "ecoboard_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Surfboards"
 },
 {
   "_id": {
@@ -3410,7 +3422,8 @@
     "fair_trade",
     "100%_agave_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Tequila"
 },
 {
   "_id": {
@@ -3433,10 +3446,10 @@
   },
   "icons": [
     "b_corp",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Used & Refurbished Electronics"
 },
 {
   "_id": {
@@ -3457,12 +3470,10 @@
     "$date": "2025-01-01T16:18:19.426Z"
   },
   "icons": [
-    "b_corp",
-    "usda_organic_logo",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Plant Food"
 },
 {
   "_id": {
@@ -3484,12 +3495,11 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "oeko_tex_logo",
-    "1_for_the_planet",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing & Accessories"
 },
 {
   "_id": {
@@ -3510,12 +3520,11 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
     "made_safe_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Men's Body Care"
 },
 {
   "_id": {
@@ -3538,11 +3547,10 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
-    "certified_humane_logo",
-    "1_for_the_planet"
+    "certified_humane_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Meat"
 },
 {
   "_id": {
@@ -3565,10 +3573,10 @@
   "icons": [
     "b_corp",
     "fsc_logo",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Bespoke Furniture"
 },
 {
   "_id": {
@@ -3590,11 +3598,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Men's Body Care"
 },
 {
   "_id": {
@@ -3617,36 +3624,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Cleaning"
-},
-{
-  "_id": {
-    "$oid": "67769d2212fa53868a3ed443"
-  },
-  "name": "OLPRO",
-  "description": "A leading UK-based brand specializing in high-quality outdoor leisure products, including tents, campervan awnings, and camping accessories. Designed for outdoor enthusiasts, OLPRO’s products combine innovative features, stylish designs, and durability to enhance camping and outdoor experiences. With a strong focus on customer satisfaction, OLPRO offers gear that is easy to use, functional, and perfect for families, adventurers, and festival-goers alike. OLPRO is committed to sustainability and environmental responsibility. The brand incorporates eco-friendly materials and manufacturing practices while actively participating in tree-planting initiatives to offset its carbon footprint. By blending innovation with eco-consciousness, OLPRO ensures that adventurers can enjoy the great outdoors responsibly.",
-  "qualifications": [
-    "Innovative Outdoor Gear",
-    "Durable & Reliable",
-    "Eco-Friendly Practices",
-    "Community Engagement"
-  ],
-  "logo": "https://cdn11.bigcommerce.com/s-8hl787wvsy/images/stencil/92x92/ol_identity_white_aw_1616598925__69130.original.png",
-  "website": "https://olproshop.com/",
-  "icon": "",
-  "createdAt": {
-    "$date": "2025-01-02T14:05:22.819Z"
-  },
-  "icons": [
-    "b_corp",
-    "iso_logo",
-    "1_for_the_planet"
-  ],
-  "category": "Outdoor"
+  "category": "Cleaning",
+  "specifics": "Laundry Detergent Strips"
 },
 {
   "_id": {
@@ -3668,10 +3649,10 @@
   },
   "icons": [
     "b_corp",
-    "1_for_the_planet",
     "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Pest Control"
 },
 {
   "_id": {
@@ -3694,11 +3675,10 @@
   },
   "icons": [
     "b_corp",
-    "grs_logo",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Bags & Backpacks"
 },
 {
   "_id": {
@@ -3720,10 +3700,10 @@
   },
   "icons": [
     "b_corp",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Cleaning"
+  "category": "Cleaning",
+  "specifics": "Powdered Cleaner"
 },
 {
   "_id": {
@@ -3746,11 +3726,10 @@
   "icons": [
     "b_corp",
     "grs_logo",
-    "carbon_neutral_logo",
-    "1_for_the_planet",
     "oeko_tex_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Recycled Backpacks"
 },
 {
   "_id": {
@@ -3773,11 +3752,10 @@
   },
   "icons": [
     "b_corp",
-    "lwg_logo",
-    "carbon_neutral_logo",
-    "1_for_the_planet"
+    "lwg_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Wallets & Accessories"
 },
 {
   "_id": {
@@ -3800,12 +3778,10 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
-    "fair_trade",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "fair_trade"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Wellness Tea"
 },
 {
   "_id": {
@@ -3828,11 +3804,10 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Mixed Beverage"
 },
 {
   "_id": {
@@ -3855,11 +3830,10 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
-    "vegan",
-    "1_for_the_planet"
+    "vegan"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Meal Alternative"
 },
 {
   "_id": {
@@ -3883,11 +3857,10 @@
   "icons": [
     "b_corp",
     "fsc_logo",
-    "carbon_neutral_logo",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Custom Photo Book"
 },
 {
   "_id": {
@@ -3910,13 +3883,12 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
     "nongmo_logo",
     "vegan",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Vitamins & Supplements"
 },
 {
   "_id": {
@@ -3938,12 +3910,10 @@
   },
   "icons": [
     "b_corp",
-    "grs_logo",
-    "oeko_tex_logo",
-    "carbon_neutral_logo",
-    "1_for_the_planet"
+    "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Athletic Apparel"
 },
 {
   "_id": {
@@ -3968,7 +3938,8 @@
     "b_corp",
     "iso_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Pharmaceuticals "
 },
 {
   "_id": {
@@ -3993,10 +3964,10 @@
     "b_corp",
     "nongmo_logo",
     "vegan",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Healthier Soda Alternative"
 },
 {
   "_id": {
@@ -4020,10 +3991,10 @@
   "icons": [
     "b_corp",
     "fsc_logo",
-    "iso_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Electronics Cases"
 },
 {
   "_id": {
@@ -4044,12 +4015,10 @@
     "$date": "2025-01-02T15:38:55.077Z"
   },
   "icons": [
-    "b_corp",
-    "cruelty_free_logo",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Insect Repellent"
 },
 {
   "_id": {
@@ -4072,12 +4041,10 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
-    "fair_trade",
-    "carbon_neutral_logo",
-    "1_for_the_planet"
+    "fair_trade"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Bags & Totes"
 },
 {
   "_id": {
@@ -4100,10 +4067,10 @@
   },
   "icons": [
     "b_corp",
-    "oeko_tex_logo",
-    "1_for_the_planet"
+    "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Baby Products"
 },
 {
   "_id": {
@@ -4126,12 +4093,11 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "fair_trade",
-    "1_for_the_planet",
-    "carbon_neutral_logo"
+    "1_for_the_planet"
   ],
-  "category": "Cleaning"
+  "category": "Cleaning",
+  "specifics": "Hand Soap & Cleaner"
 },
 {
   "_id": {
@@ -4154,11 +4120,10 @@
   },
   "icons": [
     "b_corp",
-    "iso_logo",
-    "carbon_neutral_logo",
-    "1_for_the_planet"
+    "iso_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Bicycles"
 },
 {
   "_id": {
@@ -4182,11 +4147,10 @@
   "icons": [
     "b_corp",
     "usda_organic_logo",
-    "nongmo_logo",
-    "vegan",
-    "1_for_the_planet"
+    "vegan"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Coconut Yogurt"
 },
 {
   "_id": {
@@ -4209,12 +4173,10 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
-    "fair_trade",
-    "nongmo_logo",
-    "1_for_the_planet"
+    "fair_trade"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Various Food Products"
 },
 {
   "_id": {
@@ -4237,10 +4199,10 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
     "1_for_the_planet"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Disc Golf Accessories"
 },
 {
   "_id": {
@@ -4261,11 +4223,10 @@
     "$date": "2025-01-02T16:25:38.694Z"
   },
   "icons": [
-    "b_corp",
-    "usda_organic_logo",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Chocolate"
 },
 {
   "_id": {
@@ -4286,10 +4247,10 @@
     "$date": "2025-01-02T16:37:10.418Z"
   },
   "icons": [
-    "b_corp",
-    "1_for_the_planet"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Tequila"
 },
 {
   "_id": {
@@ -4311,13 +4272,12 @@
     "$date": "2025-01-02T16:44:22.935Z"
   },
   "icons": [
-    "carbon_neutral_logo",
     "gia_logo",
     "rjc_logo",
-    "1_for_the_planet",
     "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Jewelry"
 },
 {
   "_id": {
@@ -4341,10 +4301,10 @@
   "icons": [
     "b_corp",
     "fair_trade",
-    "fsc_logo",
-    "carbon_neutral_logo"
+    "fsc_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Hair Care"
 },
 {
   "_id": {
@@ -4367,12 +4327,10 @@
   },
   "icons": [
     "b_corp",
-    "fair_trade",
-    "GOTS_logo",
-    "1_for_the_planet",
-    "carbon_neutral_logo"
+    "fair_trade"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Rugs"
 },
 {
   "_id": {
@@ -4396,10 +4354,10 @@
   "icons": [
     "b_corp",
     "ccib_logo",
-    "fsc_logo",
-    "1_for_the_planet"
+    "fsc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Outerwear"
 },
 {
   "_id": {
@@ -4421,7 +4379,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Used & Rental Snow Equipment"
 },
 {
   "_id": {
@@ -4444,7 +4403,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Eco-Conscious Marketplace"
 },
 {
   "_id": {
@@ -4467,10 +4427,10 @@
   "icons": [
     "b_corp",
     "iso_logo",
-    "carbon_neutral_logo",
     "fsc_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Sparkling Water"
 },
 {
   "_id": {
@@ -4494,7 +4454,8 @@
     "b_corp",
     "wbenc_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Vacation Wear"
 },
 {
   "_id": {
@@ -4518,7 +4479,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Tea"
 },
 {
   "_id": {
@@ -4542,7 +4504,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Casual Clothing"
 },
 {
   "_id": {
@@ -4566,7 +4529,8 @@
     "b_corp",
     "blue_angel_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Children's Toys"
 },
 {
   "_id": {
@@ -4590,7 +4554,8 @@
     "b_corp",
     "brcgs_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Teas & Spices"
 },
 {
   "_id": {
@@ -4617,7 +4582,8 @@
     "greenguard_logo",
     "sfc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Furniture"
 },
 {
   "_id": {
@@ -4640,7 +4606,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Watches"
 },
 {
   "_id": {
@@ -4663,7 +4630,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Detergent Sheets"
 },
 {
   "_id": {
@@ -4686,7 +4654,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Ice Cream Toppings"
 },
 {
   "_id": {
@@ -4709,7 +4678,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Beer"
 },
 {
   "_id": {
@@ -4733,7 +4703,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Puzzles & Board Games"
 },
 {
   "_id": {
@@ -4756,7 +4727,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Bedding"
 },
 {
   "_id": {
@@ -4777,10 +4749,10 @@
     "$date": "2025-01-02T19:47:41.649Z"
   },
   "icons": [
-    "b_corp",
-    "cruelty_free_logo"
+    "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Skin Care"
 },
 {
   "_id": {
@@ -4804,7 +4776,8 @@
     "b_corp",
     "nasc_logo"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Wellness"
 },
 {
   "_id": {
@@ -4829,7 +4802,8 @@
     "b_corp",
     "fsc_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Sore Throat Relief"
 },
 {
   "_id": {
@@ -4852,10 +4826,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Children's Clothing"
 },
 {
   "_id": {
@@ -4877,10 +4851,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
-    "ECOLOGO_logo"
+    "cruelty_free_logo"
   ],
-  "category": "Cleaning"
+  "category": "Cleaning",
+  "specifics": "Home Cleaning"
 },
 {
   "_id": {
@@ -4903,10 +4877,10 @@
   },
   "icons": [
     "b_corp",
-    "cruelty_free_logo",
     "fair_trade"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Self Care Boxes"
 },
 {
   "_id": {
@@ -4930,10 +4904,10 @@
   "icons": [
     "b_corp",
     "oeko_tex_logo",
-    "GOTS_logo",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Child & Baby Products"
 },
 {
   "_id": {
@@ -4957,10 +4931,10 @@
   "icons": [
     "b_corp",
     "carbon_neutral_logo",
-    "bluesign_logo",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Casual / Athletic Apparel"
 },
 {
   "_id": {
@@ -4983,11 +4957,11 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
     "bpi_logo",
     "ok_compost_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Biodegradable Trash Bags"
 },
 {
   "_id": {
@@ -5008,11 +4982,10 @@
     "$date": "2025-01-02T20:55:01.226Z"
   },
   "icons": [
-    "b_corp",
-    "grs_logo",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Sunglasses"
 },
 {
   "_id": {
@@ -5033,11 +5006,10 @@
     "$date": "2025-01-02T22:45:44.571Z"
   },
   "icons": [
-    "b_corp",
-    "usda_organic_logo",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "American Whiskey"
 },
 {
   "_id": {
@@ -5058,10 +5030,10 @@
     "$date": "2025-01-02T22:54:12.801Z"
   },
   "icons": [
-    "b_corp",
-    "cruelty_free_logo"
+    "b_corp"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Dog Grooming"
 },
 {
   "_id": {
@@ -5083,10 +5055,10 @@
     "$date": "2025-01-02T23:01:16.121Z"
   },
   "icons": [
-    "b_corp",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Dairy Alternative"
 },
 {
   "_id": {
@@ -5107,11 +5079,11 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
     "nongmo_logo",
     "fair_trade"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Supplements"
 },
 {
   "_id": {
@@ -5134,10 +5106,10 @@
   },
   "icons": [
     "b_corp",
-    "fair_trade",
-    "usda_organic_logo"
+    "fair_trade"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Coffee"
 },
 {
   "_id": {
@@ -5159,10 +5131,10 @@
     "$date": "2025-01-03T13:15:03.396Z"
   },
   "icons": [
-    "b_corp",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Umbreallas"
 },
 {
   "_id": {
@@ -5184,11 +5156,10 @@
     "$date": "2025-01-03T13:18:07.855Z"
   },
   "icons": [
-    "b_corp",
-    "nongmo_logo",
-    "usda_organic_logo"
+    "b_corp"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Edible Seaweed Products"
 },
 {
   "_id": {
@@ -5211,10 +5182,10 @@
   },
   "icons": [
     "b_corp",
-    "bluesign_logo",
     "carbon_neutral_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Snow & Casual Apparel"
 },
 {
   "_id": {
@@ -5239,7 +5210,8 @@
     "b_corp",
     "floristry_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Flower Delivery"
 },
 {
   "_id": {
@@ -5265,7 +5237,8 @@
     "soil_logo",
     "fair_trade"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Chocolate & Toys"
 },
 {
   "_id": {
@@ -5290,7 +5263,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing & Accessories"
 },
 {
   "_id": {
@@ -5313,11 +5287,10 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
-    "nongmo_logo",
     "cruelty_free_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Hair Care"
 },
 {
   "_id": {
@@ -5340,11 +5313,11 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
     "live_logo",
     "salmon_safe_logo"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Wine"
 },
 {
   "_id": {
@@ -5366,11 +5339,10 @@
     "$date": "2025-01-03T13:51:51.820Z"
   },
   "icons": [
-    "b_corp",
-    "bluesign_logo",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Cycling Apparel"
 },
 {
   "_id": {
@@ -5396,7 +5368,8 @@
     "oeko_tex_logo",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Slippers & Shoes"
 },
 {
   "_id": {
@@ -5421,7 +5394,8 @@
     "b_corp",
     "fair_trade"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Nutritional Tea"
 },
 {
   "_id": {
@@ -5443,10 +5417,10 @@
     "$date": "2025-01-03T14:17:41.665Z"
   },
   "icons": [
-    "b_corp",
-    "cruelty_free_logo"
+    "b_corp"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Skin Care"
 },
 {
   "_id": {
@@ -5469,10 +5443,10 @@
   },
   "icons": [
     "b_corp",
-    "nongmo_logo",
-    "usda_organic_logo"
+    "nongmo_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Avocado Oil & Sauces"
 },
 {
   "_id": {
@@ -5495,10 +5469,10 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
     "nongmo_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Apple Cider Vinegar & Liquid Aminos"
 },
 {
   "_id": {
@@ -5523,7 +5497,8 @@
     "b_corp",
     "fair_trade"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Personalized Gift Baskets"
 },
 {
   "_id": {
@@ -5546,7 +5521,8 @@
     "b_corp",
     "lwg_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Leather Goods"
 },
 {
   "_id": {
@@ -5570,7 +5546,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Soap Dispensers"
 },
 {
   "_id": {
@@ -5592,10 +5569,10 @@
     "$date": "2025-01-03T14:43:38.993Z"
   },
   "icons": [
-    "b_corp",
-    "carbon_neutral_logo"
+    "b_corp"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Mixed Beverages"
 },
 {
   "_id": {
@@ -5622,7 +5599,8 @@
     "carbon_neutral_logo",
     "greenguard_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Mattresses & Bedding"
 },
 {
   "_id": {
@@ -5647,7 +5625,8 @@
     "b_corp",
     "iso_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Hearing Protection"
 },
 {
   "_id": {
@@ -5672,7 +5651,8 @@
     "b_corp",
     "recycled_materials"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Reusable & Disposable Drinkware"
 },
 {
   "_id": {
@@ -5698,7 +5678,8 @@
     "certified_humane_logo",
     "msc_logo"
   ],
-  "category": "Pet"
+  "category": "Pet",
+  "specifics": "Pet Food"
 },
 {
   "_id": {
@@ -5721,10 +5702,10 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "oeko_tex_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Baby Products"
 },
 {
   "_id": {
@@ -5747,11 +5728,11 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
     "sustainable_winegrowing_logo",
     "fair_trade"
   ],
-  "category": "Beverage"
+  "category": "Beverage",
+  "specifics": "Wine"
 },
 {
   "_id": {
@@ -5774,10 +5755,10 @@
   },
   "icons": [
     "b_corp",
-    "fsc_logo",
-    "carbon_neutral_logo"
+    "fsc_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Toilet Paper"
 },
 {
   "_id": {
@@ -5800,35 +5781,10 @@
   },
   "icons": [
     "b_corp",
-    "fair_trade",
-    "usda_organic_logo"
+    "fair_trade"
   ],
-  "category": "Beverage"
-},
-{
-  "_id": {
-    "$oid": "67780613e109a0b3fdf4fe0f"
-  },
-  "name": "Mepal",
-  "description": "A Dutch brand specializing in high-quality, functional food storage solutions and on-the-go products that make everyday life easier and more sustainable. Renowned for their innovative designs and durable materials, Mepal offers a wide range of lunchboxes, food containers, and drinkware crafted with convenience and style in mind. With a strong commitment to sustainability, the company prioritizes eco-friendly practices and long-lasting products that reduce waste and promote mindful consumption.",
-  "qualifications": [
-    "Innovative Design",
-    "Durable & Reusable",
-    "Eco-Friendly Materials",
-    "Easy Maintenance",
-    "Sustainability Commitment"
-  ],
-  "logo": "https://cdn.mepal.com/551/0/0/1/ffffff00/9fe76f34/2a6d871ba62abba2cacabc9d48b4681295dd03f85b686a285928bfced470bde2/logo.png",
-  "website": "https://www.mepal.com/us",
-  "icon": "",
-  "createdAt": {
-    "$date": "2025-01-03T15:45:23.425Z"
-  },
-  "icons": [
-    "b_corp",
-    "iso_logo"
-  ],
-  "category": "Home"
+  "category": "Beverage",
+  "specifics": "Coffee"
 },
 {
   "_id": {
@@ -5852,7 +5808,8 @@
     "b_corp",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Accessories & Pet Collars"
 },
 {
   "_id": {
@@ -5875,10 +5832,10 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
     "omri_logo"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Potting Soil"
 },
 {
   "_id": {
@@ -5902,10 +5859,10 @@
   "icons": [
     "b_corp",
     "usda_organic_logo",
-    "carbon_neutral_logo",
     "awg_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Dairy Products"
 },
 {
   "_id": {
@@ -5931,7 +5888,8 @@
     "grs_logo",
     "recycled_materials"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Bags & Backpacks"
 },
 {
   "_id": {
@@ -5954,10 +5912,10 @@
   },
   "icons": [
     "b_corp",
-    "GOTS_logo",
     "fair_trade"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing"
 },
 {
   "_id": {
@@ -5981,7 +5939,8 @@
     "b_corp",
     "vegan"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Healthy Snacks"
 },
 {
   "_id": {
@@ -6006,7 +5965,8 @@
     "b_corp",
     "iso_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Interior Paint"
 },
 {
   "_id": {
@@ -6029,10 +5989,10 @@
   },
   "icons": [
     "b_corp",
-    "vegan",
-    "cruelty_free_logo"
+    "vegan"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Hair Care"
 },
 {
   "_id": {
@@ -6057,7 +6017,8 @@
     "b_corp",
     "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Luxury Clothing"
 },
 {
   "_id": {
@@ -6082,7 +6043,8 @@
     "b_corp",
     "good_weave_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Furniture"
 },
 {
   "_id": {
@@ -6105,10 +6067,10 @@
   },
   "icons": [
     "b_corp",
-    "carbon_neutral_logo",
     "fairmined_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Jewelry"
 },
 {
   "_id": {
@@ -6131,10 +6093,10 @@
   },
   "icons": [
     "b_corp",
-    "vegan",
-    "cruelty_free_logo"
+    "vegan"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Body & Pet Care"
 },
 {
   "_id": {
@@ -6159,7 +6121,8 @@
     "b_corp",
     "fair_trade"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Jewelry"
 },
 {
   "_id": {
@@ -6183,7 +6146,8 @@
   "icons": [
     "b_corp"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Jewelry"
 },
 {
   "_id": {
@@ -6208,7 +6172,8 @@
     "b_corp",
     "cruelty_free_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Skin Care"
 },
 {
   "_id": {
@@ -6234,7 +6199,8 @@
     "iso_logo",
     "ecolabel_logo"
   ],
-  "category": "Home"
+  "category": "Home",
+  "specifics": "Paint & Wallpaper"
 },
 {
   "_id": {
@@ -6258,7 +6224,8 @@
     "b_corp",
     "fairmined_logo"
   ],
-  "category": "Accessories"
+  "category": "Accessories",
+  "specifics": "Jewelry"
 },
 {
   "_id": {
@@ -6281,10 +6248,10 @@
   },
   "icons": [
     "b_corp",
-    "grs_logo",
     "oeko_tex_logo"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Swimwear"
 },
 {
   "_id": {
@@ -6310,7 +6277,8 @@
     "fair_trade",
     "grs_logo"
   ],
-  "category": "Personal Care"
+  "category": "Personal Care",
+  "specifics": "Tanning & Sunscreen"
 },
 {
   "_id": {
@@ -6333,8 +6301,787 @@
   },
   "icons": [
     "b_corp",
-    "usda_organic_logo",
     "pdo_logo"
   ],
-  "category": "Food"
+  "category": "Food",
+  "specifics": "Olive Oil"
+},
+{
+  "_id": {
+    "$oid": "677e7ae6c343d4de138eb666"
+  },
+  "name": "Vermont Creamery",
+  "description": "Dedicated to producing artisan dairy products such as cheese, butter, and crème fraîche. The company prides itself on creating products with exceptional quality and taste, guided by traditional French techniques and a commitment to sustainability. Vermont Creamery sources milk and cream from a network of local farms, ensuring high-quality inputs while supporting regional agriculture. Founded with a focus on environmental stewardship, Vermont Creamery implements practices that reduce its carbon footprint and contribute to a more sustainable food system. They are committed to transparency in their supply chain and prioritize the welfare of both animals and farmers. This approach aligns with their broader mission to balance artisan craftsmanship with responsibility toward the planet.",
+  "qualifications": [
+    "Locally Sourced Milk & Cream",
+    "Traditional Methods",
+    "Sustainable Practices",
+    "Supports Small Farms",
+    "Supports Ethical Farming"
+  ],
+  "logo": "https://cdn.shopify.com/s/files/1/0588/7236/5211/files/vc-recipes-author-vermont-creamery-red_x1880.png?v=1666747772",
+  "website": "https://www.vermontcreamery.com/",
+  "createdAt": {
+    "$date": "2025-01-08T13:17:26.233Z"
+  },
+  "icons": [
+    "b_corp",
+    "certified_humane_logo"
+  ],
+  "category": "Food",
+  "specifics": "Dairy Products"
+},
+{
+  "_id": {
+    "$oid": "677ee4321f93ea9179115605"
+  },
+  "name": "Alchemy Goods ",
+  "description": "A sustainable brand specializing in upcycled and eco-friendly products, turning discarded materials into stylish and functional accessories. Founded in Seattle, Washington, the company is driven by a mission to reduce waste and create unique products with a positive environmental impact. Alchemy Goods transforms materials like bicycle inner tubes, seat belts, and other post-consumer materials into high-quality bags, wallets, and other lifestyle items. With a strong focus on sustainability and craftsmanship, Alchemy Goods blends durability with modern design, ensuring that every product is not only environmentally responsible but also practical and fashionable. Their commitment to innovation and upcycling showcases how discarded items can be reimagined into products that are both stylish and sustainable.",
+  "qualifications": [
+    "Upcycled Materials",
+    "Eco-Friendly Practices",
+    "Durable & Stylish",
+    "Local Craftsmanship",
+    "Customer Impact"
+  ],
+  "logo": "https://www.alchemygoods.com/cdn/shop/files/alchemy-goods-black_160x.png?v=1614289793",
+  "website": "https://www.alchemygoods.com/",
+  "createdAt": {
+    "$date": "2025-01-08T20:46:42.667Z"
+  },
+  "specifics": "Bags & Accessories",
+  "icons": [
+    "b_corp"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67811a31331b69956a38c9ff"
+  },
+  "name": "SUAY",
+  "description": "A Los Angeles-based sustainable clothing brand dedicated to reimagining fashion through upcycling, mending, and community-centered practices. Founded with a mission to combat textile waste and promote environmental responsibility, SUAY transforms post-consumer waste and deadstock fabrics into high-quality, modern garments and accessories. Their emphasis on circular fashion ensures that each piece is not only unique but also contributes to reducing the environmental impact of the clothing industry. SUAY is also known for its repair and tailoring services, helping consumers extend the life of their garments and minimize waste. By promoting a repair culture and offering sustainable alternatives to fast fashion, SUAY is redefining the way consumers engage with their wardrobes and encouraging mindful consumption.",
+  "qualifications": [
+    "Circular Fashion",
+    "Community-Centered",
+    "High-Quality Craftsmanship",
+    "Transparency",
+    "Repair Services"
+  ],
+  "logo": "https://suayla.com/cdn/shop/files/suay.png?v=1713129896&width=200",
+  "website": "https://suayla.com/",
+  "createdAt": {
+    "$date": "2025-01-10T13:01:37.937Z"
+  },
+  "specifics": "Clothing & Home Accessories",
+  "icons": [
+    "small_business",
+    "recycled_materials"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67811c83331b69956a38ca00"
+  },
+  "name": "Organic and Healthy, LLC",
+  "description": "An online retailer based in Saint Augustine, Florida, specializing in organic, non-toxic, and chemical-free home furnishings. Founded in 2007 by John and Liz Schmidt, the company offers a curated selection of products designed to create healthier living environments. Their offerings include wool carpets and rugs, solid wood bedroom furniture, organic mattresses, futons, bedding, air filters, and water purifiers. The company's mission is to provide eco-friendly and sustainable home products that contribute to a healthier lifestyle. By focusing on items made from natural and organic materials, Organic and Healthy LLC aims to reduce exposure to harmful chemicals commonly found in conventional home furnishings. Their commitment to quality ensures that customers receive durable and safe products for their homes.",
+  "qualifications": [
+    "Eco-Friendly Products",
+    "Sustainable Practices",
+    "Quality Craftsmanship",
+    "Customer Education",
+    "Family-Owned Business"
+  ],
+  "logo": "https://organicandhealthy.com/wp-content/uploads/2018/12/OH-LLC-logo-180x67-1.jpg",
+  "website": "https://organicandhealthy.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T13:11:31.844Z"
+  },
+  "specifics": "Home Furnishings",
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67811d2a331b69956a38ca01"
+  },
+  "name": "Naturepedic",
+  "description": "A leading manufacturer of certified organic mattresses and bedding, dedicated to providing safer and healthier sleep solutions for the entire family. Founded in 2003 by environmental engineer Barry A. Cik, the company emerged from his quest to find a non-toxic crib mattress for his grandchild, which led to the creation of Naturepedic's first organic baby crib mattress. Based in Chagrin Falls, Ohio, Naturepedic offers a comprehensive range of products, including organic mattresses for babies, children, and adults, as well as bedding accessories. Their products are meticulously crafted using organic cotton, wool, and latex, and are free from harmful chemicals such as flame retardants, polyurethane foam, and vinyl. This commitment to non-toxic materials underscores their dedication to both consumer health and environmental sustainability. ",
+  "qualifications": [
+    "Certified Organic Products",
+    "Elimination of Harmful Chemicals",
+    "Sustainable Manufacturing",
+    "Advocacy and Education",
+    "Family-Owned Business"
+  ],
+  "logo": "https://www.naturepedic.com/static/version1734610029/frontend/SafeProducts/naturepedic/en_US/images/logo_naturepedic.svg",
+  "website": "https://www.naturepedic.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T13:14:18.463Z"
+  },
+  "specifics": "Mattresses",
+  "icons": [
+    "GOTS_logo",
+    "ewg_logo",
+    "fsc_logo",
+    "made_safe_logo",
+    "greenguard_logo",
+    "vegan"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67811fa4331b69956a38ca02"
+  },
+  "name": "Earthshade",
+  "description": "Specializing in producing sustainable, eco-friendly window treatments and shading solutions. Their product line combines innovative design with environmental consciousness, using recycled and renewable materials. Earth Shade is committed to reducing carbon footprints in both production and usage, ensuring their products are not only functional and aesthetically pleasing but also beneficial to the planet. They cater to residential and commercial spaces, offering customizable solutions for energy efficiency and natural lighting control.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Energy Efficiency",
+    "Carbon-Neutral Manufacturing",
+    "Community Engagement",
+    "Durable Design"
+  ],
+  "logo": "https://earthshade.com/wp-content/uploads/2018/07/earthshadelogo-res150.png",
+  "website": "https://earthshade.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T13:24:52.978Z"
+  },
+  "icons": [
+    "iso_logo"
+  ],
+  "category": "Home",
+  "specifics": "Window Fashions"
+},
+{
+  "_id": {
+    "$oid": "67812892331b69956a38ca03"
+  },
+  "name": "Happsy",
+  "description": "An online mattress brand dedicated to providing high-quality, certified organic mattresses and bedding at accessible prices. Their products are handcrafted in the USA using environmentally friendly materials, such as organic latex, cotton, and wool, ensuring a healthier sleep environment for their customers. Happsy's commitment to sustainability and transparency is evident through their adherence to rigorous organic and non-toxic standards.",
+  "qualifications": [
+    "Certified Organic Materials",
+    "Eco-Friendly Manufacturing",
+    "Handcrafted in the USA",
+    "Affordable Pricing",
+    "Non-Toxic and Safe"
+  ],
+  "logo": "https://happsy.com/media/logo/stores/2/happsy-logo-notag.png",
+  "website": "https://happsy.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T14:02:58.343Z"
+  },
+  "specifics": "Mattresses",
+  "icons": [
+    "GOTS_logo",
+    "made_safe_logo",
+    "greenguard_logo",
+    "fsc_logo",
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "678129c8331b69956a38ca04"
+  },
+  "name": "The Natural Sleep Store",
+  "description": "Established in 2005, specializes in providing high-quality natural and organic mattresses and bedding products. They are committed to educating customers on the benefits of \"sleeping organic\" as a vital component of a healthy lifestyle. The company collaborates with reputable manufacturers to offer products that are natural, organic, and free from harmful chemicals.",
+  "qualifications": [
+    "Commitment to Purity",
+    "Educational Approach",
+    "Sustainable Practices",
+    "Transparent Sourcing",
+    "Customer-Centric Service"
+  ],
+  "logo": "https://thenaturalsleepstore.com/cdn/shop/files/logo.jpg?v=1735681236&width=300",
+  "website": "https://thenaturalsleepstore.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T14:08:08.159Z"
+  },
+  "specifics": "Bedroom Furnishings",
+  "icons": [
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67813900331b69956a38ca05"
+  },
+  "name": "Gilden Tree",
+  "description": "Founded in 1990 by Ann and Kumy Thariani, is a company dedicated to producing eco-friendly personal care products and textiles. Their inaugural product, the Foot Scrubber®, is a terra-cotta tool designed to exfoliate and smooth feet, notable for its durability and effectiveness. Over the years, Gilden Tree has expanded its product line to include foot, hand, and body care items, as well as natural cotton robes, waffle bath towels, and accessories. The company emphasizes the use of certified organic ingredients, such as aloe vera, jojoba oil, and wild-crafted shea butter, aiming to create products that promote natural healing and well-being.",
+  "qualifications": [
+    "Eco-Friendly Commitment",
+    "Empowering Artisans",
+    "Innovative Products",
+    "Quality Textiles",
+    "Sustainable Ingredients"
+  ],
+  "logo": "https://gildentree.com/cdn/shop/files/GT_Leafy_Logo_400x.jpg?v=1613330713",
+  "website": "https://gildentree.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T15:13:04.839Z"
+  },
+  "specifics": "Towels & Bath Accessories",
+  "icons": [
+    "oeko_tex_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "678139cc331b69956a38ca06"
+  },
+  "name": "What's Good",
+  "description": "An online marketplace dedicated to offering eco-friendly and socially responsible products at fair prices. Their curated selection includes household essentials, personal care items, and gifts, all sourced from makers who share a commitment to sustainability and ethical practices. Founded by Jennifer, inspired by her mother's natural food store from the 1970s, the company emphasizes transparency, quality, and environmental stewardship.",
+  "qualifications": [
+    "Eco-Friendly Products",
+    "Support for Small Businesses",
+    "Social and Environmental Causes",
+    "Sustainable Shipping",
+    "Authenticity and Trust"
+  ],
+  "logo": "https://shopwhatsgood.com/cdn/shop/files/WG_Header-Logo_Pride_Earth_UKR_anim_r1_410x.gif?v=1666797272",
+  "website": "https://shopwhatsgood.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T15:16:28.292Z"
+  },
+  "specifics": "Eco-Friendly Marketplace",
+  "icons": [
+    "greenamerica_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67813f22331b69956a38ca07"
+  },
+  "name": "Boll & Branch",
+  "description": "Founded in 2014 by Missy and Scott Tannen, is a luxury home goods company specializing in ethically produced bedding and bath products. The company is renowned for its commitment to sustainability, utilizing 100% organic cotton and ensuring fair labor practices throughout its supply chain. By directly sourcing high-quality raw materials and maintaining transparent manufacturing processes, Boll & Branch has established itself as a leader in the eco-friendly textile industry. ",
+  "qualifications": [
+    "Ethical Manufacturing",
+    "Sustainable Materials",
+    "Transparency",
+    "Quality Craftsmanship"
+  ],
+  "logo": "https://cdn.brandfetch.io/idFvsdIcDq/w/2048/h/2048/theme/dark/logo.png?c=1bx1739201838353id64Mup7ac-tkd2ksb&t=1729264255337",
+  "website": "https://www.bollandbranch.com/",
+  "createdAt": {
+    "$date": "2025-01-10T15:39:14.352Z"
+  },
+  "specifics": "Bedding",
+  "icons": [
+    "fair_trade",
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67814080331b69956a38ca08"
+  },
+  "name": "Lands' End",
+  "description": "Founded in 1963 by Gary Comer in Chicago, Illinois, began as a mail-order yachting supply company. Over time, it evolved into a leading multi-channel retailer offering a wide range of products, including casual clothing, accessories, footwear, and home furnishings. Headquartered in Dodgeville, Wisconsin, the company operates through various segments: U.S. eCommerce, International, Outfitters (providing logo apparel to businesses and schools), Third Party, and Retail. As of February 2024, Lands' End operated 26 stores and employed approximately 4,900 individuals.",
+  "qualifications": [
+    "Diverse Product Range",
+    "Multi-Channel Retailing",
+    "Commitment to Quality",
+    "Global Reach",
+    "Adaptability & Growth"
+  ],
+  "logo": "https://cdn.brandfetch.io/idIlQWUsmc/theme/dark/logo.svg?c=1bx1739202207470id64Mup7accisQW-tR&t=1668071061196",
+  "website": "http://www.landsend.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T15:45:04.613Z"
+  },
+  "specifics": "Clothing",
+  "icons": [
+    "nff_logo",
+    "oeko_tex_logo",
+    "energy_star_logo"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67814345331b69956a38ca09"
+  },
+  "name": "WestPoint Home",
+  "description": "With a legacy spanning over 200 years, is a prominent manufacturer and distributor of home fashion textiles. The company originated from the merger of three historic textile firms: J.P. Stevens & Co. (established in 1813), Pepperell Manufacturing Co. (established in 1851), and WestPoint Manufacturing Company (established in 1880). Headquartered in New York City, WestPoint Home operates manufacturing and distribution facilities both in the United States and internationally, including a state-of-the-art sheet manufacturing facility in Bahrain and a cut-and-sew operation in Chipley, Florida.",
+  "qualifications": [
+    "Diverse Brand Portfolio",
+    "Global Operations",
+    "Innovation & Design",
+    "Sustainability Commitment",
+    "Ethical Manufacturing"
+  ],
+  "logo": "https://westpointhome.com/cdn/shop/files/WPH_Logo_White_57626b42-51ed-4697-b928-e032002d5c47_380x.png?v=1653318967",
+  "website": "https://westpointhome.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T15:56:53.185Z"
+  },
+  "specifics": "Bedding & Bath",
+  "icons": [
+    "oeko_tex_logo"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "67814525331b69956a38ca0a"
+  },
+  "name": "'47 Brand",
+  "description": "An American lifestyle brand that seamlessly blends sports, fashion, and cultural influences. Founded in 1947 by twin brothers Arthur and Henry D'Angelo, the company began as a street cart operation selling sports memorabilia outside Fenway Park in Boston, Massachusetts. Over the decades, '47 has evolved into a premier sports lifestyle brand, offering a diverse range of licensed headwear, apparel, and accessories for men, women, and children.",
+  "qualifications": [
+    "Extensive Licensing Partnerships",
+    "Global Prescence",
+    "Family Legacy",
+    "Product Diversity",
+    "Strategic Collaborations"
+  ],
+  "logo": "https://www.47brand.com/cdn/shop/t/306/assets/logo.svg?v=32481452721663900951652484527",
+  "website": "https://www.47brand.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T16:04:53.926Z"
+  },
+  "specifics": "Hats & Apparel",
+  "icons": [
+    "fla_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67817200331b69956a38ca0b"
+  },
+  "name": "Seek Dry Goods",
+  "description": "A Wisconsin-based company specializing in responsibly sourced, outdoor-inspired apparel and accessories for men, women, and children. Founded by Amanda and Larry McMahon, the brand offers a range of products, including t-shirts, hoodies, hats, and stickers, all designed for individuals passionate about adventure, travel, and the outdoors. ",
+  "qualifications": [
+    "Sustainable Materials",
+    "Philanthropic Partnerships",
+    "Community Engagement",
+    "Authentic Designs",
+    "Women-Led Business"
+  ],
+  "logo": "https://seekdrygoods.com/cdn/shop/files/Side_core_logo_white_280x.png?v=1682200960",
+  "website": "https://seekdrygoods.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T19:16:16.430Z"
+  },
+  "specifics": "Clothing",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "678172fe331b69956a38ca0c"
+  },
+  "name": "Carboy Winery",
+  "description": "A progressive Colorado-based winery dedicated to crafting award-winning wines that celebrate the terroir of the region. Operating in four distinct locations, Carboy combines traditional winemaking techniques with modern innovation to create a diverse portfolio of wines sourced from their own vineyards and collaborative growers. They aim to elevate the winemaking standards of Colorado, offering a refined tasting experience for both novice and seasoned wine enthusiasts. Carboy's mission extends beyond producing excellent wines; they are deeply committed to sustainability and community engagement. By adopting eco-friendly practices, such as utilizing solar energy and reducing waste, the winery ensures minimal environmental impact. Their team works closely with local communities to foster growth and recognition of Colorado’s burgeoning wine industry.",
+  "qualifications": [
+    "Eco-Friendly Practices",
+    "Community Engagements",
+    "Award-Winning Wines",
+    "Innovation in Winemaking"
+  ],
+  "logo": "https://images.commerce7.com/carboy-winery/images/original/carboy-winery_logo_stacked_c_solid-black-1731100972931.png",
+  "website": "https://carboy-winery.obtainwine.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T19:20:30.111Z"
+  },
+  "specifics": "Wine",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67817555331b69956a38ca0d"
+  },
+  "name": "Eagle River Whisky",
+  "description": "A premium spirits producer that combines the rugged spirit of the wild with refined craftsmanship. Located in the heart of whisky country, Eagle River is known for its dedication to quality, innovation, and authenticity. Their small-batch whiskies are crafted using the finest grains, purest water sources, and traditional distilling methods, resulting in rich, complex flavors that resonate with both enthusiasts and connoisseurs. Eagle River Whisky is deeply committed to sustainable practices, ensuring their production processes minimize environmental impact. From sourcing grains from eco-conscious farms to employing energy-efficient distillation techniques, the company works to leave a legacy that honors the natural beauty of its surroundings. They also actively contribute to local communities, supporting initiatives that preserve natural resources and promote environmental stewardship.",
+  "qualifications": [
+    "Sustainability Focus",
+    "Small-Batch Excellence",
+    "Rich Flavor Profiles",
+    "Local Community Support",
+    "Artisan Innovation"
+  ],
+  "logo": "https://images.squarespace-cdn.com/content/v1/64556e544cba651328d9de90/8dde5c54-62d5-48fa-9911-91c6004dc033/ERW-Logos-07.png?format=300w",
+  "website": "https://www.erwhisky.com/",
+  "createdAt": {
+    "$date": "2025-01-10T19:30:29.395Z"
+  },
+  "specifics": "Whisky",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67817604331b69956a38ca0e"
+  },
+  "name": "Lowdown Helmets",
+  "description": "A leading innovator in protective gear, designing high-performance helmets that combine style, safety, and sustainability. Renowned for their cutting-edge technology and sleek designs, Lowdown Helmets cater to a wide range of activities, including cycling, skateboarding, and motorcycling. By prioritizing user comfort and advanced protection, the company has earned a loyal following among adventurers, athletes, and everyday commuters. At its core, Lowdown Helmets is committed to eco-conscious manufacturing. They use renewable materials, minimize waste in production, and design products to be recyclable or biodegradable at the end of their lifecycle. Through partnerships with environmental organizations and their own initiatives, Lowdown Helmets actively promotes road safety and environmental sustainability as integral parts of their mission.",
+  "qualifications": [
+    "Sustainability Driven",
+    "Innovative Safety Features",
+    "Stylish & Functional",
+    "Community Engagement",
+    "Durable & Recyclable"
+  ],
+  "logo": "https://www.lowdownhelmets.com/cdn/shop/files/Lowdown_Logo_TM_horizontal-color.svg?v=1704218480&width=600",
+  "website": "https://www.lowdownhelmets.com/collections/retro-ski-and-snowboard-helmets",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T19:33:24.795Z"
+  },
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6781864e331b69956a38ca0f"
+  },
+  "name": "Dog + Bone ",
+  "description": "A premium pet accessories brand dedicated to crafting high-quality, durable, and sustainable gear for dogs. Handcrafted in the USA, their product line includes snap collars, martingale collars, adjustable leashes, and waist extensions, all designed with both functionality and style in mind. By focusing on small-batch production, Dog + Bone ensures meticulous attention to detail and offers a lifetime guarantee on their products, reflecting their commitment to excellence. Central to Dog + Bone's mission is a strong emphasis on sustainability and community involvement. They strive to minimize environmental impact by designing gear for longevity and reducing packaging and production waste. Additionally, Dog + Bone actively supports the rescue community, aligning their business practices with a broader commitment to animal welfare and environmental responsibility.",
+  "qualifications": [
+    "Handcrafted Quality",
+    "Lifetime Guarantee",
+    "Sustainable Practices",
+    "Community Support",
+    "Innovative Design"
+  ],
+  "logo": "https://dogplusbone.com/cdn/shop/files/Logo_Reversed_600x600_6717434a-115c-44dc-a63e-cd4c58506475.png?v=1613685528&width=120",
+  "website": "https://dogplusbone.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T20:42:54.574Z"
+  },
+  "specifics": "Dog Collars",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Pet"
+},
+{
+  "_id": {
+    "$oid": "67818741331b69956a38ca10"
+  },
+  "name": "Bivouac Coffee",
+  "description": "A Colorado-based specialty coffee company renowned for exclusively roasting environmentally friendly, naturally processed coffees from adventurous origins worldwide. As the first U.S. coffee company to specialize solely in natural process, sun-dried coffee beans, Bivouac offers a diverse range of medium, dark, light roast, espresso blends, instant coffee, and single-origin selections. These exceptional coffees are available through their online shop and Tasting Room in Evergreen, Colorado. Operating as a Public Benefit Corporation, Bivouac is legally obligated to uphold the highest environmental and social standards. They are a 1% for the Planet Company, donating over 1% of total revenue to outdoor recreation and environmentally active non-profit partners. Their commitment to sustainability extends to supporting regenerative organic farming techniques, direct trade, and sustainable roasting practices, aiming to reduce the environmental impact of global coffee production.",
+  "qualifications": [
+    "Exclusive Natural Processing",
+    "Public Benefit Corporation",
+    "Community Engagement",
+    "Educational Offerings"
+  ],
+  "logo": "https://bivouac.coffee/cdn/shop/files/bivouac_new_logo_transparent_420x.png?v=1613719781",
+  "website": "https://bivouac.coffee/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T20:46:57.835Z"
+  },
+  "specifics": "Coffee",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "67818829331b69956a38ca11"
+  },
+  "name": "allover apparel",
+  "description": "A Colorado-based clothing brand specializing in versatile, high-quality overalls designed for both men and women. Inspired by Colorado's rugged terrain, their overalls are crafted to transition seamlessly from outdoor adventures to urban settings, embodying functionality, comfort, and style. The company emphasizes sustainability by offering free repairs for any wear and tear, promoting product longevity and reducing waste. Their commitment to quality is further demonstrated through the use of durable yet lightweight materials, ensuring that each piece is built to withstand diverse activities.",
+  "qualifications": [
+    "Versatile Design",
+    "Sustainable Practices",
+    "High-Quality Materials",
+    "Community Engagement",
+    "Customer-Centric Approach"
+  ],
+  "logo": "https://alloverapparel.com/cdn/shop/files/AO-Logo-Black_3.svg?v=1712009570&width=500",
+  "website": "https://alloverapparel.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T20:50:49.357Z"
+  },
+  "specifics": "Overalls",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "678188ba331b69956a38ca12"
+  },
+  "name": "Mountain Time Soap",
+  "description": "Founded in 2017 and based in Golden, Colorado, is a trailblazing personal care brand dedicated to crafting natural, biodegradable soaps and personal care products tailored for outdoor enthusiasts. Their mission centers on creating everyday joy while leaving the planet better than they found it, encapsulated in their motto: \"Adventure on, wash your spirit clean.\" The company emphasizes sustainability by using plant-based oils, pure essential oils, and natural exfoliators, ensuring their products are free from artificial fragrances, dyes, and synthetic ingredients. Their commitment extends to eco-friendly packaging, utilizing compostable or recyclable materials to minimize environmental impact. As a member of 1% for the Planet, Mountain Time Soap donates 1% of all gross sales to local environmental non-profits, supporting organizations such as Big City Mountaineers and the Outdoor Lab Foundation. ",
+  "qualifications": [
+    "Handcrafted Quality",
+    "Eco-Friendly Ingredients",
+    "Sustainable Packaging",
+    "Community Engagement",
+    "Adventure-Inspired Products"
+  ],
+  "logo": "https://www.mountaintimesoap.com/cdn/shop/files/logo-h_360x.png?v=1664459048",
+  "website": "https://www.mountaintimesoap.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T20:53:14.728Z"
+  },
+  "specifics": "Soap",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67818c6a331b69956a38ca13"
+  },
+  "name": "Grasshopper's Mermaid ",
+  "description": "Established in 2017 in Breckenridge, Colorado, is a woman-owned and operated company specializing in eco-conscious stickers, apparel, and accessories. With a catalog boasting over 4,000 designs, the brand encourages an active, healthy, and eco-friendly lifestyle. Their products are proudly made in the USA, reflecting a commitment to quality and sustainability. The company's mission extends beyond product offerings; they are deeply committed to environmental conservation. Since inception, Grasshopper's Mermaid has pledged 10% of all sales to animal, ocean, and forest conservation efforts. They have partnered with organizations like 1% for the Planet and 2% for Conservation to ensure their contributions effectively support environmental causes.",
+  "qualifications": [
+    "Eco-Friendly Production",
+    "Conservation Partnerships",
+    "Community Engagement",
+    "Diverse Product Range",
+    "Customization & Wholesale"
+  ],
+  "logo": "https://grasshoppersmermaid.com/cdn/shop/files/the-grasshoppers-mermaid-colorado-logo_360x.png?v=1613156211",
+  "website": "https://grasshoppersmermaid.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:08:58.647Z"
+  },
+  "specifics": "Clothing & Accessories",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67818d39331b69956a38ca14"
+  },
+  "name": "Anglers All",
+  "description": "A premier fly fishing shop located in Littleton, Colorado. Serving the south Denver area and surrounding communities, it has been a cornerstone for fly fishing enthusiasts for over 70 years. The shop offers a comprehensive range of fly fishing gear, including rods, reels, lines, flies, and accessories, catering to both freshwater and saltwater anglers. In addition to equipment, Anglers All provides fly tying materials, apparel, and educational resources to support anglers of all skill levels. Anglers All is renowned for its commitment to customer service and community engagement. The shop has remained at its original location since 1969, undergoing various improvements over the years, such as expansions and the addition of solar power. In the spring of 2023, they introduced the Boathouse at Anglers All, a freestanding showroom that showcases a wide array of watercraft and accessories. Furthermore, in March 2024, Anglers All expanded its presence by opening a new fly shop in the heart of Denver, Colorado. ",
+  "qualifications": [
+    "Sustainable Practices",
+    "Community Engagement",
+    "Diverse Product Range",
+    "Longevity"
+  ],
+  "logo": "https://860024.secure.netsuite.com/core/media/media.nl?id=903481&c=860024&h=vXR37V9yOJrVMg5bHcCKop0mFS1FKnvAGWCwdud_ihkUmkG6",
+  "website": "https://www.anglersall.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:12:25.269Z"
+  },
+  "specifics": "Fishing Supplies",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "67818e25331b69956a38ca15"
+  },
+  "name": "Wit & West Perfumes Company",
+  "description": "An indie artisan perfumery specializing in 100% all-natural botanical fragrances. The company is owned and operated by Whitney (\"Wit\") and her husband, Rob Westendorf (\"West\"). All fragrances are meticulously designed, formulated, and bottled in-house by Whitney, with creative content developed by Rob. Their product line features unique, genderless scents crafted from high-quality natural botanicals, including wildcrafted and organic essential oils, CO₂ extracts, absolutes, and custom handmade tinctures sourced from their own garden. Wit & West is committed to sustainability and ethical practices. Their perfumes are vegan and certified cruelty-free by Leaping Bunny. The company emphasizes eco-friendly processes, utilizing minimalistic and recyclable materials in their packaging and shipping. As a member of 1% for the Planet, they donate at least 1% of their total revenue annually to environmental nonprofits dedicated to protecting the planet.",
+  "qualifications": [
+    "Artisanal Craftsmanship",
+    "Unique Scent Profile",
+    "Sustainable Practices",
+    "Environmental Commitment",
+    "Ethical Standards"
+  ],
+  "logo": "https://cdn.brandfetch.io/ide6CglGVM/w/1079/h/1079/theme/dark/icon.png?c=1bx1739222072371id64Mup7acVrAc7hou&t=1732143676313",
+  "website": "https://witandwest.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:16:21.172Z"
+  },
+  "specifics": "Perfumery",
+  "icons": [
+    "1_for_the_planet",
+    "cruelty_free_logo"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "678190d1331b69956a38ca16"
+  },
+  "name": "ANDI",
+  "description": "Founded in 2015 by Andrea Weinberg, The ANDI Brand is a New York-based company specializing in the design and retail of versatile, transformable bags that cater to modern, active lifestyles. Their product line includes a range of bags such as large, medium, and small sizes, as well as accessories that feature weather-proof materials and the ability to expand, collapse, and transform to suit various needs. ANDI bags are lightweight, convertible, comfortable, durable, washable, water-resistant, vegan, and made with recycled materials. The ANDI Brand is committed to sustainability and ethical practices. Their bags are 100% vegan and made with recycled materials, reflecting a strong commitment to environmental responsibility. The company emphasizes eco-friendly processes, utilizing minimalistic and recyclable materials in their packaging and shipping. ANDI bags are designed to be durable and long-lasting, reducing the need for frequent replacements and minimizing waste.",
+  "qualifications": [
+    "Versatile Design",
+    "Sustainable Materials",
+    "Lightweight & Durable",
+    "Water-Resistant & Washable",
+    "Ethical Production"
+  ],
+  "logo": "https://theandibrand.com/cdn/shop/files/ANDI_Earth_Logo_-_fixed_500x.png?v=1658162668",
+  "website": "https://theandibrand.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:27:45.266Z"
+  },
+  "specifics": "Bags",
+  "icons": [
+    "1_for_the_planet",
+    "bluesign_logo",
+    "grs_logo",
+    "oeko_tex_logo"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67819336331b69956a38ca17"
+  },
+  "name": "Out&Back Outdoor",
+  "description": "Founded in 2019 and headquartered in Denver, Colorado, Out&Back Outdoor is an online marketplace dedicated to making outdoor gear more accessible and sustainable. The platform offers a comprehensive range of new, used, and renewed outdoor gear and apparel for activities such as camping, hiking, skiing, and snowboarding. By providing a hassle-free way for customers to shop, save, and sell outdoor gear, Out&Back aims to deliver a first-class experience in secondhand shopping, creating an easier, faster, and more transparent process. As a company committed to sustainability, Out&Back is a proud member of 1% for the Planet, donating 1% of the value received from selling gear to environmental causes. Their trade-in program encourages sustainable shopping by allowing customers to sell their gear back to the company, promoting a circular economy within the outdoor gear community.",
+  "qualifications": [
+    "Comprehensive Product Range",
+    "Sustainable Shopping Experience",
+    "Trade-In Program",
+    "Community Engagement"
+  ],
+  "logo": "https://outandbackoutdoor.com/cdn/shop/files/Logo_Horizontal_Color_180x.png?v=1693505345",
+  "website": "https://outandbackoutdoor.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:37:58.373Z"
+  },
+  "specifics": "New & Used Gear",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "678193c1331b69956a38ca18"
+  },
+  "name": "Erleia",
+  "description": "An AAPI-woman-founded natural skincare brand dedicated to sustainability and inclusivity. The company offers a range of earth-friendly skincare products designed for real self-care routines, crafted in small batches using high-quality organic ingredients. Their product line includes facial balms, body moisturizers, masks, and clays, all formulated to cater to diverse skin types and needs. The brand's origin is deeply personal, inspired by founder Ada Chen's experience as a caregiver for her father. During this time, she neglected her own self-care, leading to skin issues that existing products couldn't address. This motivated her to create eco-friendly skincare solutions that encourage self-care and empathy, reminding individuals to prioritize their well-being.",
+  "qualifications": [
+    "Sustainable Practices",
+    "Inclusive Skincare",
+    "Handcrafted Quality",
+    "Vegan & Cruelty-Free",
+    "Community Engagement"
+  ],
+  "logo": "https://erleia.com/cdn/shop/files/Erleia_-_Wordmark_-_HEX_FFFFFF_-_without_tagline.png?v=1706249921&width=150",
+  "website": "https://erleia.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:40:17.433Z"
+  },
+  "specifics": "Skincare",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "67819487331b69956a38ca19"
+  },
+  "name": "Wise River",
+  "description": "Wise River is an eco-friendly outdoor apparel brand based in Denver, Colorado, dedicated to creating versatile and sustainable clothing for outdoor enthusiasts. Their mission is to merge sustainability with versatility by carefully selecting innovative eco-friendly fabrics and crafting them into classic, functional styles suitable for various activities.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Manufacturing",
+    "Versatile Designs",
+    "Community Engagement",
+    "Innovative Products"
+  ],
+  "logo": "https://wiseriverco.com/cdn/shop/files/Oval_Official.png?v=1678043897&width=300",
+  "website": "https://wiseriverco.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:43:35.585Z"
+  },
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6781951c331b69956a38ca1a"
+  },
+  "name": "Weston Backcountry",
+  "description": "Founded in 2012 in Minturn, Colorado, Weston Backcountry is a rider-owned company specializing in the design and manufacture of high-quality skis, snowboards, and splitboards. The company is dedicated to fostering a community that values backcountry exploration, safety, and environmental stewardship. Weston emphasizes the importance of backcountry education and supports various causes to promote safe and responsible outdoor recreation.",
+  "qualifications": [
+    "Community Engagement",
+    "Backcountry Education",
+    "Sustainability Initiatives",
+    "Quality Craftsmanship"
+  ],
+  "logo": "https://westonbackcountry.com/cdn/shop/files/18_weston_Logos_Wide_FullColor_Wide_FullColor.png?v=1725554893&width=250",
+  "website": "https://westonbackcountry.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:46:04.988Z"
+  },
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "nff_logo"
+  ],
+  "category": "Outdoor",
+  "specifics": "Skis & Snowboards"
+},
+{
+  "_id": {
+    "$oid": "678195d6331b69956a38ca1b"
+  },
+  "name": "The Shop Outpost",
+  "description": "A women-owned vintage and interior design boutique located on East Colfax Avenue in Denver, Colorado. Founded by Taylor Woodard, the boutique offers a curated selection of unique Western-style vintage clothing, furniture, jewelry, and home goods. Inspired by her grandmothers' home goods and interior design store, also named \"The Shop,\" Taylor combines her passion for style, vintage finds, and antiques with a commitment to sustainability, aiming to provide distinctive pieces that tell stories and make spaces feel like home.",
+  "qualifications": [
+    "Sustainable Practices",
+    "Community Support",
+    "Creative Inspiration",
+    "Environmental Commitment",
+    "Unique Offerings"
+  ],
+  "logo": "https://shoptheshop.com/cdn/shop/files/top-logo.png?v=1702262677&width=140",
+  "website": "https://shoptheshop.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-10T21:49:10.791Z"
+  },
+  "specifics": "Western Style Goods",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
 }]

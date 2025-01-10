@@ -10,7 +10,7 @@ import fairTradeIcon from "../resources/icons/trade.png";
 import recycled from "../resources/icons/recycle.svg";
 import fla from "../resources/icons/flalogo.png";
 import cascale from "../resources/icons/cascalelogo.png";
-import oneForThePlanet from "../resources/icons/1fortheplanet.png"
+import oneForThePlanet from "../resources/icons/1planetlogo.svg"
 import sai from "../resources/icons/sailogo.png"
 import changeclimate from "../resources/icons/changeclimatelogo.png"
 import RAINN from "../resources/icons/RAINNlogo.png"
@@ -92,6 +92,7 @@ import AWG from "../resources/icons/awglogo.png"
 import fairmined from "../resources/icons/fairminedlogo.png"
 import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
+import NFF from "../resources/icons/nfflogo.svg"
 
 
 const availableIcons = [
@@ -185,6 +186,7 @@ const availableIcons = [
   { id: "fairmined_logo", label: "Fairmined Certified", src: fairmined, title: "fairmined" },
   { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
   { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
+  { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
 ];
 
 const CompaniesPage = () => {
@@ -270,6 +272,7 @@ const CompaniesPage = () => {
                               style={{ objectFit: "contain", height: "150px", width: "100%" }}
                             />
                             <h5 className="card-title m-0">{company.name}</h5>
+                            <h6 className="card-specifics">{company.specifics}</h6>
                           </div>
                           {expandedCompany === company._id && (
                             <div className="card-body ">
@@ -304,12 +307,7 @@ const CompaniesPage = () => {
                                 })}
                               </div>
                               <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button className="collapse-button btn btn-outline-secondary" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z" />
-                                    <path fillRule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
-                                  </svg>
-                                </button>
+                                <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
                               </div>
                             </div>
                           )}
