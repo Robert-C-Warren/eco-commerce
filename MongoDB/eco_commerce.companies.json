@@ -7032,7 +7032,8 @@
   "icons": [
     "1_for_the_planet"
   ],
-  "category": "Clothing"
+  "category": "Clothing",
+  "specifics": "Clothing"
 },
 {
   "_id": {
@@ -7084,4 +7085,278 @@
     "1_for_the_planet"
   ],
   "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "678299355c092b11342c004b"
+  },
+  "name": "KENT",
+  "description": "A premium eco-friendly clothing brand that prioritizes sustainability and ethical production practices. Specializing in biodegradable and renewable fabric blends, their products are crafted to reduce environmental impact without compromising style or comfort. With a commitment to transparency, Wear Kent emphasizes minimal waste, energy-efficient processes, and fair labor practices throughout its supply chain. The brand is designed for conscious consumers who seek high-quality apparel that aligns with environmental and social values. From casual everyday wear to professional attire, Wear Kent offers a versatile range of clothing tailored to modern needs while promoting sustainability.",
+  "qualifications": [
+    "Eco-Friendly Materials",
+    "Minimal Waste Practices",
+    "Fair Trade Commitment",
+    "Transparent Supply Chain"
+  ],
+  "logo": "https://www.wearkent.com/cdn/shop/files/KENT_Primary-Wordmark_CMYK_Black_1_220x.png?v=1718832633",
+  "website": "https://www.wearkent.com/",
+  "createdAt": {
+    "$date": "2025-01-11T16:15:49.954Z"
+  },
+  "specifics": "Underwear",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67829d235c092b11342c004c"
+  },
+  "name": "uBu Foods",
+  "description": "A health-conscious and sustainability-focused company committed to transforming the way people experience food. Specializing in creating nourishing and delicious plant-based products, UBU Foods emphasizes the use of high-quality, natural ingredients that are minimally processed and free from artificial additives. Their mission is to empower individuals to live healthier lives while fostering a positive environmental impact through sustainable practices. With a focus on innovation, UBU Foods continually develops new plant-based solutions that cater to diverse dietary preferences and lifestyles. Their offerings promote a balance between health, taste, and eco-consciousness, making it easier for consumers to make better choices for themselves and the planet.",
+  "qualifications": [
+    "Plant-Based Focus",
+    "Sustainable Practices",
+    "Ethical Sourcing",
+    "Health-Conscious Innovation",
+    "Community Engagement"
+  ],
+  "logo": "https://ubufoods.com/cdn/shop/files/logo.png?v=1680133394&width=80",
+  "website": "https://ubufoods.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T16:32:35.102Z"
+  },
+  "specifics": "Freeze Dried Food",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "67829e4c5c092b11342c004d"
+  },
+  "name": "Cier",
+  "description": "A contemporary design studio dedicated to creating sustainable, eco-friendly, and ethically crafted lifestyle products. Known for blending timeless aesthetics with functionality, Studio Cier emphasizes the use of natural, renewable, and recycled materials in its creations. The company’s mission is to inspire mindful living through thoughtful design, encouraging consumers to embrace sustainability without compromising on quality or style. Studio Cier collaborates with local artisans and craftspeople, ensuring that every product is ethically made while preserving traditional craftsmanship. From home decor to personal accessories, their collections reflect a commitment to environmental responsibility and artistic expression.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Craftsmanship",
+    "Minimalist Design",
+    "Carbon-Conscious Production",
+    "Community Impact"
+  ],
+  "logo": "https://studiocier.com/cdn/shop/files/CIER_Logo_Rectangle2.png?v=1704231186&width=330",
+  "website": "https://studiocier.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T16:37:32.181Z"
+  },
+  "specifics": "Jewelry",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "67829f2a5c092b11342c004e"
+  },
+  "name": "Spinnaker Chocolate",
+  "description": "A premium craft chocolate maker dedicated to producing high-quality, single-origin chocolate with sustainability and ethical sourcing at its core. The company meticulously handcrafts its chocolate in small batches, ensuring the integrity of the flavors and the quality of each bar. Spinnaker Chocolate works directly with cacao farmers to source the finest beans, supporting sustainable farming practices and ensuring fair compensation for their efforts. With a focus on transparency and craftsmanship, Spinnaker Chocolate takes consumers on a journey from bean to bar. Each product reflects their commitment to sustainability, traceability, and the art of chocolate making, offering an elevated chocolate experience while fostering a positive impact on the environment and cacao-growing communities.",
+  "qualifications": [
+    "Single-Origin Chocolate",
+    "Ethically Sourced Cacao",
+    "Small Batch Craftsmanship",
+    "Sustainable Packaging",
+    "Educational Outreach"
+  ],
+  "logo": "https://spinnakerchocolate.com/cdn/shop/files/logo-white-simple_65_200x.svg?v=1730262459",
+  "website": "https://spinnakerchocolate.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T16:41:14.333Z"
+  },
+  "specifics": "Chocolate",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "67829fbe5c092b11342c004f"
+  },
+  "name": "Phil's Refills",
+  "description": "A sustainable home essentials company dedicated to revolutionizing the way households consume and manage cleaning products. By offering refillable, eco-friendly cleaning supplies, Phil’s eliminates the need for single-use plastics and reduces environmental waste. Their mission is to make sustainability accessible and straightforward for everyone, empowering consumers to make eco-conscious choices without sacrificing convenience or effectiveness. The company’s innovative refill system, paired with non-toxic and biodegradable formulas, ensures that every product aligns with their vision for a cleaner planet. Phil’s focuses on transparency, providing customers with clear information about ingredients, sourcing, and environmental impact.",
+  "qualifications": [
+    "Refillable System",
+    "Non-Toxic Formula",
+    "Eco-Friendly Packaging",
+    "Carbon Reduction Initiatives",
+    "Community Engagement"
+  ],
+  "logo": "https://getphils.com/cdn/shop/files/Logo_Word_Mark_Green_Medium_65aecb94-4a1c-4a9c-a64f-f483179565d5_240x.png?v=1683402560",
+  "website": "https://getphils.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T16:43:42.549Z"
+  },
+  "specifics": "Personal & Home Care",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6782abe35c092b11342c0050"
+  },
+  "name": "4Ocean",
+  "description": "A purpose-driven company dedicated to removing plastic waste from the world’s oceans while raising awareness about global plastic pollution. Through the sale of their iconic bracelets and other sustainable products, 4ocean funds ocean cleanup efforts and supports educational initiatives aimed at fostering environmental responsibility. Every product purchased contributes directly to removing one pound of trash from the oceans and coastlines. Committed to transparency and measurable impact, 4ocean operates cleanup operations in multiple countries, employing local workers and utilizing innovative techniques to collect and recycle ocean plastics. Their mission is to create a cleaner, healthier environment for marine life and future generations.",
+  "qualifications": [
+    "Ocean Cleanup Commitment",
+    "Global Cleanup Operations",
+    "Recycled Materials",
+    "Educational Advocacy",
+    "Sustainable Innovation"
+  ],
+  "logo": "https://www.4ocean.com/cdn/shop/files/Logo_Blue_d70bb410-f9fa-4af4-9420-24e2b535207d.png?v=1691530095&width=150",
+  "website": "https://www.4ocean.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T17:35:31.918Z"
+  },
+  "icons": [
+    "1_for_the_planet",
+    "recycled_materials"
+  ],
+  "category": "Accessories",
+  "specifics": "Accessories & Clothing"
+},
+{
+  "_id": {
+    "$oid": "6782ad9c5c092b11342c0051"
+  },
+  "name": "Pasmosa Sangria",
+  "description": "A premium producer of authentic Spanish wines and sangrias, crafted with a commitment to tradition, quality, and sustainability. Rooted in the rich heritage of Spanish winemaking, Pasmosa combines age-old techniques with modern eco-friendly practices to create beverages that honor both taste and the environment. Every bottle reflects their dedication to using high-quality, responsibly sourced ingredients and sustainable production methods. With a focus on fostering a deep connection to the culture and art of winemaking, Pasmosa offers a wide range of wines and sangrias that delight palates while promoting responsible and eco-conscious consumption. Their mission is to share the vibrant spirit of Spanish wines with the world while preserving the beauty of the land from which they come.",
+  "qualifications": [
+    "Sustainable Winemaking",
+    "Local Sourcing",
+    "Recyclable Packaging",
+    "Authenticity & Quality",
+    "Global Outreach"
+  ],
+  "logo": "https://www.pasmosa.com/wp-content/uploads/2024/06/Pasmosa_logo.webp",
+  "website": "https://www.pasmosa.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T17:42:52.342Z"
+  },
+  "specifics": "Sangria & Wine",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6782ae705c092b11342c0052"
+  },
+  "name": "Liquid Scissors",
+  "description": "A cutting-edge brand offering high-quality, eco-friendly hair care products that redefine sustainability and performance. With a commitment to clean ingredients and sustainable practices, Liquid Scissors provides professional-grade solutions tailored for both individuals and salon professionals. Their product lines are crafted to nourish hair while minimizing environmental impact, ensuring safe and effective hair care without harmful chemicals. The company emphasizes a balance between innovation and responsibility, utilizing recyclable packaging and renewable resources in its production processes. Liquid Scissors empowers customers to make eco-conscious choices without sacrificing quality, offering a seamless blend of luxury and sustainability.",
+  "qualifications": [
+    "Eco-Friendly Formulations",
+    "Sustainable Packaging",
+    "Cruelty Free",
+    "Professional Quality",
+    "Community Focus"
+  ],
+  "logo": "https://liquidscissors.shop/wp-content/uploads/2023/10/LS-white.png",
+  "website": "https://liquidscissors.shop/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T17:46:24.579Z"
+  },
+  "specifics": "Men's Hair Care",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Personal Care"
+},
+{
+  "_id": {
+    "$oid": "6782af4e5c092b11342c0053"
+  },
+  "name": "Murphy's Naturals",
+  "description": "A mission-driven company specializing in natural and sustainable mosquito repellents and outdoor lifestyle products. Founded with a commitment to the environment, Murphy's Naturals creates products that are free from harsh chemicals, instead using plant-based, biodegradable, and responsibly sourced ingredients. Their product line includes candles, sprays, and incense sticks, all designed to provide effective protection against insects while being safe for people, pets, and the planet. With sustainability at its core, Murphy's Naturals prioritizes eco-friendly packaging, renewable energy in production, and a dedication to giving back to environmental causes. The company’s mission is to inspire people to enjoy life outdoors in harmony with nature.",
+  "qualifications": [
+    "Natural Ingredients",
+    "Chemical-Free Formula",
+    "Sustainable Practices",
+    "Effective Mosquito Protection",
+    "Community Giving"
+  ],
+  "logo": "https://www.murphysnaturals.com/cdn/shop/files/MurphysNaturals_2024logo_Dewdrop_Katydium.png?v=1701117092&width=200",
+  "website": "https://www.murphysnaturals.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T17:50:06.090Z"
+  },
+  "specifics": "Mosquito Repellent",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "6782b80d5c092b11342c0054"
+  },
+  "name": "Give'r",
+  "description": "An outdoor lifestyle brand inspired by adventure, ruggedness, and simplicity. Known for its high-performance, durable gear, including its signature hand-branded gloves, Give’r caters to outdoor enthusiasts who value quality, comfort, and functionality. The company’s products are designed to withstand the harshest conditions, making them a favorite among adventurers, workers, and everyday users alike. Rooted in a love for the outdoors, Give’r embraces sustainability and mindful manufacturing practices. The brand promotes a \"go for it\" ethos, encouraging people to embrace life’s challenges and explore the great outdoors. Each product embodies Give’r’s dedication to quality, craftsmanship, and sustainability.",
+  "qualifications": [
+    "Durable High-Quality Gear",
+    "Eco-Conscious Manufacturing",
+    "Handcrafted Excellence",
+    "Community Connection",
+    "Adventure-Driven Philosophy"
+  ],
+  "logo": "https://www.give-r.com/cdn/shop/files/header-logo.svg?v=1694536883&width=150",
+  "website": "https://www.give-r.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T18:27:25.724Z"
+  },
+  "specifics": "Gloves & Apparel",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Accessories"
+},
+{
+  "_id": {
+    "$oid": "6782b9685c092b11342c0055"
+  },
+  "name": "Paleblue",
+  "description": "a pioneering company committed to revolutionizing battery technology with a focus on sustainability and innovation. Specializing in USB-C rechargeable lithium batteries, Pale Blue Earth aims to reduce single-use battery waste by offering a reusable, long-lasting alternative. Their products are designed for ease of use, rapid charging, and superior performance, making them a practical and eco-friendly solution for powering everyday devices. Driven by a vision of a cleaner planet, Pale Blue Earth combines cutting-edge technology with environmental responsibility. By minimizing battery waste and utilizing sustainable packaging, the company empowers individuals to adopt a more sustainable lifestyle without sacrificing convenience.",
+  "qualifications": [
+    "Rechargeable Lithium Batteries",
+    "Eco-Friendly Innovation",
+    "Rapid Charging Technology",
+    "Sustainable Packaging",
+    "Environmental Advocacy"
+  ],
+  "logo": "https://paleblueearth.com/cdn/shop/files/PaleBlue_Logo_Digital_original-default-845x190-8.png?v=1614402780&width=150",
+  "website": "https://paleblueearth.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-11T18:33:12.239Z"
+  },
+  "specifics": "Rechargeable Batteries",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Home"
 }]

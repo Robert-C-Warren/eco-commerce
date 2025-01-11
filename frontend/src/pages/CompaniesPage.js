@@ -193,7 +193,7 @@ const CompaniesPage = () => {
   const [companies, setCompanies] = useState([]);
   const [expandedCompany, setExpandedCompany] = useState(null)
   const [expandedCategories, setExpandedCategories] = useState({})
-  const contentRef = useRef({})
+  const categoryRefs = useRef({})
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -246,75 +246,116 @@ const CompaniesPage = () => {
   }
 
   const toggleCategory = (category) => {
-    setExpandedCategories((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }))
-  }
+    setExpandedCategories((prev) => {
+      const isExpanded = !prev[category];
+      const contentEl = categoryRefs.current[category];
+
+      if (contentEl) {
+        if (isExpanded) {
+          contentEl.style.height = `${contentEl.scrollHeight}px`; // Set explicit height
+          setTimeout(() => {
+            contentEl.style.height = "auto"; // Reset to auto after transition
+          }, 500); // Match the transition duration
+        } else {
+          contentEl.style.height = `${contentEl.scrollHeight}px`; // Set current height for animation
+          requestAnimationFrame(() => {
+            contentEl.style.height = "0"; // Collapse to height 0
+          });
+        }
+      }
+
+      return {
+        ...prev,
+        [category]: isExpanded,
+      };
+    });
+  };
 
   return (
     <div>
       <Navbar />
       <div className="container my-4">
-        <h1 className="text-center mb-4">Recommended Companies</h1>
-        {Object.keys(groupedCompanies).map((category) => (
-          <div key={category}>
-            <h2 className="mt-4">{category}</h2>
-                <div className="row">
-                  {groupedCompanies[category].map((company, index) => (
-                      <div key={index} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
-                        <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
-                          <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer"}}>
-                            <img
-                              src={company.logo}
-                              className="card-img-top"
-                              alt={`${company.name} logo`}
-                              style={{ objectFit: "contain", height: "150px", width: "100%" }}
-                            />
-                            <h5 className="card-title m-0">{company.name}</h5>
-                            <h6 className="card-specifics">{company.specifics}</h6>
-                          </div>
-                          {expandedCompany === company._id && (
-                            <div className="card-body ">
-                              <p className="card-text">{company.description}</p>
-                              <ul>
-                                {company.qualifications.map((qualification, i) => (
-                                  <li className="qualifications" key={i}>{qualification}</li>
-                                ))}
-                              </ul>
-                              <a
-                                href={company.website}
-                                className="btn btn-primary"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                Visit Website
-                              </a>
-                              <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
-                                {company.icons?.map((iconId) => {
-                                  const icon = availableIcons.find((i) => i.id === iconId);
-                                  return icon ? (
-                                    <img
-                                      className="icon_actual"
-                                      key={icon.id}
-                                      src={icon.src}
-                                      alt={icon.label}
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="bottom"
-                                      data-bs-title={icon.label}
-                                    />
-                                  ) : null;
-                                })}
-                              </div>
-                              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
-                              </div>
-                            </div>
-                          )}
-                        </div>
+        <div className="hero-section text-center p-5 bg-light">
+          <h1 className="display-2 text-success">
+            Companies Doing <strong className="eco-hero">Good</strong> for the Planet
+          </h1>
+          <p className="lead">
+            The companies listed below are dedicated to making a positive impact on our planet.<br /> 
+            They prioritize treating their employees with respect and dignity while ensuring<br />
+            their products meet the high standards you deserve.
+          </p>
+        </div>
+        {Object.keys(groupedCompanies).sort().map((category) => (
+          <div key={category} className="category-container">
+            <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
+              {category}
+            </h2>
+            <i className={`icon-toggler bi ${expandedCategories[category] ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
+            <div
+              ref={(el) => (categoryRefs.current[category] = el)}
+              className="category-content"
+              style={{
+                height: expandedCategories[category] ? "auto" : "0",
+                overflow: "hidden",
+                transition: "height 0.5s ease"
+              }}
+            >
+              <div className="row">
+                {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
+                  <div key={index} className={`col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                    <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
+                      <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                        <img
+                          src={company.logo}
+                          className="card-img-top"
+                          alt={`${company.name} logo`}
+                          style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                        />
+                        <h5 className="card-title m-0">{company.name}</h5>
+                        <h6 className="card-specifics">{company.specifics}</h6>
                       </div>
-                  ))}
-                </div>
+                      {expandedCompany === company._id && (
+                        <div className="card-body ">
+                          <p className="card-text">{company.description}</p>
+                          <ul>
+                            {company.qualifications.map((qualification, i) => (
+                              <li className="qualifications" key={i}>{qualification}</li>
+                            ))}
+                          </ul>
+                          <a
+                            href={company.website}
+                            className="btn btn-primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Visit Website
+                          </a>
+                          <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
+                            {company.icons?.map((iconId) => {
+                              const icon = availableIcons.find((i) => i.id === iconId);
+                              return icon ? (
+                                <img
+                                  className="icon_actual"
+                                  key={icon.id}
+                                  src={icon.src}
+                                  alt={icon.label}
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="bottom"
+                                  data-bs-title={icon.label}
+                                />
+                              ) : null;
+                            })}
+                          </div>
+                          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
       </div>

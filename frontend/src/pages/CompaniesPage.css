@@ -10,11 +10,17 @@
     text-align: center;
 }
 
+.category-container {
+    text-align: center;
+}
+
+.icon-toggler {
+    font-size: 30px;
+}
+
 .category-content {
     overflow: hidden;
-    transition: height 0.5s ease, opacity 0.5s ease;
-    height: 0;
-    opacity: 0;
+    transition: height 0.5s ease;
 }
 
 .category-content.expanded {
@@ -62,6 +68,24 @@
     padding: 30px; /* Adjust padding as needed */
 }
 
+@media (max-width: 1300px) {
+    .card-text {
+        padding-top: 5%;
+    }
+}
+
+@media (max-width: 950px) {
+    .card-text {
+        padding-top: 10%;
+    }
+}
+
+@media (max-width: 950px) {
+    .card-text {
+        padding-top: 20%;
+    }
+}
+
 @media (max-width: 500px) {
     .container {
         margin-left: 0;
@@ -80,6 +104,10 @@
 
     .company-card.company-card.collapsed {
         width: auto;
+    }
+
+    .card-text {
+        padding-top: 30%;
     }
 }
 
@@ -173,6 +201,10 @@
 body.dark-mode .card {
     background-color: #1e1e1e;
     border: 1px solid #333;
+}
+
+body.dark-mode .lead {
+    color: white;
 }
 
 .card-header.dark-mode {

@@ -23,8 +23,7 @@ const Navbar = () => {
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <a className="navbar-brand d-flex align-items-center" href="/">
-                        <img src={smallLogo} alt="Logo" width="50" height="35" className="d-inline-block align-text-top"/>
-                        <span className="ms-2">Eco-Commerce</span>
+                        <img src={smallLogo} alt="Logo" width="width" height="60" className="d-inline-block align-text-top"/>
                     </a>
                     <button
                         className="navbar-toggler"
