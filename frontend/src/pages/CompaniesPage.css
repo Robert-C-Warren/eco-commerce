@@ -18,6 +18,10 @@
     font-size: 30px;
 }
 
+.product-icons {
+    padding-left: 7%;
+}
+
 .category-content {
     overflow: hidden;
     transition: height 0.5s ease;
@@ -191,6 +195,7 @@
 .collapse-button {
     font-size: 50px;
     margin-right: 20px;
+    display: inline-block;
 }
 
 .collapse-button:hover {

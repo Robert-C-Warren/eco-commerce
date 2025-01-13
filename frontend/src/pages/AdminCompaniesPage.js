@@ -6,7 +6,7 @@ import "./AdminCompaniesPage.css"
 import API from "../services/api";
 import bCorpIcon from "../resources/icons/bcorp.png"
 import smallBusinessIcon from "../resources/icons/handshake.png"
-import veganIcon from "../resources/icons/vegan.png"
+import veganIcon from "../resources/icons/veganlogo.png"
 import biodegradableIcon from "../resources/icons/leaf.png"
 import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"

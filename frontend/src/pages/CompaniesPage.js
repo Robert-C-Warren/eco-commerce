@@ -4,7 +4,7 @@ import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
-import veganIcon from "../resources/icons/vegan.png";
+import veganIcon from "../resources/icons/veganlogo.png";
 import biodegradableIcon from "../resources/icons/leaf.png";
 import fairTradeIcon from "../resources/icons/trade.png";
 import recycled from "../resources/icons/recycle.svg";
@@ -330,24 +330,28 @@ const CompaniesPage = () => {
                           >
                             Visit Website
                           </a>
-                          <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
-                            {company.icons?.map((iconId) => {
-                              const icon = availableIcons.find((i) => i.id === iconId);
-                              return icon ? (
-                                <img
-                                  className="icon_actual"
-                                  key={icon.id}
-                                  src={icon.src}
-                                  alt={icon.label}
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="bottom"
-                                  data-bs-title={icon.label}
-                                />
-                              ) : null;
-                            })}
-                          </div>
-                          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex justify-content-center align-items-center flex-grow-1">
+                              <div className="product-icons d-flex justify-content-center align-items-center gap-2">
+                                {company.icons?.map((iconId) => {
+                                  const icon = availableIcons.find((i) => i.id === iconId);
+                                  return icon ? (
+                                    <img
+                                      className="icon_actual"
+                                      key={icon.id}
+                                      src={icon.src}
+                                      alt={icon.label}
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="bottom"
+                                      data-bs-title={icon.label}
+                                    />
+                                  ) : null;
+                                })}
+                              </div>
+                            </div>
+                            <div className="d-flex">
+                              <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
+                            </div>
                           </div>
                         </div>
                       )}
