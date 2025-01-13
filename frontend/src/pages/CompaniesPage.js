@@ -302,7 +302,7 @@ const CompaniesPage = () => {
             >
               <div className="row">
                 {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
-                  <div key={index} className={`col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                  <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
                     <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
                       <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                         <img
