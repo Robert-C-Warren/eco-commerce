@@ -162,9 +162,14 @@
 .company-card .card-header {
     align-items: center;
     font-size: 1.2rem;
-    background-color: #639e5b;
+    background-color: #75ba6c;
     z-index: 15;
     border: none;
+}
+
+.company-card .card-header:hover {
+    background-color: #436c3e;
+    transition: transform 1s ease !important;
 }
 
 .company-card.expanded .card-body {
