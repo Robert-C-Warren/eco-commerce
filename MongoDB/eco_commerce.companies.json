@@ -2793,7 +2793,7 @@
     "b_corp",
     "jpma_logo"
   ],
-  "category": "Clothing",
+  "category": "Home",
   "specifics": "Car Seats"
 },
 {
@@ -6759,7 +6759,8 @@
   "icons": [
     "1_for_the_planet"
   ],
-  "category": "Outdoor"
+  "category": "Outdoor",
+  "specifics": "Helmets"
 },
 {
   "_id": {
@@ -8049,29 +8050,6 @@
 },
 {
   "_id": {
-    "$oid": "6785141d5e48f2c738644ad9"
-  },
-  "name": "nomadix",
-  "description": "A company that provides personalized connectivity and digital engagement solutions, primarily serving the hospitality sector and multi-dwelling units (MDUs). Their product suite includes internet gateways, wireless local area network (WLAN) access points, controllers, switches, and cloud telephony systems, enabling properties to deliver managed Wi-Fi, guest authentication, bandwidth management, and in-room entertainment.",
-  "qualifications": [
-    "Industry Experience",
-    "Global Reach",
-    "Technological Innovation"
-  ],
-  "logo": "https://www.nomadix.co/cdn/shop/files/Property_1_bw_Property_2_negative.png?v=1726827108&width=256",
-  "website": "https://www.nomadix.co/",
-  "icon": "",
-  "createdAt": {
-    "$date": "2025-01-13T13:24:45.239Z"
-  },
-  "specifics": "Towels & Blankets",
-  "icons": [
-    "1_for_the_planet"
-  ],
-  "category": "Outdoor"
-},
-{
-  "_id": {
     "$oid": "678514f15e48f2c738644ada"
   },
   "name": "Seager Co.",
@@ -9292,4 +9270,203 @@
     "1_for_the_planet"
   ],
   "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "678691b809dd488cd4c8a315"
+  },
+  "name": "Toad&Co",
+  "description": "A leading eco-conscious apparel brand that specializes in creating versatile, stylish, and sustainable clothing for men and women. Founded in 1995, the company is committed to environmental and social responsibility, utilizing eco-friendly materials and ethical production practices. Toad&Co’s designs focus on durability and comfort, promoting a minimalist wardrobe ideal for outdoor adventures, casual outings, and everyday wear. Their mission is not only to provide high-quality apparel but also to inspire conscious consumerism and foster a deeper connection with nature. The brand is headquartered in Santa Barbara, California, and is widely recognized for its innovation in sustainable fabrics, such as organic cotton, recycled fibers, and hemp. Through partnerships with various environmental organizations and inclusive initiatives, Toad&Co demonstrates a holistic approach to sustainability, championing both environmental preservation and social equity.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Ethical Production",
+    "Circular Economy",
+    "Community Engagement",
+    "Inclusivity",
+    "Carbon Conscious"
+  ],
+  "logo": "https://www.toadandco.com/cdn/shop/files/Toad_Co-Main-Logo-BLK.png?v=1715103337&width=180",
+  "website": "https://www.toadandco.com/",
+  "createdAt": {
+    "$date": "2025-01-14T16:32:56.203Z"
+  },
+  "specifics": "Clothing",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6786938c09dd488cd4c8a316"
+  },
+  "name": "Forrest Design Co.",
+  "description": "Founded by Bud Farmer in Jacksonville, Texas, is a bespoke woodworking company specializing in handcrafted furniture and décor. Inspired by his family, particularly his son Forrest, Bud combines his building expertise with a passion for creating timeless pieces. Each item is meticulously designed and crafted to endure, aiming to become cherished heirlooms passed down through generations. The company emphasizes quality craftsmanship and environmental responsibility, striving to minimize its ecological footprint. By sourcing high-quality materials and engaging in sustainable practices, Forrest Design Co. ensures that each creation is both beautiful and environmentally conscious.",
+  "qualifications": [
+    "Handcrafted Quality",
+    "Environmental Commitment",
+    "Community Impact",
+    "Sustainable Practices",
+    "Customer-Centric Approach"
+  ],
+  "logo": "https://forrestdesignco.com/cdn/shop/files/Final_Logo-Black_Large_7ed88f9e-f3c8-428b-a784-3789fbb51900.png?v=1658787725&width=200",
+  "website": "https://forrestdesignco.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T16:40:44.688Z"
+  },
+  "specifics": "Furniture & Home Goods",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Home"
+},
+{
+  "_id": {
+    "$oid": "6786946909dd488cd4c8a317"
+  },
+  "name": "Wildway",
+  "description": "A natural food company based in San Antonio, Texas, dedicated to producing environmentally conscious breakfast and snack products. Founded in 2012, the company offers a range of grain-free granolas, regenerative organic oats, and coconut chips, all crafted from real, plant-based ingredients without added flavorings, preservatives, or refined sugars. Wildway's mission is to build a food system that goes beyond sustainability, connecting climate health to human health through resilient, equitable, and regenerative business practices.",
+  "qualifications": [
+    "Sustainable Sourcing",
+    "Eco-Friendly Packaging",
+    "In-House Manufacturing",
+    "Health-Conscious Products"
+  ],
+  "logo": "https://wildwayoflife.com/cdn/shop/files/Wildway_Logo_WHITE.png?v=1695173002&width=140",
+  "website": "https://wildwayoflife.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T16:44:25.574Z"
+  },
+  "specifics": "Snacks",
+  "icons": [
+    "b_corp",
+    "1_for_the_planet",
+    "carbon_neutral_logo"
+  ],
+  "category": "Food"
+},
+{
+  "_id": {
+    "$oid": "6786998309dd488cd4c8a318"
+  },
+  "name": "BornBound",
+  "description": "A premium triathlon apparel brand founded by Kyle Dagan, a former competitive soccer player and triathlete from California, USA. The company specializes in designing high-performance triathlon gear, including tri-suits, running apparel, and swimwear, utilizing state-of-the-art fabrics and construction methods. With team members across the USA, UK, and Asia, Born Bound combines extensive experience in sports product development to create gear that enhances athletic performance.",
+  "qualifications": [
+    "Athlete-Centric Design",
+    "Sustainable Manufacturing",
+    "Global Presence",
+    "Environmental Contributions"
+  ],
+  "logo": "https://bornbound.com/cdn/shop/files/bornbound-logo_360x.png?v=1640205549",
+  "website": "https://bornbound.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T17:06:11.361Z"
+  },
+  "specifics": "Running Apparel",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Outdoor"
+},
+{
+  "_id": {
+    "$oid": "67869ade09dd488cd4c8a319"
+  },
+  "name": "Abode Outside",
+  "description": "A Minnesota-based clothing brand founded in 2020 by Nathan Baller, inspired by family adventures in the Boundary Waters Canoe Area Wilderness. The company specializes in eco-friendly performance and lifestyle knitwear, aiming to connect people with nature through sustainable, stylish, and functional apparel. With a commitment to reducing pollution in the clothing industry, Abode Outside integrates sustainability into every aspect of its business model, offering high-quality products at reasonable prices to encourage more people to embrace eco-friendly fashion.",
+  "qualifications": [
+    "Sustainable Materials",
+    "EcoPromise™ Commitment",
+    "Community Engagement",
+    "Family-Led Business"
+  ],
+  "logo": "data:image/png;base64,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",
+  "website": "https://abodeoutside.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T17:11:58.663Z"
+  },
+  "specifics": "Knit Apparel",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67869c0509dd488cd4c8a31a"
+  },
+  "name": "HyperSwish",
+  "description": "A Minnesota-born apparel brand that seamlessly blends innovation with sustainability to redefine streetwear and activewear. Founded with a vision to revolutionize the fashion industry, HyperSwish emphasizes eco-friendly practices and premium quality in its product lines. The brand's journey began from humble beginnings, transforming dreams into reality by meticulously crafting each design to reflect precision, style, and purpose.",
+  "qualifications": [
+    "Sustainable Materials",
+    "Eco-Friendly Practices",
+    "Innovative Designs",
+    "Community Engagement",
+    "Quality Craftsmanship"
+  ],
+  "logo": "https://www.hyperswish.com/cdn/shop/files/wordmark-no-bg.png?v=1722399969&width=1200",
+  "website": "https://www.hyperswish.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T17:16:53.051Z"
+  },
+  "specifics": "Street/Active Wear",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "67869cb009dd488cd4c8a31b"
+  },
+  "name": "Solminer",
+  "description": "A family-owned winery located in Los Olivos, California, dedicated to producing natural wines through regenerative organic and biodynamic farming practices. Founded by Anna and David deLaski, the winery emphasizes \"conscious farming,\" integrating animals, biodynamic compost, and lunar calendar practices to enhance vineyard health. Solminer specializes in Austrian-inspired varietals, including Grüner Veltliner and Blaufränkisch, reflecting the founders' heritage and commitment to crafting wines that embody the unique terroir of the California Central Coast.",
+  "qualifications": [
+    "Regenerative Organic Farming",
+    "Estate Vineyards",
+    "Austrian Varietals",
+    "Sustainable Practices",
+    "Community Engagement"
+  ],
+  "logo": "https://www.solminer.com/wp-content/uploads/2024/04/Solminer.png",
+  "website": "https://www.solminer.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T17:19:44.827Z"
+  },
+  "specifics": "Wine",
+  "icons": [
+    "1_for_the_planet",
+    "usda_organic_logo"
+  ],
+  "category": "Beverage"
+},
+{
+  "_id": {
+    "$oid": "6786a10d09dd488cd4c8a31c"
+  },
+  "name": "Huxley",
+  "description": "A Minnesota-based beverage company specializing in sustainable, plant-based energy drinks. Founded in early 2024 by Simon Solis-Cohen, Huxley offers a healthier alternative to traditional energy drinks by utilizing natural ingredients and focusing on environmental responsibility. Their beverages are crafted with real fruit juice and powered by cascara superfruit, providing 90mg of natural caffeine per serving—equivalent to a standard cup of coffee. Each drink is also infused with electrolytes for hydration and L-theanine to enhance focus, delivering a balanced energy boost without the crash associated with conventional energy drinks.",
+  "qualifications": [
+    "Sustainable Ingredients",
+    "Health-Conscious Formulation",
+    "Environmental Commitment",
+    "Innovative Flavors"
+  ],
+  "logo": "https://drinkhuxley.com/cdn/shop/files/Huxley_Logo_Superfruit_-_Orange.webp?height=80&v=1724878006",
+  "website": "https://drinkhuxley.com/",
+  "icon": "",
+  "createdAt": {
+    "$date": "2025-01-14T17:38:21.037Z"
+  },
+  "specifics": "Energy Drinks",
+  "icons": [
+    "1_for_the_planet"
+  ],
+  "category": "Beverage"
 }]

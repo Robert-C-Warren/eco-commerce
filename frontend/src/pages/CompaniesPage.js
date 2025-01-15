@@ -330,7 +330,7 @@ const CompaniesPage = () => {
                           >
                             Visit Website
                           </a>
-                          <div className="d-flex justify-content-between align-items-center">
+                          <div className="d-flex justify-content-between align-items-center icon-wrapper">
                             <div className="d-flex justify-content-center align-items-center flex-grow-1">
                               <div className="product-icons d-flex justify-content-center align-items-center gap-2">
                                 {company.icons?.map((iconId) => {

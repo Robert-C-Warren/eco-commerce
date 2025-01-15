@@ -18,8 +18,21 @@
     font-size: 30px;
 }
 
+.icon-wrapper {
+    position: relative;
+}
+
 .product-icons {
-    padding-left: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.collapse-button {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
 }
 
 .category-content {
