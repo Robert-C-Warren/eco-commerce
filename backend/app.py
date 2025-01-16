@@ -331,10 +331,13 @@ def update_company_specifics(id):
 def get_companies():
     try:
         companies = list(db.companies.find({}).sort("createdAt", -1))
+        print("Raw companies data:", companies) 
         for company in companies:
             company["_id"] = str(company["_id"])
+        print("Processed companies data:", companies)
         return jsonify(companies), 200
     except Exception as e:
+        print("Error in /companies endpoint:", e)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/companies', methods=['POST'])
