@@ -424,6 +424,6 @@ def subscribe():
     return jsonify({"message": "Subscription successful!"}), 200
 
 if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
     db = get_database()
     print("Collections", db.list_collection_names())
-    app.run(host="0.0.0.0", port=5000)
