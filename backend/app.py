@@ -20,6 +20,16 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
+@app.before_first_request
+def test_db_connection():
+    try:
+        collections = db.list_collection_names()
+        print("Collections in database:", collections)
+        sample_data = list(db.companies.find({}))
+        print("Sample data from 'companies':", sample_data)
+    except Exception as e:
+        print("Database connection error:", e)
+
 @app.route("/")
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
@@ -331,13 +341,10 @@ def update_company_specifics(id):
 def get_companies():
     try:
         companies = list(db.companies.find({}).sort("createdAt", -1))
-        print("Raw companies data:", companies) 
         for company in companies:
             company["_id"] = str(company["_id"])
-        print("Processed companies data:", companies)
         return jsonify(companies), 200
     except Exception as e:
-        print("Error in /companies endpoint:", e)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/companies', methods=['POST'])
