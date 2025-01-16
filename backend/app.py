@@ -20,16 +20,6 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
-@app.before_first_request
-def test_db_connection():
-    try:
-        collections = db.list_collection_names()
-        print("Collections in database:", collections)
-        sample_data = list(db.companies.find({}))
-        print("Sample data from 'companies':", sample_data)
-    except Exception as e:
-        print("Database connection error:", e)
-
 @app.route("/")
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
