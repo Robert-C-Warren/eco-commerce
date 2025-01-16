@@ -200,6 +200,7 @@ const CompaniesPage = () => {
       try {
         const response = await fetch('http://35.222.106.130:5000/companies');
         const data = await response.json();
+        console.log("API Response", data)
         setCompanies(data)
       } catch (error) {
         console.error("Error fetching companies", error);
