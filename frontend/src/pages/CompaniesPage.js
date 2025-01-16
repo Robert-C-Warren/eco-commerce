@@ -346,6 +346,7 @@ const CompaniesPage = () => {
                                       data-bs-toggle="tooltip"
                                       data-bs-placement="bottom"
                                       data-bs-title={icon.label}
+                                      loading="lazy"
                                     />
                                   ) : null;
                                 })}
