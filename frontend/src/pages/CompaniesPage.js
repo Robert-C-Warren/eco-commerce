@@ -311,6 +311,7 @@ const CompaniesPage = () => {
                           className="card-img-top"
                           alt={`${company.name} logo`}
                           style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                          loading="lazy"
                         />
                         <h5 className="card-title m-0">{company.name}</h5>
                         <h6 className="card-specifics">{company.specifics}</h6>
