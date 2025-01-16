@@ -426,4 +426,8 @@ def subscribe():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
     db = get_database()
-    print("Collections", db.list_collection_names())
+    try:
+        collections = db.list_collection_names()
+        print("Collections", collections)
+    except Exception as e:
+        print("Error fetching", e)
