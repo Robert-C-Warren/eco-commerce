@@ -351,7 +351,7 @@ const AdminCompaniesPage = () => {
     }
   
     try {
-      await API.patch(`/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
+      await API.patch(`https://eco-commerce-backend.onrender.com/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
       fetchCompanies();
       toast.success("Specifics updated successfully", { autoClose: 3000 });
     } catch (error) {
