@@ -252,7 +252,7 @@ const AdminCompaniesPage = () => {
     }
 
     try {
-      await API.patch(`/admin/companies/${companyId}/icons`, { icons });
+      await API.patch(`https://eco-commerce-backend.onrender.com/admin/companies/${companyId}/icons`, { icons });
       fetchCompanies();
       toast.success("Icon updated successfully", { autoClose: 3000 })
     } catch (error) {
@@ -263,7 +263,7 @@ const AdminCompaniesPage = () => {
 
   const addCompany = async () => {
     try {
-      const response = await API.post("/companies", newCompany);
+      const response = await API.post("https://eco-commerce-backend.onrender.com/companies", newCompany);
       if (response.status === 201) {
         toast.success("Category added successfully", { autoClose: 3000 })
         fetchCompanies();
@@ -284,7 +284,7 @@ const AdminCompaniesPage = () => {
 
   const editCompany = async (companyId, updatedCompany) => {
     try {
-      const response = await API.put(`/companies/${companyId}`, updatedCompany);
+      const response = await API.put(`https://eco-commerce-backend.onrender.com/companies/${companyId}`, updatedCompany);
       if (response.status === 200) {
         alert("Company updated successfully");
         fetchCompanies();
@@ -296,7 +296,7 @@ const AdminCompaniesPage = () => {
 
   const deleteCompany = async (companyId) => {
     try {
-      const response = await API.delete(`/companies/${companyId}`);
+      const response = await API.delete(`https://eco-commerce-backend.onrender.com/companies/${companyId}`);
       if (response.status === 200) {
         alert("Company deleted successfully");
         fetchCompanies();
@@ -317,7 +317,7 @@ const AdminCompaniesPage = () => {
 
   const handleSubmit = async (companyId) => {
     try {
-      const response = await API.put(`/companies/${companyId}/category`, { category: selectedCategory });
+      const response = await API.put(`https://eco-commerce-backend.onrender.com/companies/${companyId}/category`, { category: selectedCategory });
       if (response.status === 200) {
         toast.success("Category updated successfully", { autoClose: 3000 })
         const updatedCompanies = companies.map((company) =>
