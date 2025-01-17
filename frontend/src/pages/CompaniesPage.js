@@ -198,7 +198,7 @@ const CompaniesPage = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch('http://35.222.106.130:5000/companies');
+        const response = await fetch('https://eco-commerce.onrender.com/companies');
         const data = await response.json();
         setCompanies(data)
       } catch (error) {
