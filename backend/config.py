@@ -9,6 +9,10 @@ mongo_uri = os.getenv("MONGO_URI")
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 
 def get_database():
-    client = MongoClient(mongo_uri)
+    client = MongoClient(
+        mongo_uri,
+        tls=True,
+        tlsAllowInvalidCertificates=False
+    )
     db = client["eco_commerce"]
     return db
