@@ -10,7 +10,7 @@ const AdminLogin = ({ onLogin }) => {
 
         if (password === "#HoliLogi91823") {
             onLogin(true);
-            navigate("/admin/products");
+            navigate("https://eco-commerce-backend.onrender.com/admin/products");
         } else {
             alert("Invalid Password!");
         }

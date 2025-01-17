@@ -29,7 +29,7 @@ const HomePage = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await API.get("/products/filter", {
+            const response = await API.get("https://eco-commerce-backend.onrender.com/products/filter", {
                 params: {
                     category, // Use category from useParams
                     min_price: 0, // Default price filtering

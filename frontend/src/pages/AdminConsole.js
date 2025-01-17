@@ -38,7 +38,7 @@ const ProductCard = ({ product, fetchProducts, toggleVisibility, startEditing, d
 
     const updateCategories = async () => {
         try {
-            await API.patch(`/admin/products/${product._id}/categories`, { categories: selectedCategories });
+            await API.patch(`https://eco-commerce-backend.onrender.com/admin/products/${product._id}/categories`, { categories: selectedCategories });
             fetchProducts();
         } catch (error) {
             console.error("Error updating categories:", error);
@@ -53,7 +53,7 @@ const ProductCard = ({ product, fetchProducts, toggleVisibility, startEditing, d
 
     const saveIcons = async () => {
         try {
-            await API.patch(`/admin/products/${product._id}/icons`, { icons: selectedIcons });
+            await API.patch(`https://eco-commerce-backend.onrender.com/admin/products/${product._id}/icons`, { icons: selectedIcons });
             fetchProducts();
         } catch (error) {
             console.error("Error saving icons:", error);
@@ -140,7 +140,7 @@ const AdminConsole = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await API.get("/admin/products");
+            const response = await API.get("https://eco-commerce-backend.onrender.com/admin/products");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -149,7 +149,7 @@ const AdminConsole = () => {
 
     const toggleVisibility = async (productId, currentVisibility) => {
         try {
-            await API.patch(`/admin/products/${productId}`, { visible: !currentVisibility });
+            await API.patch(`https://eco-commerce-backend.onrender.com/admin/products/${productId}`, { visible: !currentVisibility });
             fetchProducts();
         } catch (error) {
             console.error("Error updating visibility:", error);
@@ -163,7 +163,7 @@ const AdminConsole = () => {
 
     const deleteProduct = async (productId) => {
         try {
-            await API.delete(`/admin/products/${productId}`);
+            await API.delete(`https://eco-commerce-backend.onrender.com/admin/products/${productId}`);
             setProducts(products.filter((product) => product._id !== productId));
         } catch (error) {
             console.error("Error deleting product:", error);

@@ -223,7 +223,7 @@ const AdminCompaniesPage = () => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await API.get("/companies");
+      const response = await API.get("https://eco-commerce-backend.onrender.com/companies");
       setCompanies(response.data);
     } catch (error) {
       console.error("Error fetching companies:", error);
