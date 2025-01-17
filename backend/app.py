@@ -13,8 +13,10 @@ availableIcons = [
     { "id": "biodegradable", "label": "Biodegradable", "src": "../frontend/src/resources/icons/leaf.png"},
     { "id": "fair_trade", "label": "Fair-Trade", "src": "../frontend/src/resources/icons/trade.png"},
 ]
+
+allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=allowed_origins)
 
 db = get_database()
 products_collection = db["products"]
