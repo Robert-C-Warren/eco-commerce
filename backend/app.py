@@ -4,6 +4,7 @@ from config import get_database
 from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime
+import os
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -424,7 +425,7 @@ def subscribe():
     return jsonify({"message": "Subscription successful!"}), 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
     db = get_database()
     try:
         collections = db.list_collection_names()
