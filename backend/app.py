@@ -342,7 +342,9 @@ def get_companies():
             company["_id"] = str(company["_id"])
         return jsonify(companies), 200
     except Exception as e:
+        print(f"Error in get_companies: {e}")  # Add this log
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/companies', methods=['POST'])
 def add_company():
