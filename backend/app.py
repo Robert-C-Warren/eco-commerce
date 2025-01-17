@@ -337,12 +337,9 @@ def update_company_specifics(id):
 @app.route('/companies', methods=['GET'])
 def get_companies():
     try:
-        print("Connecting to database...")
         db = get_database()
-        print("Connected to database")
 
         companies = list(db.companies.find({}))
-        print(f"Fetched companies: {companies}")
 
         for company in companies:
             company["_id"] = str(company["_id"])
@@ -351,7 +348,6 @@ def get_companies():
     except Exception as e:
         print(f"Error in /companies: {e}")  # Log the error
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/companies', methods=['POST'])
 def add_company():

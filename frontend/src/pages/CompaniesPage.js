@@ -199,13 +199,9 @@ const CompaniesPage = () => {
     const fetchCompanies = async () => {
       try {
         const response = await fetch('https://eco-commerce-backend.onrender.com/companies');
-        if (!response.ok) {
-          throw new Error(`HTTP error: Status: ${response.status}`)
-        }
+
         const data = await response.json();
-        if (!Array.isArray(data)) {
-          throw new Error("Expected array but never received: " + JSON.stringify(data))
-        }
+
         setCompanies(data)
       } catch (error) {
         console.error("Error fetching companies", error);

@@ -37,9 +37,15 @@ const HomePage = () => {
                 },
             });
 
+            if (Array.isArray(response.data)) {
             const visibleProducts = response.data.filter((product) => product.visible);
-            setProducts(response.data);
-            setFilteredProducts(response.data)
+            setProducts(visibleProducts);
+            setFilteredProducts(visibleProducts)
+            } else {
+                console.error("Unexpected API response:", response.data)
+                setProducts([]);
+                setFilteredProducts([]);
+            }
 
         } catch (error) {
             console.error("Error fetching products:", error);
