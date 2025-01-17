@@ -347,8 +347,6 @@ def get_companies():
         print(f"Error in /companies: {e}")
         return jsonify({"error": str(e)}), 500
 
-
-
 @app.route('/companies', methods=['POST'])
 def add_company():
     data = request.json
