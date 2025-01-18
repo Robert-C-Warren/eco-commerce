@@ -1,10 +1,10 @@
 import axios from 'axios';
-import API_BASE_URL from "../components/urls"
+import API_BASE_URL from "../components/urls.js"
 
 const API = axios.create({ 
-    baseURL: process.env.API_BASE_URL || "http://localhost:5000",
+    baseURL: API_BASE_URL,
     headers: {
-        "Content-Type": "applcation/json"
+        "Content-Type": "application/json"
     },  
     withCredentials: true
 });
