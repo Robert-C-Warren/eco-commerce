@@ -3,6 +3,7 @@ import API from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./AdminConsole.css"
+import API_BASE_URL from "../components/urls"
 import bCorpIcon from "../resources/icons/bcorp.png"
 import smallBusinessIcon from "../resources/icons/handshake.png"
 import veganIcon from "../resources/icons/vegan.png"
@@ -38,7 +39,7 @@ const ProductCard = ({ product, fetchProducts, toggleVisibility, startEditing, d
 
     const updateCategories = async () => {
         try {
-            await API.patch(`https://eco-commerce-backend.onrender.com/admin/products/${product._id}/categories`, { categories: selectedCategories });
+            await API.patch(`${API_BASE_URL}/admin/products/${product._id}/categories`, { categories: selectedCategories });
             fetchProducts();
         } catch (error) {
             console.error("Error updating categories:", error);
@@ -53,7 +54,7 @@ const ProductCard = ({ product, fetchProducts, toggleVisibility, startEditing, d
 
     const saveIcons = async () => {
         try {
-            await API.patch(`https://eco-commerce-backend.onrender.com/admin/products/${product._id}/icons`, { icons: selectedIcons });
+            await API.patch(`${API_BASE_URL}/admin/products/${product._id}/icons`, { icons: selectedIcons });
             fetchProducts();
         } catch (error) {
             console.error("Error saving icons:", error);

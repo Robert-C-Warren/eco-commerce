@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+import API_BASE_URL from "../components/urls"
 
 const AdminLogin = ({ onLogin }) => {
     const [password, setPassword] = useState("");
@@ -11,13 +12,13 @@ const AdminLogin = ({ onLogin }) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("https://eco-commerce-backend.onrender.com/admin/login", {
+            const response = await axios.post(`${API_BASE_URL}/admin/login`, {
                 password,
             })
 
             if (response.data.success) {
                 onLogin(true)
-                navigate("https://eco-commerce-backend.onrender.com/admin/products");
+                navigate(`${API_BASE_URL}/admin/products`);
             } else {
                 setError(response.data.message);
             }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../services/api";
 import "./ProductList.css";
 import Navbar from "./Navbar";
+import API_BASE_URL from "../components/urls"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import bCorpIcon from "../resources/icons/bcorp.png";
@@ -29,7 +30,7 @@ const HomePage = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await API.get("https://eco-commerce-backend.onrender.com/products/filter", {
+            const response = await API.get(`${API_BASE_URL}/products/filter`, {
                 params: {
                     category, // Use category from useParams
                     min_price: 0, // Default price filtering

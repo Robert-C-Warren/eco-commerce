@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css"
 import "./AdminCompaniesPage.css"
+import API_BASE_URL from "../components/urls"
 import API from "../services/api";
 import bCorpIcon from "../resources/icons/bcorp.png"
 import smallBusinessIcon from "../resources/icons/handshake.png"
@@ -223,7 +224,7 @@ const AdminCompaniesPage = () => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await API.get("https://eco-commerce-backend.onrender.com/companies");
+      const response = await API.get(`${API_BASE_URL}/companies`);
       const sortedCompanies = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       setCompanies(sortedCompanies);
     } catch (error) {
@@ -253,7 +254,7 @@ const AdminCompaniesPage = () => {
     }
 
     try {
-      await API.patch(`https://eco-commerce-backend.onrender.com/admin/companies/${companyId}/icons`, { icons });
+      await API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, { icons });
       fetchCompanies();
       toast.success("Icon updated successfully", { autoClose: 3000 })
     } catch (error) {
@@ -264,7 +265,7 @@ const AdminCompaniesPage = () => {
 
   const addCompany = async () => {
     try {
-      const response = await API.post("https://eco-commerce-backend.onrender.com/companies", newCompany);
+      const response = await API.post(`${API_BASE_URL}/companies`, newCompany);
       if (response.status === 201) {
         toast.success("Category added successfully", { autoClose: 3000 })
         fetchCompanies();
@@ -285,7 +286,7 @@ const AdminCompaniesPage = () => {
 
   const editCompany = async (companyId, updatedCompany) => {
     try {
-      const response = await API.put(`https://eco-commerce-backend.onrender.com/companies/${companyId}`, updatedCompany);
+      const response = await API.put(`${API_BASE_URL}/companies/${companyId}`, updatedCompany);
       if (response.status === 200) {
         alert("Company updated successfully");
         fetchCompanies();
@@ -297,7 +298,7 @@ const AdminCompaniesPage = () => {
 
   const deleteCompany = async (companyId) => {
     try {
-      const response = await API.delete(`https://eco-commerce-backend.onrender.com/companies/${companyId}`);
+      const response = await API.delete(`${API_BASE_URL}/companies/${companyId}`);
       if (response.status === 200) {
         alert("Company deleted successfully");
         fetchCompanies();
@@ -318,7 +319,7 @@ const AdminCompaniesPage = () => {
 
   const handleSubmit = async (companyId) => {
     try {
-      const response = await API.put(`https://eco-commerce-backend.onrender.com/companies/${companyId}/category`, { category: selectedCategory });
+      const response = await API.put(`${API_BASE_URL}/companies/${companyId}/category`, { category: selectedCategory });
       if (response.status === 200) {
         toast.success("Category updated successfully", { autoClose: 3000 })
         const updatedCompanies = companies.map((company) =>
@@ -352,7 +353,7 @@ const AdminCompaniesPage = () => {
     }
   
     try {
-      await API.patch(`https://eco-commerce-backend.onrender.com/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
+      await API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
       fetchCompanies();
       toast.success("Specifics updated successfully", { autoClose: 3000 });
     } catch (error) {

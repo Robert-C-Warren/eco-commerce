@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
+import API_BASE_URL from "../components/urls"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/veganlogo.png";
@@ -198,7 +199,7 @@ const CompaniesPage = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch('https://eco-commerce-backend.onrender.com/companies');
+        const response = await fetch(`${API_BASE_URL}/companies`);
 
         const data = await response.json();
 
