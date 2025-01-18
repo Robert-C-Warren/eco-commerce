@@ -225,7 +225,7 @@ const AdminCompaniesPage = () => {
     try {
       const response = await API.get("https://eco-commerce-backend.onrender.com/companies");
       const sortedCompanies = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      setCompanies(response.sortedCompanies);
+      setCompanies(sortedCompanies);
     } catch (error) {
       console.error("Error fetching companies:", error);
     }
