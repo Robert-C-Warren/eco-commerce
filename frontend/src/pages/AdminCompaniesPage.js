@@ -277,7 +277,7 @@ const AdminCompaniesPage = () => {
           website: "",
           icon: ""
         });
-        selectedCategory("")
+        setSelectedCategory("")
       }
     } catch (error) {
       console.error("Error adding company:", error);

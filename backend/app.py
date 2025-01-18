@@ -45,12 +45,15 @@ def handle_options_request():
 @app.after_request
 def add_cors_headers(response):
     origin = request.headers.get("Origin")
+    allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
+
     if origin in allowed_origins:
         response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Access-Control-Allow-Credentials"] = "true"
-        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, PATCH, OPTIONS"
         response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
     return response
+
 
 @app.route("/")
 def home():
