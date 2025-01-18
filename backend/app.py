@@ -17,6 +17,7 @@ availableIcons = [
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
 CORS(app, origins=allowed_origins)
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "defaultpassword")
 
 db = get_database()
 products_collection = db["products"]
@@ -59,6 +60,14 @@ def get_product_by_id(product_id):
     except Exception as e:
         print(f"Error fetching product: {e}")
         return jsonify({"error": str(e)}), 500
+
+@app.route("/admin/login", methods=['POST'])
+def admin_login():
+    data = request.json
+    if data.get("password") == ADMIN_PASSWORD:
+        return jsonify({"success": True, "message": "Login Successful"}), 200
+    else:
+        return jsonify({"success": False, "message": "Invalid"}), 401
 
 @app.route("/admin/products/<id>/categories", methods=["PATCH"])
 def update_product_category(id):

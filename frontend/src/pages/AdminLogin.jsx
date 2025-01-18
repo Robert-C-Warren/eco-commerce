@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 
 const AdminLogin = ({ onLogin }) => {
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (password === "#HoliLogi91823") {
-            onLogin(true);
-            navigate("https://eco-commerce-backend.onrender.com/admin/products");
-        } else {
-            alert("Invalid Password!");
+        try {
+            const response = await axios.post("https://eco-commerce-backend.onrender.com/admin/login", {
+                password,
+            })
+
+            if (response.data.success) {
+                onLogin(true)
+                navigate("https://eco-commerce-backend.onrender.com/admin/products");
+            } else {
+                setError(response.data.message);
+            }
+        } catch (err) {
+            console.error(err)
+            setError("An error occurred while logging in")
         }
     };
 
