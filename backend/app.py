@@ -23,10 +23,6 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
-@app.errorhandler(404)
-def not_found(error):
-    return jsonify({"error": "Not Found"}), 404
-
 @app.route("/")
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
