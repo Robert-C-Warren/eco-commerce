@@ -18,7 +18,7 @@ const AdminLogin = ({ onLogin }) => {
 
             if (response.data.success) {
                 onLogin(true)
-                navigate(`${API_BASE_URL}/admin/products`);
+                navigate("/admin/products");
             } else {
                 setError(response.data.message);
             }
