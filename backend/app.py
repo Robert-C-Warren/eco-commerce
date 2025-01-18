@@ -16,7 +16,12 @@ availableIcons = [
 
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=allowed_origins)
+CORS(app, supports_credentials=True, resources={
+    r"/*": {
+        "origins": allowed_origins
+    }
+})
+
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 db = get_database()
@@ -36,6 +41,16 @@ def handle_options_request():
         response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
 
         return response
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin")
+    if origin in allowed_origins:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+    return response
 
 @app.route("/")
 def home():
