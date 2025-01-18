@@ -17,7 +17,7 @@ availableIcons = [
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
 CORS(app, origins=allowed_origins)
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "defaultpassword")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 db = get_database()
 products_collection = db["products"]
