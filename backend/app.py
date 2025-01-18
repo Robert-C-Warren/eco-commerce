@@ -24,6 +24,18 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
+@app.before_request
+def handle_options_request():
+    if request.method == "OPTIONS":
+        response = app.make_default_options_response()
+        headers = response.headers
+
+        headers["Access-Control-Allow-Origin"] = "https://ecocommerce.earth"
+        headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+        headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+
+        return response
+
 @app.route("/")
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
