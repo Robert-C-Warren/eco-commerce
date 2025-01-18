@@ -3,7 +3,7 @@ from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
 from bson.errors import InvalidId
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 
 availableIcons = [
@@ -348,7 +348,7 @@ def get_companies():
 @app.route('/companies', methods=['POST'])
 def add_company():
     data = request.json
-    data["createdAt"] = datetime.utcnow()
+    data["createdAt"] = datetime.now(timezone.utc)
     if isinstance(data.get("qualifications"), str):
         data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
     try:
