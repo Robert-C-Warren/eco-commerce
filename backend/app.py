@@ -16,7 +16,7 @@ availableIcons = [
 
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
-CORS(app, origins=allowed_origins)
+CORS(app, supports_credentials=True, origins=allowed_origins)
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 db = get_database()
@@ -27,12 +27,13 @@ subscribers = db["subscribers"]
 @app.before_request
 def handle_options_request():
     if request.method == "OPTIONS":
-        response = app.make_default_options_response()
+        response = app.make_response("")
         headers = response.headers
 
         headers["Access-Control-Allow-Origin"] = "https://ecocommerce.earth"
         headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
         headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
 
         return response
 
