@@ -54,7 +54,6 @@ def add_cors_headers(response):
         response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
     return response
 
-
 @app.route("/")
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
@@ -229,19 +228,39 @@ def search_products():
 def search_companies():
     query = request.args.get("q", "").strip()
     try:
+        if not query:
+            return jsonify([]), 200
+        
         companies = list(companies_collection.find(
             {
                 "$or": [
                     {"name": {"$regex": query, "$options": "i"}},
+                    {"description": {"$regex": query, "$options": "i"}},
+                    {"specifics": {"$regex": query, "$options": "i"}}
+                ]
+            }
+        )).limit(50).sort("name", 1)
+        
+        for company in companies:
+            company["_id"] = str(company["_id"])
+
+        total_results = companies_collection.count_documents(
+            {
+                "$or": [
+                    {"name": {"$regex": query, "$options": "i"}},
+                    {"specifics": {"$regex": query, "$options": "i"}},  # Count matches in specifics
                     {"description": {"$regex": query, "$options": "i"}}
                 ]
             }
-        ))
-        for company in companies:
-            company["_id"] = str(company["_id"])
-        return jsonify(companies), 200
+        )
+
+        return jsonify({
+            "total_results": total_results,
+            "companies": companies
+        }), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
 
 @app.route("/products/filter", methods=["GET"])
 def filter_products():
