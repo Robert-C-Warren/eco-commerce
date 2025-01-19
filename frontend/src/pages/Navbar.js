@@ -1,7 +1,7 @@
 import { React } from "react";
 import "./ProductList.css"
 import { Link, useNavigate } from "react-router-dom"
-import smallLogo from "../resources/ECLogo.svg";
+import smallLogo from "../resources/eclogov2.svg";
 import DarkModeToggle from "./DarkModeToggle";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
