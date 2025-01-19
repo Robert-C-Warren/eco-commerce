@@ -5,7 +5,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone
 import os
-import unicodedata
+from unicodedata import normalize, combining
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -35,8 +35,8 @@ def normalize_text(text):
     if not text:
         return ""
     return ''.join(
-        c for c in unicodedata.normalize('NFKD', text)
-        if not unicodedata.combining(c)
+        c for c in normalize('NFKD', text)
+        if not combining(c)
     ).lower()
 
 @app.before_request
@@ -241,37 +241,32 @@ def search_companies():
         if not query:
             return jsonify([]), 200
 
-        # Log the incoming query
-        app.logger.info(f"Search query: {query}")
-
-        # Normalize the query
+        # Normalize the input query
         normalized_query = normalize_text(query)
-        app.logger.info(f"Normalized query: {normalized_query}")
 
-        # Perform the search
-        companies = list(companies_collection.find(
-            {
-                "$or": [
-                    {"normalized_name": {"$regex": normalized_query, "$options": "i"}},
-                    {"normalized_specifics": {"$regex": normalized_query, "$options": "i"}},
-                    {"normalized_description": {"$regex": normalized_query, "$options": "i"}}
-                ]
-            }
-        ))
+        # Fetch all companies
+        companies = list(companies_collection.find())
 
-        # Log the search results
-        app.logger.info(f"Search results: {companies}")
+        # Filter companies dynamically
+        def matches(company):
+            fields_to_search = [
+                company.get("name", ""),
+                company.get("specifics", ""),
+                company.get("description", "")
+            ]
+            return any(normalized_query in normalize_text(field) for field in fields_to_search)
 
-        for company in companies:
+        filtered_companies = [company for company in companies if matches(company)]
+
+        # Convert ObjectId to string
+        for company in filtered_companies:
             company["_id"] = str(company["_id"])
 
-        return jsonify(companies), 200
+        return jsonify(filtered_companies), 200
 
     except Exception as e:
         app.logger.error(f"Error in /companies/search: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
-
-    
 
 @app.route("/products/filter", methods=["GET"])
 def filter_products():
