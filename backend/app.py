@@ -31,6 +31,7 @@ companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
 def normalize_text(text):
+    """Normalize text by removing diacritics and converting to lowercase."""
     if not text:
         return ""
     return ''.join(
@@ -239,12 +240,18 @@ def search_companies():
     try:
         if not query:
             return jsonify([]), 200
-        
-        normalized_query = normalize_text(query)
 
+        # Log the incoming query
+        app.logger.info(f"Search query: {query}")
+
+        # Normalize the query
+        normalized_query = normalize_text(query)
+        app.logger.info(f"Normalized query: {normalized_query}")
+
+        # Perform the search
         companies = list(companies_collection.find(
             {
-                 "$or": [
+                "$or": [
                     {"normalized_name": {"$regex": normalized_query, "$options": "i"}},
                     {"normalized_specifics": {"$regex": normalized_query, "$options": "i"}},
                     {"normalized_description": {"$regex": normalized_query, "$options": "i"}}
@@ -252,14 +259,18 @@ def search_companies():
             }
         ))
 
+        # Log the search results
+        app.logger.info(f"Search results: {companies}")
+
         for company in companies:
             company["_id"] = str(company["_id"])
 
         return jsonify(companies), 200
-    
+
     except Exception as e:
         app.logger.error(f"Error in /companies/search: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
+
     
 
 @app.route("/products/filter", methods=["GET"])

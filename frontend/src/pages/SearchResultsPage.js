@@ -203,22 +203,18 @@ const SearchResultsPage = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             const query = new URLSearchParams(location.search).get("q");
-
+            console.log("Search query:", query); // Log the query being sent
+        
             try {
-                const productResponse = await API.get("/products/search", {
-                    params: { q: query },
-                });
-                setProducts(productResponse.data)
-
-                const companyResponse = await API.get("/companies/search", {
-                    params: { q: query },
-                })
-                setCompanies(companyResponse.data)
+                const response = await API.get("/companies/search", { params: { q: query } });
+                console.log("Search results:", response.data);
+                setCompanies(response.data);
             } catch (error) {
-                console.error("Error fetching search results", error);
-                setError("An error occurred while fetching search results")
+                console.error("Error fetching search results:", error.response?.data || error.message);
+                setError("An error occurred while fetching search results.");
             }
         };
+        
 
         fetchSearchResults();
     }, [location.search]);
