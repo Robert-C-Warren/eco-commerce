@@ -241,22 +241,33 @@ def search_companies():
         if not query:
             return jsonify([]), 200
 
+        # Log the incoming query
+        app.logger.info(f"Raw search query: {query}")
+
         # Normalize the input query
         normalized_query = normalize_text(query)
+        app.logger.info(f"Normalized query: {normalized_query}")
 
-        # Fetch all companies
+        # Fetch all companies from the database
         companies = list(companies_collection.find())
+        app.logger.info(f"Total companies fetched: {len(companies)}")
 
-        # Filter companies dynamically
+        # Filter companies dynamically based on normalized fields
         def matches(company):
             fields_to_search = [
                 company.get("name", ""),
                 company.get("specifics", ""),
                 company.get("description", "")
             ]
-            return any(normalized_query in normalize_text(field) for field in fields_to_search)
+            for field in fields_to_search:
+                app.logger.info(f"Checking field: {field}")
+                if normalized_query in normalize_text(field):
+                    return True
+            return False
 
         filtered_companies = [company for company in companies if matches(company)]
+
+        app.logger.info(f"Filtered companies: {len(filtered_companies)}")
 
         # Convert ObjectId to string
         for company in filtered_companies:
@@ -267,6 +278,7 @@ def search_companies():
     except Exception as e:
         app.logger.error(f"Error in /companies/search: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
+
 
 @app.route("/products/filter", methods=["GET"])
 def filter_products():
