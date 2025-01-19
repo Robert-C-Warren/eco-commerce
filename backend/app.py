@@ -5,7 +5,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone
 import os
-import re
+import unicodedata
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -29,6 +29,14 @@ db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
+
+def normalize_text(text):
+    if not text:
+        return ""
+    return ''.join(
+        c for c in unicodedata.normalize('NFKD', text)
+        if not unicodedata.combining(c)
+    ).lower()
 
 @app.before_request
 def handle_options_request():
@@ -232,37 +240,26 @@ def search_companies():
         if not query:
             return jsonify([]), 200
         
-        escaped_query = re.escape(query)
+        normalized_query = normalize_text(query)
 
         companies = list(companies_collection.find(
             {
-                "$or": [
-                    {"name": {"$regex": escaped_query, "$options": "i"}},
-                    {"description": {"$regex": escaped_query, "$options": "i"}},
-                    {"specifics": {"$regex": escaped_query, "$options": "i"}}
+                 "$or": [
+                    {"normalized_name": {"$regex": normalized_query, "$options": "i"}},
+                    {"normalized_specifics": {"$regex": normalized_query, "$options": "i"}},
+                    {"normalized_description": {"$regex": normalized_query, "$options": "i"}}
                 ]
             }
-        )).limit(50).sort("name", 1)
-        
+        ))
+
         for company in companies:
             company["_id"] = str(company["_id"])
 
-        total_results = companies_collection.count_documents(
-            {
-                "$or": [
-                    {"name": {"$regex": query, "$options": "i"}},
-                    {"specifics": {"$regex": query, "$options": "i"}},  # Count matches in specifics
-                    {"description": {"$regex": query, "$options": "i"}}
-                ]
-            }
-        )
-
-        return jsonify({
-            "total_results": total_results,
-            "companies": companies
-        }), 200
+        return jsonify(companies), 200
+    
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        app.logger.error(f"Error in /companies/search: {str(e)}")
+        return jsonify({"error": "Internal Server Error"}), 500
     
 
 @app.route("/products/filter", methods=["GET"])
