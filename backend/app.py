@@ -5,6 +5,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone
 import os
+import re
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -231,12 +232,14 @@ def search_companies():
         if not query:
             return jsonify([]), 200
         
+        escaped_query = re.escape(query)
+
         companies = list(companies_collection.find(
             {
                 "$or": [
-                    {"name": {"$regex": query, "$options": "i"}},
-                    {"description": {"$regex": query, "$options": "i"}},
-                    {"specifics": {"$regex": query, "$options": "i"}}
+                    {"name": {"$regex": escaped_query, "$options": "i"}},
+                    {"description": {"$regex": escaped_query, "$options": "i"}},
+                    {"specifics": {"$regex": escaped_query, "$options": "i"}}
                 ]
             }
         )).limit(50).sort("name", 1)
