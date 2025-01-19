@@ -308,11 +308,11 @@ const SearchResultsPage = () => {
 
                 <h2>Companies</h2>
                 <div className="row">
-                    {Object.keys(groupedCompanies).map((category) => (
+                    {companies.length > 0 ? (
+                        companies.map((company) =>
                         <div>
                             <div className="row">
-                                {groupedCompanies[category].map((company, index) => (
-                                    <div key={index} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                                    <div key={company._id} className={`col-lg-4 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
                                         <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
                                             <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                                                 <img
@@ -368,10 +368,12 @@ const SearchResultsPage = () => {
                                             )}
                                         </div>
                                     </div>
-                                ))}
                             </div>
                         </div>
-                    ))}
+                    )
+                ) : (
+                    <p className="text-center">No companies found.</p>
+                    )}
                 </div>
             </div>
         </div>
