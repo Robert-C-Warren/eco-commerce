@@ -1,5 +1,6 @@
 import React from "react";
 import CompaniesPage from "./CompaniesPage";
+import "./CompaniesPage.css"
 import { useLocation } from "react-router-dom";
 
 const SearchResultsPage = () => {
