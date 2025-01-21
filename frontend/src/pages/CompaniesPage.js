@@ -245,14 +245,14 @@ const CompaniesPage = ({ searchQuery }) => {
     )
   : companies;
 
-  const groupedCompanies = Array.isArray(companies)
-  ? companies.reduce((acc, company) => {
-      const category = company.category || "Uncategorized";
-      if (!acc[category]) acc[category] = [];
-      acc[category].push(company);
-      return acc;
+  const groupedCompanies = searchQuery
+    ? { "Search Results": filteredCompanies }
+    : companies.reduce((acc, company) => {
+        const category = company.category || "Uncatogorized"
+        if (!acc[category]) acc[category] = []
+        acc[category].push(company)
+        return acc
     }, {})
-  : {};
 
 
   const toggleExpand = (id) => {
