@@ -190,7 +190,7 @@ const availableIcons = [
   { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
 ];
 
-const CompaniesPage = () => {
+const CompaniesPage = ({ searchQuery }) => {
   const [companies, setCompanies] = useState([]);
   const [expandedCompany, setExpandedCompany] = useState(null)
   const [expandedCategories, setExpandedCategories] = useState({})
@@ -236,6 +236,14 @@ const CompaniesPage = () => {
       clearTimeout(timer)
     }
   }, [companies])
+
+  const filteredCompanies = searchQuery
+    ? companies.filter((company) => 
+      company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      company.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      company.specifics?.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  : companies;
 
   const groupedCompanies = Array.isArray(companies)
   ? companies.reduce((acc, company) => {
@@ -285,11 +293,13 @@ const CompaniesPage = () => {
           <h1 className="display-2 text-success">
             Companies Doing <strong className="eco-hero">Good</strong> for the Planet
           </h1>
-          <p className="lead">
-            The companies listed below are dedicated to making a positive impact on our planet.<br /> 
-            They prioritize treating their employees with respect and dignity while ensuring<br />
-            their products meet the high standards you deserve.
-          </p>
+          {!searchQuery && (
+            <p className="lead">
+              The companies listed below are dedicated to making a positive impact on our planet.<br /> 
+              They prioritize treating their employees with respect and dignity while ensuring<br />
+              their products meet the high standards you deserve.
+            </p>
+          )}
         </div>
         {Object.keys(groupedCompanies).sort().map((category) => (
           <div key={category} className="category-container">
