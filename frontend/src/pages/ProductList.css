@@ -9,33 +9,6 @@ body {
   background-size: auto;
 }
 
-.navbar a, .nav-link {
-    transition: color 0.3s ease;
-}
-
-.navbar a:hover, .nav-link:hover {
-    color: #007b33 !important;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    color: #1cc741;
-}
-
-.nav-item-home {
-    font-weight: 400;
-}
-
-.nav-item {
-    display: inline-block;
-}
-
-.navbar-nav {
-    list-style: none !important;
-    padding-left: 0;
-    margin-left: 0;
-}
-
 .dropdown {
     margin-left: 12px;
 }

@@ -10,6 +10,7 @@ import SubscribePage from "./pages/SubscribePage"
 import SearchResultsPage from "./pages/SearchResultsPage";
 import ScrollToTop from "./components/ScrollToTop";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);

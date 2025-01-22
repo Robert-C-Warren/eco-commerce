@@ -117,6 +117,7 @@
 
     .company-card {
         margin-left: 0;
+        padding-bottom: 10px;
     }
 
     .company-card.company-card.collapsed {
@@ -125,6 +126,14 @@
 
     .card-text {
         padding-top: 30%;
+    }
+
+    .product-icons .icon_actual {
+        width: 20%;
+    }
+
+    .collapse-button {
+        width: 10%;
     }
 }
 
