@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../services/api";
 import "./ProductList.css";
-import Navbar from "./Navbar";
 import API_BASE_URL from "../components/urls"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -66,7 +65,6 @@ const HomePage = () => {
 
     return (
         <div>
-            <Navbar />
             <div className="container my-4">
                 <div className="product-list">
                     {location.pathname === "/" && (

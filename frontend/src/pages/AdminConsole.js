@@ -11,7 +11,6 @@ import biodegradableIcon from "../resources/icons/leaf.png"
 import fairTradeIcon from "../resources/icons/trade.png"
 import recycled from "../resources/icons/recycle.svg"
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const availableIcons = [
     { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation"},
@@ -183,7 +182,6 @@ const AdminConsole = () => {
 
     return (
         <div>
-            <Navbar />
             <div className="container mt-4">
                 <h1 className="text-center mb-4">Admin Console</h1>
                 <div className="row mb-3">

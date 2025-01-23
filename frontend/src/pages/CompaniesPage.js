@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "./Navbar";
 import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Logo from "../resources/eclogov2.svg"
 import API_BASE_URL from "../components/urls"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
@@ -192,6 +192,7 @@ const availableIcons = [
 
 const CompaniesPage = ({ searchQuery }) => {
   const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true)
   const [expandedCompany, setExpandedCompany] = useState(null)
   const [expandedCategories, setExpandedCategories] = useState({})
   const categoryRefs = useRef({})
@@ -206,6 +207,8 @@ const CompaniesPage = ({ searchQuery }) => {
         setCompanies(data)
       } catch (error) {
         console.error("Error fetching companies", error);
+      } finally {
+        setLoading(false)
       }
     };
 
@@ -287,10 +290,9 @@ const CompaniesPage = ({ searchQuery }) => {
 
   return (
     <div>
-      <Navbar />
       <div className="container my-4">
-        <div className="hero-section text-center p-5 bg-light">
-          <h1 className="display-2 text-success">
+        <div className="hero-section text-center p-5">
+          <h1 className="display-2 hero-text">
             Companies Doing <strong className="eco-hero">Good</strong> for the Planet
           </h1>
           {!searchQuery && (
@@ -301,7 +303,13 @@ const CompaniesPage = ({ searchQuery }) => {
             </p>
           )}
         </div>
-        {Object.keys(groupedCompanies).sort().map((category) => (
+        {loading && (
+          <div className="loading-container">
+            <img src={Logo} alt="Loading..." className="logo-shake" />
+          </div>
+        )}
+
+        {!loading && Object.keys(groupedCompanies).sort().map((category) => (
           <div key={category} className="category-container">
             <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
               {category}

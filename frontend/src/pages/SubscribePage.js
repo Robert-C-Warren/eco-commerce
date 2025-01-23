@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 
 const SubscriberPage = () => {
     const [email, setEmail] = useState("");
@@ -25,7 +24,6 @@ const SubscriberPage = () => {
 
     return (
       <div>      
-        <Navbar />
         <div className="container mt-5">
             <h2>Subscribe to Our Product Updates</h2>
             <form onSubmit={handleSubmit} className="mt-4">

@@ -9,6 +9,7 @@ import AdminCompaniesPage from "./pages/AdminCompaniesPage";
 import SubscribePage from "./pages/SubscribePage"
 import SearchResultsPage from "./pages/SearchResultsPage";
 import ScrollToTop from "./components/ScrollToTop";
+import CustomNavbar from "./pages/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -16,7 +17,8 @@ const App = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
     return (
-        <Router>
+        <>
+            <CustomNavbar />
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -38,7 +40,7 @@ const App = () => {
                 
                 )}   
             </Routes>
-        </Router>
+        </>
     );
 };
 

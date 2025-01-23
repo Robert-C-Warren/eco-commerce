@@ -1,9 +1,4 @@
-.container-fluid {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+
 
 .card-grouping {
     padding-top: 0.5%;
@@ -12,10 +7,52 @@
 
 .category-container {
     text-align: center;
+    height: auto;
+}
+
+.hero-section {
+    background-color: rgba(163, 187, 173);
+    border-radius: 20px;
+}
+
+.eco-hero {
+    color: #28a739;
+}
+
+.hero-text {
+    color: black;
 }
 
 .icon-toggler {
     font-size: 30px;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.logo-shake {
+    width: 300px;
+    height: 300px;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+   0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
 }
 
 .icon-wrapper {
@@ -36,7 +73,6 @@
 }
 
 .category-content {
-    overflow: hidden;
     transition: height 0.5s ease;
 }
 
@@ -82,6 +118,7 @@
     margin-left: 100px;
     margin-right: 100px;
     max-width: fit-content;
+    height: auto;
     padding: 30px; /* Adjust padding as needed */
 }
 
@@ -148,16 +185,16 @@
 
 .card-header {
     align-items: center;
-    background-color: #75ba6c;
+    background-color: #A3BBAD;
     padding: 10px;
 }
 
-.company-card.expanded {
+.card.expanded {
     z-index: 1050;
     position: fixed;
     top: 15%;
-    height: 800px;
-    background-color: #75ba6c !important;
+    min-height: 65vh;
+    background-color: #A3BBAD !important;
     box-shadow: 10px 0px 18px rgba(0,0,0,0.5);
     left: 0;
     font-size: 1.2rem;
@@ -171,24 +208,26 @@
 .company-card .card-header {
     align-items: center;
     font-size: 1.2rem;
-    background-color: #75ba6c;
+    background-color: #A3BBAD;
     z-index: 15;
     border: none;
 }
 
 .company-card .card-header:hover {
-    background-color: #436c3e;
+    background-color: #357266;
     transition: transform 1s ease !important;
 }
 
 .company-card.expanded .card-body {
     position: absolute;
-    background: #75ba6c;
+    background: #A3BBAD;
     font-size: 1.3rem;
 }
 
 .card-group {
     margin-bottom: 2%;
+    height: auto;
+    overflow: visible;
 }
 
 .qualifications {
@@ -198,7 +237,7 @@
 }
 
 .company-card.company-card.collapsed {
-    background-color: #639e5b;
+    background-color: #A3BBAD;
     width: 95%;
     margin: 2%;
     flex-direction: column;
@@ -209,7 +248,7 @@
 }
 
 .company-card.company-card.collapsed:hover {
-    background-color: #436c3e;
+    background-color: #357266;
 }
 
 .row {
@@ -242,7 +281,7 @@
 
 .collapse-button:hover {
     scale: 1.2;
-    color: #696969;
+    color: #357266;
 }
 
 body.dark-mode .card {
