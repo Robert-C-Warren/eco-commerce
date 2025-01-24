@@ -17,14 +17,6 @@ const ProductDetailPage = () => {
         };
 
         fetchProduct();
-const toggleVisibility = async (productId, currentVisibility) => {
-    try {
-        await API.patch(`/admin/products/${productId}`, { visible: !currentVisibility});
-        fetchProduct();
-    } catch (error) {
-        console.error("Error updating visibilty:", error)
-    }
-}
     }, [id]);
 
     if (!product) return <p>Loading...</p>

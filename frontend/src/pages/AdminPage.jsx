@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import AdminConsole from "./AdminConsole";
+import React from "react";
 import AdminLogin from "./AdminLogin";
 
 const AdminPage = ({ onLogin }) => {

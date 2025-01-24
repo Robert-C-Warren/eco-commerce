@@ -50,7 +50,7 @@ const CustomNavbar = () => {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <Button variant="outline-success" type="submit">
+                    <Button variant="outline-success" type="submit" style={{ marginRight: "15px"}}>
                         Search
                     </Button>
                 </Form>
