@@ -209,16 +209,16 @@ const AdminCompaniesPage = () => {
   const CategoryDropdown = ({ value, onChange }) => (
     <select className="form-control mb-2" value={value} onChange={onChange}>
       <option value="">Select a category</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Beverage">Beverage</option>
+      <option value="Cleaning">Cleaning</option>
       <option value="Clothing">Clothing</option>
       <option value="Food">Food</option>
       <option value="Home">Home</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Personal Care">Personal Care</option>
-      <option value="Pet">Pet</option>
-      <option value="Accessories">Accessories</option>
       <option value="Kitchen">Kitchen</option>
       <option value="Outdoor">Outdoor</option>
-      <option value="Beverage">Beverage</option>
+      <option value="Personal Care">Personal Care</option>
+      <option value="Pet">Pet</option>
     </select>
   )
 
