@@ -96,6 +96,7 @@ import fairmined from "../resources/icons/fairminedlogo.png"
 import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
 import NFF from "../resources/icons/nfflogo.svg"
+import climateNeutral from "../resources/icons/climateneutrallogo.png"
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -189,6 +190,7 @@ const availableIcons = [
   { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
   { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
   { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
+  { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ]
 
 const AdminCompaniesPage = () => {
