@@ -1,6 +1,6 @@
 .container-fluid {
     width: 98%;
-    text-align: left;
+    margin: 0 auto;
 }
 
 .company-card {
@@ -26,11 +26,12 @@
 
 .company-card.expanded {
     max-height: 800px;
-    background-color: #fff;
+    background-color: #A3BBAD;
     width: 75%;
-    margin-left: 12%;
-    margin-top: 0;
+    left: 11%;
+    top: 10%;
     overflow: auto;
+    position: fixed;
 }
 
 .company-header {

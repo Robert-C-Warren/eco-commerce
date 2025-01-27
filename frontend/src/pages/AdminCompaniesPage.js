@@ -484,6 +484,14 @@ const AdminCompaniesPage = () => {
                 <div className="company-header" onClick={() => toggleExpand(company._id)}>
                   {company.name}
                 </div>
+                <img
+                          src={company.logo}
+                          className="card-img-top"
+                          alt={`${company.name} logo`}
+                          style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                          onClick={() => toggleExpand(company._id)}
+                          loading="lazy"
+                        />
                 {expandedCompany === company._id && (
                   <div className="company-details card-content">
                     <p>
