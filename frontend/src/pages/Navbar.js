@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap"
 import { useNavigate, Link } from "react-router-dom"
-import smallLogo from "../resources/eclogov2.svg";
+import smallLogo from "../resources/ecologov6.svg";
 
 
 const CustomNavbar = () => {

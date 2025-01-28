@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Logo from "../resources/eclogov2.svg"
+import Logo from "../resources/ecologov6.svg"
 import API_BASE_URL from "../components/urls"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
