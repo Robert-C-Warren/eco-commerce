@@ -94,6 +94,7 @@ import fairmined from "../resources/icons/fairminedlogo.png"
 import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
 import NFF from "../resources/icons/nfflogo.svg"
+import climateNeutral from "../resources/icons/climateneutrallogo.png"
 
 
 const availableIcons = [
@@ -188,14 +189,17 @@ const availableIcons = [
   { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
   { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
   { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
+  { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ];
 
 const CompaniesPage = ({ searchQuery }) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true)
   const [expandedCompany, setExpandedCompany] = useState(null)
-  const [expandedCategories, setExpandedCategories] = useState({})
+  const [expandedCategory, setExpandedCategory] = useState(null)
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0})
   const categoryRefs = useRef({})
+  const cardRef = useRef(null)
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -240,6 +244,24 @@ const CompaniesPage = ({ searchQuery }) => {
     }
   }, [companies])
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (cardRef.current && !cardRef.current.contains(event.target)) {
+        setExpandedCompany(null); // Collapse the expanded card
+      }
+    };
+
+    if (expandedCompany) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [expandedCompany])
+
   const filteredCompanies = searchQuery
     ? companies.filter((company) => 
       company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -263,30 +285,41 @@ const CompaniesPage = ({ searchQuery }) => {
   }
 
   const toggleCategory = (category) => {
-    setExpandedCategories((prev) => {
-      const isExpanded = !prev[category];
+    setExpandedCategory((prev) => {
       const contentEl = categoryRefs.current[category];
 
       if (contentEl) {
-        if (isExpanded) {
+        if (prev === category) {
           contentEl.style.height = `${contentEl.scrollHeight}px`; // Set explicit height
-          setTimeout(() => {
-            contentEl.style.height = "auto"; // Reset to auto after transition
-          }, 500); // Match the transition duration
-        } else {
-          contentEl.style.height = `${contentEl.scrollHeight}px`; // Set current height for animation
           requestAnimationFrame(() => {
-            contentEl.style.height = "0"; // Collapse to height 0
-          });
+            contentEl.style.height = "0"
+          })
+          return null
+        } else {
+          const prevContentE1 = categoryRefs.current[prev]
+          if (prevContentE1) {
+            prevContentE1.style.height = `${prevContentE1.scrollHeight}px`
+            requestAnimationFrame(() => {
+              prevContentE1.style.height = "0"
+            })
+          }
+
+          contentEl.style.height = `${contentEl.scrollHeight}px`
+          setTimeout(() => {
+            contentEl.style.height = "auto"
+          }, 500)
+
+          return category
         }
       }
 
-      return {
-        ...prev,
-        [category]: isExpanded,
-      };
+      return prev
     });
   };
+
+  const handleMouseMove = (e) => {
+    setTooltipPosition({ x: e.clientX + 10, y: e.clientY - 40 })
+  }
 
   return (
     <div>
@@ -314,12 +347,12 @@ const CompaniesPage = ({ searchQuery }) => {
             <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
               {category}
             </h2>
-            <i className={`icon-toggler bi ${expandedCategories[category] ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
+            <i className={`icon-toggler bi ${expandedCategory === category ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
             <div
               ref={(el) => (categoryRefs.current[category] = el)}
               className="category-content"
               style={{
-                height: expandedCategories[category] ? "auto" : "0",
+                height: expandedCategory === category ? "auto" : "0",
                 overflow: "hidden",
                 transition: "height 0.5s ease"
               }}
@@ -327,7 +360,14 @@ const CompaniesPage = ({ searchQuery }) => {
               <div className="row">
                 {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
                   <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
-                    <div className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}>
+                    <div 
+                      ref={expandedCompany === company._id ? cardRef : null} 
+                      className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
+                      onPointerMove={handleMouseMove}
+                    >
+                      {expandedCompany !== company._id && (
+                        <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px`}}><i class="bi bi-eye-fill"></i> More Info</div>
+                      )}
                       <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                         <img
                           src={company.logo}

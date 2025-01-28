@@ -96,6 +96,7 @@ import fairmined from "../resources/icons/fairminedlogo.png"
 import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
 import NFF from "../resources/icons/nfflogo.svg"
+import climateNeutral from "../resources/icons/climateneutrallogo.png"
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -189,6 +190,7 @@ const availableIcons = [
   { id: "ecolabel_logo", label: "EU Ecolabel Certified", src: ecolabel, title: "ecolabel" },
   { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
   { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
+  { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ]
 
 const AdminCompaniesPage = () => {
@@ -209,16 +211,16 @@ const AdminCompaniesPage = () => {
   const CategoryDropdown = ({ value, onChange }) => (
     <select className="form-control mb-2" value={value} onChange={onChange}>
       <option value="">Select a category</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Beverage">Beverage</option>
+      <option value="Cleaning">Cleaning</option>
       <option value="Clothing">Clothing</option>
       <option value="Food">Food</option>
       <option value="Home">Home</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Personal Care">Personal Care</option>
-      <option value="Pet">Pet</option>
-      <option value="Accessories">Accessories</option>
       <option value="Kitchen">Kitchen</option>
       <option value="Outdoor">Outdoor</option>
-      <option value="Beverage">Beverage</option>
+      <option value="Personal Care">Personal Care</option>
+      <option value="Pet">Pet</option>
     </select>
   )
 
@@ -484,6 +486,14 @@ const AdminCompaniesPage = () => {
                 <div className="company-header" onClick={() => toggleExpand(company._id)}>
                   {company.name}
                 </div>
+                <img
+                          src={company.logo}
+                          className="card-img-top"
+                          alt={`${company.name} logo`}
+                          style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                          onClick={() => toggleExpand(company._id)}
+                          loading="lazy"
+                        />
                 {expandedCompany === company._id && (
                   <div className="company-details card-content">
                     <p>
