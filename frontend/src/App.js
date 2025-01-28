@@ -10,6 +10,7 @@ import SubscribePage from "./pages/SubscribePage"
 import SearchResultsPage from "./pages/SearchResultsPage";
 import ScrollToTop from "./components/ScrollToTop";
 import CustomNavbar from "./pages/Navbar";
+import ContactPage from "./pages/ContactPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -24,6 +25,7 @@ const App = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
                 <Route path="/products" element={<HomePage />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route path="/products/details/:id" element={<ProductDetailPage />} />
                 <Route path="/email" element={<SubscribePage />} />
                 <Route path="/products/category/:category" element={<HomePage />} />

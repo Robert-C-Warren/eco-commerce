@@ -6,6 +6,9 @@ from bson.errors import InvalidId
 from datetime import datetime, timezone
 import os
 from unicodedata import normalize, combining
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
+from pprint import pprint
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -24,6 +27,8 @@ CORS(app, supports_credentials=True, resources={
 })
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+configuration = sib_api_v3_sdk.Configuration()
+configuration.api_key['api-key'] = os.getenv("BREVO_API_KEY")
 
 db = get_database()
 products_collection = db["products"]
@@ -279,7 +284,6 @@ def search_companies():
         app.logger.error(f"Error in /companies/search: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
 
-
 @app.route("/products/filter", methods=["GET"])
 def filter_products():
     try:
@@ -493,8 +497,7 @@ def update_company_category(company_id):
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
 
-@app.route("/subscribe", methods=["POST"])
-def subscribe():
+
     data = request.json
     name = data.get("name")
     email = data.get("email")
@@ -507,6 +510,46 @@ def subscribe():
     
     subscribers.insert_one({"name": name, "email": email})
     return jsonify({"message": "Subscription successful!"}), 200
+
+@app.route("/contact", methods=["POST"])
+def send_contact_email():
+    try: 
+        data = request.json
+        name = data.get("name")
+        email = data.get("email")
+        message = data.get("message")
+
+        if not name or not email or not message:
+            return jsonify({"error": "All fields are required."}), 400
+        
+        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+
+        subject = "New Contact Form Submission"
+        html_content = f"""
+        <p><strong>Name:</strong> {name}</p>
+        <p><strong>Email:</strong> {email}</p>
+        <p><strong>Message:</strong></p>
+        <p>{message}</p>
+        """
+
+        sender = {"email": "contact@ecocommerce.earth", "name": "EcoCommerce"}
+        recipients = [{"email": "contact@ecocommerce.earth"}]
+
+        email = sib_api_v3_sdk.SendSmtpEmail(
+            to=recipients,
+            sender=sender,
+            subject=subject,
+            html_content=html_content
+        )
+
+        api_response = api_instance.send_transac_email(email)
+        pprint(api_response)
+        return jsonify({"message": "Email sent successfully!"}), 200
+    
+    except ApiException as e:
+        print("Error sending email: %s\n" % e)
+        return jsonify({"error": "Failed to send email."}), 500
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
