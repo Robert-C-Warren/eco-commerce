@@ -535,15 +535,18 @@ def send_contact_email():
         attachment_data = None
         attachment_filename = None
 
-        if file:
+        if file and file.filename:  # ✅ Check if file exists and has a name
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             file.save(file_path)
 
-            # Read file and encode in base64
-            with open(file_path, "rb") as f:
-                attachment_data = base64.b64encode(f.read()).decode("utf-8")
-            attachment_filename = filename
+            # ✅ Ensure file is not empty before encoding
+            if os.path.getsize(file_path) > 0:
+                with open(file_path, "rb") as f:
+                    attachment_data = base64.b64encode(f.read()).decode("utf-8")
+                attachment_filename = filename
+            else:
+                print("Warning: File is empty, skipping attachment.")
 
         # Initialize Sendinblue API instance
         configuration = sib_api_v3_sdk.Configuration()
@@ -567,7 +570,7 @@ def send_contact_email():
             html_content=html_content
         )
 
-        # Attach file to email if present
+        # ✅ Attach file to email if present
         if attachment_data:
             email_data.attachment = [{
                 "content": attachment_data,
@@ -582,6 +585,11 @@ def send_contact_email():
     except ApiException as e:
         print("Error sending email:", str(e))
         return jsonify({"error": "Failed to send email."}), 500
+
+    except Exception as e:
+        print("Unexpected error:", str(e))
+        return jsonify({"error": "An unexpected error occurred."}), 500
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
