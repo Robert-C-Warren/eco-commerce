@@ -1,46 +1,77 @@
 import React, { useState } from "react"
 import API from "../services/api"
+import "./ContactPage.css"
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: ""})
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [file, setFile] = useState(null)
   const [status, setStatus] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData({ ...formData, [name]: value})
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0])
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Submitting...")
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name)
+    formDataToSend.append("email", formData.email)
+    formDataToSend.append("message", formData.message)
+    if (file) {
+      formDataToSend.append("file", file)
+    }
+
     try {
-      const response = await API.post("/contact", formData)
-      setStatus("Message sent successfully!")
-      setFormData({ name: "", email: "", message: "" })
-    } catch (error) {
+      const response = await API.post("/contact", formDataToSend, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+
+      setStatus("Message Sent Successfully!")
+      setFormData({name: "", email: "", message: ""})
+      setFile(null)
+    } catch {
       console.error("Error sending message:", error)
-      setStatus("Failed to send message. Please try again.")
+      setStatus("Failed to send message. Please try again")
     }
   }
 
   return (
-    <div className="container my-4">
-      <h1 className="text-center mb-4">Contact Us</h1>
-      <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: "600px"}}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} required />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
-          <input type="email" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="message" className="form-label">Message</label>
-          <textarea className="form-control" id="message" name="message" rows="4" value={formData.message} onChange={handleChange} required />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+    <div className="parent">
+      <div className="contact-form my-4">
+        <h1 className="text-center mb-4">Contact Us</h1>
+        <h4 className="text-center mb-4">If you have any questions, suggestions, or company recommendations for our site, feel free to contact us. We welcome feedback and will respond as soon as possible.
+
+          If you represent a company listed on our site and wish to be removed, submit a request, and we will process the removal promptly upon receiving your submission.</h4>
+        <form onSubmit={handleSubmit} className="mx-auto form-details" style={{ maxWidth: "600px" }}>
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label"></label>
+            <input type="text" className="form-control name-box" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label"></label>
+            <input type="email" className="form-control email-box" id="email" name="email" placeholder="email@example.com" value={formData.email} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="message" className="form-label"></label>
+            <textarea className="form-control message-box" id="message" name="message" rows="4" placeholder="Send us a message!" value={formData.message} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="file" className="form-label"></label>
+            <input type="file" className="form-control" onChange={handleFileChange} />
+          </div>
+          <button type="submit" className="btn btn-primary contact-button"><i class="bi bi-envelope-arrow-up"></i></button>
+          <p>{status}</p>
+        </form>
+      </div>
     </div>
   )
 }

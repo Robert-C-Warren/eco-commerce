@@ -1,0 +1,47 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    background-color: #A3BBAD;
+    border-radius: 20px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+h4 {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.form-details {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.form-label {
+    width: 100%;
+}
+
+.contact-button {
+    margin-top: 4%;
+    font-size: 2rem;
+    width: 30%;
+    border-radius: 40px;
+}
+
+.email-box, .name-box {
+    padding: 20px;
+}
+
+.email-box, .name-box, .message-box {
+    font-size: 1.3rem;
+}

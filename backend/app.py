@@ -9,6 +9,7 @@ from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
+from werkzeug.utils import secure_filename
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -518,10 +519,17 @@ def send_contact_email():
         name = data.get("name")
         email = data.get("email")
         message = data.get("message")
+        file = request.files.get("file")
 
         if not name or not email or not message:
             return jsonify({"error": "All fields are required."}), 400
         
+        file_path = None
+        if file:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            file.save(file_path)
+
         api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
         subject = "New Contact Form Submission"
@@ -541,6 +549,9 @@ def send_contact_email():
             subject=subject,
             html_content=html_content
         )
+
+        if file_path:
+            email.attatchment = [{"url": f"file://{file_path}", "name": os.path.basename(file_path)}]
 
         api_response = api_instance.send_transac_email(email)
         pprint(api_response)
