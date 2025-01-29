@@ -30,7 +30,7 @@ const CustomNavbar = () => {
                     <Nav.Link as={Link} to="/companies">
                         Companies
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/email">
+                    <Nav.Link as={Link} to="/contact">
                         Contact
                     </Nav.Link>
                     <NavDropdown title="Categories" id="categories-dropdown">
