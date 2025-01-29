@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./HomePage.css"
-import Logo from "../resources/ecologov6.svg"
+import Logo from "../resources/ecologov7.svg"
 
 const HomePage = () => {
 
