@@ -519,10 +519,9 @@ def update_company_category(company_id):
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
     try: 
-        data = request.json
-        name = data.get("name")
-        email = data.get("email")
-        message = data.get("message")
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
         file = request.files.get("file")
 
         if not name or not email or not message:
