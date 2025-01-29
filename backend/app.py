@@ -11,6 +11,7 @@ import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
+import traceback
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -582,14 +583,16 @@ def send_contact_email():
 
         return jsonify({"message": "Email sent successfully!"}), 200
     
+    
     except ApiException as e:
-        print("Error sending email:", str(e))
-        return jsonify({"error": "Failed to send email."}), 500
+        print("Sendinblue API Error:", str(e))
+        traceback.print_exc()  # Print full error details
+        return jsonify({"error": "Failed to send email due to API error."}), 500
 
     except Exception as e:
-        print("Unexpected error:", str(e))
-        return jsonify({"error": "An unexpected error occurred."}), 500
-
+        print("Unexpected Error:", str(e))
+        traceback.print_exc()  # Print full error details
+        return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
