@@ -31,6 +31,10 @@ ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 configuration = sib_api_v3_sdk.Configuration()
 configuration.api_key['api-key'] = os.getenv("BREVO_API_KEY")
 
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
 db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
@@ -550,8 +554,11 @@ def send_contact_email():
             html_content=html_content
         )
 
-        if file_path:
-            email.attatchment = [{"url": f"file://{file_path}", "name": os.path.basename(file_path)}]
+        file_path = None
+        if file:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            file.save(file_path)
 
         api_response = api_instance.send_transac_email(email)
         pprint(api_response)
