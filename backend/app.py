@@ -5,6 +5,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime, timezone
 import os
+import base64
 from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
@@ -519,20 +520,33 @@ def update_company_category(company_id):
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
     try: 
+        # Ensure the request contains form data
+        if "name" not in request.form or "email" not in request.form or "message" not in request.form:
+            return jsonify({"error": "Missing form data"}), 400
+
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        file = request.files.get("file")
+        file = request.files.get("file")  # Get the attached file
 
         if not name or not email or not message:
             return jsonify({"error": "All fields are required."}), 400
         
-        file_path = None
+        attachment_data = None
+        attachment_filename = None
+
         if file:
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             file.save(file_path)
 
+            # Read file and encode in base64
+            with open(file_path, "rb") as f:
+                attachment_data = base64.b64encode(f.read()).decode("utf-8")
+            attachment_filename = filename
+
+        # Initialize Sendinblue API instance
+        configuration = sib_api_v3_sdk.Configuration()
         api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
         subject = "New Contact Form Submission"
@@ -546,27 +560,28 @@ def send_contact_email():
         sender = {"email": "contact@ecocommerce.earth", "name": "EcoCommerce"}
         recipients = [{"email": "contact@ecocommerce.earth"}]
 
-        email = sib_api_v3_sdk.SendSmtpEmail(
+        email_data = sib_api_v3_sdk.SendSmtpEmail(
             to=recipients,
             sender=sender,
             subject=subject,
             html_content=html_content
         )
 
-        file_path = None
-        if file:
-            filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-            file.save(file_path)
+        # Attach file to email if present
+        if attachment_data:
+            email_data.attachment = [{
+                "content": attachment_data,
+                "name": attachment_filename
+            }]
 
-        api_response = api_instance.send_transac_email(email)
+        api_response = api_instance.send_transac_email(email_data)
         pprint(api_response)
+
         return jsonify({"message": "Email sent successfully!"}), 200
     
     except ApiException as e:
-        print("Error sending email: %s\n" % e)
+        print("Error sending email:", str(e))
         return jsonify({"error": "Failed to send email."}), 500
-    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
