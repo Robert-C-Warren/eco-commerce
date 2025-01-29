@@ -520,38 +520,45 @@ def update_company_category(company_id):
 
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
-    try: 
-        # Ensure the request contains form data
+    try:
+        # Validate API Key
+        if not os.getenv("BREVO_API_KEY"):
+            print("🚨 ERROR: BREVO_API_KEY is not set!")
+            return jsonify({"error": "Server misconfiguration. No API key found."}), 500
+
         if "name" not in request.form or "email" not in request.form or "message" not in request.form:
             return jsonify({"error": "Missing form data"}), 400
 
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        file = request.files.get("file")  # Get the attached file
+        file = request.files.get("file")
 
         if not name or not email or not message:
             return jsonify({"error": "All fields are required."}), 400
-        
-        attachment_data = None
-        attachment_filename = None
 
-        if file and file.filename:  # ✅ Check if file exists and has a name
+        attachment_list = []  # ✅ Store attachments here
+
+        if file and file.filename:
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             file.save(file_path)
 
-            # ✅ Ensure file is not empty before encoding
             if os.path.getsize(file_path) > 0:
                 with open(file_path, "rb") as f:
-                    attachment_data = base64.b64encode(f.read()).decode("utf-8")
-                attachment_filename = filename
-            else:
-                print("Warning: File is empty, skipping attachment.")
+                    encoded_file = base64.b64encode(f.read()).decode("utf-8")
 
-        # Initialize Sendinblue API instance
-        configuration = sib_api_v3_sdk.Configuration()
-        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+                # ✅ Correctly formatted attachment
+                attachment_list.append({
+                    "content": encoded_file,
+                    "name": filename
+                })
+            else:
+                print("⚠️ Warning: File is empty, skipping attachment.")
+
+        # ✅ Initialize Brevo API client
+        api_client = sib_api_v3_sdk.ApiClient(configuration)
+        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(api_client)
 
         subject = "New Contact Form Submission"
         html_content = f"""
@@ -568,30 +575,22 @@ def send_contact_email():
             to=recipients,
             sender=sender,
             subject=subject,
-            html_content=html_content
+            html_content=html_content,
+            attachment=attachment_list  # ✅ Ensure attachments are added as a list
         )
 
-        # ✅ Attach file to email if present
-        if attachment_data:
-            email_data.attachment = [{
-                "content": attachment_data,
-                "name": attachment_filename
-            }]
-
+        print("📨 Sending email with attachment to Sendinblue API...")
         api_response = api_instance.send_transac_email(email_data)
         pprint(api_response)
 
         return jsonify({"message": "Email sent successfully!"}), 200
-    
-    
+
     except ApiException as e:
-        print("Sendinblue API Error:", str(e))
-        traceback.print_exc()  # Print full error details
+        print("🚨 Sendinblue API Error:", str(e))
         return jsonify({"error": "Failed to send email due to API error."}), 500
 
     except Exception as e:
-        print("Unexpected Error:", str(e))
-        traceback.print_exc()  # Print full error details
+        print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
 if __name__ == "__main__":
