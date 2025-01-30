@@ -19,7 +19,7 @@ const CustomNavbar = () => {
     return (
         <Navbar expand="lg" style={{ backgroundColor: "#A3BBAD"}}>
             <Navbar.Brand as={Link} to="/">
-                <img src={smallLogo} alt="EC" height="80"/>
+                <img src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%"}}/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav" style={{ fontWeight: "bold", fontSize: "1.5rem"}}>

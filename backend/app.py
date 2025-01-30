@@ -80,23 +80,6 @@ def add_cors_headers(response):
 def home():
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
 
-@app.route("/products", methods=["GET"])
-def get_products():
-    try:
-        products = list(products_collection.find({}, {"_id": 0}).sort("createdAt", -1))
-        return jsonify({"products": products}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
-@app.route("/products", methods=["POST"])
-def add_product():
-    try:
-        product = request.json
-        products_collection.insert_one(product)
-        return jsonify({"message": "Product added successfully!"}), 201
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
 @app.route("/products/<product_id>", methods=["GET"])
 def get_product_by_id(product_id):
     try:
@@ -140,6 +123,65 @@ def update_product_category(id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/products", methods=["POST"])
+def add_product():
+    try:
+        data = request.json
+
+        # Ensure required fields exist
+        required_fields = ["title", "description", "image", "company", "category"]
+        if not all(field in data for field in required_fields):
+            return jsonify({"error": "Missing required fields"}), 400
+
+        data["createdAt"] = datetime.now(timezone.utc)
+    
+        products_collection.insert_one(data)  # ✅ Insert into the correct "products" collection
+
+        return jsonify({"message": "Product added successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route("/products", methods=["GET"])
+def get_products():
+    category = request.args.get('category', None)
+
+    try:
+        # Debugging: Print available categories
+        all_categories = list(db.products.distinct("category"))
+        print(f"Available categories in DB: {all_categories}")
+
+        # ✅ Ensure valid pipeline by conditionally adding `$match`
+        pipeline = []
+        if category:
+            pipeline.append({"$match": {"category": category}})  # Only add if category exists
+
+        # ✅ Group products by company & convert ObjectId fields to strings
+        pipeline.extend([
+            {"$group": {
+                "_id": "$company",  # Group by company name
+                "products": {"$push": {
+                    "_id": {"$toString": "$_id"},  # Convert ObjectId to string
+                    "title": "$title",
+                    "description": "$description",
+                    "category": "$category",
+                    "image": "$image"
+                }}
+            }},
+            {"$sort": {"_id": 1}}  # Sort companies alphabetically
+        ])
+
+        grouped_products = list(db.products.aggregate(pipeline))
+
+        print(f"Grouped Products: {grouped_products}")  # Debugging output
+
+        return jsonify(grouped_products), 200
+
+    except Exception as e:
+        import traceback
+        print(f"Error fetching products: {e}")
+        traceback.print_exc()
+        return jsonify({"error": f"Failed to fetch products: {str(e)}"}), 500
+    
 @app.route("/admin/products/<id>", methods=["PATCH"])
 def update_product_visibilty(id):
     try:
