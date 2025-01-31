@@ -3,7 +3,7 @@ from flask_cors import CORS
 from config import get_database
 from bson import ObjectId
 from bson.errors import InvalidId
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import os
 import base64
 from unicodedata import normalize, combining
@@ -11,7 +11,6 @@ import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
-import traceback
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -127,9 +126,10 @@ def update_product_category(id):
 def add_product():
     try:
         data = request.json
+        print("Recieved data:", data)
 
         # Ensure required fields exist
-        required_fields = ["title", "description", "image", "company", "category"]
+        required_fields = ["title", "website", "image", "company", "category", "price"]
         if not all(field in data for field in required_fields):
             return jsonify({"error": "Missing required fields"}), 400
 
@@ -162,9 +162,10 @@ def get_products():
                 "products": {"$push": {
                     "_id": {"$toString": "$_id"},  # Convert ObjectId to string
                     "title": "$title",
-                    "description": "$description",
+                    "website": "$website",
                     "category": "$category",
-                    "image": "$image"
+                    "image": "$image",
+                    "price": "$price"
                 }}
             }},
             {"$sort": {"_id": 1}}  # Sort companies alphabetically
@@ -484,6 +485,22 @@ def add_company():
     try:
         db.companies.insert_one(data)
         return jsonify({"message": "Company added successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/companies/recent', methods=["GET"])
+def get_recent_companies():
+    try:
+        two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=5)
+
+        recent_companies = list(db.companies.find(
+            {"createdAt": {"$gte": two_weeks_ago}}
+        ))
+
+        for company in recent_companies:
+            company["_id"] = str(company["_id"])
+
+        return jsonify(recent_companies), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

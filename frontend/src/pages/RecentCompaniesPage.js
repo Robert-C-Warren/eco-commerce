@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
-import API from "../services/api";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./AdminConsole.css"
-import { ToastContainer, toast } from "react-toastify"
-import { Link } from "react-router-dom";
-import API_BASE_URL from "../components/urls"
-import bCorpIcon from "../resources/icons/bcorp.png"
-import smallBusinessIcon from "../resources/icons/handshake.png"
-import veganIcon from "../resources/icons/veganlogo.png"
-import biodegradableIcon from "../resources/icons/leaf.png"
-import fairTradeIcon from "../resources/icons/trade.png"
-import recycled from "../resources/icons/recycle.svg"
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./CompaniesPage.css"
+import API_BASE_URL from "../components/urls";
+import Logo from "../resources/eclogov7.svg"
+import bCorpIcon from "../resources/icons/bcorp.png";
+import smallBusinessIcon from "../resources/icons/handshake.png";
+import veganIcon from "../resources/icons/veganlogo.png";
+import biodegradableIcon from "../resources/icons/leaf.png";
+import fairTradeIcon from "../resources/icons/trade.png";
+import recycled from "../resources/icons/recycle.svg";
 import fla from "../resources/icons/flalogo.png";
 import cascale from "../resources/icons/cascalelogo.png";
 import oneForThePlanet from "../resources/icons/1planetlogo.svg"
@@ -192,241 +189,204 @@ const availableIcons = [
     { id: "pdo_logo", label: "Protected Designation of Origin (PDO) Certified", src: PDO, title: "PDO" },
     { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
     { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
-]
+];
 
-const availableCategories = ["Accessories", "Beverage", "Cleaning", "Clothing", "Food", "Home", "Kitchen", "Outdoor", "Personal Care", "Pet"]
-
-const AdminConsole = () => {
+const RecentCompaniesPage = ({ searchQuery }) => {
     const [companies, setCompanies] = useState([])
-    const [productsByCompany, setProductsByCompany] = useState({})
-    const [newProduct, setNewProduct] = useState({
-        title: "",
-        website: "",
-        image: "",
-        company: "",
-        category: "",
-        price: ""
-    })
-    const [filteredCompanies, setFilteredCompanies] = useState([])
-    const [searchTerm, setSearchTerm] = useState("")
-    const [selectedCompany, setSelectedCompany] = useState("")
-    const sanitizeId = (name) => name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '');
+    const [loading, setLoading] = useState(true)
     const [expandedCompany, setExpandedCompany] = useState(null)
+    const [expandedCategory, setExpandedCategory] = useState(null)
+    const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
+    const categoryRefs = useRef({})
+    const cardRef = useRef(null)
+    const navigate = useNavigate()
 
-    const fetchProducts = async () => {
-        try {
-            const response = await API.get(`${API_BASE_URL}/products`);
-            const data = response.data.data || response.data; // Handle nested responses
+    const toggleCategory = (category) => {
+        setExpandedCategory((prev) => {
+            const contentEl = categoryRefs.current[category];
 
-            console.log("API Response Data:", data); // Log response
-
-            const formattedProducts = {};
-            data.forEach(group => {
-                if (group._id && Array.isArray(group.products)) {
-                    formattedProducts[group._id] = group.products.map(product => ({
-                        _id: product._id,
-                        title: product.title,
-                        website: product.website, // ✅ Ensure 'link' is included
-                        category: product.category,
-                        image: product.image,
-                        price: product.price,
-                    }));
+            if (contentEl) {
+                if (prev === category) {
+                    contentEl.style.height = `${contentEl.scrollHeight}px`; // Set explicit height
+                    requestAnimationFrame(() => {
+                        contentEl.style.height = "0"
+                    })
+                    return null
                 } else {
-                    console.warn("Unexpected group format:", group);
+                    const prevContentE1 = categoryRefs.current[prev]
+                    if (prevContentE1) {
+                        prevContentE1.style.height = `${prevContentE1.scrollHeight}px`
+                        requestAnimationFrame(() => {
+                            prevContentE1.style.height = "0"
+                        })
+                    }
+
+                    contentEl.style.height = `${contentEl.scrollHeight}px`
+                    setTimeout(() => {
+                        contentEl.style.height = "auto"
+                    }, 500)
+
+                    return category
                 }
-            });
+            }
 
-            console.log("Formatted Products with Links:", formattedProducts); // Log transformed data
-            setProductsByCompany(formattedProducts);
-        } catch (error) {
-            console.error("Error fetching products:", error.response ? error.response.data : error);
-        }
+            return prev
+        });
     };
 
-    const fetchCompanies = async () => {
-        try {
-            const response = await API.get(`${API_BASE_URL}/companies`)
-            setCompanies(response.data)
-        } catch (error) {
-            console.error("Error fetching companies:", error)
-        }
+    const handleMouseMove = (e) => {
+        setTooltipPosition({ x: e.clientX + 10, y: e.clientY - 40 })
+    }
+
+    const toggleExpand = (id) => {
+        setExpandedCompany((prev) => (prev === id ? null : id))
     }
 
     useEffect(() => {
-        fetchProducts()
-        fetchCompanies()
-    }, [])
+        const fetchRecentCompanies = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/companies/recent`, {
+                    method: "GET",  // ✅ Explicitly specify GET method
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
 
-    useEffect(() => {
-        if (searchTerm) {
-            const results = companies.filter(company =>
-                company.name.toLowerCase().includes(searchTerm.toLowerCase())
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setCompanies(data);
+            } catch (error) {
+                console.error("Error fetching recent companies:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRecentCompanies();
+    }, []);
+
+    const groupedCompanies = searchQuery
+        ? {
+            "Search Results": companies.filter(company =>
+                company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                company.description?.toLowerCase().includes(searchQuery.toLowerCase())
             )
-            setFilteredCompanies(results)
-        } else {
-            setFilteredCompanies([])
         }
-    }, [searchTerm, companies])
-
-    const handleCompanySelect = (company) => {
-        setSelectedCompany(company.name)
-        setNewProduct({ ...newProduct, company: company.name })
-        setSearchTerm("")
-        setFilteredCompanies([])
-    }
-
-    const addProduct = async () => {
-        try {
-            const response = await API.post(`${API_BASE_URL}/products`, newProduct, {
-                headers: { "Content-Type": "application/json" }
-            });
-
-            // Axios already parses JSON, use response.data
-            const data = response.data;
-
-            // Check if the request was successful (status 200-299)
-            toast.success("Product added successfully", { autoClose: 2000 });
-
-            // ✅ Reset form state properly
-            setNewProduct({
-                title: "",
-                price: "",
-                website: "",
-                image: "",
-                company: "",
-                category: "",
-            });
-
-            setSelectedCompany(""); // Reset selected company
-            fetchProducts(); // Refresh the product list
-
-        } catch (error) {
-            console.error("Error adding product", error);
-            toast.error("Failed to add product", { autoClose: 2000 });
-        }
-    };
-
-    const toggleCollapse = (company) => {
-        setExpandedCompany(prev => (prev === company ? null : company))
-    }
+        : { "Recently Added": companies }
 
     return (
-        <div className="admin-container mt-4">
-            <ToastContainer />
-            <h1 className="text-center mb-4">Admin Console - Manage Products</h1>
-            <div className="row mb-3">
-                <div className="col text-end">
-                    <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>
-                </div>
-            </div>
-
-            <div className="new-product-card p-4 mb-4">
-                <h3>Add New Product</h3>
-                <form onSubmit={(e) => { e.preventDefault(); addProduct(); }} className="new-product-form">
-                    {/* Title */}
-                    <input type="text" className="form-control mb-2" placeholder="Title"
-                        value={newProduct.title} onChange={(e) => setNewProduct({ ...newProduct, title: e.target.value })} />
-                    {/* Price */}
-                    <input
-                        type="text"
-                        className="form-control mb-2"
-                        placeholder="Price"
-                        value={newProduct.price}
-                        onChange={(e) => {
-                            const value = e.target.value.replace(/[^0-9.]/g, ""); // Allow only numbers & .
-                            setNewProduct({ ...newProduct, price: value });
-                        }}
-                        onBlur={(e) => {
-                            let priceValue = e.target.value;
-                            if (priceValue && !priceValue.startsWith("$") && !isNaN(priceValue)) {
-                                priceValue = `$${parseFloat(priceValue).toFixed(2)}`; // Convert to $X.XX format
-                                setNewProduct({ ...newProduct, price: priceValue });
-                            }
-                        }}
-                    />
-                    {/* Website */}
-                    <input className="form-control mb-2" placeholder="Website"
-                        value={newProduct.website} onChange={(e) => setNewProduct({ ...newProduct, website: e.target.value })}></input>
-                    {/* Image URL */}
-                    <input type="text" className="form-control mb-2" placeholder="Image URL"
-                        value={newProduct.image} onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })} />
-                    {/* Company */}
-                    <div className="position-relative">
-                        <input type="text" className="form-control mb-2" placeholder="Company" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-                        {filteredCompanies.length > 0 && (
-                            <ul className="list-group position-absolute w-100 bg-white shadow">
-                                {filteredCompanies.length > 0 && (
-                                    <ul className="list-group position-absolute w-100 bg-white shadow">
-                                        {filteredCompanies.map((company) => (
-                                            <li
-                                                key={company._id}
-                                                className="list-group-item list-group-item-action"
-                                                onClick={() => handleCompanySelect(company)}
-                                                style={{ cursor: "pointer" }}
-                                            >
-                                                {company.name}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </ul>
-                        )}
-                    </div>
-                    {selectedCompany && (
-                        <div className="alert alert-success mt-2">
-                            <strong>{selectedCompany}</strong>
-                        </div>
+        <div>
+            <div className="container my-4">
+                <div className="hero-section text-center p-5">
+                    <h1 className="display-2 hero-text">
+                        Recently <strong className="eco-hero">Added</strong> Companies
+                    </h1>
+                    {!searchQuery && (
+                        <p className="lead">
+                            These are the most recently added companies that are making a positive
+                            impact on our planet.
+                        </p>
                     )}
-                    {/* Category */}
-                    <select className="form-control mb-2" value={newProduct.category} onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}>
-                        <option value="">Select Category</option>
-                        {availableCategories.map(category => <option key={category} value={category}>{category}</option>)}
-                    </select>
-                    <button type="submit" className="btn btn-success w-100">Add Product</button>
-                </form>
-            </div>
-            {Object.keys(productsByCompany).map(company => {
-                const isExpanded = expandedCompany === company;
-                return (
-                    <div key={company} className="mb-4">
-                        <button
-                            className="btn btn-info w-100 text-start company-button"
-                            type="button"
-                            aria-expanded={isExpanded}
-                            onClick={() => toggleCollapse(company)}
+                    <button className="btn btn-dark" onClick={() => navigate("/companies")}>All Companies</button>
+                </div>
+                {loading && (
+                    <div className="loading-container">
+                        <img src={Logo} alt="Loading..." className="logo-shake" />
+                    </div>
+                )}
+
+                {!loading && Object.keys(groupedCompanies).sort().map((category) => (
+                    <div key={category} className="category-container">
+                        <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
+                            {category}
+                        </h2>
+                        <i className={`icon-toggler bi ${expandedCategory === category ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
+                        <div
+                            ref={(el) => (categoryRefs.current[category] = el)}
+                            className="category-content"
+                            style={{
+                                height: expandedCategory === category ? "auto" : "0",
+                                overflow: "hidden",
+                                transition: "height 0.5s ease"
+                            }}
                         >
-                            {company}
-                        </button>
-                        <div className={`collapse ${isExpanded ? "show" : ""} mt-2`} id={`collapse-${sanitizeId(company)}`}>
-                            <div className="product-card-row">
-                                {productsByCompany[company].map(product => (
-                                    <div key={product._id} className="col-md-4">
-                                        <div className="existing-product-card">
-                                            <img src={product.image} className="product-card-image" alt={product.title} height="300px" />
-                                            <div className="product-card-body">
-                                                <h5 className="product-card-title">{product.title}</h5>
-                                                <h5 className="product-card-price">{product.price}</h5>
-                                                <a
-                                                    href={product.website}
-                                                    className="btn btn-primary"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                >
-                                                    View Product
-                                                </a>
-                                                <p className="product-text-muted">{product.category}</p>
+                            <div className="row">
+                                {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
+                                    <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                                        <div
+                                            ref={expandedCompany === company._id ? cardRef : null}
+                                            className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
+                                            onPointerMove={handleMouseMove}
+                                        >
+                                            {expandedCompany !== company._id && (
+                                                <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
+                                            )}
+                                            <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                                                <img
+                                                    src={company.logo}
+                                                    className="card-img-top"
+                                                    alt={`${company.name} logo`}
+                                                    style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                                                    loading="lazy"
+                                                />
+                                                <h5 className="card-title m-0">{company.name}</h5>
+                                                <h6 className="card-specifics">{company.specifics}</h6>
                                             </div>
+                                            {expandedCompany === company._id && (
+                                                <div className="card-body ">
+                                                    <p className="card-text">{company.description}</p>
+                                                    <ul>
+                                                        {company.qualifications.map((qualification, i) => (
+                                                            <li className="qualifications" key={i}>{qualification}</li>
+                                                        ))}
+                                                    </ul>
+                                                    <a
+                                                        href={company.website}
+                                                        className="btn btn-primary"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        Visit Website
+                                                    </a>
+                                                    <div className="d-flex justify-content-between align-items-center icon-wrapper">
+                                                        <div className="d-flex justify-content-center align-items-center flex-grow-1">
+                                                            <div className="product-icons d-flex justify-content-center align-items-center gap-2">
+                                                                {company.icons?.map((iconId) => {
+                                                                    const icon = availableIcons.find((i) => i.id === iconId);
+                                                                    return icon ? (
+                                                                        <img
+                                                                            className="icon_actual"
+                                                                            key={icon.id}
+                                                                            src={icon.src}
+                                                                            alt={icon.label}
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="bottom"
+                                                                            data-bs-title={icon.label}
+                                                                            loading="lazy"
+                                                                        />
+                                                                    ) : null;
+                                                                })}
+                                                            </div>
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
-                );
-            })}
+                ))}
+            </div>
         </div>
     )
-};
+}
 
-export default AdminConsole;
+export default RecentCompaniesPage;

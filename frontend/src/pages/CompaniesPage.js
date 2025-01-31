@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from "../resources/eclogov7.svg"
@@ -95,7 +96,6 @@ import ecolabel from "../resources/icons/ecolabellogo.jpg"
 import PDO from "../resources/icons/pdologo.jpg"
 import NFF from "../resources/icons/nfflogo.svg"
 import climateNeutral from "../resources/icons/climateneutrallogo.png"
-
 
 const availableIcons = [
   { id: "b_corp", label: "B Corp", src: bCorpIcon, title: "Certified B Corporation" },
@@ -200,6 +200,7 @@ const CompaniesPage = ({ searchQuery }) => {
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0})
   const categoryRefs = useRef({})
   const cardRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -335,6 +336,7 @@ const CompaniesPage = ({ searchQuery }) => {
               their products meet the high standards you deserve.
             </p>
           )}
+          <button className="btn btn-dark" onClick={() => navigate("/companies/recent")}>Recent Companies</button>
         </div>
         {loading && (
           <div className="loading-container">
@@ -366,7 +368,7 @@ const CompaniesPage = ({ searchQuery }) => {
                       onPointerMove={handleMouseMove}
                     >
                       {expandedCompany !== company._id && (
-                        <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px`}}><i class="bi bi-eye-fill"></i> More Info</div>
+                        <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px`}}><i className="bi bi-eye-fill"></i> More Info</div>
                       )}
                       <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                         <img

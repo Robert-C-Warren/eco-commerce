@@ -11,6 +11,8 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import ScrollToTop from "./components/ScrollToTop";
 import CustomNavbar from "./pages/Navbar";
 import ContactPage from "./pages/ContactPage";
+import RecentCompaniesPage from "./pages/RecentCompaniesPage";
+import CompaniesByCategory from "./pages/CompaniesByCategory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -24,6 +26,8 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/companies" element={<CompaniesPage />} />
+                <Route path="/companies/recent" element={<RecentCompaniesPage />} />
+                {/* <Route path="/companies/category/:categoryName" element={<CompaniesByCategory />} /> */}
                 <Route path="/products" element={<HomePage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/products/details/:id" element={<ProductDetailPage />} />

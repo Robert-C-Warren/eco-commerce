@@ -5,7 +5,7 @@ import smallLogo from "../resources/eclogov7.svg";
 
 
 const CustomNavbar = () => {
-    const categories = ["Cleaning", "Home", "Outdoor", "Pet", "Kitchen", "Personal Care"];
+    const categories = ["Accessories", "Beverage", "Cleaning", "Clothing", "Food", "Home", "Kitchen", "Outdoor", "Personal Care", "Pet"];
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
 
@@ -35,7 +35,7 @@ const CustomNavbar = () => {
                     </Nav.Link>
                     <NavDropdown title="Categories" id="categories-dropdown">
                         {categories.map((category) => (
-                            <NavDropdown.Item as={Link} to={`/products/category/${category}`} key={category}>
+                            <NavDropdown.Item as={Link} to={`/companies/category/${category}`} key={category}>
                                 {category}
                             </NavDropdown.Item>
                         ))}
