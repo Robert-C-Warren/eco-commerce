@@ -11,6 +11,7 @@ import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
+from pymongo.collation import Collation
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -470,7 +471,8 @@ def get_companies():
         if category:
             query["category"] = category
 
-        companies = list(db.companies.find(query))
+        collation = Collation("en", strength=2)
+        companies = list(db.companies.find(query).collation(collation).sort("name", 1))
 
         for company in companies:
             company["_id"] = str(company["_id"])
