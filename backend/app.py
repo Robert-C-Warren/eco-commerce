@@ -465,8 +465,12 @@ def update_company_specifics(id):
 def get_companies():
     try:
         db = get_database()
+        category = request.args.get("category")
+        query = {}
+        if category:
+            query["category"] = category
 
-        companies = list(db.companies.find({}))
+        companies = list(db.companies.find(query))
 
         for company in companies:
             company["_id"] = str(company["_id"])
@@ -491,7 +495,7 @@ def add_company():
 @app.route('/companies/recent', methods=["GET"])
 def get_recent_companies():
     try:
-        two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=5)
+        two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=14)
 
         recent_companies = list(db.companies.find(
             {"createdAt": {"$gte": two_weeks_ago}}
@@ -562,20 +566,6 @@ def update_company_category(company_id):
         return jsonify({"message": "Category updated successfully"}), 200
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
-
-
-    data = request.json
-    name = data.get("name")
-    email = data.get("email")
-
-    if not email or not name:
-        return jsonify({"error": "Name and email are required"}), 400
-    
-    if subscribers.find_one({"email": email}):
-        return jsonify({"error": "Email is already subscribed"}), 400
-    
-    subscribers.insert_one({"name": name, "email": email})
-    return jsonify({"message": "Subscription successful!"}), 200
 
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
