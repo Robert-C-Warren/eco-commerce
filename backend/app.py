@@ -30,13 +30,17 @@ CORS(app, supports_credentials=True, resources={
 })
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
+# Brevo API Configuration for contact capability
 configuration = sib_api_v3_sdk.Configuration()
 configuration.api_key['api-key'] = os.getenv("BREVO_API_KEY")
 
+# Set up for file uploads
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+# MongoDB set up and collection definitions
 db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
@@ -57,6 +61,7 @@ def handle_options_request():
         response = app.make_response("")
         headers = response.headers
 
+        # Set allowed origings and methods
         headers["Access-Control-Allow-Origin"] = "https://ecocommerce.earth"
         headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
         headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
@@ -66,6 +71,7 @@ def handle_options_request():
 
 @app.after_request
 def add_cors_headers(response):
+    # CORS headers after each allowed request
     origin = request.headers.get("Origin")
     allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 
@@ -78,10 +84,15 @@ def add_cors_headers(response):
 
 @app.route("/")
 def home():
+    # Welcome message for backend testing
     return jsonify({"message": "Welcome to the Eco-Commerce API"}), 200
 
 @app.route("/products/<product_id>", methods=["GET"])
 def get_product_by_id(product_id):
+    """
+        Retrieve a product by ID.
+        Converts the MongoDB ObjectId to a string before returning
+    """
     try:
         product_id = product_id.strip()
         product = db.products.find_one({"_id": ObjectId(product_id)})
@@ -98,6 +109,10 @@ def get_product_by_id(product_id):
 
 @app.route("/admin/login", methods=['POST'])
 def admin_login():
+    """
+        Admin login endpoint.
+        Checks the provided password again env variable set password.
+    """
     data = request.json
     if data.get("password") == ADMIN_PASSWORD:
         return jsonify({"success": True, "message": "Login Successful"}), 200
@@ -106,6 +121,10 @@ def admin_login():
 
 @app.route("/admin/products/<id>/categories", methods=["PATCH"])
 def update_product_category(id):
+    """
+        Update the categories for a specific product.
+        Validates that the categories provided are in the list.
+    """
     try:
         data = request.json
         categories = data.get("categories")
@@ -125,6 +144,10 @@ def update_product_category(id):
 
 @app.route("/products", methods=["POST"])
 def add_product():
+    """
+        Add a new product to the DB.
+        Requires certain fields to be present in the request JSON.
+    """
     try:
         data = request.json
         print("Recieved data:", data)
@@ -144,19 +167,19 @@ def add_product():
     
 @app.route("/products", methods=["GET"])
 def get_products():
+    """
+        Get products grouped by company.
+        If a category query parameter is provided, filters by that category.
+        The aggreagation pipeline groups products by company and converts ObjectId to str.
+    """
     category = request.args.get('category', None)
 
     try:
-        # Debugging: Print available categories
-        all_categories = list(db.products.distinct("category"))
-        print(f"Available categories in DB: {all_categories}")
-
-        # ✅ Ensure valid pipeline by conditionally adding `$match`
+        # Build aggreagtion pipeline dynamically
         pipeline = []
         if category:
-            pipeline.append({"$match": {"category": category}})  # Only add if category exists
+            pipeline.append({"$match": {"category": category}}) # Filter by category if provided
 
-        # ✅ Group products by company & convert ObjectId fields to strings
         pipeline.extend([
             {"$group": {
                 "_id": "$company",  # Group by company name
@@ -174,8 +197,6 @@ def get_products():
 
         grouped_products = list(db.products.aggregate(pipeline))
 
-        print(f"Grouped Products: {grouped_products}")  # Debugging output
-
         return jsonify(grouped_products), 200
 
     except Exception as e:
@@ -186,6 +207,10 @@ def get_products():
     
 @app.route("/admin/products/<id>", methods=["PATCH"])
 def update_product_visibilty(id):
+    """
+        Update the visibility of a product.
+        Expects a JSON body with a "visible" key.
+    """
     try:
         visible = request.json.get("visible", False)
         update_data = {"visible": visible}
@@ -202,19 +227,12 @@ def update_product_visibilty(id):
     except Exception as e:
         print(f"Error updating visibility: {e}")
         return jsonify({"error": str(e)}), 500
-    
-@app.route("/admin/products/show_all", methods=["PATCH"])
-def show_all_products():
-    try:
-        result = db.products.update_many({"visible": False}, {"$set": {"visible": True}})
-        return jsonify({
-            "message": f"{result.modified_count} products are now visible"
-        }), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>", methods=["DELETE"])
 def delete_product_admin(id):
+    """
+        Delete a product by its ID from the admin endpoint.
+    """
     try:
         result = products_collection.delete_one({"_id": ObjectId(id)})
         if result.deleted_count:
@@ -226,6 +244,9 @@ def delete_product_admin(id):
     
 @app.route("/admin/products/<id>/edit", methods=["PATCH"])
 def edit_product_title(id):
+    """
+        Edit products title, expects JSON key "summary" for new title.
+    """
     try:
         new_title = request.json.get("summary", None)
         if not new_title:
@@ -242,28 +263,12 @@ def edit_product_title(id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/admin/products/visibility", methods=["PATCH"])
-def update_visibility_bulk():
-    try:
-        product_ids = request.json.get("product_ids", [])
-        visible = request.json.get("visible", False)
-        if not product_ids:
-            return jsonify({"error": "No product IDs provided"}), 400
-        
-        result = db.products.update_many(
-            {"_id": {"$in": [ObjectId(pid) for pid in product_ids]}},
-            {"$set": {"visible": visible}}
-        )
-
-        if result.modified_count > 0:
-            return jsonify({"message": f"Updated {result.modified_count}"}), 200
-        else:
-            return jsonify({"message": "No products updated"}), 400
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
 @app.route("/admin/products", methods=["GET"])
 def get_all_products():
+    """
+        Retrieve all products from the DB.
+        Prodcuts are sorted by creation date, ObjectIds are converted to str.
+    """
     try:
         products = list(db.products.find().sort("createdAt", -1))
         for product in products:
@@ -272,33 +277,16 @@ def get_all_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@app.route("/products/search", methods=["GET"])
-def search_products():
-    query = request.args.get("q", "").strip()
-    try:
-        products = list(products_collection.find(
-            {
-                "$or": [
-                    {"category": {"$regex": query, "$options": "i"}},
-                    {"summary": {"$regex": query, "$options": "i"}}
-                ]
-            }
-        ))
-        for product in products:
-            product["_id"] = str(product["_id"])
-        return jsonify(products), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
 @app.route("/companies/search", methods=["GET"])
 def search_companies():
+    """
+        Search for companies by normalizing the query and comparing it against
+        the "name", "specifics", and "description" fields.
+    """
     query = request.args.get("q", "").strip()
     try:
         if not query:
             return jsonify([]), 200
-
-        # Log the incoming query
-        app.logger.info(f"Raw search query: {query}")
 
         # Normalize the input query
         normalized_query = normalize_text(query)
@@ -308,7 +296,7 @@ def search_companies():
         companies = list(companies_collection.find())
         app.logger.info(f"Total companies fetched: {len(companies)}")
 
-        # Filter companies dynamically based on normalized fields
+        # Finction to check if any company fields match the query.
         def matches(company):
             fields_to_search = [
                 company.get("name", ""),
@@ -321,9 +309,8 @@ def search_companies():
                     return True
             return False
 
+        # Filter companies based on the normalized query.
         filtered_companies = [company for company in companies if matches(company)]
-
-        app.logger.info(f"Filtered companies: {len(filtered_companies)}")
 
         # Convert ObjectId to string
         for company in filtered_companies:
@@ -334,86 +321,14 @@ def search_companies():
     except Exception as e:
         app.logger.error(f"Error in /companies/search: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
-
-@app.route("/products/filter", methods=["GET"])
-def filter_products():
-    try:
-        min_price = float(request.args.get("min_price", 0))
-        max_price = float(request.args.get("max_price", float("inf")))
-        category = request.args.get("category")
-
-        query = {"visible": True}
-        if category:
-            query["category"] = {"$regex": f"^{category}$", "$options": "i"}
-
-        products = list(db.products.find(query))
-        filtered_products = []
-
-        for product in products:
-            try:
-                price = float(product.get("price", "0").replace("$", "").replace(",", ""))
-                if min_price <= price <= max_price:
-                    product["price"] = price
-                    product["_id"] = str(product["_id"])
-                    filtered_products.append(product)
-            except (ValueError, KeyError) as e:
-                print(f"Skipping product due to error: {e}, Product: {product}")
-
-        print("Final filtered products to return:", filtered_products)  # Debug filtered data
-        return jsonify(filtered_products), 200
-
-    except Exception as e:
-        print(f"Error in filter_products: {e}")
-        return jsonify({"error": str(e)}), 500
-
-@app.route("/products/<title>", methods=["DELETE"])
-def delete_product(title):
-    try:
-        result = products_collection.delete_one({"title": title})
-        if result.deleted_count:
-            return jsonify({"message": f"Product '{title}' deleted successfully!"}), 200
-        else:
-            return jsonify({"error": "Product not found!"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
     
-@app.route("/admin/products/<id>/icons", methods=["PATCH"])
-def update_product_icons(id):
-    try:
-        # Log the incoming data
-        print(f"Request data: {request.json}")
-        
-        # Extract icons from the request body
-        icons = request.json.get("icons")
-        
-        # Validate 'icons' is present and is a list
-        if not icons or not isinstance(icons, list):
-            return jsonify({"error": "'icons' must be a non-empty list"}), 400
-
-        # Attempt to update the product in the database
-        result = db.products.update_one(
-            {"_id": ObjectId(id)},  # Match by product ID
-            {"$set": {"icons": icons}}  # Update the icons field
-        )
-
-        # Check if the product was updated
-        if result.matched_count == 0:
-            return jsonify({"error": "Product not found"}), 404
-        if result.modified_count == 0:
-            return jsonify({"message": "No changes made"}), 200
-
-        return jsonify({"message": "Icons updated successfully"}), 200
-
-    except Exception as e:
-        print(f"Error in update_product_icons: {e}")  # Log the error
-        return jsonify({"error": str(e)}), 500
-
 @app.route("/admin/companies/<id>/icons", methods=["PATCH"])
 def update_company_icons(id):
-    try:
-        # Log the incoming data
-        print(f"Request data: {request.json}")
-        
+    """
+        Update icons for companies.
+        Expects JSON body with an "icons" list
+    """
+    try:        
         # Extract icons from the request body
         icons = request.json.get("icons")
         
@@ -441,6 +356,10 @@ def update_company_icons(id):
 
 @app.route("/admin/companies/<id>/specifics", methods=["PATCH"])
 def update_company_specifics(id):
+    """
+        Update the "specifics" field for a company.
+        Expects a JSON string for "specifics".
+    """
     try:
         specifics = request.json.get("specifics")
 
@@ -464,6 +383,11 @@ def update_company_specifics(id):
 
 @app.route('/companies', methods=['GET'])
 def get_companies():
+    """
+        Retrieve companies from the DB.
+        Optionally filters companies by category if procided as a query parameter.
+        Uses collation to perform a case-insensitive sort on the "name" field.
+    """
     try:
         db = get_database()
         category = request.args.get("category")
@@ -479,11 +403,16 @@ def get_companies():
 
         return jsonify(companies), 200
     except Exception as e:
-        print(f"Error in /companies: {e}")  # Log the error
+        print(f"Error in /companies: {e}") 
         return jsonify({"error": str(e)}), 500
 
 @app.route('/companies', methods=['POST'])
 def add_company():
+    """
+        Add a new company to the DB.
+        Automatically sets the creation date and converts qualifications
+        from a comma-seperated string to a list if necessary.
+    """
     data = request.json
     data["createdAt"] = datetime.now(timezone.utc)
     if isinstance(data.get("qualifications"), str):
@@ -496,6 +425,10 @@ def add_company():
 
 @app.route('/companies/recent', methods=["GET"])
 def get_recent_companies():
+    """
+        Retrieve companies added in the last two weeks.
+        Filters companies by comparing their creation date.
+    """
     try:
         two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=14)
 
@@ -512,21 +445,26 @@ def get_recent_companies():
 
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
+    """
+        Update company information based on ID.
+        Ensures ID is valid, removes the _id field from the payload if present,
+        and converts qualifications to a list if needed
+    """
     try:
         data = request.json
         
-        # Ensure company_id is a valid ObjectId
+        # Validate and convert the company_id to a valid ObjectId
         object_id = ObjectId(company_id)
 
         # Remove '_id' from the data if present
         if "_id" in data:
             data.pop("_id")
 
-        # Convert qualifications to an array if it's a string
+        # Convert qualifications to list if it is a CSV
         if "qualifications" in data and isinstance(data["qualifications"], str):
             data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
 
-        # Perform the update
+        # Update company document
         result = db.companies.update_one({"_id": object_id}, {"$set": data})
 
         if result.matched_count == 0:
@@ -541,6 +479,9 @@ def update_company(company_id):
     
 @app.route('/companies/<company_id>', methods=['DELETE'])
 def delete_company(company_id):
+    """
+        Delete a company from the DB based on its ID.
+    """
     try:
         db.companies.delete_one({"_id": ObjectId(company_id)})
         return jsonify({"message": "Company deleted successfully"}), 200
@@ -549,6 +490,10 @@ def delete_company(company_id):
 
 @app.route('/companies/<company_id>/category', methods=['PUT'])
 def update_company_category(company_id):
+    """
+        Update the category field of a company.
+        Expects a JSON payload with a "category" field.
+    """
     try:
         data = request.json
         object_id = ObjectId(company_id)
@@ -571,25 +516,34 @@ def update_company_category(company_id):
 
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
+    """
+        Send an email using the Brevo transactional email API.
+        Validates required fields, handles optional file attachment (base64 encoded)
+        and builds the email payload to be sent.
+    """
     try:
         # Validate API Key
         if not os.getenv("BREVO_API_KEY"):
             print("🚨 ERROR: BREVO_API_KEY is not set!")
             return jsonify({"error": "Server misconfiguration. No API key found."}), 500
 
+        # Validate that required form data is present
         if "name" not in request.form or "email" not in request.form or "message" not in request.form:
             return jsonify({"error": "Missing form data"}), 400
 
+        # Extract data from form submission
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
         file = request.files.get("file")
 
+        # Ensure none of the required fields are empty
         if not name or not email or not message:
             return jsonify({"error": "All fields are required."}), 400
 
-        attachment_list = []  # ✅ Store attachments here
+        attachment_list = []  # List to store any file attachments
 
+        # IF a file is provided and is not empty, save and encode it
         if file and file.filename:
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -599,7 +553,7 @@ def send_contact_email():
                 with open(file_path, "rb") as f:
                     encoded_file = base64.b64encode(f.read()).decode("utf-8")
 
-                # ✅ Correctly formatted attachment
+                # Add the properly formatted attachment to the list
                 attachment_list.append({
                     "content": encoded_file,
                     "name": filename
@@ -607,10 +561,11 @@ def send_contact_email():
             else:
                 print("⚠️ Warning: File is empty, skipping attachment.")
 
-        # ✅ Initialize Brevo API client
+        # Initialize Brevo API client
         api_client = sib_api_v3_sdk.ApiClient(configuration)
         api_instance = sib_api_v3_sdk.TransactionalEmailsApi(api_client)
 
+        # Build Email content
         subject = "New Contact Form Submission"
         html_content = f"""
         <p><strong>Name:</strong> {name}</p>
@@ -619,9 +574,11 @@ def send_contact_email():
         <p>{message}</p>
         """
 
+        # Define sender and recipient information
         sender = {"email": "contact@ecocommerce.earth", "name": "EcoCommerce"}
         recipients = [{"email": "contact@ecocommerce.earth"}]
 
+        # Create the email payload with attachments (if any)
         email_data = sib_api_v3_sdk.SendSmtpEmail(
             to=recipients,
             sender=sender,
@@ -644,6 +601,7 @@ def send_contact_email():
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
+# Run the Flask app if this script is executed directly
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
     db = get_database()
