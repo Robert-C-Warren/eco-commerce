@@ -55,7 +55,7 @@ R2_ENDPOINT = os.getenv("R2_ENDPOINT", "R2_ENDPOINT")
 
 s3_client = boto3.client(
     "s3",
-    aws_secret_key_id=R2_ACCESS_KEY_ID,
+    aws_access_key_id=R2_ACCESS_KEY_ID,
     aws_secret_access_key=R2_SECRET_ACCESS_KEY,
     endpoint_url=R2_ENDPOINT,
     region_name="auto",
