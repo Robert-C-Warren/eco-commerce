@@ -6,6 +6,8 @@ from bson.errors import InvalidId
 from datetime import datetime, timezone, timedelta
 import os
 import base64
+import boto3
+from botocore.client import Config
 from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
@@ -40,6 +42,20 @@ db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
+
+R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID", "R2_ACCESS_KEY")
+R2_SECRET_ACCESS_KEY = os.getenv("R2_SECRET_ACCESS_KEY", "R2_SECRET_ACCESS_KEY")
+R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID", "R2_ACCOUNT_ID")
+R2_ENDPOINT = os.getenv("R2_ENDPOINT", "R2_ENDPOINT")
+
+s3_client = boto3.client(
+    "s3",
+    aws_secret_key_id=R2_ACCESS_KEY_ID,
+    aws_secret_access_key=R2_SECRET_ACCESS_KEY,
+    endpoint_url=R2_ENDPOINT,
+    region_name="auto",
+    config=Config(signature_version="s3v4")
+)
 
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
@@ -563,20 +579,6 @@ def update_company_category(company_id):
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
 
-
-    data = request.json
-    name = data.get("name")
-    email = data.get("email")
-
-    if not email or not name:
-        return jsonify({"error": "Name and email are required"}), 400
-    
-    if subscribers.find_one({"email": email}):
-        return jsonify({"error": "Email is already subscribed"}), 400
-    
-    subscribers.insert_one({"name": name, "email": email})
-    return jsonify({"message": "Subscription successful!"}), 200
-
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
     try:
@@ -651,6 +653,8 @@ def send_contact_email():
     except Exception as e:
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

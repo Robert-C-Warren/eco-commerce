@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import "react-toastify/dist/ReactToastify.css"
 import "./AdminCompaniesPage.css"
 import API_BASE_URL from "../components/urls"
@@ -193,414 +194,374 @@ const availableIcons = [
   { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ]
 
-const AdminCompaniesPage = () => {
-  const [companies, setCompanies] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [editingCompanyId, setEditingCompanyId] = useState(null)
-  const [newCompany, setNewCompany] = useState({
+/* --------------------------------
+    Subcomponent: NewCompanyForm
+    Handles adding a new company
+-----------------------------------*/ 
+const NewCompanyForm = () => {
+  const queryClient = useQueryClient()
+
+  // Local state form fields
+  const [formData, setFormData] = useState({
     name: "",
     description: "",
     qualifications: "",
     logo: "",
     website: "",
-  });
-  const [selectedIcons, setSelectedIcons] = useState({});
-  const [expandedCompany, setExpandedCompany] = useState(null);
-  const [specifics, setSpecifics] = useState([])
+    category: "",
+  })
 
-  const CategoryDropdown = ({ value, onChange }) => (
-    <select className="form-control mb-2" value={value} onChange={onChange}>
-      <option value="">Select a category</option>
-      <option value="Accessories">Accessories</option>
-      <option value="Beverage">Beverage</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Clothing">Clothing</option>
-      <option value="Food">Food</option>
-      <option value="Home">Home</option>
-      <option value="Kitchen">Kitchen</option>
-      <option value="Outdoor">Outdoor</option>
-      <option value="Personal Care">Personal Care</option>
-      <option value="Pet">Pet</option>
-    </select>
+  // Mutation for adding a company
+  // On success, invalidate the "companies" query so the list refetches
+  const addCompanyMutation = useMutation({
+    mutationFn: (newCompany) => API.post(`${API_BASE_URL}/companies`, newCompany),  
+      onSuccess: (response) => {
+        toast.success("Company added successfully", { autoClose: 2000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to add company")
+      },
+    }
   )
 
-  const fetchCompanies = async () => {
-    try {
-      const response = await API.get(`${API_BASE_URL}/companies`);
-      const sortedCompanies = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      setCompanies(sortedCompanies);
-    } catch (error) {
-      console.error("Error fetching companies:", error);
-    }
-  };
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addCompanyMutation.mutate(formData)
 
-  const toggleIcon = (companyId, iconId) => {
-    setSelectedIcons((prev) => ({
-      ...prev,
-      [companyId]: prev[companyId]?.includes(iconId)
-        ? prev[companyId].filter((id) => id !== iconId)
-        : [...(prev[companyId] || []), iconId],
-    }));
-  };
-
-  const saveIcons = async (companyId) => {
-    if (!companyId) {
-      console.error("Company ID is undefined");
-      return;
-    }
-
-    const icons = selectedIcons[companyId] || [];
-    if (!icons.length) {
-      alert("Please select at least one icon");
-      return;
-    }
-
-    try {
-      await API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, { icons });
-      fetchCompanies();
-      toast.success("Icon updated successfully", { autoClose: 3000 })
-    } catch (error) {
-      console.error("Error saving icons:", error);
-      alert("Failed to update icons.");
-    }
-  };
-
-  const addCompany = async () => {
-    try {
-      const response = await API.post(`${API_BASE_URL}/companies`, newCompany);
-      if (response.status === 201) {
-        toast.success("Category added successfully", { autoClose: 3000 })
-        fetchCompanies();
-        setNewCompany({
-          name: "",
-          description: "",
-          qualifications: "",
-          logo: "",
-          website: "",
-          icon: ""
-        });
-        setSelectedCategory("")
-      }
-    } catch (error) {
-      console.error("Error adding company:", error);
-    }
-  };
-
-  const editCompany = async (companyId, updatedCompany) => {
-    try {
-      const response = await API.put(`${API_BASE_URL}/companies/${companyId}`, updatedCompany);
-      if (response.status === 200) {
-        alert("Company updated successfully");
-        fetchCompanies();
-      }
-    } catch (error) {
-      console.error("Error updating company:", error);
-    }
-  };
-
-  const deleteCompany = async (companyId) => {
-    try {
-      const response = await API.delete(`${API_BASE_URL}/companies/${companyId}`);
-      if (response.status === 200) {
-        alert("Company deleted successfully");
-        fetchCompanies();
-      }
-    } catch (error) {
-      console.error("Error deleting company:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCompanies();
-  }, []);
-
-  const handleCategoryChange = (companyId, category) => {
-    setEditingCompanyId(companyId);
-    setSelectedCategory(category);
+    // Clear form
+    setFormData({
+      name: "",
+      description: "",
+      qualifications: "",
+      logo: "",
+      website: "",
+      category: "",
+    })
   }
 
-  const handleSubmit = async (companyId) => {
-    try {
-      const response = await API.put(`${API_BASE_URL}/companies/${companyId}/category`, { category: selectedCategory });
-      if (response.status === 200) {
-        toast.success("Category updated successfully", { autoClose: 3000 })
-        const updatedCompanies = companies.map((company) =>
-          company._id === companyId ? { ...company, category: selectedCategory } : company
-        )
-        setCompanies(updatedCompanies)
-        setEditingCompanyId(null)
-      } else {
-        const { error } = await response.json()
-        alert(`Error: ${error}`)
-      }
-    } catch (error) {
-      console.error("Error updating category:", error)
-    }
+  //Input change handler
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const toggleExpand = (id) => {
-    setExpandedCompany((prev) => (prev === id ? null : id));
-  };
-
-  const saveSpecifics = async (companyId) => {
-    if (!companyId) {
-      console.error("Company ID is undefined");
-      return;
-    }
-  
-    const specificsValue = specifics[companyId] || "";
-    if (!specificsValue.trim()) {
-      toast.error("Please enter specifics before saving.");
-      return;
-    }
-  
-    try {
-      await API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, { specifics: specificsValue });
-      fetchCompanies();
-      toast.success("Specifics updated successfully", { autoClose: 3000 });
-    } catch (error) {
-      console.error("Error saving specifics:", error);
-      toast.error("Failed to update specifics.");
-    }
-  };
-  
-
-  return ( 
-    <div className="container-fluid my-4">
-      <ToastContainer />
-      <h1 className="text-center mb-4">Admin: Manage Companies</h1>
-      <div className="d-flex justify-content-end mb-3">
-        <Link to="/admin/products" className="btn btn-secondary">
-          Admin Products
-        </Link>
-      </div>
-
+  // New Company Form
+  return (
+    <div className="my-3">
       <h3>Add New Company</h3>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addCompany();
-        }}
-      >
-      {/* Company Name */}
+      <form onSubmit={handleSubmit}>
+        {/* Company Name */}
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Company Name
           </label>
-          <input
-            type="text"
-            id="name"
-            className="form-control"
-            placeholder="Enter Company Name"
-            value={newCompany.name}
-            onChange={(e) =>
-              setNewCompany({ ...newCompany, name: e.target.value })
-            }
-            required
-          />
+          <input type="text" name="name" id="name" className="form-control" 
+            placeholder="Company Name" value={formData.name} onChange={handleChange} required />
         </div>
         {/* Company Description */}
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
             Company Description
           </label>
-          <textarea
-            id="description"
-            className="form-control"
-            placeholder="Enter Company Description"
-            value={newCompany.description}
-            onChange={(e) =>
-              setNewCompany({ ...newCompany, description: e.target.value })
-            }
-            required
-          ></textarea>
+          <textarea name="description" id="description" className="form-control" 
+            placeholder="Company Description" value={formData.description} onChange={handleChange} required />
         </div>
-        {/* Qualifications */}
+        {/* Company Qualifications */}
         <div className="mb-3">
           <label htmlFor="qualifications" className="form-label">
-            Qualifications
+            Company Qualifications (CSV)
           </label>
-          <input
-            type="text"
-            id="qualifications"
-            className="form-control"
-            placeholder="Enter qualifications (CSV)"
-            value={newCompany.qualifications}
-            onChange={(e) =>
-              setNewCompany({
-                ...newCompany, qualifications: e.target.value
-              })
-            }
-          />
+          <input type="text" name="qualifications" id="qualifications" className="form-control" 
+            placeholder="Company Qualifications (CSV)" value={formData.qualifications} onChange={handleChange} required />
         </div>
-        {/* Logo URL */}
+        {/* Company Logo */}
         <div className="mb-3">
           <label htmlFor="logo" className="form-label">
-            Logo URL
+            Company Logo URL
           </label>
-          <input
-            type="text"
-            id="logo"
-            className="form-control"
-            placeholder="Enter logo URL"
-            value={newCompany.logo}
-            onChange={(e) =>
-              setNewCompany({
-                ...newCompany, logo: e.target.value
-              })
-            }
-          />
+          <input type="text" name="logo" id="logo" className="form-control" 
+            placeholder="Company Logo URL" value={formData.logo} onChange={handleChange} required />
         </div>
-        {/* Website URL */}
+        {/* Company Website */}
         <div className="mb-3">
           <label htmlFor="website" className="form-label">
-            Website URL
+            Company Website URL
           </label>
-          <input
-            type="text"
-            id="website"
-            className="form-control"
-            placeholder="Enter website URL"
-            value={newCompany.website}
-            onChange={(e) =>
-              setNewCompany({
-                ...newCompany, website: e.target.value
-              })
-            }
-          />
+          <input type="text" name="website" id="website" className="form-control" 
+            placeholder="Company Website URL" value={formData.website} onChange={handleChange} required />
+        </div>
+        {/* Company Category */}
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">
+            Company Category
+          </label>
+          <select name="category" id="category" className="form-control" 
+            value={formData.category} onChange={handleChange} required >
+              <option value="">Select a category</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Beverage">Beverage</option>
+              <option value="Cleaning">Cleaning</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Food">Food</option>
+              <option value="Home">Home</option>
+              <option value="Kitchen">Kitchen</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Personal Care">Personal Care</option>
+              <option value="Pet">Pet</option>
+          </select>
         </div>
         <button type="submit" className="btn btn-success">
           Add Company
         </button>
       </form>
+    </div>
+  )
+} 
+
+/* --------------------------------- 
+    Subcomponent: Company Card
+    Manages each company's display including
+    expand/collapse, icons, category, specifics, etc.
+------------------------------------*/
+const CompanyCard = ({ company, availableIcons }) => {
+  const queryClient = useQueryClient()
+  const [expanded, setExpanded] = useState(false)
+  const [specificsText, setSpecificsText] = useState(company.specifics || "")
+  const [selectedIcons, setSelectedIcons] = useState(company.icons || [])
+  const [selectedCategory, ,setSelectedCategory] = useState(company.category || "")
+  const toggleExpand = () => setExpanded((prev) => !prev)
+
+  // Mutation to delete a company
+  const deleteCompanyMutation = useMutation({
+    mutationFn: (companyId) => API.delete(`${API_BASE_URL}/companies/${companyId}`),
+    
+      onSuccess: () => {
+        toast.success("Company deleted successfully", { autoClose: 2000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to delete company")
+      }
+    }
+  )
+
+  // Mutation to update entire company or partial updates
+  const editCompanyMutation = useMutation({
+    mutationFn: ({ companyId, updateFields }) => API.put(`${API_BASE_URL}/companies/${companyId}`, updateFields),
+    
+      onSuccess: () => {
+        toast.success("Company updated successfully", { autoClose: 2000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to update company")
+      }
+    }
+  )
+
+  // Partial update for specifics
+  const updateSpecificsMutation = useMutation({
+    mutationFn: ({ companyId, specifics }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, {specifics}),
+    
+      onSuccess: () => {
+        toast.success("Specifics updated successfully", { autoClose: 3000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to update specifics")
+      }
+    }
+  )
+
+  // Partial update for icons
+  const updateIconsMutation = useMutation({
+    mutationFn: ({ companyId, icons }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, {icons}),
+    
+      onSuccess: () => {
+        toast.success("Icons updated successfully", { autoClose: 3000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to update icons")
+      }
+    }
+  )
+
+  // Partial update for category{
+  const updateCategoryMutation = useMutation({
+    mutationFn: ({ companyId, category }) => API.patch(`${API_BASE_URL}/companies/${companyId}/category`, {category}),
+    
+      onSuccess: () => {
+        toast.success("Category updated successfully", { autoClose: 3000 })
+        queryClient.invalidateQueries(["companies"])
+      },
+      onError: () => {
+        toast.error("Failed to update category")
+      }
+    }
+  )
+
+  // Handle toggling icons in local state before saving
+  const toggleIcon = (iconId) => {
+    setSelectedIcons((prev) => 
+      prev.includes(iconId) ? prev.filter((id) => id !== iconId) : [...prev, iconId]
+    )
+  }
+
+  // Render the card
+  return (
+    <div className={`company-card ${expanded ? "expanded" : "collapsed"}`}>
+      <div className="company-header" onClick={toggleExpand}>
+        {company.name}
+      </div>
+      <img src={company.logo} className="card-img-top" alt={`${company.name} logo`} style={{ objectFit: "contain",
+          height: "150px", width: "100%" }} onClick={toggleExpand} loading="lazy" />
+
+      {expanded && (
+        <div className="company-details card-content">
+          <p><strong>Description:</strong> {company.description}</p>
+          <p><strong>QualificationsL</strong>{" "}{Array.isArray(company.qualifications) ? 
+            company.qualifications.join(", ") : company.qualifications}
+          </p>
+          <p><strong>Specifics:</strong> {company.specifics}</p>
+          <a href={company.website} target="_blank" rel="noopener noreferrer">
+            Visit Website
+          </a>
+
+          {/* Specifics Textarea */}
+          <textarea className="form-control my-2" placeholder="Enter specifics" value={specificsText} onChange={(e) => setSpecificsText(e.target.value)} />
+          <button className="btn btn-primary mb-3" onClick={() => updateSpecificsMutation.mutate({
+            companyId: company._id, specifics: specificsText
+          })}>
+            Save Speicifics
+          </button>
+
+          {/* Icon Selector */}
+          <div className="icon-selector row">
+            {availableIcons.map((icon) => (
+              <div key={icon.id} className="form-check col-md-4 mb-1">
+                <input type="checkbox" className="form-check-input" id={`${company._id}.${icon.id}`} 
+                  checked={selectedIcons.includes(icon.id)} onChange={() => toggleIcon(icon.id)} />
+                <label htmlFor={`${company._id}-${icon.id}`}>
+                  <img src={icon.src} alt={icon.label} style={{ width: "30px", marginRight: "5px" }} />
+                  {icon.label}
+                </label>
+              </div>
+            ))}
+          </div>
+          <button className="btn btn-primary mt-2" onClick={() => 
+            updateIconsMutation.mutate({companyId: company._id, icons: selectedIcons})}>
+              Save Icons
+          </button>
+
+          {/* Category Dropdown */}
+          <select className="form-control mb-2 mt-2" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <option value="">Select a category</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Beverage">Beverage</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Food">Food</option>
+            <option value="Home">Home</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Pet">Pet</option>
+          </select>
+          <button className="btn btn-primary" onClick={() => updateCategoryMutation.mutate({
+            companyId: company._id, category: selectedCategory})}>
+              Update Category
+          </button>
+
+          {/* Edit Button */}
+          <button className="btn btn-warning my-2" onClick={() => {
+            const newName = prompt("Enter new name", company.name)
+            const newDesc = prompt("Enter new description", company.description)
+
+            if (!newName && !newDesc) return
+            editCompanyMutation.mutate({
+              companyId: company._id,
+              updatedFields: {
+                name: newName || company.name,
+                description: newDesc || company.description
+              }})}}
+          >
+            Edit Company
+          </button>
+
+          {/* Delete Button */}
+          <button className="btn btn-danger my-2" onClick={() => deleteCompanyMutation.mutate(company._id)}>
+            Delete
+          </button>
+          {/* Done Button */}
+          <button className="btn btn-secondary" onClick={toggleExpand}>
+            Done
+          </button>
+
+          {/* Display assigned icons */}
+          <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
+            {company.icons?.map((iconId) => {
+              const iconData = availableIcons.find((i) => i.id === iconId)
+              return iconData ? (
+                <img className="icon_actual" key={iconData.id} src={iconData.src} alt={iconData.label} data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" data-bs-title={iconData.label} style={{ width: "30px" }} />
+              ) : null;
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/*--------------------------------- 
+  Main Component: AdminCompaniesPage
+-----------------------------------*/
+const AdminCompaniesPage = () => {
+  // Use Query to fetch companies
+  const {
+    data: companies = [], isLoading, error} = useQuery({queryKey: ["companies"], queryFn: async () => {
+      const response = await API.get(`${API_BASE_URL}/companies`)
+      // Sort by creation date; descending
+      return response.data.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
+    }})
+
+  if (isLoading) return <div>Loading Companies...</div>
+  if (error) {
+    console.error(error)
+    return <div>Error loading companies</div>
+  }
+
+  return (
+    <div className="container-fluid my-4">
+      <ToastContainer />
+      <h1 className="text-center mb-4">Admin: Manage Companies</h1>
+
+      <div className="d-flex justify-content-end mb-3">
+        <Link to="/admin/products" className="btn btn-secondary">
+          Admin Products
+        </Link>
+      </div>
+
+      {/* New Company Form */}
+      <NewCompanyForm />
 
       <h3>Existing Companies</h3>
       <div className="container-fluid my-4">
-        <div className="row company-container"> 
-            {companies.map((company) => (
-              <div key={company._id} className="col-lg-3 col-md-4 col-sm-6 mb-3"> 
-              <div
-                className={`company-card ${expandedCompany === company._id ? "expanded" : "collapsed"
-              }`}
-              >         
-                <div className="company-header" onClick={() => toggleExpand(company._id)}>
-                  {company.name}
-                </div>
-                <img
-                          src={company.logo}
-                          className="card-img-top"
-                          alt={`${company.name} logo`}
-                          style={{ objectFit: "contain", height: "150px", width: "100%" }}
-                          onClick={() => toggleExpand(company._id)}
-                          loading="lazy"
-                        />
-                {expandedCompany === company._id && (
-                  <div className="company-details card-content">
-                    <p>
-                      <strong>Description:</strong> {company.description}
-                    </p>
-                    <p>
-                      <strong>Qualifications:</strong> {company.qualifications.join(", ")}
-                    </p>
-                    <p>
-                      <strong>{company.specifics}</strong>
-                    </p>
-                    <a href={company.website} target="_blank" rel="noopener noreferrer">
-                      Visit Website
-                    </a>
-                    <textarea
-                    className="form-control mb-2"
-                    placeholder="Enter specifics about what this company sells"
-                    value={specifics[company._id] || company.specifics || ""}
-                    onChange={(e) =>
-                      setSpecifics((prev) => ({
-                        ...prev,
-                        [company._id]: e.target.value,
-                      }))
-                    }
-                  />
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => saveSpecifics(company._id)}
-                  >
-                      Save Specifics
-                    </button>
-                    <div className="icon-selector row">
-                      {availableIcons.map((icon) => (
-                        <div key={icon.id} className="form-check col-md-4 mb-1">
-                          <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id={`${company._id}-${icon.id}`}
-                            checked={selectedIcons[company._id]?.includes(icon.id)}
-                            onChange={() => toggleIcon(company._id, icon.id)}
-                          />
-                          <label htmlFor={`${company._id}-${icon.id}`}>
-                            <img
-                              src={icon.src}
-                              alt={icon.label}
-                              style={{ width: "30px", marginRight: "5px" }}
-                            />
-                            {icon.label}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="btn btn-primary mt-2" onClick={() => saveIcons(company._id)}>
-                      Save Icons
-                    </button>
-                    <CategoryDropdown
-                      value={editingCompanyId === company._id ? selectedCategory : company.category || ""}
-                      onChange={(e) => handleCategoryChange(company._id, e.target.value)}
-                    />
-                    <button className="btn btn-primary w-150" onClick={() => handleSubmit(company._id)}>
-                      Submit
-                    </button>
-                    <button
-                      className="btn btn-warning w-150 me-2"
-                      onClick={() =>
-                        editCompany(company._id, {
-                          ...company,
-                          name: prompt("Enter new name", company.name) || company.name,
-                          description:
-                            prompt("Enter new description", company.description) ||
-                            company.description,
-                        })
-                      }
-                    >
-                      Edit
-                    </button>
-                    <button className="btn btn-danger w-150" onClick={() => deleteCompany(company._id)}>
-                      Delete
-                    </button>
-                    <button className="btn btn-secondary btn-custom" onClick={() => toggleExpand(company._id)}>
-                      Done
-                    </button>
-                    <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
-                      {company.icons?.map((iconId) => {
-                        const icon = availableIcons.find((i) => i.id === iconId);
-                        return icon ? (
-                          <img
-                            className="icon_actual"
-                            key={icon.id}
-                            src={icon.src}
-                            alt={icon.label}
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="bottom"
-                            data-bs-title={icon.label}
-                          />
-                        ) : null;
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-              </div>
-            ))}
+        <div className="row company-container">
+          {companies.map((company) => (
+            <div key={company._id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
+              <CompanyCard company={company} availableIcons={availableIcons} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default AdminCompaniesPage;
