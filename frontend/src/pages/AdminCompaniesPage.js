@@ -197,9 +197,12 @@ const availableIcons = [
 /* --------------------------------
     Subcomponent: NewCompanyForm
     Handles adding a new company
------------------------------------*/ 
+-----------------------------------*/
 const NewCompanyForm = () => {
   const queryClient = useQueryClient()
+
+  // Store selected file
+  const [file, setFile] = useState(null)
 
   // Local state form fields
   const [formData, setFormData] = useState({
@@ -214,16 +217,52 @@ const NewCompanyForm = () => {
   // Mutation for adding a company
   // On success, invalidate the "companies" query so the list refetches
   const addCompanyMutation = useMutation({
-    mutationFn: (newCompany) => API.post(`${API_BASE_URL}/companies`, newCompany),  
-      onSuccess: (response) => {
-        toast.success("Company added successfully", { autoClose: 2000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to add company")
-      },
-    }
+    mutationFn: async (newCompany) => {
+      if (file) {
+        // Upload the file if a file is selected
+        const formData = new FormData()
+        formData.append("file", file)
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/upload-logo`, {
+            method: "POST",
+            body: formData
+          })
+          const data = await response.json()
+          if (data.file_url) {
+            newCompany.logo = data.file_url
+          }
+        } catch (error) {
+          toast.error("Failed to upload logo")
+          return
+        }
+      }
+
+      return API.post(`${API_BASE_URL}/companies`, newCompany)
+    },
+    onSuccess: () => {
+      toast.success("Company added successfully", { autoClose: 2000 })
+      queryClient.invalidateQueries(["companies"])
+      setFormData({
+        name: "",
+        description: "",
+        qualifications: "",
+        logo: "",
+        website: "",
+        category: "",
+      })
+      setFile(null)
+    },
+    onError: () => {
+      toast.error("Failed to add company")
+    },
+  }
   )
+
+  // Handle file input change
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0])
+  }
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -257,7 +296,7 @@ const NewCompanyForm = () => {
           <label htmlFor="name" className="form-label">
             Company Name
           </label>
-          <input type="text" name="name" id="name" className="form-control" 
+          <input type="text" name="name" id="name" className="form-control"
             placeholder="Company Name" value={formData.name} onChange={handleChange} required />
         </div>
         {/* Company Description */}
@@ -265,7 +304,7 @@ const NewCompanyForm = () => {
           <label htmlFor="description" className="form-label">
             Company Description
           </label>
-          <textarea name="description" id="description" className="form-control" 
+          <textarea name="description" id="description" className="form-control"
             placeholder="Company Description" value={formData.description} onChange={handleChange} required />
         </div>
         {/* Company Qualifications */}
@@ -273,23 +312,24 @@ const NewCompanyForm = () => {
           <label htmlFor="qualifications" className="form-label">
             Company Qualifications (CSV)
           </label>
-          <input type="text" name="qualifications" id="qualifications" className="form-control" 
+          <input type="text" name="qualifications" id="qualifications" className="form-control"
             placeholder="Company Qualifications (CSV)" value={formData.qualifications} onChange={handleChange} required />
         </div>
         {/* Company Logo */}
         <div className="mb-3">
           <label htmlFor="logo" className="form-label">
-            Company Logo URL
+            Company Logo URL or File
           </label>
-          <input type="text" name="logo" id="logo" className="form-control" 
+          <input type="text" name="logo" id="logo" className="form-control"
             placeholder="Company Logo URL" value={formData.logo} onChange={handleChange} required />
+          <input type="file" className="form-control mt-2" onChange={handleFileChange} />
         </div>
         {/* Company Website */}
         <div className="mb-3">
           <label htmlFor="website" className="form-label">
             Company Website URL
           </label>
-          <input type="text" name="website" id="website" className="form-control" 
+          <input type="text" name="website" id="website" className="form-control"
             placeholder="Company Website URL" value={formData.website} onChange={handleChange} required />
         </div>
         {/* Company Category */}
@@ -297,19 +337,19 @@ const NewCompanyForm = () => {
           <label htmlFor="category" className="form-label">
             Company Category
           </label>
-          <select name="category" id="category" className="form-control" 
+          <select name="category" id="category" className="form-control"
             value={formData.category} onChange={handleChange} required >
-              <option value="">Select a category</option>
-              <option value="Accessories">Accessories</option>
-              <option value="Beverage">Beverage</option>
-              <option value="Cleaning">Cleaning</option>
-              <option value="Clothing">Clothing</option>
-              <option value="Food">Food</option>
-              <option value="Home">Home</option>
-              <option value="Kitchen">Kitchen</option>
-              <option value="Outdoor">Outdoor</option>
-              <option value="Personal Care">Personal Care</option>
-              <option value="Pet">Pet</option>
+            <option value="">Select a category</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Beverage">Beverage</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Food">Food</option>
+            <option value="Home">Home</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Pet">Pet</option>
           </select>
         </div>
         <button type="submit" className="btn btn-success">
@@ -318,7 +358,7 @@ const NewCompanyForm = () => {
       </form>
     </div>
   )
-} 
+}
 
 /* --------------------------------- 
     Subcomponent: Company Card
@@ -330,84 +370,174 @@ const CompanyCard = ({ company, availableIcons }) => {
   const [expanded, setExpanded] = useState(false)
   const [specificsText, setSpecificsText] = useState(company.specifics || "")
   const [selectedIcons, setSelectedIcons] = useState(company.icons || [])
-  const [selectedCategory, ,setSelectedCategory] = useState(company.category || "")
+  const [selectedCategory, , setSelectedCategory] = useState(company.category || "")
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [isEditing, setIsEditing] = useState(false)
+  const [formData, setFormData] = useState({
+    name: company.name,
+    description: company.description,
+    logo: company.logo
+  })
   const toggleExpand = () => setExpanded((prev) => !prev)
 
   // Mutation to delete a company
   const deleteCompanyMutation = useMutation({
     mutationFn: (companyId) => API.delete(`${API_BASE_URL}/companies/${companyId}`),
-    
-      onSuccess: () => {
-        toast.success("Company deleted successfully", { autoClose: 2000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to delete company")
-      }
+
+    onSuccess: () => {
+      toast.success("Company deleted successfully", { autoClose: 2000 })
+      queryClient.invalidateQueries(["companies"])
+    },
+    onError: () => {
+      toast.error("Failed to delete company")
     }
+  }
   )
 
   // Mutation to update entire company or partial updates
   const editCompanyMutation = useMutation({
-    mutationFn: ({ companyId, updateFields }) => API.put(`${API_BASE_URL}/companies/${companyId}`, updateFields),
-    
-      onSuccess: () => {
-        toast.success("Company updated successfully", { autoClose: 2000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to update company")
+    mutationFn: async ({ companyId, updateFields, file }) => {
+      if (!companyId) {
+        console.error("❌ Company ID is missing!");
+        return;
       }
+  
+      const formData = new FormData();
+  
+      Object.keys(updateFields).forEach((key) => {
+        if (updateFields[key]) {
+          formData.append(key, updateFields[key]);  // Append only valid values
+        }
+      });
+  
+      if (file) {
+        console.log("📂 Adding file to FormData:", file.name);
+        formData.append("file", file);
+      } else {
+        console.log("⚠️ No file added to FormData.");
+      }
+  
+      console.log("🚀 Sending PUT request to:", `${API_BASE_URL}/companies/${companyId}`);
+      
+      for (const [key, value] of formData.entries()) {
+        console.log(`   🔹 ${key}:`, value);
+      }
+  
+      const response = await fetch(`${API_BASE_URL}/companies/${companyId}`, {
+        method: "PUT",
+        body: formData,
+      });
+  
+      const data = await response.json();
+      console.log("🔄 Server response:", data);
+  
+      if (!response.ok) {
+        throw new Error("❌ Failed to update company");
+      }
+  
+      return data;
+    },
+    onSuccess: () => {
+      toast.success("✅ Company updated successfully!", { autoClose: 2000 });
+      queryClient.invalidateQueries(["companies"]);
+      closeModal();
+    },
+    onError: (error) => {
+      console.error("❌ Update Error:", error);
+      toast.error("Failed to update company");
     }
-  )
-
+  });
+  
   // Partial update for specifics
   const updateSpecificsMutation = useMutation({
-    mutationFn: ({ companyId, specifics }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, {specifics}),
-    
-      onSuccess: () => {
-        toast.success("Specifics updated successfully", { autoClose: 3000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to update specifics")
-      }
+    mutationFn: ({ companyId, specifics }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, { specifics }),
+
+    onSuccess: () => {
+      toast.success("Specifics updated successfully", { autoClose: 3000 })
+      queryClient.invalidateQueries(["companies"])
+    },
+    onError: () => {
+      toast.error("Failed to update specifics")
     }
+  }
   )
 
   // Partial update for icons
   const updateIconsMutation = useMutation({
-    mutationFn: ({ companyId, icons }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, {icons}),
-    
-      onSuccess: () => {
-        toast.success("Icons updated successfully", { autoClose: 3000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to update icons")
-      }
+    mutationFn: ({ companyId, icons }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, { icons }),
+
+    onSuccess: () => {
+      toast.success("Icons updated successfully", { autoClose: 3000 })
+      queryClient.invalidateQueries(["companies"])
+    },
+    onError: () => {
+      toast.error("Failed to update icons")
     }
+  }
   )
 
   // Partial update for category{
   const updateCategoryMutation = useMutation({
-    mutationFn: ({ companyId, category }) => API.patch(`${API_BASE_URL}/companies/${companyId}/category`, {category}),
-    
-      onSuccess: () => {
-        toast.success("Category updated successfully", { autoClose: 3000 })
-        queryClient.invalidateQueries(["companies"])
-      },
-      onError: () => {
-        toast.error("Failed to update category")
-      }
+    mutationFn: ({ companyId, category }) => API.patch(`${API_BASE_URL}/companies/${companyId}/category`, { category }),
+
+    onSuccess: () => {
+      toast.success("Category updated successfully", { autoClose: 3000 })
+      queryClient.invalidateQueries(["companies"])
+    },
+    onError: () => {
+      toast.error("Failed to update category")
     }
+  }
   )
 
   // Handle toggling icons in local state before saving
   const toggleIcon = (iconId) => {
-    setSelectedIcons((prev) => 
+    setSelectedIcons((prev) =>
       prev.includes(iconId) ? prev.filter((id) => id !== iconId) : [...prev, iconId]
     )
+  }
+
+  const getCompanyLogo = (company) => {
+    return company.logo
+      ? company.logo
+      : `${process.env.REACT_APP_R2_BUCKET_URL}/${company.name.toLowerCase().replace(/\s/g, "_")}.png`
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  // Handle file input
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      console.log("📂 File selected:", file.name);
+      setSelectedFile(file)
+    } else {
+      console.log("⚠️ No file selected.");
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+  if (!formData.name || !formData.description) {
+    toast.error("Name and description are required!");
+    return;
+  }
+
+  console.log("🚀 Submitting form with file:", selectedFile);
+
+  editCompanyMutation.mutate({
+    companyId: company._id,
+    updateFields: formData,
+    file: selectedFile, // Pass selected file
+  });
+  }
+
+  const closeModal = () => {
+    setIsEditing(false)
   }
 
   // Render the card
@@ -416,13 +546,15 @@ const CompanyCard = ({ company, availableIcons }) => {
       <div className="company-header" onClick={toggleExpand}>
         {company.name}
       </div>
-      <img src={company.logo} className="card-img-top" alt={`${company.name} logo`} style={{ objectFit: "contain",
-          height: "150px", width: "100%" }} onClick={toggleExpand} loading="lazy" />
+      <img src={getCompanyLogo(company)} className="card-img-top" alt={`${company.name} logo`} style={{
+        objectFit: "contain",
+        height: "150px", width: "100%"
+      }} onClick={toggleExpand} loading="lazy" />
 
       {expanded && (
         <div className="company-details card-content">
           <p><strong>Description:</strong> {company.description}</p>
-          <p><strong>QualificationsL</strong>{" "}{Array.isArray(company.qualifications) ? 
+          <p><strong>QualificationsL</strong>{" "}{Array.isArray(company.qualifications) ?
             company.qualifications.join(", ") : company.qualifications}
           </p>
           <p><strong>Specifics:</strong> {company.specifics}</p>
@@ -442,7 +574,7 @@ const CompanyCard = ({ company, availableIcons }) => {
           <div className="icon-selector row">
             {availableIcons.map((icon) => (
               <div key={icon.id} className="form-check col-md-4 mb-1">
-                <input type="checkbox" className="form-check-input" id={`${company._id}.${icon.id}`} 
+                <input type="checkbox" className="form-check-input" id={`${company._id}.${icon.id}`}
                   checked={selectedIcons.includes(icon.id)} onChange={() => toggleIcon(icon.id)} />
                 <label htmlFor={`${company._id}-${icon.id}`}>
                   <img src={icon.src} alt={icon.label} style={{ width: "30px", marginRight: "5px" }} />
@@ -451,9 +583,9 @@ const CompanyCard = ({ company, availableIcons }) => {
               </div>
             ))}
           </div>
-          <button className="btn btn-primary mt-2" onClick={() => 
-            updateIconsMutation.mutate({companyId: company._id, icons: selectedIcons})}>
-              Save Icons
+          <button className="btn btn-primary mt-2" onClick={() =>
+            updateIconsMutation.mutate({ companyId: company._id, icons: selectedIcons })}>
+            Save Icons
           </button>
 
           {/* Category Dropdown */}
@@ -471,26 +603,15 @@ const CompanyCard = ({ company, availableIcons }) => {
             <option value="Pet">Pet</option>
           </select>
           <button className="btn btn-primary" onClick={() => updateCategoryMutation.mutate({
-            companyId: company._id, category: selectedCategory})}>
-              Update Category
+            companyId: company._id, category: selectedCategory
+          })}>
+            Update Category
           </button>
 
           {/* Edit Button */}
-          <button className="btn btn-warning my-2" onClick={() => {
-            const newName = prompt("Enter new name", company.name)
-            const newDesc = prompt("Enter new description", company.description)
-
-            if (!newName && !newDesc) return
-            editCompanyMutation.mutate({
-              companyId: company._id,
-              updatedFields: {
-                name: newName || company.name,
-                description: newDesc || company.description
-              }})}}
-          >
+          <button className="btn btn-warning my-2" onClick={() => setIsEditing(true)}>
             Edit Company
           </button>
-
           {/* Delete Button */}
           <button className="btn btn-danger my-2" onClick={() => deleteCompanyMutation.mutate(company._id)}>
             Delete
@@ -510,6 +631,48 @@ const CompanyCard = ({ company, availableIcons }) => {
               ) : null;
             })}
           </div>
+
+          {/* Edit Modal */}
+          {isEditing && (
+            <div className="modal show d-block" tabIndex="-1">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Edit Company</h5>
+                    <button type="button" className="btn-close" onClick={() => setIsEditing(false)}></button>
+                  </div>
+                  <div className="modal-body">
+                    <form onSubmit={handleSubmit}>
+                      {/* Company Name */}
+                      <div className="mb-3">
+                        <label className="form-label">Company Name</label>
+                        <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+                      </div>
+                      {/* Company Description */}
+                      <div className="mb-3">
+                        <label className="form-label">Company Description</label>
+                        <textarea name="description" className="form-control" value={formData.description} onChange={handleChange} required />
+                      </div>
+                      {/* Existing Logo Preview */}
+                      {formData.logo && (
+                        <div className="mb-3">
+                          <label className="form-label">Current Logo</label>
+                          <img src={formData.logo} alt="Company Logo" className="img-fluid" style={{ maxHeight: "100px" }} />
+                        </div>
+                      )}
+                      {/* Logo Upload */}
+                      <div className="mb-3">
+                        <label className="form-label">Upload New Logo</label>
+                        <input type="file" className="form-control" accept="image/*" onChange={handleFileChange} />
+                      </div>
+                      {/* Submit Button */}
+                      <button type="submit" className="btn btn-success">Save Changes</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -522,13 +685,15 @@ const CompanyCard = ({ company, availableIcons }) => {
 const AdminCompaniesPage = () => {
   // Use Query to fetch companies
   const {
-    data: companies = [], isLoading, error} = useQuery({queryKey: ["companies"], queryFn: async () => {
-      const response = await API.get(`${API_BASE_URL}/companies`)
-      // Sort by creation date; descending
-      return response.data.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      )
-    }})
+    data: companies = [], isLoading, error } = useQuery({
+      queryKey: ["companies"], queryFn: async () => {
+        const response = await API.get(`${API_BASE_URL}/companies`)
+        // Sort by creation date; descending
+        return response.data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        )
+      }
+    })
 
   if (isLoading) return <div>Loading Companies...</div>
   if (error) {

@@ -7,12 +7,14 @@ from datetime import datetime, timezone, timedelta
 import os
 import base64
 import boto3
+import certifi
 from botocore.client import Config
 from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
+from werkzeug.exceptions import BadRequest
 from pymongo.collation import Collation
 
 availableIcons = [
@@ -22,6 +24,8 @@ availableIcons = [
     { "id": "biodegradable", "label": "Biodegradable", "src": "../frontend/src/resources/icons/leaf.png"},
     { "id": "fair_trade", "label": "Fair-Trade", "src": "../frontend/src/resources/icons/trade.png"},
 ]
+
+os.environ["SSL_CERT_FILE"] = certifi.where()
 
 allowed_origins = os.getenv("ALLOWED_ORIGINS").split(",")
 app = Flask(__name__)
@@ -48,18 +52,22 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
-R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID", "R2_ACCESS_KEY")
-R2_SECRET_ACCESS_KEY = os.getenv("R2_SECRET_ACCESS_KEY", "R2_SECRET_ACCESS_KEY")
-R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID", "R2_ACCOUNT_ID")
-R2_ENDPOINT = os.getenv("R2_ENDPOINT", "R2_ENDPOINT")
+# R2 bucket setup
+R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY")
+R2_SECRET_ACCESS_KEY = os.getenv("R2_SECRET_ACCESS_KEY")
+R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
+R2_ENDPOINT_URL = os.getenv("R2_ENDPOINT")
+R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME")
+R2_PUBLIC_WORKER = os.getenv("R2_PUBLIC_WORKER")
 
 s3_client = boto3.client(
     "s3",
     aws_access_key_id=R2_ACCESS_KEY_ID,
     aws_secret_access_key=R2_SECRET_ACCESS_KEY,
-    endpoint_url=R2_ENDPOINT,
+    endpoint_url=R2_ENDPOINT_URL,
     region_name="auto",
-    config=Config(signature_version="s3v4")
+    config=Config(signature_version="s3v4"),
+    verify=False
 )
 
 def normalize_text(text):
@@ -97,6 +105,36 @@ def add_cors_headers(response):
         response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, PATCH, OPTIONS"
         response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
     return response
+
+@app.route("/upload-logo", methods=["POST"])
+def upload_logo():
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    
+    file = request.files["file"]
+    file_name = f"logos/{datetime.now().timestamp()}_{file.filename}"
+
+    try:
+        s3_client.upload_fileobj(
+            file,
+            R2_BUCKET_NAME,
+            file_name,
+            ExtraArgs={"ContentType": file.content_type}
+        )
+
+        file_url = f"{R2_PUBLIC_WORKER}/{file_name}"
+
+        return jsonify({"message": "Upload successful", "file_url": file_url}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/get-logo/<filename>", methods=["GET"])
+def get_logo(filename):
+    try:
+        file_url = f"{R2_ENDPOINT_URL}/{R2_BUCKET_NAME}/{filename}"
+        return jsonify({"file_url": file_url}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/")
 def home():
@@ -433,6 +471,9 @@ def add_company():
     data["createdAt"] = datetime.now(timezone.utc)
     if isinstance(data.get("qualifications"), str):
         data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
+
+    if not data.get("logo"):
+        data["logo"] = f"{R2_ENDPOINT_URL}/{R2_BUCKET_NAME}/{data['name'].lower().replace(' ', '_')}.png"
     try:
         db.companies.insert_one(data)
         return jsonify({"message": "Company added successfully"}), 201
@@ -461,37 +502,78 @@ def get_recent_companies():
 
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
-    """
-        Update company information based on ID.
-        Ensures ID is valid, removes the _id field from the payload if present,
-        and converts qualifications to a list if needed
-    """
     try:
-        data = request.json
-        
-        # Validate and convert the company_id to a valid ObjectId
-        object_id = ObjectId(company_id)
+        print(f"📥 Received PUT request for company ID: {company_id}")
 
-        # Remove '_id' from the data if present
-        if "_id" in data:
-            data.pop("_id")
+        try:
+            object_id = ObjectId(company_id)
+        except Exception as e:
+            print("❌ Invalid company ID:", e)
+            return jsonify({"error": "Invalid company ID"}), 400
 
-        # Convert qualifications to list if it is a CSV
+        # Log incoming form data
+        print("📥 Incoming Form Data:", request.form.to_dict())
+        print("📂 Incoming Files:", request.files.keys())
+
+        data = {}
+
+        if "file" in request.files:
+            file = request.files["file"]
+            file_name = f"logos/{company_id}_{file.filename}"
+
+            try:
+                print(f"📂 Uploading file: {file.filename}")
+                s3_client.upload_fileobj(
+                    file,
+                    R2_BUCKET_NAME,
+                    file_name,
+                    ExtraArgs={"ContentType": file.content_type},
+                )
+
+                # Generate public URL from Cloudflare Worker
+                file_url = f"https://ecb1554b.eco-commerce-http-handler.pages.dev/{file_name}/{file_name}"
+                data["logo"] = file_url  # ✅ Store the file URL in data
+
+                print(f"✅ File uploaded successfully: {file_url}")
+
+            except Exception as e:
+                print(f"❌ File upload failed: {e}")
+                return jsonify({"error": "File upload failed", "details": str(e)}), 500
+        else:
+            print("⚠️ No file received in request.")
+
+        # Read other form data
+        form_data = request.form.to_dict()
+        data.update(form_data)
+
+        # Remove '_id' if present
+        data.pop("_id", None)
+
+        # Convert qualifications to a list if needed
         if "qualifications" in data and isinstance(data["qualifications"], str):
             data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
 
-        # Update company document
+        if not data:
+            print("❌ No valid fields provided for update.")
+            return jsonify({"error": "No valid fields provided"}), 400
+
+        # Log MongoDB update
+        print(f"🔄 Updating MongoDB for {company_id} with:", data)
+
         result = db.companies.update_one({"_id": object_id}, {"$set": data})
 
         if result.matched_count == 0:
+            print("❌ Company not found in MongoDB")
             return jsonify({"error": "Company not found"}), 404
 
-        return jsonify({"message": "Company updated successfully"}), 200
-    except InvalidId:
-        return jsonify({"error": "Invalid company ID"}), 400
+        print("✅ Company updated successfully")
+        return jsonify({"message": "Company updated successfully", "updated_data": data}), 200
+
     except Exception as e:
-        print("Unexpected Error:", str(e))
+        print("❌ Unexpected Error:", str(e))
         return jsonify({"error": str(e)}), 500
+
+
     
 @app.route('/companies/<company_id>', methods=['DELETE'])
 def delete_company(company_id):
