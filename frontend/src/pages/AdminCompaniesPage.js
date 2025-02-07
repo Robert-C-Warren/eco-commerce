@@ -406,7 +406,7 @@ const CompanyCard = ({ company, availableIcons }) => {
   
       Object.keys(updateFields).forEach((key) => {
         if (updateFields[key]) {
-          formData.append(key, updateFields[key]);  // Append only valid values
+          formData.append(key, updateFields[key]);  
         }
       });
   
@@ -418,10 +418,6 @@ const CompanyCard = ({ company, availableIcons }) => {
       }
   
       console.log("🚀 Sending PUT request to:", `${API_BASE_URL}/companies/${companyId}`);
-      
-      for (const [key, value] of formData.entries()) {
-        console.log(`   🔹 ${key}:`, value);
-      }
   
       const response = await fetch(`${API_BASE_URL}/companies/${companyId}`, {
         method: "PUT",
@@ -439,7 +435,7 @@ const CompanyCard = ({ company, availableIcons }) => {
     },
     onSuccess: () => {
       toast.success("✅ Company updated successfully!", { autoClose: 2000 });
-      queryClient.invalidateQueries(["companies"]);
+      queryClient.invalidateQueries(["companies"]); // Forces React to fetch updated data
       closeModal();
     },
     onError: (error) => {
@@ -500,9 +496,9 @@ const CompanyCard = ({ company, availableIcons }) => {
   const getCompanyLogo = (company) => {
     return company.logo
       ? company.logo
-      : `${process.env.REACT_APP_R2_BUCKET_URL}/${company.name.toLowerCase().replace(/\s/g, "_")}.png`
-  }
-
+      : `${process.env.REACT_APP_R2_BUCKET_URL}/logos/${company.name.toLowerCase().replace(/\s/g, "_")}.png`;
+  };
+  
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))

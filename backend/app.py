@@ -519,7 +519,7 @@ def update_company(company_id):
 
         if "file" in request.files:
             file = request.files["file"]
-            file_name = f"logos/{company_id}_{file.filename}"
+            file_name = f"logos/{file.filename}"
 
             try:
                 print(f"📂 Uploading file: {file.filename}")
@@ -530,8 +530,8 @@ def update_company(company_id):
                     ExtraArgs={"ContentType": file.content_type},
                 )
 
-                # Generate public URL from Cloudflare Worker
-                file_url = f"https://ecb1554b.eco-commerce-http-handler.pages.dev/{file_name}/{file_name}"
+                # Ensure the correct Worker URL is used
+                file_url = f"{R2_PUBLIC_WORKER}/{file_name}"
                 data["logo"] = file_url  # ✅ Store the file URL in data
 
                 print(f"✅ File uploaded successfully: {file_url}")
@@ -553,6 +553,9 @@ def update_company(company_id):
         if "qualifications" in data and isinstance(data["qualifications"], str):
             data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
 
+        # Debug: Check if logo exists in `data`
+        print(f"🛠️ Data before MongoDB update: {data}")
+
         if not data:
             print("❌ No valid fields provided for update.")
             return jsonify({"error": "No valid fields provided"}), 400
@@ -562,18 +565,16 @@ def update_company(company_id):
 
         result = db.companies.update_one({"_id": object_id}, {"$set": data})
 
-        if result.matched_count == 0:
-            print("❌ Company not found in MongoDB")
-            return jsonify({"error": "Company not found"}), 404
+        if result.modified_count == 0:
+            print("❌ MongoDB did not modify any documents")
+            return jsonify({"error": "No changes made to the company"}), 400
 
-        print("✅ Company updated successfully")
+        print("✅ Company updated successfully in MongoDB")
         return jsonify({"message": "Company updated successfully", "updated_data": data}), 200
 
     except Exception as e:
         print("❌ Unexpected Error:", str(e))
         return jsonify({"error": str(e)}), 500
-
-
     
 @app.route('/companies/<company_id>', methods=['DELETE'])
 def delete_company(company_id):
