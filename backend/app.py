@@ -459,40 +459,44 @@ def add_company():
     """
         Add a new company to the DB.
         Automatically sets the creation date and converts qualifications
-        from a comma-seperated string to a list if necessary.
+        from a comma-separated string to a list if necessary.
     """
     try:
-        data = request.form.to_dict()
+        # Log the incoming request
+        print("📥 Incoming Request Data:", request.json)  # ✅ Debugging step
+
+        # Get JSON data
+        data = request.json
+        if not data:
+            return jsonify({"error": "Invalid JSON data"}), 400
+
         data["createdAt"] = datetime.now(timezone.utc)
 
+        # Convert qualifications from CSV to list
         if isinstance(data.get("qualifications"), str):
             data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
 
-        if "file" in request.file:
-            file = request.files["file"]
-            file_name = f"logos/{datetime.now().timestamp()}_{secure_filename(file.filename)}"
-            blob = firebase_bucket.blob(file_name)
+        # Ensure required fields are present
+        required_fields = ["name", "description", "website", "category"]
+        for field in required_fields:
+            if field not in data or not data[field]:
+                return jsonify({"error": f"Missing required field: {field}"}), 400
 
-            try:
-                print(f"📂 Uploading file: {file.filename} to Firebase Storage")
-                blob.upload_from_file(file, content_type=file.content_type)
-                blob.make_public()
+        # ✅ Insert company data into MongoDB
+        result = db.companies.insert_one(data)
 
-                data["logo"] = blob.public_url
-                print(f"✅ File uploaded successfully: {blob.public_url}")
-            except Exception as e:
-                print(f"❌ File upload failed: {e}")
-                return jsonify({"error": "File upload failed", "details": str(e)}), 500
-        else:
-            print("⚠️ No file received in request.")
-            data["logo"] = None  # Default to None if no logo is provided
+        # ✅ Convert ObjectId to string before returning the response
+        data["_id"] = str(result.inserted_id)
 
-        # Insert company data into MongoDB
-        db.companies.insert_one(data)
         return jsonify({"message": "Company added successfully", "company": data}), 201
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        import traceback
+        print("❌ Error in /companies:", str(e))
+        traceback.print_exc()  # ✅ Logs the full error stack trace
+        return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
+
 
 @app.route('/companies/recent', methods=["GET"])
 def get_recent_companies():
