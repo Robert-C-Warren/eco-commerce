@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css"
 import "./AdminCompaniesPage.css"
 import API_BASE_URL from "../components/urls"
 import API from "../services/api";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
+import { initializeApp } from "firebase/app"
 import bCorpIcon from "../resources/icons/bcorp.png"
 import smallBusinessIcon from "../resources/icons/handshake.png"
 import veganIcon from "../resources/icons/veganlogo.png"
@@ -193,6 +195,18 @@ const availableIcons = [
   { id: "nff_logo", label: "National Forest Foundation", src: NFF, title: "NFF" },
   { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ]
+
+const firebaseConfig = {
+  apiKey: process.env.REAT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
+}
+
+const firebaseApp = initializeApp(firebaseConfig)
+const storage = getStorage(firebaseApp)
 
 /* --------------------------------
     Subcomponent: NewCompanyForm
@@ -495,9 +509,9 @@ const CompanyCard = ({ company, availableIcons }) => {
 
   const getCompanyLogo = (company) => {
     return company.logo
-      ? company.logo
-      : `${process.env.REACT_APP_R2_BUCKET_URL}/logos/${company.name.toLowerCase().replace(/\s/g, "_")}.png`;
-  };
+      ? company.logo  // ✅ Uses Firebase URL stored in MongoDB
+      : "https://via.placeholder.com/150"; // ✅ Default placeholder image
+  };  
   
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -505,15 +519,29 @@ const CompanyCard = ({ company, availableIcons }) => {
   }
 
   // Handle file input
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      console.log("📂 File selected:", file.name);
-      setSelectedFile(file)
-    } else {
-      console.log("⚠️ No file selected.");
-    }
-  }
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const storageRef = ref(storage, `logos/${Date.now()}_${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        console.log(`Upload progress: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100}%`);
+      },
+      (error) => {
+        console.error("Upload failed:", error);
+        toast.error("Failed to upload logo");
+      },
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        setFormData((prev) => ({ ...prev, logo: downloadURL }));
+        toast.success("Logo uploaded successfully");
+      }
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

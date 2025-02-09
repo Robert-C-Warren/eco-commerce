@@ -6,15 +6,14 @@ from bson.errors import InvalidId
 from datetime import datetime, timezone, timedelta
 import os
 import base64
-import boto3
 import certifi
-from botocore.client import Config
+import firebase_admin
+from firebase_admin import credentials, storage
 from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
-from werkzeug.exceptions import BadRequest
 from pymongo.collation import Collation
 
 availableIcons = [
@@ -52,23 +51,18 @@ products_collection = db["products"]
 companies_collection = db["companies"]
 subscribers = db["subscribers"]
 
-# R2 bucket setup
-R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY")
-R2_SECRET_ACCESS_KEY = os.getenv("R2_SECRET_ACCESS_KEY")
-R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
-R2_ENDPOINT_URL = os.getenv("R2_ENDPOINT")
-R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME")
-R2_PUBLIC_WORKER = os.getenv("R2_PUBLIC_WORKER")
+firebase_creds = {
+    "type": "service_account",
+    "project_id": os.getenv("FIREBASE_PROJECT_ID"),
+    "private_key": os.getenv("FIREBASE_PRIVATE_KEY").replace("\\n", "\\n"),
+    "client_email": os.getenv("FIREBASE_CLIENT_EMAIL"),
+    "token_uri": "https://oauth2.googleapis.com/token"
+}
 
-s3_client = boto3.client(
-    "s3",
-    aws_access_key_id=R2_ACCESS_KEY_ID,
-    aws_secret_access_key=R2_SECRET_ACCESS_KEY,
-    endpoint_url=R2_ENDPOINT_URL,
-    region_name="auto",
-    config=Config(signature_version="s3v4"),
-    verify=False
-)
+cred = credentials.Certificate(firebase_creds)
+firebase_admin.initialize_app(cred, {"storageBucket": os.getenv("FIREBASE_STORAGE_BUCKET")})
+
+firebase_bucket = storage.bucket()
 
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
@@ -113,25 +107,25 @@ def upload_logo():
     
     file = request.files["file"]
     file_name = f"logos/{datetime.now().timestamp()}_{file.filename}"
+    blob = firebase_bucket.blob(file_name)
 
     try:
-        s3_client.upload_fileobj(
-            file,
-            R2_BUCKET_NAME,
-            file_name,
-            ExtraArgs={"ContentType": file.content_type}
-        )
-
-        file_url = f"{R2_PUBLIC_WORKER}/{file_name}"
-
-        return jsonify({"message": "Upload successful", "file_url": file_url}), 200
+        blob.upload_from_file(file, content_type=file.content_type)
+        blob.make_public()
+        return jsonify({"message": "Upload successful", "file_url": blob.public_url}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route("/get-logo/<filename>", methods=["GET"])
 def get_logo(filename):
     try:
-        file_url = f"{R2_ENDPOINT_URL}/{R2_BUCKET_NAME}/{filename}"
+        blob = firebase_bucket.blob(f"logos/{filename}")
+
+        if not blob.exists():
+            return jsonify({"error": "File not found"}), 404
+        
+        file_url = blob.generate_signed_url(expiration=timedelta(hours=24))
+
         return jsonify({"file_url": file_url}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -467,16 +461,36 @@ def add_company():
         Automatically sets the creation date and converts qualifications
         from a comma-seperated string to a list if necessary.
     """
-    data = request.json
-    data["createdAt"] = datetime.now(timezone.utc)
-    if isinstance(data.get("qualifications"), str):
-        data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
-
-    if not data.get("logo"):
-        data["logo"] = f"{R2_ENDPOINT_URL}/{R2_BUCKET_NAME}/{data['name'].lower().replace(' ', '_')}.png"
     try:
+        data = request.form.to_dict()
+        data["createdAt"] = datetime.now(timezone.utc)
+
+        if isinstance(data.get("qualifications"), str):
+            data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
+
+        if "file" in request.file:
+            file = request.files["file"]
+            file_name = f"logos/{datetime.now().timestamp()}_{secure_filename(file.filename)}"
+            blob = firebase_bucket.blob(file_name)
+
+            try:
+                print(f"📂 Uploading file: {file.filename} to Firebase Storage")
+                blob.upload_from_file(file, content_type=file.content_type)
+                blob.make_public()
+
+                data["logo"] = blob.public_url
+                print(f"✅ File uploaded successfully: {blob.public_url}")
+            except Exception as e:
+                print(f"❌ File upload failed: {e}")
+                return jsonify({"error": "File upload failed", "details": str(e)}), 500
+        else:
+            print("⚠️ No file received in request.")
+            data["logo"] = None  # Default to None if no logo is provided
+
+        # Insert company data into MongoDB
         db.companies.insert_one(data)
-        return jsonify({"message": "Company added successfully"}), 201
+        return jsonify({"message": "Company added successfully", "company": data}), 201
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -510,8 +524,7 @@ def update_company(company_id):
         except Exception as e:
             print("❌ Invalid company ID:", e)
             return jsonify({"error": "Invalid company ID"}), 400
-
-        # Log incoming form data
+        
         print("📥 Incoming Form Data:", request.form.to_dict())
         print("📂 Incoming Files:", request.files.keys())
 
@@ -519,20 +532,16 @@ def update_company(company_id):
 
         if "file" in request.files:
             file = request.files["file"]
-            file_name = f"logos/{file.filename}"
+            file_name = f"logos/{datetime.now().timestamp()}_{secure_filename(file.filename)}"
+            blob = firebase_bucket.blob(file_name)
 
             try:
-                print(f"📂 Uploading file: {file.filename}")
-                s3_client.upload_fileobj(
-                    file,
-                    R2_BUCKET_NAME,
-                    file_name,
-                    ExtraArgs={"ContentType": file.content_type},
-                )
+                print(f"📂 Uploading file: {file.filename} to Firebase Storage")
+                blob.upload_from_file(file, content_type=file.content_type)
+                blob.make_public()
 
-                # Ensure the correct Worker URL is used
-                file_url = f"{R2_PUBLIC_WORKER}/{file_name}"
-                data["logo"] = file_url  # ✅ Store the file URL in data
+                file_url = blob.public_url
+                data["logo"] = file_url
 
                 print(f"✅ File uploaded successfully: {file_url}")
 
