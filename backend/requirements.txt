@@ -4,4 +4,4 @@ flask-cors
 python-dotenv
 sib_api_v3_sdk
 werkzeug
-boto3
+firebase-admin
