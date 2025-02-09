@@ -335,7 +335,7 @@ const NewCompanyForm = () => {
             Company Logo URL or File
           </label>
           <input type="text" name="logo" id="logo" className="form-control"
-            placeholder="Company Logo URL" value={formData.logo} onChange={handleChange} required />
+            placeholder="Company Logo URL" value={formData.logo} onChange={handleChange} />
           <input type="file" className="form-control mt-2" onChange={handleFileChange} />
         </div>
         {/* Company Website */}
@@ -344,7 +344,7 @@ const NewCompanyForm = () => {
             Company Website URL
           </label>
           <input type="text" name="website" id="website" className="form-control"
-            placeholder="Company Website URL" value={formData.website} onChange={handleChange} required />
+            placeholder="Company Website URL" value={formData.website} onChange={handleChange} />
         </div>
         {/* Company Category */}
         <div className="mb-3">
