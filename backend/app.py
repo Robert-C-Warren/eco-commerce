@@ -49,6 +49,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
+small_business_collection = db["smallbusiness"]
 subscribers = db["subscribers"]
 
 firebase_creds = {
@@ -462,9 +463,6 @@ def add_company():
         from a comma-separated string to a list if necessary.
     """
     try:
-        # Log the incoming request
-        print("📥 Incoming Request Data:", request.json)  # ✅ Debugging step
-
         # Get JSON data
         data = request.json
         if not data:
@@ -482,8 +480,15 @@ def add_company():
             if field not in data or not data[field]:
                 return jsonify({"error": f"Missing required field: {field}"}), 400
 
+        is_small_business = data.get("isSmallBusiness", False)
+        if isinstance(is_small_business, str):
+            is_small_business = is_small_business.lower() in ["true", "1"]    
+        elif not isinstance(is_small_business, bool):
+            is_small_business = bool(is_small_business)
+        collection = db["smallbusiness"] if is_small_business else db["companies"]
+
         # ✅ Insert company data into MongoDB
-        result = db.companies.insert_one(data)
+        result = collection.insert_one(data)
 
         # ✅ Convert ObjectId to string before returning the response
         data["_id"] = str(result.inserted_id)
@@ -495,8 +500,6 @@ def add_company():
         print("❌ Error in /companies:", str(e))
         traceback.print_exc()  # ✅ Logs the full error stack trace
         return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
-
-
 
 @app.route('/companies/recent', methods=["GET"])
 def get_recent_companies():
@@ -511,10 +514,16 @@ def get_recent_companies():
             {"createdAt": {"$gte": two_weeks_ago}}
         ))
 
-        for company in recent_companies:
+        recent_small_businesses = list(db.smallbusiness.find({"createdAt": {"$gte": two_weeks_ago}}))
+
+        all_recent = recent_companies + recent_small_businesses
+
+        for company in all_recent:
             company["_id"] = str(company["_id"])
 
-        return jsonify(recent_companies), 200
+        all_recent.sort(key=lambda x: x.get("createdAt", ""), reverse=True)
+
+        return jsonify(all_recent), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -533,6 +542,19 @@ def update_company(company_id):
         print("📂 Incoming Files:", request.files.keys())
 
         data = {}
+
+        company = db.companies.find_one({"_id": object_id})
+        if company:
+            collection = db.companies
+            print("✅ Found company in `companies` collection")
+        else:
+            company = db.smallbusiness.find_one({"_id": object_id})
+            if company:
+                collection = db.smallbusiness
+                print("✅ Found company in `smallbusiness` collection")
+            else:
+                print("❌ Company not found in either collection.")
+                return jsonify({"error": "Company not found"}), 404
 
         if "file" in request.files:
             file = request.files["file"]
@@ -576,7 +598,7 @@ def update_company(company_id):
         # Log MongoDB update
         print(f"🔄 Updating MongoDB for {company_id} with:", data)
 
-        result = db.companies.update_one({"_id": object_id}, {"$set": data})
+        result = collection.update_one({"_id": object_id}, {"$set": data})
 
         if result.modified_count == 0:
             print("❌ MongoDB did not modify any documents")
@@ -625,6 +647,18 @@ def update_company_category(company_id):
         return jsonify({"message": "Category updated successfully"}), 200
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
+
+@app.route('/smallbusiness', methods=['GET'])
+def get_small_business():
+    try:
+        small_business = list(db.smallbusiness.find().sort("name", 1))
+
+        for business in small_business:
+            business["_id"] = str(business["_id"])
+
+        return jsonify(small_business), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/contact", methods=["POST"])
 def send_contact_email():

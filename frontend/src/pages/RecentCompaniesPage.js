@@ -332,7 +332,12 @@ const RecentCompaniesPage = ({ searchQuery }) => {
                                                     style={{ objectFit: "contain", height: "150px", width: "100%" }}
                                                     loading="lazy"
                                                 />
-                                                <h5 className="card-title m-0">{company.name}</h5>
+                                                <h5 className="card-title m-0">
+                                                    {company.name}{" "}
+                                                    {company.icons?.includes("small_business") && (
+                                                        <img src={smallBusinessIcon} alt="Small Business" title="Small Business" style={{ width: "20px", marginLeft: "5px" }} />
+                                                    )}
+                                                </h5>
                                                 <h6 className="card-specifics">{company.specifics}</h6>
                                             </div>
                                             {expandedCompany === company._id && (

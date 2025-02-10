@@ -226,6 +226,7 @@ const NewCompanyForm = () => {
     logo: "",
     website: "",
     category: "",
+    isSmallBusiness: false,
   })
 
   // Mutation for adding a company
@@ -273,6 +274,11 @@ const NewCompanyForm = () => {
   }
   )
 
+  // Handle checkbox change for small business
+  const handleCheckboxChange = (e) => {
+    setFormData((prev) => ({ ...prev, isSmallBusiness: e.target.checked }))
+  }
+
   // Handle file input change
   const handleFileChange = (e) => {
     setFile(e.target.files[0])
@@ -281,6 +287,7 @@ const NewCompanyForm = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log("Submitting data:", formData)
     addCompanyMutation.mutate(formData)
 
     // Clear form
@@ -291,6 +298,7 @@ const NewCompanyForm = () => {
       logo: "",
       website: "",
       category: "",
+      isSmallBusiness: false,
     })
   }
 
@@ -365,6 +373,11 @@ const NewCompanyForm = () => {
             <option value="Personal Care">Personal Care</option>
             <option value="Pet">Pet</option>
           </select>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Small Business</label>
+          <input type="checkbox" name="isSmallBusiness" checked={formData.isSmallBusiness}
+            onChange={handleCheckboxChange} className="form-check-input" />
         </div>
         <button type="submit" className="btn btn-success">
           Add Company
@@ -568,7 +581,10 @@ const CompanyCard = ({ company, availableIcons }) => {
   return (
     <div className={`company-card ${expanded ? "expanded" : "collapsed"}`}>
       <div className="company-header" onClick={toggleExpand}>
-        {company.name}
+        {company.name}{" "}
+        {company.icons?.includes("small_business") && (
+          <img src={smallBusinessIcon} alt="Small Business" title="Small Business" style={{ width: "20px", marginLeft: "5px" }} />
+        )}
       </div>
       <img src={getCompanyLogo(company)} className="card-img-top" alt={`${company.name} logo`} style={{
         objectFit: "contain",
@@ -709,15 +725,24 @@ const CompanyCard = ({ company, availableIcons }) => {
 const AdminCompaniesPage = () => {
   // Use Query to fetch companies
   const {
-    data: companies = [], isLoading, error } = useQuery({
-      queryKey: ["companies"], queryFn: async () => {
-        const response = await API.get(`${API_BASE_URL}/companies`)
-        // Sort by creation date; descending
-        return response.data.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        )
-      }
-    })
+    data: companies = [],
+    isLoading,
+    error
+  } = useQuery ({
+    queryKey: ["companies", "smallbusiness"],
+    queryFn: async () => {
+      const [companiesRes, smallBusinessRes] = await Promise.all([
+        API.get(`${API_BASE_URL}/companies`),
+        API.get(`${API_BASE_URL}/smallbusiness`)      
+      ])
+
+      const combineData = [...companiesRes.data, ...smallBusinessRes.data]
+
+      combineData.sort((a, b) => new Date(b.createdAt) -new Date(a.createdAt))
+
+      return combineData
+    }
+  })
 
   if (isLoading) return <div>Loading Companies...</div>
   if (error) {

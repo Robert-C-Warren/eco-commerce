@@ -192,7 +192,7 @@ const availableIcons = [
   { id: "climate_neutral_logo", label: "Climate Neutral Certified", src: climateNeutral, title: "Climate Neutral" },
 ];
 
-const CompaniesPage = ({ searchQuery }) => {
+const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true)
   const [expandedCompany, setExpandedCompany] = useState(null)
@@ -205,7 +205,7 @@ const CompaniesPage = ({ searchQuery }) => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/companies`);
+        const response = await fetch(`${API_BASE_URL}/${collection}`);
 
         const data = await response.json();
 
@@ -218,7 +218,7 @@ const CompaniesPage = ({ searchQuery }) => {
     };
 
     fetchCompanies();
-  }, []);
+  }, [collection]);
 
   useEffect(() => {
     const existingToolTips = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -327,13 +327,17 @@ const CompaniesPage = ({ searchQuery }) => {
       <div className="container my-4">
         <div className="hero-section text-center p-5">
           <h1 className="display-2 hero-text">
-            Companies Doing <strong className="eco-hero">Good</strong> for the Planet
+          {collection === "smallbusiness"
+            ? "Small Businesses Making an Impact"
+            : "Companies Doing Good for the Planet"
+          }
           </h1>
           {!searchQuery && (
             <p className="lead">
-              The companies listed below are dedicated to making a positive impact on our planet.<br /> 
-              They prioritize treating their employees with respect and dignity while ensuring<br />
-              their products meet the high standards you deserve.
+              {collection === "smallbusiness"
+                ? "Support small businesses that prioritize sustainability and ethical practices."
+                : "These companies prioritize eco-friendly practices, fair labor, and sustainable production."
+              }
             </p>
           )}
           <button className="btn btn-dark" onClick={() => navigate("/companies/recent")}>Recent Companies</button>
