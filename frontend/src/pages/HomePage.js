@@ -2,14 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./HomePage.css"
-import Logo from "../resources/eclogov7.svg"
+import Logo from "../resources/ecocommercelogo.webp"
 
 const HomePage = () => {
 
     return (
-        <div className="container my-4">
+        <div className="container-fluid my-4">
             <div className="logo-container">
-                <img className="logo-actual" src={Logo} alt="EC" height="400vh" />
+                <img className="logo-actual" src={Logo} alt="EC" />
             </div>
             <div className="hero-section text-center p-5">
                 <h1 className="display-2 hero-text">

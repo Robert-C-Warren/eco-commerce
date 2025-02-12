@@ -310,55 +310,43 @@ const NewCompanyForm = () => {
 
   // New Company Form
   return (
-    <div className="my-3">
+    <div className="my-3 form-container">
       <h3>Add New Company</h3>
       <form onSubmit={handleSubmit}>
         {/* Company Name */}
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Company Name
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="name" className="form-label" />
           <input type="text" name="name" id="name" className="form-control"
             placeholder="Company Name" value={formData.name} onChange={handleChange} required />
         </div>
         {/* Company Description */}
-        <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Company Description
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="description" className="form-label" />
           <textarea name="description" id="description" className="form-control"
-            placeholder="Company Description" value={formData.description} onChange={handleChange} required />
+            placeholder="Company Description" value={formData.description} onChange={handleChange} style={{ height: "250px"}} required />
         </div>
         {/* Company Qualifications */}
-        <div className="mb-3">
-          <label htmlFor="qualifications" className="form-label">
-            Company Qualifications (CSV)
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="qualifications" className="form-label" />
           <input type="text" name="qualifications" id="qualifications" className="form-control"
             placeholder="Company Qualifications (CSV)" value={formData.qualifications} onChange={handleChange} required />
         </div>
         {/* Company Logo */}
-        <div className="mb-3">
-          <label htmlFor="logo" className="form-label">
-            Company Logo URL or File
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="logo" className="form-label"/>
           <input type="text" name="logo" id="logo" className="form-control"
             placeholder="Company Logo URL" value={formData.logo} onChange={handleChange} />
           <input type="file" className="form-control mt-2" onChange={handleFileChange} />
         </div>
         {/* Company Website */}
-        <div className="mb-3">
-          <label htmlFor="website" className="form-label">
-            Company Website URL
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="website" className="form-label" />
           <input type="text" name="website" id="website" className="form-control"
             placeholder="Company Website URL" value={formData.website} onChange={handleChange} />
         </div>
         {/* Company Category */}
-        <div className="mb-3">
-          <label htmlFor="category" className="form-label">
-            Company Category
-          </label>
+        <div className="mb-3 form-input">
+          <label htmlFor="category" className="form-label" />
           <select name="category" id="category" className="form-control"
             value={formData.category} onChange={handleChange} required >
             <option value="">Select a category</option>
@@ -374,10 +362,10 @@ const NewCompanyForm = () => {
             <option value="Pet">Pet</option>
           </select>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 form-input">
           <label className="form-label">Small Business</label>
           <input type="checkbox" name="isSmallBusiness" checked={formData.isSmallBusiness}
-            onChange={handleCheckboxChange} className="form-check-input" />
+            onChange={handleCheckboxChange} className="form-check-input" style={{ height: "30px", width: "30px"}}/>
         </div>
         <button type="submit" className="btn btn-success">
           Add Company

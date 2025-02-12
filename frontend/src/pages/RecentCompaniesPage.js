@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CompaniesPage.css"
 import API_BASE_URL from "../components/urls";
-import Logo from "../resources/eclogov7.svg"
+import Logo from "../resources/eclogov7.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/veganlogo.png";
@@ -192,64 +192,27 @@ const availableIcons = [
 ];
 
 const RecentCompaniesPage = ({ searchQuery }) => {
-    const [companies, setCompanies] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [expandedCompany, setExpandedCompany] = useState(null)
-    const [expandedCategory, setExpandedCategory] = useState(null)
-    const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
-    const categoryRefs = useRef({})
-    const cardRef = useRef(null)
-    const navigate = useNavigate()
-
-    const toggleCategory = (category) => {
-        setExpandedCategory((prev) => {
-            const contentEl = categoryRefs.current[category];
-
-            if (contentEl) {
-                if (prev === category) {
-                    contentEl.style.height = `${contentEl.scrollHeight}px`; // Set explicit height
-                    requestAnimationFrame(() => {
-                        contentEl.style.height = "0"
-                    })
-                    return null
-                } else {
-                    const prevContentE1 = categoryRefs.current[prev]
-                    if (prevContentE1) {
-                        prevContentE1.style.height = `${prevContentE1.scrollHeight}px`
-                        requestAnimationFrame(() => {
-                            prevContentE1.style.height = "0"
-                        })
-                    }
-
-                    contentEl.style.height = `${contentEl.scrollHeight}px`
-                    setTimeout(() => {
-                        contentEl.style.height = "auto"
-                    }, 500)
-
-                    return category
-                }
-            }
-
-            return prev
-        });
-    };
+    const [companies, setCompanies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [expandedCompany, setExpandedCompany] = useState(null);
+    const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+    const cardRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleMouseMove = (e) => {
-        setTooltipPosition({ x: e.clientX + 10, y: e.clientY - 40 })
-    }
+        setTooltipPosition({ x: e.clientX + 10, y: e.clientY - 40 });
+    };
 
     const toggleExpand = (id) => {
-        setExpandedCompany((prev) => (prev === id ? null : id))
-    }
+        setExpandedCompany((prev) => (prev === id ? null : id));
+    };
 
     useEffect(() => {
         const fetchRecentCompanies = async () => {
             try {
                 const response = await fetch(`${API_BASE_URL}/companies/recent`, {
-                    method: "GET",  // ✅ Explicitly specify GET method
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
                 });
 
                 if (!response.ok) {
@@ -268,14 +231,14 @@ const RecentCompaniesPage = ({ searchQuery }) => {
         fetchRecentCompanies();
     }, []);
 
-    const groupedCompanies = searchQuery
-        ? {
-            "Search Results": companies.filter(company =>
-                company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                company.description?.toLowerCase().includes(searchQuery.toLowerCase())
-            )
-        }
-        : { "Recently Added": companies }
+    // Filter companies based on searchQuery if provided
+    const displayedCompanies = searchQuery
+        ? companies.filter(
+              (company) =>
+                  company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  company.description?.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : companies;
 
     return (
         <div>
@@ -286,112 +249,129 @@ const RecentCompaniesPage = ({ searchQuery }) => {
                     </h1>
                     {!searchQuery && (
                         <p className="lead">
-                            These are the most recently added companies that are making a positive
-                            impact on our planet.
+                            These are the most recently added companies that are making a positive impact on our planet.
                         </p>
                     )}
-                    <button className="btn btn-dark" onClick={() => navigate("/companies")}>All Companies</button>
+                    <button className="btn btn-dark" onClick={() => navigate("/companies")}>
+                        All Companies
+                    </button>
                 </div>
+
                 {loading && (
                     <div className="loading-container">
                         <img src={Logo} alt="Loading..." className="logo-shake" />
                     </div>
                 )}
 
-                {!loading && Object.keys(groupedCompanies).sort().map((category) => (
-                    <div key={category} className="category-container">
-                        <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
-                            {category}
-                        </h2>
-                        <i className={`icon-toggler bi ${expandedCategory === category ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
-                        <div
-                            ref={(el) => (categoryRefs.current[category] = el)}
-                            className="category-content"
-                            style={{
-                                height: expandedCategory === category ? "auto" : "0",
-                                overflow: "hidden",
-                                transition: "height 0.5s ease"
-                            }}
-                        >
-                            <div className="row">
-                                {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
-                                    <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
+                {!loading && (
+                    <div className="row">
+                        {displayedCompanies.sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
+                            <div
+                                key={index}
+                                className={`card-group col-lg-3 col-md-6 col-sm-12 ${
+                                    expandedCompany === company._id ? "position-relative" : ""
+                                }`}
+                            >
+                                <div
+                                    ref={expandedCompany === company._id ? cardRef : null}
+                                    className={`card company-card ${
+                                        expandedCompany === company._id ? "expanded" : "collapsed"
+                                    }`}
+                                    onPointerMove={handleMouseMove}
+                                >
+                                    {expandedCompany !== company._id && (
                                         <div
-                                            ref={expandedCompany === company._id ? cardRef : null}
-                                            className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
-                                            onPointerMove={handleMouseMove}
+                                            className="tooltip"
+                                            style={{
+                                                position: "fixed",
+                                                top: `${tooltipPosition.y}px`,
+                                                left: `${tooltipPosition.x}px`,
+                                            }}
                                         >
-                                            {expandedCompany !== company._id && (
-                                                <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
-                                            )}
-                                            <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                                            <i className="bi bi-eye-fill"></i> More Info
+                                        </div>
+                                    )}
+                                    <div
+                                        className="card-header align-items-center"
+                                        onClick={() => toggleExpand(company._id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <img
+                                            src={company.logo}
+                                            className="card-img-top"
+                                            alt={`${company.name} logo`}
+                                            style={{ objectFit: "contain", height: "150px", width: "100%" }}
+                                            loading="lazy"
+                                        />
+                                        <h5 className="card-title m-0">
+                                            {company.name}
+                                            {company.icons?.includes("small_business") && (
                                                 <img
-                                                    src={company.logo}
-                                                    className="card-img-top"
-                                                    alt={`${company.name} logo`}
-                                                    style={{ objectFit: "contain", height: "150px", width: "100%" }}
-                                                    loading="lazy"
+                                                    src={smallBusinessIcon}
+                                                    alt="Small Business"
+                                                    title="Small Business"
+                                                    style={{ width: "20px", marginLeft: "5px" }}
                                                 />
-                                                <h5 className="card-title m-0">
-                                                    {company.name}{" "}
-                                                    {company.icons?.includes("small_business") && (
-                                                        <img src={smallBusinessIcon} alt="Small Business" title="Small Business" style={{ width: "20px", marginLeft: "5px" }} />
-                                                    )}
-                                                </h5>
-                                                <h6 className="card-specifics">{company.specifics}</h6>
-                                            </div>
-                                            {expandedCompany === company._id && (
-                                                <div className="card-body ">
-                                                    <p className="card-text">{company.description}</p>
-                                                    <ul>
-                                                        {company.qualifications.map((qualification, i) => (
-                                                            <li className="qualifications" key={i}>{qualification}</li>
-                                                        ))}
-                                                    </ul>
-                                                    <a
-                                                        href={company.website}
-                                                        className="btn btn-primary"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        Visit Website
-                                                    </a>
-                                                    <div className="d-flex justify-content-between align-items-center icon-wrapper">
-                                                        <div className="d-flex justify-content-center align-items-center flex-grow-1">
-                                                            <div className="product-icons d-flex justify-content-center align-items-center gap-2">
-                                                                {company.icons?.map((iconId) => {
-                                                                    const icon = availableIcons.find((i) => i.id === iconId);
-                                                                    return icon ? (
-                                                                        <img
-                                                                            className="icon_actual"
-                                                                            key={icon.id}
-                                                                            src={icon.src}
-                                                                            alt={icon.label}
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="bottom"
-                                                                            data-bs-title={icon.label}
-                                                                            loading="lazy"
-                                                                        />
-                                                                    ) : null;
-                                                                })}
-                                                            </div>
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
-                                                        </div>
+                                            )}
+                                        </h5>
+                                        <h6 className="card-specifics">{company.specifics}</h6>
+                                    </div>
+                                    {expandedCompany === company._id && (
+                                        <div className="card-body">
+                                            <p className="card-text">{company.description}</p>
+                                            <ul>
+                                                {company.qualifications.map((qualification, i) => (
+                                                    <li className="qualifications" key={i}>
+                                                        {qualification}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <a
+                                                href={company.website}
+                                                className="btn btn-primary"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                Visit Website
+                                            </a>
+                                            <div className="d-flex justify-content-between align-items-center icon-wrapper">
+                                                <div className="d-flex justify-content-center align-items-center flex-grow-1">
+                                                    <div className="product-icons d-flex justify-content-center align-items-center gap-2">
+                                                        {company.icons?.map((iconId) => {
+                                                            const icon = availableIcons.find((i) => i.id === iconId);
+                                                            return icon ? (
+                                                                <img
+                                                                    className="icon_actual"
+                                                                    key={icon.id}
+                                                                    src={icon.src}
+                                                                    alt={icon.label}
+                                                                    data-bs-toggle="tooltip"
+                                                                    data-bs-placement="bottom"
+                                                                    data-bs-title={icon.label}
+                                                                    loading="lazy"
+                                                                />
+                                                            ) : null;
+                                                        })}
                                                     </div>
                                                 </div>
-                                            )}
+                                                <div className="d-flex">
+                                                    <i
+                                                        className="collapse-button bi bi-box-arrow-in-up"
+                                                        onClick={() => toggleExpand(company._id)}
+                                                        style={{ cursor: "pointer" }}
+                                                    ></i>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    )}
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
-                ))}
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default RecentCompaniesPage;

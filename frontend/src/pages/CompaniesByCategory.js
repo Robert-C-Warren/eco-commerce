@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API_BASE_URL from "../components/urls";
 import "./CompaniesByCategory.css"
-import Logo from "../resources/eclogov7.svg"
+import Logo from "../resources/eclogov7.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/veganlogo.png";
