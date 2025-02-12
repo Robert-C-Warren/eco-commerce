@@ -4,6 +4,7 @@ import "./CompaniesPage.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from "../resources/eclogov7.webp"
 import API_BASE_URL from "../components/urls"
+import BScoreChart from "../components/BScoreChart"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/veganlogo.png";
@@ -197,7 +198,7 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   const [loading, setLoading] = useState(true)
   const [expandedCompany, setExpandedCompany] = useState(null)
   const [expandedCategory, setExpandedCategory] = useState(null)
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0})
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
   const categoryRefs = useRef({})
   const cardRef = useRef(null)
   const navigate = useNavigate()
@@ -264,20 +265,20 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   }, [expandedCompany])
 
   const filteredCompanies = searchQuery
-    ? companies.filter((company) => 
+    ? companies.filter((company) =>
       company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       company.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       company.specifics?.toLowerCase().includes(searchQuery.toLowerCase())
     )
-  : companies;
+    : companies;
 
   const groupedCompanies = searchQuery
     ? { "Search Results": filteredCompanies }
     : companies.reduce((acc, company) => {
-        const category = company.category || "Uncatogorized"
-        if (!acc[category]) acc[category] = []
-        acc[category].push(company)
-        return acc
+      const category = company.category || "Uncatogorized"
+      if (!acc[category]) acc[category] = []
+      acc[category].push(company)
+      return acc
     }, {})
 
 
@@ -327,10 +328,10 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
       <div className="container my-4">
         <div className="hero-section text-center p-5">
           <h1 className="display-2 hero-text">
-          {collection === "smallbusiness"
-            ? "Small Businesses Making an Impact"
-            : "Companies Doing Good for the Planet"
-          }
+            {collection === "smallbusiness"
+              ? "Small Businesses Making an Impact"
+              : "Companies Doing Good for the Planet"
+            }
           </h1>
           {!searchQuery && (
             <p className="lead">
@@ -366,13 +367,13 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
               <div className="row">
                 {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
                   <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
-                    <div 
-                      ref={expandedCompany === company._id ? cardRef : null} 
+                    <div
+                      ref={expandedCompany === company._id ? cardRef : null}
                       className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
                       onPointerMove={handleMouseMove}
                     >
                       {expandedCompany !== company._id && (
-                        <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px`}}><i className="bi bi-eye-fill"></i> More Info</div>
+                        <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
                       )}
                       <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                         <img
@@ -388,6 +389,9 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                       {expandedCompany === company._id && (
                         <div className="card-body ">
                           <p className="card-text">{company.description}</p>
+                          {company.b_score !== undefined && company.b_score !== null && (
+                            <BScoreChart className="b-score-chart" score={company.b_score} />
+                          )}
                           <ul>
                             {company.qualifications.map((qualification, i) => (
                               <li className="qualifications" key={i}>{qualification}</li>
