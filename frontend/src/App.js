@@ -13,6 +13,7 @@ import CustomNavbar from "./pages/Navbar";
 import ContactPage from "./pages/ContactPage";
 import RecentCompaniesPage from "./pages/RecentCompaniesPage";
 import CompaniesByCategory from "./pages/CompaniesByCategory";
+import AdminReportManager from "./pages/AdminReportManager";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -40,6 +41,7 @@ const App = () => {
                     <>
                         <Route path="/admin/products" element={<AdminConsole />} />
                         <Route path="/admin/companies" element={<AdminCompaniesPage />} />
+                        <Route path="/admin/manage-reports" element={<AdminReportManager />} />
                         <Route path="*" element={<Navigate to="/admin/products" />} />
                     </>
                 ) : (

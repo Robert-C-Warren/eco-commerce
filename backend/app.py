@@ -15,6 +15,8 @@ from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
 from pymongo.collation import Collation
+import requests
+from bs4 import BeautifulSoup
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -50,6 +52,7 @@ db = get_database()
 products_collection = db["products"]
 companies_collection = db["companies"]
 small_business_collection = db["smallbusiness"]
+reports_collection = db["reports"]
 subscribers = db["subscribers"]
 
 firebase_creds = {
@@ -64,6 +67,113 @@ cred = credentials.Certificate(firebase_creds)
 firebase_admin.initialize_app(cred, {"storageBucket": os.getenv("FIREBASE_STORAGE_BUCKET")})
 
 firebase_bucket = storage.bucket()
+
+SEC_USER_AGENT = "contact@ecocommerce.earth"
+CIK_LIST_URL = "https://www.sec.gov/files/company_tickers.json"
+
+# Function to get CIK from company name
+def get_cik(company_name):
+    try:
+        headers = {"User-Agent": SEC_USER_AGENT}
+        response = requests.get(CIK_LIST_URL, headers=headers, verify=True)  # Ensure SSL verification
+
+        if response.status_code != 200:
+            print(f"Error: Received status code {response.status_code}")
+            return None
+
+        cik_data = response.json()
+        for _, info in cik_data.items():
+            if company_name.lower() in info["title"].lower():
+                return str(info["cik_str"]).zfill(10)
+        return None
+    except requests.exceptions.RequestException as e:
+        print("Error fetching CIK:", e)
+        return None
+
+def get_sec_filings(cik):
+    try:
+        url = f"https://data.sec.gov/submissions/CIK{cik}.json"
+        headers = {"User-Agent": SEC_USER_AGENT}
+
+        response = requests.get(url, headers=headers, verify=True)  # Ensure SSL verification
+        if response.status_code != 200:
+            print(f"Error fetching SEC Filings: Status code {response.status_code}")
+            return None
+
+        filings = response.json().get("filings", {}).get("recent", {})
+
+        reports = [
+            {
+                "filingDate": filings["filingDate"][i],
+                "reportUrl": f"https://www.sec.gov/Archives/{filings['accessionNumber'][i].replace('-', '')}.txt"
+            }
+            for i in range(len(filings["form"]))
+            if filings["form"][i] == "10-K"
+        ]
+
+        return reports if reports else None
+    except requests.exceptions.RequestException as e:
+        print("Error fetching SEC Filings:", e)
+        return None
+
+# Extract ESG Infomation from 10-K Reports
+def extract_esg_data(report_url):
+    try:
+        response = requests.get(report_url, headers={"User Agent": SEC_USER_AGENT})
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        esg_sections = []
+        keywords = ["sustainability", "climate-risk", "carbon-footprint", "environmental impact"]
+
+        for paragraph in soup.find_all("p"):
+            text = paragraph.get_text()
+            if any(keyword in text.lower() for keyword in keywords):
+                esg_sections.append(text.strip())
+        return esg_sections if esg_sections else ["No ESG data found."]
+    except Exception as e:
+        print("Error extracting ESG data:", e)
+        return ["Error extracting ESG data."]
+    
+# Admin route to fetch & store SEC Reports
+@app.route("/admin/add_report", methods=["POST"])
+def add_report():
+    print("✅ Route /admin/add_report was hit!")    
+    try:
+        data = request.json
+        company_name = data.get("company_name")
+
+        cik = get_cik(company_name)
+        if not cik:
+            return jsonify({"error": "CIK not found"}), 404
+
+        reports = get_sec_filings(cik)
+        if not reports:
+            return jsonify({"error": "No 10-K reports found"}), 404
+
+        report_entries = []
+        for report in reports:
+            report["esg_data"] = extract_esg_data(report["reportUrl"])
+
+            report_entry = {
+                "company_name": company_name,
+                "cik": cik,
+                "reports": [report]  # Store each report as a separate entry
+            }
+            reports_collection.insert_one(report_entry)
+            report_entries.append(report_entry)
+
+        return jsonify({"message": "Reports added successfully!", "data": report_entries}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route("/admin/reports", methods=["GET"])
+def get_reports():
+    try:
+        reports = list(reports_collection.find({}, {"_id": 0}))
+        return jsonify(reports), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
@@ -647,6 +757,41 @@ def update_company_category(company_id):
         return jsonify({"message": "Category updated successfully"}), 200
     except InvalidId:
         return jsonify({"error": "Invalid company ID"}), 400
+
+@app.route('/admin/reports/<company_id>', methods=["POST"])
+def add_or_update_reports(company_id):
+    """
+    Allows an admin to manually add or update a report for a company
+    """
+    try:
+        data = request.json
+
+        required_fields = ["filing_date", "esg_data", "climate_risk", "report_links"]
+        if not all(field in data for field in required_fields):
+            return jsonify({"error": "Missing required fields"}), 400
+        
+        company = companies_collection.find_one({"_id": ObjectId(company_id)})
+        if not company:
+            return jsonify({"error": "Company not found"}), 404
+        
+        reports_collection.update_one(
+            {"company_id": company_id},
+            {"$set": {
+                "company_id": company_id,
+                "company_name": company["name"],
+                "filing_date": data["filing_date"],
+                "esg_data": data["esg_data"],
+                "climate_risk": data["climate_risk"],
+                "report_links": data["report_links"],
+                "added_at": datetime.utcnow(),
+            }},
+            upsert=True
+        )
+
+        return jsonify({"message": "Report added/updated successfully!"}), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/smallbusiness', methods=['GET'])
 def get_small_business():

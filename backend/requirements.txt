@@ -5,3 +5,4 @@ python-dotenv
 sib_api_v3_sdk
 werkzeug
 firebase-admin
+beautifulsoup4

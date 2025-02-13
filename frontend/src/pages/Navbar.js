@@ -22,7 +22,7 @@ const CustomNavbar = () => {
                 <img src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%"}}/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-nav" />
-            <Navbar.Collapse id="navbar-nav" style={{ fontWeight: "bold", fontSize: "1.5rem"}}>
+            <Navbar.Collapse id="navbar-nav" style={{ fontWeight: "bold", fontSize: "1.2rem"}}>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="/">
                         Home

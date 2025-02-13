@@ -318,6 +318,9 @@ const AdminConsole = () => {
                 <div className="col text-end">
                     <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>
                 </div>
+                <div className="col text-end">
+                    <Link to="/admin/manage-reports" className="btn btn-secondary mb-3">Admin Reports</Link>
+                </div>
             </div>
 
             <div className="new-product-card p-4 mb-4">
