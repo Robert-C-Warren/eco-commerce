@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import API_BASE_URL from "../components/urls";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify"
+import "./AdminReportManager.css"
 
 const AdminReportManager = () => {
     const [companies, setCompanies] = useState([])
@@ -6,8 +10,10 @@ const AdminReportManager = () => {
     const [selectedCompany, setSelectedCompany] = useState(null)
     const [formData, setFormData] = useState({
         filing_date: "",
-        esg_data: "",
-        climate_risk: "",
+        report_name: "",
+        report_details: "",
+        climate_impact: "",
+        sourcing_details: "",
         report_links: [],
     })
     const [newLink, setNewLink] = useState("")
@@ -15,37 +21,72 @@ const AdminReportManager = () => {
     // Fetch companies when searching
     useEffect(() => {
         if (searchQuery.length > 2) {
-            fetch(`/admin/companies?q=${searchQuery}`)
-                .then((res) => res.json())
-                .then((data) => setCompanies(data))
-                .catch((err) => console.error("Error fetching companies:", err))
+            axios
+                .get(`${API_BASE_URL}/companies/search`, {
+                    params: { q: searchQuery.trim() }, // ✅ Use correct search API
+                    headers: { "Content-Type": "application/json" },
+                })
+                .then((response) => {
+                    console.log("✅ Filtered Companies:", response.data); // Debugging
+                    setCompanies(response.data);
+                })
+                .catch((error) => {
+                    console.error("❌ Error fetching companies:", error);
+                    toast.error(`Failed to fetch companies: ${error.response?.status || "Unknown Error"}`, {
+                        autoClose: 2000,
+                    });
+                });
         }
-    }, [searchQuery])
+    }, [searchQuery]);
 
     // Fetch report when selecting a company
-    const fetchReport = (companyId) => {
-        fetch(`/reports/${companyId}`)
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.error) {
+    const fetchReport = (company) => {
+        console.log(`Fetching report for company: ${company.name} (ID: ${company._id})`); // ✅ Debugging
+    
+        axios
+            .get(`${API_BASE_URL}/reports/${company._id}`)
+            .then((response) => {
+                console.log("✅ Reports response:", response.data); // ✅ Debugging API response
+    
+                if (response.data.reports && response.data.reports.length > 0) {
+                    setFormData({
+                        report_name: response.data.reports[0].report_name || "",
+                        report_details: response.data.reports[0].report_details || "",
+                        climate_impact: response.data.reports[0].climate_impact || "",
+                        sourcing_details: response.data.reports[0].sourcing_details || "",
+                        report_links: response.data.reports[0].report_links || [],
+                    });
+                } else {
+                    console.log("ℹ No reports found for this company. Opening form for new entry.");
+                    setFormData({
+                        report_name: "",
+                        report_details: "",
+                        climate_impact: "",
+                        sourcing_details: "",
+                        report_links: [],
+                    });
+                }
+    
+                setSelectedCompany(company); // ✅ Ensure the selected company is updated
+                console.log("✅ Selected company set:", company); // ✅ Debugging
+            })
+            .catch((error) => {
+                console.error("❌ Error fetching report:", error.response?.data || error);
+                toast.error(`No reports found. You can add one now!`, { autoClose: 2000 });
+    
+                // ✅ Ensure form clears so the user can enter a new report
                 setFormData({
-                    filing_date: "",
-                    esg_data: "", 
-                    climate_risk: "",
+                    report_name: "",
+                    report_details: "",
+                    climate_impact: "",
+                    sourcing_details: "",
                     report_links: [],
-                })
-            } else {
-                setFormData({
-                    filing_date: data.filing_date || "",
-                    esg_data: data.esg_data || "",
-                    climate_risk: data.climate_risk || "",
-                    report_links: data.report_links || [],
-                })
-            }
-            setSelectedCompany({_id: companyId})
-        })
-        .catch((err) => console.error("Error fetching report:", err))
-    }
+                });
+    
+                setSelectedCompany(company); // ✅ Ensure company is still selected
+                console.log("✅ Selected company set (no report found):", company); // ✅ Debugging
+            });
+    };    
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -55,7 +96,7 @@ const AdminReportManager = () => {
     // Handle adding new report links
     const handleAddLink = () => {
         if (newLink.trim()) {
-            setFormData({ ...formData, report_links: [...formData.report_links, newLink.trim()]})
+            setFormData({ ...formData, report_links: [...formData.report_links, newLink.trim()] })
             setNewLink("")
         }
     }
@@ -69,22 +110,41 @@ const AdminReportManager = () => {
 
     // Submit report data
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+    
+        // ✅ Ensure "report_name" is provided
+        if (!formData.report_name.trim()) {
+            toast.error("Report name is required!", { autoClose: 2000 });
+            return;
+        }
+    
+        axios
+            .post(`${API_BASE_URL}/admin/reports/${selectedCompany._id}`, formData)
+            .then((response) => {
+                toast.success("Report added successfully!", { autoClose: 2000 });
+    
+                // ✅ Clear form after successful submission
+                setFormData({
+                    report_name: "",
+                    report_details: "",
+                    climate_impact: "",
+                    sourcing_details: "",
+                    report_links: [],
+                });
+    
+            })
+            .catch((error) => {
+                console.error("❌ Error adding report:", error.response?.data || error);
+                toast.error(`Failed to add report: ${error.response?.data?.error || "Unknown Error"}`, {
+                    autoClose: 2000,
+                });
+            });
+    };
 
-        fetch(`/admin/reports/${selectedCompany._id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        })
-        .then((res) => res.json())
-        .then((data) => alert(data.message || "Report saved successfully"))
-        .catch((err) => console.error("Error saving report:", err))
-    }
 
     return (
-        <div>
+        <div className="container-fluid">
+            <ToastContainer />
             <h2>Admin: Manage Reports</h2>
 
             {/* Search Bar */}
@@ -92,41 +152,49 @@ const AdminReportManager = () => {
 
             {/* Company List */}
             {companies.length > 0 && (
-                <ul>
+                <ul className="search-results-list">
                     {companies.map((company) => (
-                        <li key={company._id} onClick={() => fetchReport(company._id)}>{company.name}</li>
+                        <li key={company._id} className="search-results" onClick={() => fetchReport(company)}>
+                            {company.name}
+                        </li>
                     ))}
                 </ul>
             )}
 
             {/* Report Form */}
             {selectedCompany && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="report-form">
                     <h3>Editing Report for: {selectedCompany.name}</h3>
 
                     <label>Filing Date:</label>
-                    <input type="date" name="filing_date" value={formData.filing_date} onChange={handleChange} />
+                    <input type="date" name="filing_date" className="filing_date" value={formData.filing_date} onChange={handleChange} />
 
-                    <label>ESG Data:</label>
-                    <textarea name="esg_data" value={formData.esg_data} onChange={handleChange} />
+                    <label>Report Name:</label>
+                    <input type="text" name="report_name" className="report_name" value={formData.report_name} onChange={handleChange} />
 
-                    <label>Climate Risk Assesment:</label>
-                    <textarea name="climate_risk" value={formData.climate_risk} onChange={handleChange} />
+                    <label>Report Details:</label>
+                    <input type="text" name="report_details" className="report_details" value={formData.report_details} onChange={handleChange} />
+
+                    <label>Climate Impact:</label>
+                    <textarea name="climate_impact" className="climate_impact" value={formData.climate_impact} onChange={handleChange} />
+                    
+                    <label>Sourcing Details:</label>
+                    <textarea name="sourcing_details" className="sourcing_details" value={formData.sourcing_details} onChange={handleChange} />
 
                     <label>Report Links:</label>
                     <div>
-                        {formData.report_links.map((link, index) => {
+                        {formData.report_links.map((link, index) => (
                             <div key={index}>
-                                <span>{link}</span>
+                                <span >{link}</span>
                                 <button type="button" onClick={() => handleRemoveLink(index)}>Remove</button>
                             </div>
-                        })}
+                        ))}
                     </div>
 
-                    <input type="text" placeholder="Add new report link" value={newLink} onChange={(e) => setNewLink(e.target.value)} />
-                    <button type="button" onClick={handleAddLink}>Add Link</button>
+                    <input type="text" className="report-link" placeholder="Add new report link" value={newLink} onChange={(e) => setNewLink(e.target.value)} />
+                    <button type="button" className="add-link-btn" onClick={handleAddLink}>Add Link</button>
 
-                    <button type="submit">Save Report</button>
+                    <button type="submit" className="save-link-btn">Save Report</button>
                 </form>
             )}
         </div>

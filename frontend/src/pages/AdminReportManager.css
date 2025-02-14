@@ -1,0 +1,61 @@
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.search-results-list {
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-results {
+    font-size: 1.5rem;
+}
+
+label {
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.filing_date {
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.report_name, .report_details {
+    width: 95%;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.climate_impact, .sourcing_details {
+    width: 95%;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.report-link {
+    width: 90%;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.add-link-btn, .save-link-btn {
+    margin-top: 10px;
+    width: 20%;
+    height: 40px;
+}
