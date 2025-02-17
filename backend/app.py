@@ -744,9 +744,9 @@ def get_small_business():
 @app.route("/contact", methods=["POST"])
 def send_contact_email():
     """
-        Send an email using the Brevo transactional email API.
-        Validates required fields, handles optional file attachment (base64 encoded)
-        and builds the email payload to be sent.
+    Send an email using the Brevo transactional email API.
+    Validates required fields, handles optional file attachment (base64 encoded),
+    and builds the email payload to be sent.
     """
     try:
         # Validate API Key
@@ -754,23 +754,28 @@ def send_contact_email():
             print("🚨 ERROR: BREVO_API_KEY is not set!")
             return jsonify({"error": "Server misconfiguration. No API key found."}), 500
 
-        # Validate that required form data is present
-        if "name" not in request.form or "email" not in request.form or "message" not in request.form:
+        # Validate required form fields
+        if not all(field in request.form for field in ["name", "email", "message"]):
+            print("🚨 Missing form fields!")
             return jsonify({"error": "Missing form data"}), 400
 
-        # Extract data from form submission
+        # Extract form data
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
         file = request.files.get("file")
 
-        # Ensure none of the required fields are empty
+        # Debugging: Log received data
+        print(f"📥 Received form data: Name={name}, Email={email}, Message={message}")
+        print(f"📎 File received: {file.filename if file else 'No file uploaded'}")
+
+        # Ensure required fields are not empty
         if not name or not email or not message:
             return jsonify({"error": "All fields are required."}), 400
 
-        attachment_list = []  # List to store any file attachments
+        # Handle optional file attachment
+        attachment_list = []  # Default empty attachment list
 
-        # IF a file is provided and is not empty, save and encode it
         if file and file.filename:
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -780,7 +785,6 @@ def send_contact_email():
                 with open(file_path, "rb") as f:
                     encoded_file = base64.b64encode(f.read()).decode("utf-8")
 
-                # Add the properly formatted attachment to the list
                 attachment_list.append({
                     "content": encoded_file,
                     "name": filename
@@ -792,7 +796,7 @@ def send_contact_email():
         api_client = sib_api_v3_sdk.ApiClient(configuration)
         api_instance = sib_api_v3_sdk.TransactionalEmailsApi(api_client)
 
-        # Build Email content
+        # Build email content
         subject = "New Contact Form Submission"
         html_content = f"""
         <p><strong>Name:</strong> {name}</p>
@@ -801,20 +805,26 @@ def send_contact_email():
         <p>{message}</p>
         """
 
-        # Define sender and recipient information
+        # Define sender and recipient
         sender = {"email": "contact@ecocommerce.earth", "name": "EcoCommerce"}
         recipients = [{"email": "contact@ecocommerce.earth"}]
 
-        # Create the email payload with attachments (if any)
-        email_data = sib_api_v3_sdk.SendSmtpEmail(
-            to=recipients,
-            sender=sender,
-            subject=subject,
-            html_content=html_content,
-            attachment=attachment_list  # ✅ Ensure attachments are added as a list
-        )
+        # ✅ **Only include `attachment` if there is a file**
+        email_payload = {
+            "to": recipients,
+            "sender": sender,
+            "subject": subject,
+            "html_content": html_content
+        }
 
-        print("📨 Sending email with attachment to Sendinblue API...")
+        if attachment_list:
+            email_payload["attachment"] = attachment_list  # Only add if non-empty
+
+        # Debug: Print the final email payload before sending
+        print("📤 Sending Email Payload:", email_payload)
+
+        # Send email via Sendinblue API
+        email_data = sib_api_v3_sdk.SendSmtpEmail(**email_payload)
         api_response = api_instance.send_transac_email(email_data)
         pprint(api_response)
 
@@ -827,6 +837,8 @@ def send_contact_email():
     except Exception as e:
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

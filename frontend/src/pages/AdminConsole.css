@@ -4,10 +4,12 @@
     max-width: 90%;
     margin: 0 auto;
     height: 100vh;
+    margin-bottom: 20px;
 }
 
 .company-button {
     background-color: #357266;
+    color: #ffffff;
     border: none;
 }
 
