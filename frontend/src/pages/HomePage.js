@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./HomePage.css"
 import Logo from "../resources/ecocommercelogo.webp"
 
 const HomePage = () => {
+    const navigate = useNavigate();
 
     return (
         <div className="container-fluid my-4">
@@ -24,6 +26,10 @@ const HomePage = () => {
                     to prioritize companies that strive for excellence in sustainability and ethics, so we
                     can support a better future for everyone.
                 </p>
+            </div>
+            <div className="nav-buttons">
+                <button className="btn btn-dark products-btn" onClick={() => navigate("/products")}>Products</button>
+                <button className="btn btn-dark companies-btn" onClick={() => navigate("/companies")}>Companies</button>
             </div>
         </div>
     )

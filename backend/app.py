@@ -154,7 +154,6 @@ def get_product_by_id(product_id):
         Converts the MongoDB ObjectId to a string before returning
     """
     try:
-        product_id = product_id.strip()
         product = db.products.find_one({"_id": ObjectId(product_id)})
 
         if not product:
@@ -210,16 +209,19 @@ def add_product():
     """
     try:
         data = request.json
-        print("Recieved data:", data)
+        print("Received data:", data)
 
         # Ensure required fields exist
         required_fields = ["title", "website", "image", "company", "category", "price"]
         if not all(field in data for field in required_fields):
             return jsonify({"error": "Missing required fields"}), 400
 
+        if not isinstance(data["price"], str):
+            data["price"] = str(data["price"])
+
         data["createdAt"] = datetime.now(timezone.utc)
     
-        products_collection.insert_one(data)  # ✅ Insert into the correct "products" collection
+        db.products.insert_one(data)  # ✅ Insert into the correct "products" collection
 
         return jsonify({"message": "Product added successfully"}), 201
     except Exception as e:
@@ -230,29 +232,46 @@ def get_products():
     """
         Get products grouped by company.
         If a category query parameter is provided, filters by that category.
-        The aggreagation pipeline groups products by company and converts ObjectId to str.
+        The aggregation pipeline groups products by company and converts ObjectId to str.
     """
     category = request.args.get('category', None)
 
     try:
-        # Build aggreagtion pipeline dynamically
+        # Build aggregation pipeline dynamically
         pipeline = []
         if category:
-            pipeline.append({"$match": {"category": category}}) # Filter by category if provided
+            pipeline.append({"$match": {"category": category}})  # ✅ Filter by category if provided
 
         pipeline.extend([
-            {"$group": {
-                "_id": "$company",  # Group by company name
-                "products": {"$push": {
-                    "_id": {"$toString": "$_id"},  # Convert ObjectId to string
-                    "title": "$title",
-                    "website": "$website",
-                    "category": "$category",
-                    "image": "$image",
-                    "price": "$price"
-                }}
-            }},
-            {"$sort": {"_id": 1}}  # Sort companies alphabetically
+            {
+                "$lookup": {  # ✅ Join with the companies collection to get the company logo
+                    "from": "companies",
+                    "localField": "company",
+                    "foreignField": "name",
+                    "as": "company_details"
+                }
+            },
+            {
+                "$addFields": {  # ✅ Extract the first company logo (if exists)
+                    "company_logo": {"$arrayElemAt": ["$company_details.logo", 0]}
+                }
+            },
+            {
+                "$group": {  # ✅ Group by company name
+                    "_id": "$company",
+                    "company_logo": {"$first": "$company_logo"},  # ✅ Include logo in the group
+                    "products": {"$push": {
+                        "_id": {"$toString": "$_id"},  # ✅ Convert ObjectId to string
+                        "title": "$title",
+                        "company": "$company",
+                        "website": "$website",
+                        "category": "$category",
+                        "image": "$image",
+                        "price": "$price"
+                    }}
+                }
+            },
+            {"$sort": {"_id": 1}}  # ✅ Sort companies alphabetically
         ])
 
         grouped_products = list(db.products.aggregate(pipeline))
@@ -265,6 +284,44 @@ def get_products():
         traceback.print_exc()
         return jsonify({"error": f"Failed to fetch products: {str(e)}"}), 500
     
+@app.route("/companies/categories", methods=["GET"])
+def get_company_categories():
+    try:
+        categories = db.companies.distinct("category")  # ✅ Get unique categories
+        return jsonify(categories), 200
+    except Exception as e:
+        print(f"Error fetching company categories: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/products/categories", methods=["GET"])
+def get_product_categories():
+    try:
+        categories = db.products.distinct("category")  # ✅ Get unique categories
+        return jsonify(categories), 200
+    except Exception as e:
+        print(f"Error fetching product categories: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/products/category/<category_name>", methods=["GET"])
+def get_products_by_category(category_name):
+    """Retrieve products filtered by a specific category."""
+    try:
+        # ✅ Case-insensitive category matching
+        products = list(db.products.find({"category": {"$regex": f"^{category_name}$", "$options": "i"}}))
+
+        # Convert ObjectId to string
+        for product in products:
+            product["_id"] = str(product["_id"])
+
+        if not products:
+            return jsonify({"message": "No products found in this category"}), 404
+
+        return jsonify(products), 200
+    except Exception as e:
+        print(f"Error fetching products by category: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/admin/products/<id>", methods=["PATCH"])
 def update_product_visibilty(id):
     """
@@ -837,7 +894,6 @@ def send_contact_email():
     except Exception as e:
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
-
 
 
 if __name__ == "__main__":

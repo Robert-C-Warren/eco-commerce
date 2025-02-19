@@ -17,3 +17,21 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 .lead {
     font-size: 24px;
 }
+
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.products-btn, .companies-btn {
+    font-size: 2rem;
+    margin: 3rem;
+    width: 25rem;
+    color: black;
+    background-color: #A3BBAD;
+    border: none;
+}
+
+.products-btn:hover, .companies-btn:hover {
+    background-color: #357266;
+}

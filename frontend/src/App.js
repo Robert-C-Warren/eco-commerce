@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import ProductDetailPage from "./pages/ProductDetailPage";
 import AdminPage from "./pages/AdminPage";
 import AdminConsole from "./pages/AdminConsole";
 import CompaniesPage from "./pages/CompaniesPage";
@@ -14,6 +13,8 @@ import ContactPage from "./pages/ContactPage";
 import RecentCompaniesPage from "./pages/RecentCompaniesPage";
 import CompaniesByCategory from "./pages/CompaniesByCategory";
 import AdminReportManager from "./pages/AdminReportManager";
+import ProductsPage from "./pages/ProductsPage";
+import ProductsByCategory from "./pages/ProductsByCategory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -30,9 +31,9 @@ const App = () => {
                 <Route path="/smallbusiness" element={<CompaniesPage collection="smallbusiness" />} />
                 <Route path="/companies/recent" element={<RecentCompaniesPage />} />
                 <Route path="/companies/category/:categoryName" element={<CompaniesByCategory />} />
-                <Route path="/products" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/category/:categoryName" element={<ProductsByCategory />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/products/details/:id" element={<ProductDetailPage />} />
                 <Route path="/email" element={<SubscribePage />} />
                 <Route path="/products/category/:category" element={<HomePage />} />
                 <Route path="/search" element={<SearchResultsPage />} />
