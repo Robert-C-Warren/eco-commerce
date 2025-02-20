@@ -47,7 +47,7 @@ const CustomNavbar = () => {
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                     <Nav.Link as={Link} to="/products">Products</Nav.Link>
                     <Nav.Link as={Link} to="/companies">Companies</Nav.Link>
-                    <Nav.Link as={Link} to="/smallbusiness">Small Businesses</Nav.Link>
+                    {/* <Nav.Link as={Link} to="/smallbusiness">Small Businesses</Nav.Link> */}
                     <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
 
                     {/* Categories Dropdown */}

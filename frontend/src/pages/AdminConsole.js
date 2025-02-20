@@ -319,7 +319,7 @@ const AdminConsole = () => {
                     <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>
                 </div>
                 <div className="col text-end">
-                    <Link to="/admin/manage-reports" className="btn btn-secondary mb-3">Admin Reports</Link>
+                    <Link to="/admin/index" className="btn btn-secondary mb-3">Admin Sustainability Index</Link>
                 </div>
             </div>
 

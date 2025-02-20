@@ -42,39 +42,39 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
 
     const getCompanyLogo = (companyName) => {
         if (!companyName || typeof companyName !== "string") {
-          console.warn("⚠️ Missing or invalid company name:", companyName);
-          return "default-logo.png";  // ✅ Return a safe default image
+            console.warn("⚠️ Missing or invalid company name:", companyName);
+            return "default-logo.png";  // ✅ Return a safe default image
         }
-      
+
         const company = companies.find((c) => c.name?.toLowerCase() === companyName.toLowerCase());
         return company ? company.logo : "default-logo.png";
-      };   
-      
+    };
+
     const filteredProducts = searchQuery ? products.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description?.toLowerCase().includes(searchQuery.toLowerCase())
     ) : products
 
     const groupedProducts = searchQuery ? { "Search Results": filteredProducts } : products.reduce((acc, company) => {
-      if (!company.products || company.products.length === 0) {
-        console.warn("Company has no products:", company);
-        return acc; // Skip if no products
-      }
-
-      company.products.forEach((product) => {
-        if (!product.category) {
-          console.warn("Product missing category:", product);
+        if (!company.products || company.products.length === 0) {
+            console.warn("Company has no products:", company);
+            return acc; // Skip if no products
         }
 
-        const category = product.category && typeof product.category === "string"
-          ? product.category.trim()
-          : "Uncategorized";
+        company.products.forEach((product) => {
+            if (!product.category) {
+                console.warn("Product missing category:", product);
+            }
 
-        if (!acc[category]) acc[category] = [];
-        acc[category].push(product);
-      });
+            const category = product.category && typeof product.category === "string"
+                ? product.category.trim()
+                : "Uncategorized";
 
-      return acc;
+            if (!acc[category]) acc[category] = [];
+            acc[category].push(product);
+        });
+
+        return acc;
     }, {});
 
     const toggleCategory = (category) => {
@@ -142,11 +142,10 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                     {category}
                                 </h2>
                                 <i
-                                    className={`icon-toggler bi ${
-                                        expandedCategory === category
+                                    className={`icon-toggler bi ${expandedCategory === category
                                             ? "bi-arrows-collapse"
                                             : "bi-arrows-expand"
-                                    }`}
+                                        }`}
                                     onClick={() => toggleCategory(category)}
                                     style={{ cursor: "pointer" }}
                                 />
@@ -162,7 +161,14 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                     <div className="row">
                                         {groupedProducts[category]
                                             .filter((product) => product.title)
-                                            .sort((a, b) => (a.title || "").localeCompare(b.title || "")).map((product, index) => (
+                                            .sort((a, b) => {
+                                                const companyA = (a.company || "").toLowerCase();
+                                                const companyB = (b.company || "").toLowerCase();
+                                                if (companyA < companyB) return -1;
+                                                if (companyA > companyB) return 1;
+                                                return (a.title || "").localeCompare(b.title || "");
+                                            })
+                                            .map((product, index) => (
                                                 <div key={index} className="card-group col-lg-3 col-md-6 col-sm-12">
                                                     <div className="product-card">
                                                         <div className="card-header align-items-center">
@@ -175,14 +181,14 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                                         <div className="card-details">
                                                             <h5 className="card-title">{product.title}</h5>
                                                             <h6 className="card-price">{product.price}</h6>
-                                                                <a href={product.website} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                                                                    View Product
-                                                                </a>
+                                                            <a href={product.website} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                                                View Product
+                                                            </a>
                                                         </div>
 
                                                         <div className="card-footer text-center">
                                                             <img src={getCompanyLogo(product.company)} alt="Company Logo"
-                                                                style={{ width: "100px", height: "50px", objectFit: "contain" }} loading="lazy"/>
+                                                                style={{ width: "100px", height: "50px", objectFit: "contain" }} loading="lazy" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,6 +197,14 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                 </div>
                             </div>
                         ))}
+                    <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center"}}>
+                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                    <h5>
+                    All product prices are from the time that the product was added to the site.<br/>
+                    For current pricing, refer to the companies website.
+                    </h5>
+                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                </div>
             </div>
         </div>
     );

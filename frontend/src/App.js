@@ -15,11 +15,18 @@ import CompaniesByCategory from "./pages/CompaniesByCategory";
 import AdminReportManager from "./pages/AdminReportManager";
 import ProductsPage from "./pages/ProductsPage";
 import ProductsByCategory from "./pages/ProductsByCategory";
+import AdminTransparencyForm from "./pages/AdminTransparencyForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+    const [isAuthenticated, setIsAuthenticated] = React.useState(
+        localStorage.getItem("isAuthenticated") === "true"
+    );
+
+    React.useEffect(() => {
+        localStorage.setItem("isAuthenticated", isAuthenticated)
+    }, [isAuthenticated])
 
     return (
         <>
@@ -43,6 +50,7 @@ const App = () => {
                         <Route path="/admin/products" element={<AdminConsole />} />
                         <Route path="/admin/companies" element={<AdminCompaniesPage />} />
                         <Route path="/admin/manage-reports" element={<AdminReportManager />} />
+                        <Route path="/admin/index" element={<AdminTransparencyForm />} />
                         <Route path="*" element={<Navigate to="/admin/products" />} />
                     </>
                 ) : (

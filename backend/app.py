@@ -321,7 +321,6 @@ def get_products_by_category(category_name):
         print(f"Error fetching products by category: {e}")
         return jsonify({"error": str(e)}), 500
 
-
 @app.route("/admin/products/<id>", methods=["PATCH"])
 def update_product_visibilty(id):
     """
@@ -498,15 +497,112 @@ def update_company_specifics(id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/admin/index/<company_id>", methods=["GET"])
+def get_company_transparency_index(company_id):
+    """
+    Fetch the transparency index for a company, if available.
+    """
+    try:
+        if not ObjectId.is_valid(company_id):
+            return jsonify({"error": "Invalid company ID format"}), 400
+
+        object_id = ObjectId(company_id)
+
+        # 🔧 Improved query: Check `_id` as both ObjectId and string
+        index_data = db.index.find_one({
+            "$or": [{"_id": object_id}, {"_id": company_id}]
+        })
+
+        if not index_data:
+            return jsonify({"message": "No transparency index found"}), 404
+        
+        index_data["_id"] = str(index_data["_id"])
+        return jsonify(index_data), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    
+@app.route("/admin/index", methods=["POST"])
+def submit_transparency_index():
+    """Submit or update transparency index data for a company."""
+    try:
+        data = request.json
+
+        # Validate required fields
+        required_fields = ["company_id", "company_name", "sustainability", "ethical_sourcing", "materials", "carbon_energy", "transparency", "links"]
+        for field in required_fields:
+            if field not in data or not data[field]:
+                return jsonify({"error": f"Missing or invalid field: {field}"}), 400
+
+        company_id = data["company_id"]
+
+        # Ensure ObjectId is valid
+        try:
+            company_id_obj = ObjectId(company_id)
+        except Exception:
+            return jsonify({"error": "Invalid company_id format"}), 400
+
+        # Calculate total score
+        total_score = sum([
+            data.get("sustainability", 0),
+            data.get("ethical_sourcing", 0),
+            data.get("materials", 0),
+            data.get("carbon_energy", 0),
+            data.get("transparency", 0),
+        ])
+
+        # Assign transparency badge based on score
+        if total_score >= 90:
+            badge = "🟢 Excellent Transparency"
+        elif total_score >= 70:
+            badge = "🟡 Good Transparency"
+        elif total_score >= 50:
+            badge = "🟠 Moderate Transparency"
+        elif total_score >= 30:
+            badge = "🔴 Limited Transparency"
+        else:
+            badge = "⚪ Opaque (Minimal Info)"
+
+        # Prepare index data
+        index_entry = {
+            "_id": company_id_obj,
+            "company_name": data["company_name"],
+            "sustainability": {"score": data["sustainability"], "link": data["links"]["sustainability"]},
+            "ethical_sourcing": {"score": data["ethical_sourcing"], "link": data["links"]["ethical_sourcing"]},
+            "materials": {"score": data["materials"], "link": data["links"]["materials"]},
+            "carbon_energy": {"score": data["carbon_energy"], "link": data["links"]["carbon_energy"]},
+            "transparency": {"score": data["transparency"], "link": data["links"]["transparency"]},
+            "total_score": total_score,
+            "transparency_badge": badge,
+            "last_updated": datetime.datetime.utcnow()
+        }
+
+        # Save in `index` collection
+        db.index.update_one({"_id": company_id_obj}, {"$set": index_entry}, upsert=True)
+
+        # Update `companies` collection
+        db.companies.update_one(
+            {"_id": company_id_obj},
+            {"$set": {"transparency_score": total_score, "transparency_badge": badge}}
+        )
+
+        return jsonify({"message": "Transparency index updated successfully", "score": total_score, "badge": badge}), 200
+
+    except Exception as e:
+        print("❌ ERROR in /admin/index:", str(e))  # Log the error
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route('/companies', methods=['GET'])
 def get_companies():
     """
-        Retrieve companies from the DB.
-        Optionally filters companies by category if procided as a query parameter.
-        Uses collation to perform a case-insensitive sort on the "name" field.
+    Retrieve companies from the DB.
+    Optionally filters companies by category if provided as a query parameter.
+    Uses collation to perform a case-insensitive sort on the "name" field.
     """
     try:
-        db = get_database()
+        db = get_database()  # Ensure MongoDB connection is initialized
         category = request.args.get("category")
         query = {}
         if category:
@@ -516,12 +612,13 @@ def get_companies():
         companies = list(db.companies.find(query).collation(collation).sort("name", 1))
 
         for company in companies:
-            company["_id"] = str(company["_id"])
+            company["_id"] = str(company["_id"])  # Convert ObjectId to string
 
         return jsonify(companies), 200
     except Exception as e:
-        print(f"Error in /companies: {e}") 
+        print(f"Error in /companies: {e}")  # Log error in console
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/companies', methods=['POST'])
 def add_company():
@@ -894,7 +991,6 @@ def send_contact_email():
     except Exception as e:
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
