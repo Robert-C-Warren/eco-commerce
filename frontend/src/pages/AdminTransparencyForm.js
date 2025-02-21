@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import API_BASE_URL from "../components/urls";
+import { ToastContainer, toast } from "react-toastify"
+import "./AdminTransparencyForm.css"
 
 const AdminTransparencyForm = () => {
   const [companies, setCompanies] = useState([]);
@@ -109,7 +111,7 @@ const AdminTransparencyForm = () => {
 
     try {
       const response = await axios.post(`${API_BASE_URL}/admin/index`, formData);
-      setMessage(`Saved! Score: ${response.data.score}, Badge: ${response.data.badge}`);
+      toast.success(`Saved! Score: ${response?.data?.score}, Badge: ${response?.data?.badge}`, {autoClose: 2000 });
     } catch (error) {
       console.error("Error saving transparency data", error);
       setMessage("Failed to save transparency data.");
@@ -117,16 +119,17 @@ const AdminTransparencyForm = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid">
+      <ToastContainer />
       <h2>Admin - Transparency Index</h2>
 
-      {message && <div className="alert alert-info">{message}</div>}
+      {/* {message && <div className="alert alert-info">{message}</div>} */}
 
       {/* Company Dropdown */}
-      <div className="mb-3">
+      <div className="dropdown-container">
         <label className="form-label">Select Company</label>
         <select
-          className="form-select"
+          className="form-select dropdown"
           value={selectedCompany || ""}
           onChange={handleCompanySelect}
         >
@@ -141,14 +144,14 @@ const AdminTransparencyForm = () => {
 
       {/* Score Inputs */}
       {["sustainability", "ethical_sourcing", "materials", "carbon_energy", "transparency"].map((category) => (
-        <div key={category} className="mb-3">
-          <label className="form-label">
+        <div key={category} className="form-container-transp">
+          <label className="form-label score-label">
             {category.replace("_", " ").toUpperCase()} Score
           </label>
           <input
             type="number"
             placeholder={placeholders[category]}
-            className="form-control"
+            className="form-control score-input"
             name={category}
             value={formData?.[category] || ""}
             onChange={handleScoreChange}
@@ -158,7 +161,7 @@ const AdminTransparencyForm = () => {
           />
           <input
             type="url"
-            className="form-control mt-2"
+            className="form-control mt-2 score-input"
             placeholder="Source link"
             name={category}
             value={formData.links[category]}
@@ -169,7 +172,7 @@ const AdminTransparencyForm = () => {
       ))}
 
       {/* Submit Button */}
-      <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+      <button type="submit" className="btn btn-primary calculate-btn" onClick={handleSubmit}>
         Calculate & Save
       </button>
     </div>

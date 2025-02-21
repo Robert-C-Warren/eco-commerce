@@ -1,0 +1,38 @@
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-container {
+    text-align: center;
+}
+
+.dropdown {
+    width: 30rem;
+    font-size: 1.2rem;
+}
+
+.form-container-transp {
+    width: 50rem;
+    height: 10rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.score-input {
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+.score-label {
+    font-weight: 600;
+}
+
+.calculate-btn {
+    margin-top: 20px;
+    width: 20rem;
+    font-size: 1.5rem;
+}
