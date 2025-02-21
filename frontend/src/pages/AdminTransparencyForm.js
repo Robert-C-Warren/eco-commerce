@@ -8,11 +8,11 @@ const AdminTransparencyForm = () => {
   const [formData, setFormData] = useState({
     company_id: "",
     company_name: "",
-    sustainability: 0,
-    ethical_sourcing: 0,
-    materials: 0,
-    carbon_energy: 0,
-    transparency: 0,
+    sustainability: "",
+    ethical_sourcing: "",
+    materials: "",
+    carbon_energy: "",
+    transparency: "",
     links: {
       sustainability: "",
       ethical_sourcing: "",
@@ -23,7 +23,13 @@ const AdminTransparencyForm = () => {
   });
 
   const [message, setMessage] = useState("");
-
+  const placeholders = {
+    sustainability: "0-35",
+    ethical_sourcing: "0-25",
+    materials: "0-20",
+    carbon_energy: "0-10",
+    transparency: "0-10",
+  }
   // Fetch companies on load
   useEffect(() => {
     axios.get(`${API_BASE_URL}/companies`)
@@ -47,14 +53,14 @@ const AdminTransparencyForm = () => {
 
     setSelectedCompany(selectedId);
 
-    axios.get(`${API_BASE_URL}/admin/index/${encodeURIComponent(selectedId)}`)
+    axios.get(`${API_BASE_URL}/admin/index/${selectedId}`)
         .then((res) => {
             setFormData(res.data);
         })
         .catch((err) => {
             console.error("Error fetching company index data:", err);
             setFormData({
-                selectedId: selectedId,
+                company_id: selectedId,
                 company_name: companies.find(c => c.id === selectedId)?.name || "",
                 sustainability: 0,
                 ethical_sourcing: 0,
@@ -75,10 +81,11 @@ const AdminTransparencyForm = () => {
 
   // Handle input changes (scores)
   const handleScoreChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: Number(e.target.value),
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value === "" ? "" : Number(value), // Converts input to number but allows empty state
+    }));
   };
 
   // Handle input changes (links)
@@ -136,17 +143,18 @@ const AdminTransparencyForm = () => {
       {["sustainability", "ethical_sourcing", "materials", "carbon_energy", "transparency"].map((category) => (
         <div key={category} className="mb-3">
           <label className="form-label">
-            {category.replace("_", " ").toUpperCase()} Score (0-35)
+            {category.replace("_", " ").toUpperCase()} Score
           </label>
           <input
             type="number"
+            placeholder={placeholders[category]}
             className="form-control"
             name={category}
-            value={formData[category]}
+            value={formData?.[category] || ""}
             onChange={handleScoreChange}
-            min="0"
-            max="35"
             required
+            inputMode="numeric"
+            style={{ appearance: 'textfield' }}
           />
           <input
             type="url"

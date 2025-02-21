@@ -20,12 +20,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(
-        localStorage.getItem("isAuthenticated") === "true"
-    );
+    const [isAuthenticated, setIsAuthenticated] = React.useState(() => {
+        return localStorage.getItem("isAuthenticated") === "true"
+    });
 
     React.useEffect(() => {
-        localStorage.setItem("isAuthenticated", isAuthenticated)
+        const storedValue = localStorage.getItem("isAuthenticated")
+        if (storedValue !== String(isAuthenticated)) {
+            localStorage.setItem("isAuthenticated", isAuthenticated)
+        }
     }, [isAuthenticated])
 
     return (

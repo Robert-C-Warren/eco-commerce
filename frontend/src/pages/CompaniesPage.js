@@ -196,7 +196,9 @@ const availableIcons = [
 const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true)
-  const [expandedCompany, setExpandedCompany] = useState(null)
+  const [expandedCompany, setExpandedCompany] = React.useState(
+    sessionStorage.getItem("expandedCompany") || null
+  )
   const [expandedCategory, setExpandedCategory] = useState(null)
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
   const categoryRefs = useRef({})
@@ -205,19 +207,20 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 
   useEffect(() => {
     const fetchCompanies = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/${collection}`);
-        const data = await response.json();
-        setCompanies(data)
-      } catch (error) {
-        console.error("Error fetching companies", error);
-      } finally {
-        setLoading(false)
-      }
+        try {
+            const response = await fetch(`${API_BASE_URL}/${collection}`);
+            const data = await response.json();
+            console.log("Fetched Companies Data:", data);  // ✅ Check API response
+            setCompanies(data);
+        } catch (error) {
+            console.error("Error fetching companies", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     fetchCompanies();
-  }, [collection]);
+}, [collection]);
 
   useEffect(() => {
     const existingToolTips = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -281,7 +284,9 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 
 
   const toggleExpand = (id) => {
-    setExpandedCompany((prev) => (prev === id ? null : id))
+    const newExpanded = expandedCompany === String(id) ? null : String(id)
+    setExpandedCompany(newExpanded)
+    sessionStorage.setItem("expandedCompany", newExpanded)
   }
 
   const toggleCategory = (category) => {
@@ -366,14 +371,14 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                 {groupedCompanies[category].sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
                   <div key={index} className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""}`}>
                     <div
-                      ref={expandedCompany === company._id ? cardRef : null}
+                      ref={expandedCompany === String(company._id) ? cardRef : null}
                       className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
                       onPointerMove={handleMouseMove}
                     >
                       {expandedCompany !== company._id && (
                         <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
                       )}
-                      <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                      <div className="align-items-center card-header-expanded" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                         <img
                           src={company.logo}
                           className="card-img-top"
@@ -422,6 +427,7 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                                   ) : null;
                                 })}
                               </div>
+                              <h4 className="index-score">{company.transparency_score} {company.transparency_score}</h4>
                             </div>
                             <div className="d-flex">
                               <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>

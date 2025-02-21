@@ -500,7 +500,7 @@ def update_company_specifics(id):
 @app.route("/admin/index/<company_id>", methods=["GET"])
 def get_company_transparency_index(company_id):
     """
-    Fetch the transparency index for a company, if available.
+    Fetch the transparency index for a company, or return a default template if none exists.
     """
     try:
         if not ObjectId.is_valid(company_id):
@@ -514,14 +514,33 @@ def get_company_transparency_index(company_id):
         })
 
         if not index_data:
-            return jsonify({"message": "No transparency index found"}), 404
-        
+            # If no index data exists, return a default template
+            company = db.companies.find_one({"_id": object_id})
+            if not company:
+                return jsonify({"error": "Company not found"}), 404
+
+            return jsonify({
+                "company_id": company_id,
+                "company_name": company.get("name", "Unknown"),
+                "sustainability": 0,
+                "ethical_sourcing": 0,
+                "materials": 0,
+                "carbon_energy": 0,
+                "transparency": 0,
+                "links": {
+                    "sustainability": "",
+                    "ethical_sourcing": "",
+                    "materials": "",
+                    "carbon_energy": "",
+                    "transparency": "",
+                },
+            }), 200
+
         index_data["_id"] = str(index_data["_id"])
         return jsonify(index_data), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
     
 @app.route("/admin/index", methods=["POST"])
 def submit_transparency_index():
@@ -532,8 +551,8 @@ def submit_transparency_index():
         # Validate required fields
         required_fields = ["company_id", "company_name", "sustainability", "ethical_sourcing", "materials", "carbon_energy", "transparency", "links"]
         for field in required_fields:
-            if field not in data or not data[field]:
-                return jsonify({"error": f"Missing or invalid field: {field}"}), 400
+            if field not in data:
+                return jsonify({"error": f"Missing field: {field}"}), 400
 
         company_id = data["company_id"]
 
@@ -553,7 +572,7 @@ def submit_transparency_index():
         ])
 
         # Assign transparency badge based on score
-        if total_score >= 90:
+        if total_score >= 85:
             badge = "🟢 Excellent Transparency"
         elif total_score >= 70:
             badge = "🟡 Good Transparency"
@@ -566,7 +585,7 @@ def submit_transparency_index():
 
         # Prepare index data
         index_entry = {
-            "_id": company_id_obj,
+            "_id": company_id_obj,  # ✅ Ensure correct _id format
             "company_name": data["company_name"],
             "sustainability": {"score": data["sustainability"], "link": data["links"]["sustainability"]},
             "ethical_sourcing": {"score": data["ethical_sourcing"], "link": data["links"]["ethical_sourcing"]},
@@ -575,7 +594,7 @@ def submit_transparency_index():
             "transparency": {"score": data["transparency"], "link": data["links"]["transparency"]},
             "total_score": total_score,
             "transparency_badge": badge,
-            "last_updated": datetime.datetime.utcnow()
+            "last_updated": datetime.utcnow()
         }
 
         # Save in `index` collection
@@ -590,9 +609,7 @@ def submit_transparency_index():
         return jsonify({"message": "Transparency index updated successfully", "score": total_score, "badge": badge}), 200
 
     except Exception as e:
-        print("❌ ERROR in /admin/index:", str(e))  # Log the error
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/companies', methods=['GET'])
 def get_companies():
@@ -618,7 +635,6 @@ def get_companies():
     except Exception as e:
         print(f"Error in /companies: {e}")  # Log error in console
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/companies', methods=['POST'])
 def add_company():
