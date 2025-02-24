@@ -233,46 +233,59 @@ const NewCompanyForm = () => {
   // On success, invalidate the "companies" query so the list refetches
   const addCompanyMutation = useMutation({
     mutationFn: async (newCompany) => {
-      if (file) {
-        // Upload the file if a file is selected
-        const formData = new FormData()
-        formData.append("file", file)
+        const mfaToken = localStorage.getItem("mfaToken");
 
-        try {
-          const response = await fetch(`${API_BASE_URL}/upload-logo`, {
-            method: "POST",
-            body: formData
-          })
-          const data = await response.json()
-          if (data.file_url) {
-            newCompany.logo = data.file_url
-          }
-        } catch (error) {
-          toast.error("Failed to upload logo")
-          return
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
         }
-      }
 
-      return API.post(`${API_BASE_URL}/companies`, newCompany)
+        if (file) {
+            // Upload the file if a file is selected
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/upload-logo`, {
+                    method: "POST",
+                    body: formData,
+                    headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+                });
+
+                const data = await response.json();
+                if (data.file_url) {
+                    newCompany.logo = data.file_url;
+                }
+            } catch (error) {
+                toast.error("Failed to upload logo");
+                return Promise.reject("Failed to upload logo");
+            }
+        }
+
+        return API.post(`${API_BASE_URL}/companies`, newCompany, {
+            headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+        });
     },
+
     onSuccess: () => {
-      toast.success("Company added successfully", { autoClose: 2000 })
-      queryClient.invalidateQueries(["companies"])
-      setFormData({
-        name: "",
-        description: "",
-        qualifications: "",
-        logo: "",
-        website: "",
-        category: "",
-      })
-      setFile(null)
+        toast.success("Company added successfully", { autoClose: 2000 });
+        queryClient.invalidateQueries(["companies"]);
+        setFormData({
+            name: "",
+            description: "",
+            qualifications: "",
+            logo: "",
+            website: "",
+            category: "",
+        });
+        setFile(null);
     },
+
     onError: () => {
-      toast.error("Failed to add company")
+        toast.error("Failed to add company");
     },
-  }
-  )
+  });
+
 
   // Handle checkbox change for small business
   const handleCheckboxChange = (e) => {
@@ -397,109 +410,167 @@ const CompanyCard = ({ company, availableIcons }) => {
 
   // Mutation to delete a company
   const deleteCompanyMutation = useMutation({
-    mutationFn: (companyId) => API.delete(`${API_BASE_URL}/companies/${companyId}`),
+    mutationFn: (companyId) => {
+        const mfaToken = localStorage.getItem("mfaToken");  // Get MFA code from storage
+
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
+        }
+
+        return API.delete(`${API_BASE_URL}/companies/${companyId}`, {
+            headers: { Authorization: `Bearer ${mfaToken}` }  // Send MFA code as token
+        });
+    },
 
     onSuccess: () => {
-      toast.success("Company deleted successfully", { autoClose: 2000 })
-      queryClient.invalidateQueries(["companies"])
+        toast.success("Company deleted successfully", { autoClose: 2000 });
+        queryClient.invalidateQueries(["companies"]);
     },
     onError: () => {
-      toast.error("Failed to delete company")
+        toast.error("Failed to delete company");
     }
-  }
-  )
+  });
 
   // Mutation to update entire company or partial updates
   const editCompanyMutation = useMutation({
     mutationFn: async ({ companyId, updateFields, file }) => {
-      if (!companyId) {
-        console.error("❌ Company ID is missing!");
-        return;
-      }
-  
-      const formData = new FormData();
-  
-      Object.keys(updateFields).forEach((key) => {
-        if (updateFields[key]) {
-          formData.append(key, updateFields[key]);  
+        if (!companyId) {
+            console.error("❌ Company ID is missing!");
+            return Promise.reject("Company ID is required");
         }
-      });
-  
-      if (file) {
-        console.log("📂 Adding file to FormData:", file.name);
-        formData.append("file", file);
-      } else {
-        console.log("⚠️ No file added to FormData.");
-      }
-  
-      console.log("🚀 Sending PUT request to:", `${API_BASE_URL}/companies/${companyId}`);
-  
-      const response = await fetch(`${API_BASE_URL}/companies/${companyId}`, {
-        method: "PUT",
-        body: formData,
-      });
-  
-      const data = await response.json();
-      console.log("🔄 Server response:", data);
-  
-      if (!response.ok) {
-        throw new Error("❌ Failed to update company");
-      }
-  
-      return data;
+
+        const mfaToken = localStorage.getItem("mfaToken");
+
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
+        }
+
+        const formData = new FormData();
+
+        Object.keys(updateFields).forEach((key) => {
+            if (updateFields[key]) {
+                formData.append(key, updateFields[key]);  
+            }
+        });
+
+        if (file) {
+            console.log("📂 Adding file to FormData:", file.name);
+            formData.append("file", file);
+        } else {
+            console.log("⚠️ No file added to FormData.");
+        }
+
+        console.log("🚀 Sending PUT request to:", `${API_BASE_URL}/companies/${companyId}`);
+
+        const response = await fetch(`${API_BASE_URL}/companies/${companyId}`, {
+            method: "PUT",
+            body: formData,
+            headers: {
+                Authorization: `Bearer ${mfaToken}`  // ✅ Include MFA token
+            }
+        });
+
+        const data = await response.json();
+        console.log("🔄 Server response:", data);
+
+        if (!response.ok) {
+            throw new Error("❌ Failed to update company");
+        }
+
+        return data;
     },
+
     onSuccess: () => {
-      toast.success("✅ Company updated successfully!", { autoClose: 2000 });
-      queryClient.invalidateQueries(["companies"]); // Forces React to fetch updated data
-      closeModal();
+        toast.success("✅ Company updated successfully!", { autoClose: 2000 });
+        queryClient.invalidateQueries(["companies"]); // Forces React to fetch updated data
+        closeModal();
     },
+
     onError: (error) => {
-      console.error("❌ Update Error:", error);
-      toast.error("Failed to update company");
+        console.error("❌ Update Error:", error);
+        toast.error("Failed to update company");
     }
   });
   
   // Partial update for specifics
   const updateSpecificsMutation = useMutation({
-    mutationFn: ({ companyId, specifics }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, { specifics }),
+    mutationFn: ({ companyId, specifics }) => {
+        const mfaToken = localStorage.getItem("mfaToken");
+
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
+        }
+
+        return API.patch(`${API_BASE_URL}/admin/companies/${companyId}/specifics`, 
+            { specifics }, 
+            { headers: { Authorization: `Bearer ${mfaToken}` } } // ✅ Include MFA token
+        );
+    },
 
     onSuccess: () => {
-      toast.success("Specifics updated successfully", { autoClose: 3000 })
-      queryClient.invalidateQueries(["companies"])
+        toast.success("Specifics updated successfully", { autoClose: 3000 });
+        queryClient.invalidateQueries(["companies"]);
     },
     onError: () => {
-      toast.error("Failed to update specifics")
+        toast.error("Failed to update specifics");
     }
-  }
-  )
+  });
 
-  // Partial update for icons
+
+// ✅ Partial update for icons with MFA
   const updateIconsMutation = useMutation({
-    mutationFn: ({ companyId, icons }) => API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, { icons }),
+    mutationFn: ({ companyId, icons }) => {
+        const mfaToken = localStorage.getItem("mfaToken");
+
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
+        }
+
+        return API.patch(`${API_BASE_URL}/admin/companies/${companyId}/icons`, 
+            { icons }, 
+            { headers: { Authorization: `Bearer ${mfaToken}` } } // ✅ Include MFA token
+        );
+    },
 
     onSuccess: () => {
-      toast.success("Icons updated successfully", { autoClose: 3000 })
-      queryClient.invalidateQueries(["companies"])
+        toast.success("Icons updated successfully", { autoClose: 3000 });
+        queryClient.invalidateQueries(["companies"]);
     },
     onError: () => {
-      toast.error("Failed to update icons")
+        toast.error("Failed to update icons");
     }
-  }
-  )
+  });
 
-  // Partial update for category{
+
+// ✅ Partial update for category with MFA
   const updateCategoryMutation = useMutation({
-    mutationFn: ({ companyId, category }) => API.patch(`${API_BASE_URL}/companies/${companyId}/category`, { category }),
+    mutationFn: ({ companyId, category }) => {
+        const mfaToken = localStorage.getItem("mfaToken");
+
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.");
+            return Promise.reject("Unauthorized: No MFA token");
+        }
+
+        return API.patch(`${API_BASE_URL}/companies/${companyId}/category`, 
+            { category }, 
+            { headers: { Authorization: `Bearer ${mfaToken}` } } // ✅ Include MFA token
+        );
+    },
 
     onSuccess: () => {
-      toast.success("Category updated successfully", { autoClose: 3000 })
-      queryClient.invalidateQueries(["companies"])
+        toast.success("Category updated successfully", { autoClose: 3000 });
+        queryClient.invalidateQueries(["companies"]);
     },
     onError: () => {
-      toast.error("Failed to update category")
+        toast.error("Failed to update category");
     }
-  }
-  )
+  });
+
 
   // Handle toggling icons in local state before saving
   const toggleIcon = (iconId) => {
@@ -524,6 +595,8 @@ const CompanyCard = ({ company, availableIcons }) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    console.log("📂 Selected file:", file.name);
+
     const storageRef = ref(storage, `logos/${Date.now()}_${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -533,33 +606,48 @@ const CompanyCard = ({ company, availableIcons }) => {
         console.log(`Upload progress: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100}%`);
       },
       (error) => {
-        console.error("Upload failed:", error);
+        console.error("❌ Upload failed:", error);
         toast.error("Failed to upload logo");
       },
       async () => {
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        setFormData((prev) => ({ ...prev, logo: downloadURL }));
-        toast.success("Logo uploaded successfully");
+        try {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log("✅ File uploaded. URL:", downloadURL);
+          setFormData((prev) => ({ ...prev, logo: downloadURL }));
+          toast.success("Logo uploaded successfully");
+        } catch (err) {
+          console.error("❌ Error retrieving file URL:", err);
+          toast.error("Failed to retrieve logo URL");
+        }
       }
     );
   };
 
+  // Handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-  if (!formData.name || !formData.description) {
-    toast.error("Name and description are required!");
-    return;
-  }
+    if (!formData.name || !formData.description) {
+        toast.error("Name and description are required!");
+        return;
+    }
 
-  console.log("🚀 Submitting form with file:", selectedFile);
+    console.log("🚀 Submitting form with file:", selectedFile);
 
-  editCompanyMutation.mutate({
-    companyId: company._id,
-    updateFields: formData,
-    file: selectedFile, // Pass selected file
-  });
-  }
+    const mfaToken = localStorage.getItem("mfaToken");
+
+    if (!mfaToken) {
+        toast.error("MFA required. Please log in again.");
+        return;
+    }
+
+    editCompanyMutation.mutate({
+        companyId: company._id,
+        updateFields: formData,
+        file: selectedFile, // Pass selected file
+        mfaToken // ✅ Include MFA token
+    });
+  };
 
   const closeModal = () => {
     setIsEditing(false)

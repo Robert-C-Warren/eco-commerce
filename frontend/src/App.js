@@ -16,8 +16,11 @@ import AdminReportManager from "./pages/AdminReportManager";
 import ProductsPage from "./pages/ProductsPage";
 import ProductsByCategory from "./pages/ProductsByCategory";
 import AdminTransparencyForm from "./pages/AdminTransparencyForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import AdminRegister from "./pages/AdminRegister"
+import { Nav } from "react-bootstrap";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(() => {
@@ -47,19 +50,22 @@ const App = () => {
                 <Route path="/email" element={<SubscribePage />} />
                 <Route path="/products/category/:category" element={<HomePage />} />
                 <Route path="/search" element={<SearchResultsPage />} />
-                <Route path="/admin" element={<AdminPage onLogin={setIsAuthenticated} />} />
-                {isAuthenticated ? (
-                    <>
-                        <Route path="/admin/products" element={<AdminConsole />} />
-                        <Route path="/admin/companies" element={<AdminCompaniesPage />} />
-                        <Route path="/admin/manage-reports" element={<AdminReportManager />} />
-                        <Route path="/admin/index" element={<AdminTransparencyForm />} />
-                        <Route path="*" element={<Navigate to="/admin/products" />} />
-                    </>
-                ) : (
-                    <Route path="*" element={<Navigate to="/admin" />} />
-                
-                )}   
+
+                {/* Admin login route */}
+                <Route path="/admin/login" element={<AdminPage onLogin={setIsAuthenticated} />} />
+                <Route path="/admin/register" element={<AdminRegister />} />
+
+                {/* Protected admin routes */}
+                <Route path="/admin/*" element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+                    <Route path="products" element={<AdminConsole />} />
+                    <Route path="companies" element={<AdminCompaniesPage />} />
+                    <Route path="manage-reports" element={<AdminReportManager />} />
+                    <Route path="index" element={<AdminTransparencyForm />} />
+                    <Route index element={<Navigate to="login" replace />} />
+                </Route>
+
+                {/* Catch-all redirect */}
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </>
     );

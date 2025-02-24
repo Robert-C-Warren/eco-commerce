@@ -15,8 +15,10 @@ from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from werkzeug.utils import secure_filename
 from pymongo.collation import Collation
-import requests
-from bs4 import BeautifulSoup
+import pyotp
+import bcrypt
+from functools import wraps
+
 
 availableIcons = [
     { "id": "b_corp", "label": "B Corp", "src": "../frontend/src/resources/icons/bcorp.png"},
@@ -37,6 +39,8 @@ CORS(app, supports_credentials=True, resources={
 })
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+SA_EMAIL = os.getenv("SA_EMAIL")
+SA_PASSWORD = os.getenv("SA_PASSWORD")
 
 # Brevo API Configuration for contact capability
 configuration = sib_api_v3_sdk.Configuration()
@@ -54,6 +58,7 @@ companies_collection = db["companies"]
 small_business_collection = db["smallbusiness"]
 reports_collection = db["reports"]
 subscribers = db["subscribers"]
+admins_collection = db["admins"]
 
 firebase_creds = {
     "type": "service_account",
@@ -76,6 +81,30 @@ def get_reports():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+def mfa_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        mfa_token = request.headers.get("Authorization")
+
+        if not mfa_token:
+            return jsonify({"message": "Unauthorized: MFA code missing"}), 401
+        
+        try:
+            mfa_code = mfa_token.split(" ")[1]
+            admin = db.admins.find_one({"mfa_secret": {"$exists": True}})
+
+            if not admin:
+                return jsonify({"message": "Unauthorized: User not found"}), 403
+            
+            totp = pyotp.TOTP(admin["mfa_secret"])
+            if not totp.verify(mfa_code):
+                return jsonify({"message": "Unauthorized: Invalid MFA code."}), 401
+            
+            return f(admin, *args, **kwargs)
+        except Exception as e:
+            return jsonify({"message": f"Unauthorized: {str(e)}"}), 401
+    return decorated
+
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
     if not text:
@@ -84,6 +113,51 @@ def normalize_text(text):
         c for c in normalize('NFKD', text)
         if not combining(c)
     ).lower()
+
+def send_sa_notification(new_admin_email):
+    """
+    Sends an email to the Super Admin notifying them about a new admin registration.
+    """
+    try:
+        sa_email = SA_EMAIL  # Get SA email from environment variable
+
+        if not sa_email:
+            print("🚨 ERROR: SA_EMAIL is not set! No notification sent.")
+            return
+
+        # Initialize Brevo API client
+        api_client = sib_api_v3_sdk.ApiClient(configuration)
+        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(api_client)
+
+        subject = "New Admin Registration Request"
+        html_content = f"""
+        <p>A new admin has registered and is awaiting approval:</p>
+        <ul>
+            <li><strong>Email:</strong> {new_admin_email}</li>
+        </ul>
+        <p>Please log in to approve or reject the request.</p>
+        """
+
+        sender = {"email": "contact@ecocommerce.earth", "name": "EcoCommerce"}
+        recipients = [{"email": sa_email}]
+
+        email_payload = {
+            "to": recipients,
+            "sender": sender,
+            "subject": subject,
+            "html_content": html_content
+        }
+
+        # Send email via Brevo API
+        email_data = sib_api_v3_sdk.SendSmtpEmail(**email_payload)
+        api_instance.send_transac_email(email_data)
+
+        print(f"✅ Notification sent to SA: {sa_email}")
+
+    except ApiException as e:
+        print(f"🚨 Brevo API Error: {e}")
+    except Exception as e:
+        print(f"🚨 Unexpected error in SA notification: {e}")
 
 @app.before_request
 def handle_options_request():
@@ -166,19 +240,8 @@ def get_product_by_id(product_id):
         print(f"Error fetching product: {e}")
         return jsonify({"error": str(e)}), 500
 
-@app.route("/admin/login", methods=['POST'])
-def admin_login():
-    """
-        Admin login endpoint.
-        Checks the provided password again env variable set password.
-    """
-    data = request.json
-    if data.get("password") == ADMIN_PASSWORD:
-        return jsonify({"success": True, "message": "Login Successful"}), 200
-    else:
-        return jsonify({"success": False, "message": "Invalid"}), 401
-
 @app.route("/admin/products/<id>/categories", methods=["PATCH"])
+@mfa_required
 def update_product_category(id):
     """
         Update the categories for a specific product.
@@ -322,6 +385,7 @@ def get_products_by_category(category_name):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>", methods=["PATCH"])
+@mfa_required
 def update_product_visibilty(id):
     """
         Update the visibility of a product.
@@ -345,6 +409,7 @@ def update_product_visibilty(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>", methods=["DELETE"])
+@mfa_required
 def delete_product_admin(id):
     """
         Delete a product by its ID from the admin endpoint.
@@ -359,6 +424,7 @@ def delete_product_admin(id):
         return jsonify({"error": str(e)}), 500
     
 @app.route("/admin/products/<id>/edit", methods=["PATCH"])
+@mfa_required
 def edit_product_title(id):
     """
         Edit products title, expects JSON key "summary" for new title.
@@ -380,6 +446,7 @@ def edit_product_title(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products", methods=["GET"])
+@mfa_required
 def get_all_products():
     """
         Retrieve all products from the DB.
@@ -439,6 +506,7 @@ def search_companies():
         return jsonify({"error": "Internal Server Error"}), 500
     
 @app.route("/admin/companies/<id>/icons", methods=["PATCH"])
+@mfa_required
 def update_company_icons(id):
     """
         Update icons for companies.
@@ -471,6 +539,7 @@ def update_company_icons(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/companies/<id>/specifics", methods=["PATCH"])
+@mfa_required
 def update_company_specifics(id):
     """
         Update the "specifics" field for a company.
@@ -498,6 +567,7 @@ def update_company_specifics(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/index/<company_id>", methods=["GET"])
+@mfa_required
 def get_company_transparency_index(company_id):
     """
     Fetch the transparency index for a company, or return a default template if none exists.
@@ -543,6 +613,7 @@ def get_company_transparency_index(company_id):
         return jsonify({"error": str(e)}), 500
     
 @app.route("/admin/index", methods=["POST"])
+@mfa_required
 def submit_transparency_index():
     """Submit or update transparency index data for a company."""
     try:
@@ -850,6 +921,7 @@ def update_company_category(company_id):
         return jsonify({"error": "Invalid company ID"}), 400
 
 @app.route('/admin/reports/<company_id>', methods=["POST"])
+@mfa_required
 def add_or_update_reports(company_id):
     """
     Allows an admin to manually add or update a report for a company
@@ -898,6 +970,192 @@ def add_or_update_reports(company_id):
         import traceback
         traceback.print_exc()  # ✅ Print the full error in the console
         return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
+@app.route('/admin/register', methods=['POST'])
+def register_admin():
+    """
+    Step 1: Register a new admin.
+    - The account remains "pending" until the SA approves it.
+    - Sends an email notification to the Super Admin.
+    """
+    try:
+        data = request.json
+        email = data.get("email")
+        password = data.get("password")
+
+        if not email or not password:
+            return jsonify({"error": "Email and password are required"}), 400
+
+        # Check if email already exists
+        if db.admins.find_one({"email": email}):
+            return jsonify({"error": "Email already registered"}), 400
+
+        # Hash password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+        # Insert new admin with "pending" status
+        db.admins.insert_one({
+            "email": email,
+            "password": hashed_password,
+            "status": "pending",  # ✅ Admin remains pending until approved
+            "mfa_secret": None,
+            "role": "admin"
+        })
+
+        # ✅ Send Email Notification to Super Admin
+        send_sa_notification(email)
+
+        return jsonify({"message": "Admin account created. Waiting for SA approval."}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route("/admin/approve/<admin_id>", methods=["PATCH"])
+@mfa_required
+def approve_admin(admin_id):
+    """
+    Approve a pending admin.
+    Only SA can perform this action.
+    """
+    sa_email = request.json.get(SA_EMAIL)
+    sa_password = request.json.get(SA_PASSWORD)
+
+    super_admin = db.admins.find_one({"email": sa_email, "role": "super_admin"})
+
+    if not super_admin or not bcrypt.checkpw(sa_password.encode('utf-8'), super_admin["password"].encode('utf-8')):
+        return jsonify({"error": "Unauthorized"}), 403
+    
+    updated = db.admins.update_one(
+        {"_id": ObjectId(admin_id), "status": "pending"},
+        {"$set": {"status": "approved"}}
+    )
+
+    if updated.modified_count == 1:
+        return jsonify({"message": "Admin approved"}), 200
+    else:
+        return jsonify({"error": "Admin not found or already approved"}), 404
+
+@app.route("/admin/reject/<admin_id>", methods=["DELETE"])
+def reject_admin(admin_id):
+    """
+    Step 2: SA manually rejects and deletes a pending admin.
+    """
+    try:
+        sa_email = request.json.get(SA_EMAIL)  # Super Admin credentials
+        sa_password = request.json.get(SA_PASSWORD)
+
+        super_admin = db.admins.find_one({"email": sa_email, "role": "super_admin"})
+
+        if not super_admin or not bcrypt.checkpw(sa_password.encode('utf-8'), super_admin["password"].encode('utf-8')):
+            return jsonify({"error": "Unauthorized"}), 403
+
+        deleted = db.admins.delete_one({"_id": ObjectId(admin_id), "status": "pending"})
+
+        if deleted.deleted_count == 1:
+            return jsonify({"message": "Admin rejected and deleted"}), 200
+        else:
+            return jsonify({"error": "Admin not found"}), 404
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/admin/login", methods=['POST'])
+def admin_login():
+    """
+    Step 1: Handle admin login and return MFA requirement status.
+    """
+    try:
+        data = request.json
+        email = data.get("email")
+        password = data.get("password")
+
+        print(f"🔍 Login attempt: Email={email}")
+
+        if not email or not password:
+            return jsonify({"success": False, "message": "Email and password are required"}), 400
+
+        admin = db.admins.find_one({"email": email})
+        if not admin:
+            print("❌ Admin not found.")
+            return jsonify({"success": False, "message": "Invalid credentials"}), 401
+
+        stored_hash = admin["password"]
+
+        # Check password
+        if not bcrypt.checkpw(password.encode("utf-8"), stored_hash.encode("utf-8")):
+            print("❌ Incorrect password.")
+            return jsonify({"success": False, "message": "Invalid credentials"}), 401
+
+        # Check if the account is approved
+        if admin["status"] != "approved":
+            print("⚠️ Account pending approval.")
+            return jsonify({"success": False, "message": "Account pending approval"}), 403
+
+        # ✅ If MFA is not set up, prompt for setup
+        if not admin.get("mfa_secret"):
+            print("⚠️ MFA not set up for this user. Prompting setup.")
+            return jsonify({"success": True, "mfaSetupRequired": True, "user_id": str(admin["_id"])}), 200
+
+        print("🔒 MFA required on login.")
+        return jsonify({"success": True, "mfaRequired": True, "user_id": str(admin["_id"])}), 200
+
+    except Exception as e:
+        print(f"🚨 Login error: {e}")
+        return jsonify({"success": False, "message": "Internal server error"}), 500
+
+@app.route("/admin/setup-mfa", methods=["POST"])
+def setup_mfa():
+    """
+    Step 2: Generate MFA secret for an approved admin.
+    """
+    try:
+        email = request.json.get("email")
+
+        # Get the admin user
+        admin = db.admins.find_one({"email": email, "status": "approved"})
+        if not admin:
+            return jsonify({"error": "User not found or not approved"}), 404
+
+        secret = pyotp.random_base32()
+        db.admins.update_one({"_id": admin["_id"]}, {"$set": {"mfa_secret": secret}})
+
+        otp_uri = pyotp.totp.TOTP(secret).provisioning_uri(
+            name=f"EcoCommerce:{admin['email']}", issuer_name="EcoCommerce"
+        )
+
+        return jsonify({"otp_uri": otp_uri, "secret": secret}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/admin/verify-mfa", methods=["POST"])
+def verify_mfa():
+    """
+    Step 2: Verify TOTP MFA code during login.
+    MFA is required on every login attempt.
+    """
+    try:
+        user_id = request.json.get("user_id")
+        mfa_code = request.json.get("mfaCode")
+
+        if not user_id or not mfa_code:
+            return jsonify({"error": "Missing user_id or MFA code"}), 400
+
+        admin = db.admins.find_one({"_id": ObjectId(user_id), "status": "approved"})
+        if not admin or not admin.get("mfa_secret"):
+            return jsonify({"error": "MFA not set up or user not approved"}), 404
+
+        totp = pyotp.TOTP(admin["mfa_secret"])
+
+        # ✅ Verify MFA Code (MUST be newly generated each login)
+        if not totp.verify(mfa_code):
+            return jsonify({"error": "Invalid MFA code"}), 401
+
+        # ✅ Return MFA Code as the Session Token (Expires after each session)
+        return jsonify({"success": True, "mfaToken": mfa_code, "message": "MFA verified"}), 200
+
+    except Exception as e:
+        print(f"🚨 MFA Verification error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/smallbusiness', methods=['GET'])
 def get_small_business():

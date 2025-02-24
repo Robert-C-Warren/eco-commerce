@@ -118,8 +118,17 @@ const AdminReportManager = () => {
             return;
         }
     
+        const mfaToken = localStorage.getItem("mfaToken");
+    
+        if (!mfaToken) {
+            toast.error("MFA required. Please log in again.", { autoClose: 2000 });
+            return;
+        }
+    
         axios
-            .post(`${API_BASE_URL}/admin/reports/${selectedCompany._id}`, formData)
+            .post(`${API_BASE_URL}/admin/reports/${selectedCompany._id}`, formData, {
+                headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+            })
             .then((response) => {
                 toast.success("Report added successfully!", { autoClose: 2000 });
     
@@ -131,7 +140,6 @@ const AdminReportManager = () => {
                     sourcing_details: "",
                     report_links: [],
                 });
-    
             })
             .catch((error) => {
                 console.error("❌ Error adding report:", error.response?.data || error);
@@ -140,6 +148,7 @@ const AdminReportManager = () => {
                 });
             });
     };
+    
 
 
     return (

@@ -55,31 +55,42 @@ const AdminTransparencyForm = () => {
 
     setSelectedCompany(selectedId);
 
-    axios.get(`${API_BASE_URL}/admin/index/${selectedId}`)
-        .then((res) => {
-            setFormData(res.data);
-        })
-        .catch((err) => {
-            console.error("Error fetching company index data:", err);
-            setFormData({
-                company_id: selectedId,
-                company_name: companies.find(c => c.id === selectedId)?.name || "",
-                sustainability: 0,
-                ethical_sourcing: 0,
-                materials: 0,
-                carbon_energy: 0,
-                transparency: 0,
-                links: {
-                    sustainability: "",
-                    ethical_sourcing: "",
-                    materials: "",
-                    carbon_energy: "",
-                    transparency: "",
-                },
-            });
-        });
-};
+    const mfaToken = localStorage.getItem("mfaToken");
 
+    if (!mfaToken) {
+        toast.error("MFA required. Please log in again.", { autoClose: 2000 });
+        return;
+    }
+
+    axios.get(`${API_BASE_URL}/admin/index/${selectedId}`, {
+        headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+    })
+    .then((res) => {
+        setFormData(res.data);
+    })
+    .catch((err) => {
+        console.error("❌ Error fetching company index data:", err);
+        
+        setFormData({
+            company_id: selectedId,
+            company_name: companies.find(c => c.id === selectedId)?.name || "",
+            sustainability: 0,
+            ethical_sourcing: 0,
+            materials: 0,
+            carbon_energy: 0,
+            transparency: 0,
+            links: {
+                sustainability: "",
+                ethical_sourcing: "",
+                materials: "",
+                carbon_energy: "",
+                transparency: "",
+            },
+        });
+
+        toast.error("Failed to fetch company data. Please try again.", { autoClose: 2000 });
+    });
+  };
 
   // Handle input changes (scores)
   const handleScoreChange = (e) => {
@@ -104,19 +115,32 @@ const AdminTransparencyForm = () => {
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.company_id) {
-      setMessage("Please select a company.");
-      return;
+        setMessage("Please select a company.");
+        return;
+    }
+
+    const mfaToken = localStorage.getItem("mfaToken");
+
+    if (!mfaToken) {
+        toast.error("MFA required. Please log in again.", { autoClose: 2000 });
+        return;
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/admin/index`, formData);
-      toast.success(`Saved! Score: ${response?.data?.score}, Badge: ${response?.data?.badge}`, {autoClose: 2000 });
+        const response = await axios.post(`${API_BASE_URL}/admin/index`, formData, {
+            headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+        });
+
+        toast.success(`✅ Saved! Score: ${response?.data?.score}, Badge: ${response?.data?.badge}`, { autoClose: 2000 });
     } catch (error) {
-      console.error("Error saving transparency data", error);
-      setMessage("Failed to save transparency data.");
+        console.error("❌ Error saving transparency data:", error);
+        setMessage("Failed to save transparency data.");
+        toast.error("Failed to save transparency data. Please try again.", { autoClose: 2000 });
     }
   };
+
 
   return (
     <div className="container-fluid">
