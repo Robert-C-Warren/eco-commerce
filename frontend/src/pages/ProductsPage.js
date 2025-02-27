@@ -79,35 +79,53 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
 
     const toggleCategory = (category) => {
         setExpandedCategory((prev) => {
-            const contentEl = categoryRefs.current[category]
-
+            const contentEl = categoryRefs.current[category];
+    
             if (contentEl) {
                 if (prev === category) {
-                    contentEl.style.height = `${contentEl.scrollHeight}px`
+                    // Collapse the currently expanded category
+                    contentEl.style.height = `${contentEl.scrollHeight}px`;
                     requestAnimationFrame(() => {
-                        contentEl.style.height = "0"
-                    })
-                    return null
+                        contentEl.style.height = "0";
+                    });
+                    return null;
                 } else {
-                    const prevContentE1 = categoryRefs.current[prev]
-                    if (prevContentE1) {
-                        prevContentE1.style.height = `${prevContentE1.scrollHeight}px`
+                    // Collapse the previously expanded category
+                    const prevContentEl = categoryRefs.current[prev];
+                    if (prevContentEl) {
+                        prevContentEl.style.height = `${prevContentEl.scrollHeight}px`;
                         requestAnimationFrame(() => {
-                            prevContentE1.style.height = "0"
-                        })
+                            prevContentEl.style.height = "0";
+                        });
                     }
-
-                    contentEl.style.height = `${contentEl.scrollHeight}px`
+    
+                    // Expand the new category
+                    contentEl.style.height = `${contentEl.scrollHeight}px`;
+                    
+                    // Ensure height change is applied before setting to auto
+                    requestAnimationFrame(() => {
+                        contentEl.style.height = "auto";
+                    });
+    
+                    // Scroll **AFTER** height transition completes (ensure full expansion first)
                     setTimeout(() => {
-                        contentEl.style.height = "auto"
-                    }, 500)
-
-                    return category
+                        const categoryHeader = document.querySelector(`h2[data-category="${category}"]`);
+                        if (categoryHeader) {
+                            const headerOffset = categoryHeader.getBoundingClientRect().top + window.scrollY;
+                            window.scrollTo({ top: headerOffset - 20, behavior: "smooth" });
+                        }
+                    }, 600); // Ensure it waits for full transition (adjust delay if necessary)
+    
+                    return category;
                 }
             }
-            return prev
-        })
-    }
+            return prev;
+        });
+    };
+    
+    
+    
+    
 
     return (
         <div>
@@ -116,7 +134,8 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                     <h1 className="display-2 hero-text">Eco-Friendly Products</h1>
                     {!searchQuery && (
                         <p className="lead">
-                            Discover sustainable and ethical products that help protect our planet.
+                            These products are just a glimpse of what each company offers. 
+                            To explore their full catalog, click on a product to visit their website directly.
                         </p>
                     )}
                     <button className="btn btn-dark" onClick={() => navigate("/products/recent")}>
@@ -136,6 +155,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                             <div key={category} className="category-container">
                                 <h2
                                     className="mt-4"
+                                    data-category={category}
                                     onClick={() => toggleCategory(category)}
                                     style={{ cursor: "pointer" }}
                                 >
@@ -198,12 +218,12 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                             </div>
                         ))}
                     <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center"}}>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                    <i className="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
                     <h5>
                     All product prices are from the time that the product was added to the site.<br/>
                     For current pricing, refer to the companies website.
                     </h5>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                    <i className="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
                 </div>
             </div>
         </div>

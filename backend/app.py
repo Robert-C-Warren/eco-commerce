@@ -8,7 +8,7 @@ import os
 import base64
 import certifi
 import firebase_admin
-from firebase_admin import credentials, storage
+from firebase_admin import credentials, storage, auth
 from unicodedata import normalize, combining
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
@@ -83,10 +83,6 @@ def get_reports():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-import jwt
-
-from datetime import timezone
-
 def auth_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -124,7 +120,6 @@ def auth_required(f):
             return jsonify({"message": "Unauthorized: Invalid token"}), 401
 
     return decorated
-
 
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
@@ -209,19 +204,29 @@ def add_cors_headers(response):
 
 @app.route("/upload-logo", methods=["POST"])
 def upload_logo():
-    if "file" not in request.files:
-        return jsonify({"error": "No file part"}), 400
-    
-    file = request.files["file"]
-    file_name = f"logos/{datetime.now().timestamp()}_{file.filename}"
-    blob = firebase_bucket.blob(file_name)
+    """Update MongoDB with file URL instead of re-uploading"""
+    company_id = request.json.get("company_id")  # Get company ID from request
+    file_url = request.json.get("file_url")  # Get uploaded file URL
+
+    if not company_id or not file_url:
+        return jsonify({"error": "Company ID and file URL are required"}), 400
 
     try:
-        blob.upload_from_file(file, content_type=file.content_type)
-        blob.make_public()
-        return jsonify({"message": "Upload successful", "file_url": blob.public_url}), 200
+        # 🔄 Update MongoDB with the uploaded file URL
+        result = db.companies.update_one(
+            {"_id": ObjectId(company_id)},  # Ensure you're updating the correct company
+            {"$set": {"logo": file_url}}
+        )
+
+        if result.modified_count == 0:
+            return jsonify({"error": "Failed to update company logo in database"}), 500
+
+        return jsonify({"message": "Logo updated successfully", "file_url": file_url}), 200
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
 
 @app.route("/get-logo/<filename>", methods=["GET"])
 def get_logo(filename):
