@@ -17,6 +17,7 @@ from werkzeug.utils import secure_filename
 from pymongo.collation import Collation
 import pyotp
 import bcrypt
+import jwt
 from functools import wraps
 
 
@@ -41,6 +42,7 @@ CORS(app, supports_credentials=True, resources={
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 SA_EMAIL = os.getenv("SA_EMAIL")
 SA_PASSWORD = os.getenv("SA_PASSWORD")
+SECRET_KEY = os.getenv("SECRET_KEY", "SECRET_KEY")
 
 # Brevo API Configuration for contact capability
 configuration = sib_api_v3_sdk.Configuration()
@@ -81,29 +83,48 @@ def get_reports():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-def mfa_required(f):
+import jwt
+
+from datetime import timezone
+
+def auth_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        mfa_token = request.headers.get("Authorization")
+        auth_header = request.headers.get("Authorization")
 
-        if not mfa_token:
-            return jsonify({"message": "Unauthorized: MFA code missing"}), 401
-        
+        if not auth_header or "Bearer" not in auth_header:
+            return jsonify({"message": "Unauthorized: Token missing"}), 401
+
         try:
-            mfa_code = mfa_token.split(" ")[1]
-            admin = db.admins.find_one({"mfa_secret": {"$exists": True}})
+            token = auth_header.split(" ")[1]
+            payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+            user_id = payload["user_id"]
 
+            admin = db.admins.find_one({"_id": ObjectId(user_id)})
             if not admin:
                 return jsonify({"message": "Unauthorized: User not found"}), 403
-            
-            totp = pyotp.TOTP(admin["mfa_secret"])
-            if not totp.verify(mfa_code):
-                return jsonify({"message": "Unauthorized: Invalid MFA code."}), 401
-            
-            return f(admin, *args, **kwargs)
-        except Exception as e:
-            return jsonify({"message": f"Unauthorized: {str(e)}"}), 401
+
+            # ✅ Ensure `lastActivity` is converted to a timezone-naive datetime
+            last_activity = admin.get("lastActivity")
+            if last_activity:
+                last_activity_dt = last_activity.replace(tzinfo=None)  # ✅ Remove timezone info
+
+                # ✅ Now, both timestamps are naive and can be compared
+                if datetime.utcnow() - last_activity_dt > timedelta(hours=2):
+                    return jsonify({"message": "Session expired. Please log in again."}), 401
+
+            # ✅ Update last activity timestamp with a timezone-naive datetime
+            db.admins.update_one({"_id": ObjectId(user_id)}, {"$set": {"lastActivity": datetime.utcnow()}})
+
+            return f(*args, **kwargs)
+
+        except jwt.ExpiredSignatureError:
+            return jsonify({"message": "Session expired. Please log in again."}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({"message": "Unauthorized: Invalid token"}), 401
+
     return decorated
+
 
 def normalize_text(text):
     """Normalize text by removing diacritics and converting to lowercase."""
@@ -241,7 +262,7 @@ def get_product_by_id(product_id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>/categories", methods=["PATCH"])
-@mfa_required
+@auth_required
 def update_product_category(id):
     """
         Update the categories for a specific product.
@@ -385,7 +406,7 @@ def get_products_by_category(category_name):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>", methods=["PATCH"])
-@mfa_required
+@auth_required
 def update_product_visibilty(id):
     """
         Update the visibility of a product.
@@ -409,7 +430,7 @@ def update_product_visibilty(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products/<id>", methods=["DELETE"])
-@mfa_required
+@auth_required
 def delete_product_admin(id):
     """
         Delete a product by its ID from the admin endpoint.
@@ -424,7 +445,7 @@ def delete_product_admin(id):
         return jsonify({"error": str(e)}), 500
     
 @app.route("/admin/products/<id>/edit", methods=["PATCH"])
-@mfa_required
+@auth_required
 def edit_product_title(id):
     """
         Edit products title, expects JSON key "summary" for new title.
@@ -446,7 +467,7 @@ def edit_product_title(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/products", methods=["GET"])
-@mfa_required
+@auth_required
 def get_all_products():
     """
         Retrieve all products from the DB.
@@ -506,7 +527,7 @@ def search_companies():
         return jsonify({"error": "Internal Server Error"}), 500
     
 @app.route("/admin/companies/<id>/icons", methods=["PATCH"])
-@mfa_required
+@auth_required
 def update_company_icons(id):
     """
         Update icons for companies.
@@ -539,7 +560,7 @@ def update_company_icons(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/companies/<id>/specifics", methods=["PATCH"])
-@mfa_required
+@auth_required
 def update_company_specifics(id):
     """
         Update the "specifics" field for a company.
@@ -567,7 +588,7 @@ def update_company_specifics(id):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/admin/index/<company_id>", methods=["GET"])
-@mfa_required
+@auth_required
 def get_company_transparency_index(company_id):
     """
     Fetch the transparency index for a company, or return a default template if none exists.
@@ -613,16 +634,18 @@ def get_company_transparency_index(company_id):
         return jsonify({"error": str(e)}), 500
     
 @app.route("/admin/index", methods=["POST"])
-@mfa_required
+@auth_required
 def submit_transparency_index():
     """Submit or update transparency index data for a company."""
     try:
         data = request.json
+        print("🔍 Received transparency index data:", data)  # ✅ Log the incoming request
 
         # Validate required fields
         required_fields = ["company_id", "company_name", "sustainability", "ethical_sourcing", "materials", "carbon_energy", "transparency", "links"]
         for field in required_fields:
             if field not in data:
+                print(f"❌ Missing field: {field}")  # ✅ Debugging
                 return jsonify({"error": f"Missing field: {field}"}), 400
 
         company_id = data["company_id"]
@@ -630,7 +653,8 @@ def submit_transparency_index():
         # Ensure ObjectId is valid
         try:
             company_id_obj = ObjectId(company_id)
-        except Exception:
+        except Exception as e:
+            print(f"❌ Invalid company_id format: {e}")  # ✅ Debugging
             return jsonify({"error": "Invalid company_id format"}), 400
 
         # Calculate total score
@@ -654,6 +678,8 @@ def submit_transparency_index():
         else:
             badge = "⚪ Opaque (Minimal Info)"
 
+        print(f"📊 Calculated Score: {total_score}, Assigned Badge: {badge}")  # ✅ Debugging
+
         # Prepare index data
         index_entry = {
             "_id": company_id_obj,  # ✅ Ensure correct _id format
@@ -668,6 +694,8 @@ def submit_transparency_index():
             "last_updated": datetime.utcnow()
         }
 
+        print(f"📥 Saving transparency index to MongoDB: {index_entry}")  # ✅ Debugging
+
         # Save in `index` collection
         db.index.update_one({"_id": company_id_obj}, {"$set": index_entry}, upsert=True)
 
@@ -677,9 +705,11 @@ def submit_transparency_index():
             {"$set": {"transparency_score": total_score, "transparency_badge": badge}}
         )
 
+        print("✅ Transparency index updated successfully!")  # ✅ Debugging
         return jsonify({"message": "Transparency index updated successfully", "score": total_score, "badge": badge}), 200
 
     except Exception as e:
+        print("❌ ERROR in /admin/index:", str(e))  # ✅ Debugging
         return jsonify({"error": str(e)}), 500
 
 @app.route('/companies', methods=['GET'])
@@ -921,7 +951,7 @@ def update_company_category(company_id):
         return jsonify({"error": "Invalid company ID"}), 400
 
 @app.route('/admin/reports/<company_id>', methods=["POST"])
-@mfa_required
+@auth_required
 def add_or_update_reports(company_id):
     """
     Allows an admin to manually add or update a report for a company
@@ -1011,7 +1041,7 @@ def register_admin():
         return jsonify({"error": str(e)}), 500
     
 @app.route("/admin/approve/<admin_id>", methods=["PATCH"])
-@mfa_required
+@auth_required
 def approve_admin(admin_id):
     """
     Approve a pending admin.
@@ -1131,11 +1161,13 @@ def setup_mfa():
 def verify_mfa():
     """
     Step 2: Verify TOTP MFA code during login.
-    MFA is required on every login attempt.
+    Uses the Google Authenticator code as the session token.
     """
     try:
         user_id = request.json.get("user_id")
         mfa_code = request.json.get("mfaCode")
+
+        print(f"🔍 Received MFA verification request for user_id: {user_id}, mfaCode: {mfa_code}")
 
         if not user_id or not mfa_code:
             return jsonify({"error": "Missing user_id or MFA code"}), 400
@@ -1146,12 +1178,18 @@ def verify_mfa():
 
         totp = pyotp.TOTP(admin["mfa_secret"])
 
-        # ✅ Verify MFA Code (MUST be newly generated each login)
+        # ✅ Verify MFA Code (Acts as the session token)
         if not totp.verify(mfa_code):
             return jsonify({"error": "Invalid MFA code"}), 401
+        
+        expiration_time = datetime.utcnow() + timedelta(hours=2)
+        token_payload = {"user_id": str(admin["_id"]), "exp": expiration_time}
+        session_token = jwt.encode(token_payload, SECRET_KEY, algorithm="HS256")
 
-        # ✅ Return MFA Code as the Session Token (Expires after each session)
-        return jsonify({"success": True, "mfaToken": mfa_code, "message": "MFA verified"}), 200
+        db.admins.update_one({"_id": admin["_id"]}, {"$set": {"lastActivity": datetime.utcnow()}})
+
+        # ✅ Return MFA Code as the session token (expires in 30 seconds)
+        return jsonify({"success": True, "sessionToken": session_token, "message": "MFA verified"}), 200
 
     except Exception as e:
         print(f"🚨 MFA Verification error: {e}")

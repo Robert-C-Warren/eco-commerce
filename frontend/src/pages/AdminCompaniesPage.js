@@ -233,7 +233,7 @@ const NewCompanyForm = () => {
   // On success, invalidate the "companies" query so the list refetches
   const addCompanyMutation = useMutation({
     mutationFn: async (newCompany) => {
-        const mfaToken = localStorage.getItem("mfaToken");
+        const mfaToken = sessionStorage.getItem("mfaToken"); // ✅ Get MFA from sessionStorage
 
         if (!mfaToken) {
             toast.error("MFA required. Please log in again.");
@@ -285,6 +285,7 @@ const NewCompanyForm = () => {
         toast.error("Failed to add company");
     },
   });
+
 
 
   // Handle checkbox change for small business

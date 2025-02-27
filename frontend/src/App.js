@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AdminPage from "./pages/AdminPage";
+import AdminLogin from "./pages/AdminLogin";
 import AdminConsole from "./pages/AdminConsole";
 import CompaniesPage from "./pages/CompaniesPage";
 import AdminCompaniesPage from "./pages/AdminCompaniesPage";
@@ -12,27 +12,23 @@ import CustomNavbar from "./pages/Navbar";
 import ContactPage from "./pages/ContactPage";
 import RecentCompaniesPage from "./pages/RecentCompaniesPage";
 import CompaniesByCategory from "./pages/CompaniesByCategory";
-import AdminReportManager from "./pages/AdminReportManager";
 import ProductsPage from "./pages/ProductsPage";
 import ProductsByCategory from "./pages/ProductsByCategory";
 import AdminTransparencyForm from "./pages/AdminTransparencyForm";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRegister from "./pages/AdminRegister"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import AdminRegister from "./pages/AdminRegister"
 import { Nav } from "react-bootstrap";
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(() => {
-        return localStorage.getItem("isAuthenticated") === "true"
-    });
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    React.useEffect(() => {
-        const storedValue = localStorage.getItem("isAuthenticated")
-        if (storedValue !== String(isAuthenticated)) {
-            localStorage.setItem("isAuthenticated", isAuthenticated)
-        }
-    }, [isAuthenticated])
+    useEffect(() => {
+        const mfaToken = sessionStorage.getItem("mfaToken");
+        setIsAuthenticated(!!mfaToken); // ✅ Update authentication state when MFA is set
+    }, []);
+
 
     return (
         <>
@@ -52,14 +48,13 @@ const App = () => {
                 <Route path="/search" element={<SearchResultsPage />} />
 
                 {/* Admin login route */}
-                <Route path="/admin/login" element={<AdminPage onLogin={setIsAuthenticated} />} />
+                <Route path="/admin/login" element={<AdminLogin onLogin={setIsAuthenticated} />} />
                 <Route path="/admin/register" element={<AdminRegister />} />
 
                 {/* Protected admin routes */}
-                <Route path="/admin/*" element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+                <Route path="/admin/*" element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
                     <Route path="products" element={<AdminConsole />} />
                     <Route path="companies" element={<AdminCompaniesPage />} />
-                    <Route path="manage-reports" element={<AdminReportManager />} />
                     <Route path="index" element={<AdminTransparencyForm />} />
                     <Route index element={<Navigate to="login" replace />} />
                 </Route>

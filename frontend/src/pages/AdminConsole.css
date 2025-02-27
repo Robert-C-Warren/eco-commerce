@@ -7,10 +7,27 @@
     margin-bottom: 20px;
 }
 
-.company-button {
+.admin-nav-btns {
+    display: flex;
+    justify-content: end;
+}
+
+.admin-companies-btn {
+    margin-right: 20px;
+}
+
+.btn-secondary {
     background-color: #357266;
+}
+
+.company-button {
     color: #ffffff;
     border: none;
+    font-size: 1.3rem;
+}
+
+.add-product-btn {
+    background-color: #357266;
 }
 
 .new-product-card {

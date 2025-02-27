@@ -55,15 +55,15 @@ const AdminTransparencyForm = () => {
 
     setSelectedCompany(selectedId);
 
-    const mfaToken = localStorage.getItem("mfaToken");
+    const sessionToken = sessionStorage.getItem("sessionToken");
 
-    if (!mfaToken) {
+    if (!sessionToken) {
         toast.error("MFA required. Please log in again.", { autoClose: 2000 });
         return;
     }
 
     axios.get(`${API_BASE_URL}/admin/index/${selectedId}`, {
-        headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+        headers: { Authorization: `Bearer ${sessionToken}` }  // ✅ Include MFA token
     })
     .then((res) => {
         setFormData(res.data);
@@ -121,25 +121,29 @@ const AdminTransparencyForm = () => {
         return;
     }
 
-    const mfaToken = localStorage.getItem("mfaToken");
+    const sessionToken = sessionStorage.getItem("sessionToken"); // ✅ Use sessionStorage
 
-    if (!mfaToken) {
+    if (!sessionToken) {
         toast.error("MFA required. Please log in again.", { autoClose: 2000 });
+        console.error("🚨 No MFA token found in sessionStorage.");
         return;
     }
 
+    console.log("🔍 Sending request with Session Token:", sessionToken);
+
     try {
         const response = await axios.post(`${API_BASE_URL}/admin/index`, formData, {
-            headers: { Authorization: `Bearer ${mfaToken}` }  // ✅ Include MFA token
+            headers: { Authorization: `Bearer ${sessionToken}` }  // ✅ Include MFA token
         });
 
         toast.success(`✅ Saved! Score: ${response?.data?.score}, Badge: ${response?.data?.badge}`, { autoClose: 2000 });
     } catch (error) {
-        console.error("❌ Error saving transparency data:", error);
+        console.error("❌ Error saving transparency data:", error.response?.data || error);
         setMessage("Failed to save transparency data.");
         toast.error("Failed to save transparency data. Please try again.", { autoClose: 2000 });
     }
-  };
+};
+
 
 
   return (

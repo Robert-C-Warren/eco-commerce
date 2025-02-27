@@ -268,6 +268,11 @@ const AdminConsole = () => {
         }
     }, [searchTerm, companies])
 
+    useEffect(() => {
+        const interval = setInterval(updateButtonColors, 500)
+        return () => clearInterval(interval)
+    })
+
     const handleCompanySelect = (company) => {
         setSelectedCompany(company.name)
         setNewProduct({ ...newProduct, company: company.name })
@@ -310,15 +315,27 @@ const AdminConsole = () => {
         setExpandedCompany(prev => (prev === company ? null : company))
     }
 
+    function updateButtonColors() {
+        const buttons = document.querySelectorAll('.company-button-container button')
+        buttons.forEach((button, index) => {
+            if (index % 2 === 0) {
+                button.style.backgroundColor = '#357266';
+            } else {
+                button.style.backgroundColor = '#37be59'
+            }
+            button.style.color = 'white'
+        })
+    }
+
     return (
         <div className="admin-container mt-4">
             <ToastContainer />
             <h1 className="text-center mb-4">Admin Console - Manage Products</h1>
-            <div className="row mb-3">
-                <div className="col text-end">
+            <div className="admin-nav-btns">
+                <div className="admin-companies-btn">
                     <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>
                 </div>
-                <div className="col text-end">
+                <div className="index-btn">
                     <Link to="/admin/index" className="btn btn-secondary mb-3">Admin Sustainability Index</Link>
                 </div>
             </div>
@@ -385,13 +402,13 @@ const AdminConsole = () => {
                         <option value="">Select Category</option>
                         {availableCategories.map(category => <option key={category} value={category}>{category}</option>)}
                     </select>
-                    <button type="submit" className="btn btn-success w-100">Add Product</button>
+                    <button type="submit" className="btn btn-success w-100 add-product-btn">Add Product</button>
                 </form>
             </div>
             {Object.keys(productsByCompany).map(company => {
                 const isExpanded = expandedCompany === company;
                 return (
-                    <div key={company} className="mb-4">
+                    <div key={company} className="mb-4 company-button-container">
                         <button
                             className="btn btn-info w-100 text-start company-button"
                             type="button"

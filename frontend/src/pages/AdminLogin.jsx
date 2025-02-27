@@ -4,24 +4,24 @@ import axios from "axios"
 import API_BASE_URL from "../components/urls"
 
 const AdminLogin = ({ onLogin }) => {
-    const [step, setStep] = useState("login")
+    const [step, setStep] = useState("login");
     const [password, setPassword] = useState("");
-    const [mfaCode, setMfaCode] = useState("")
-    const [otpUri, setOtpUri] = useState("")
+    const [mfaCode, setMfaCode] = useState("");
+    const [otpUri, setOtpUri] = useState("");
     const [error, setError] = useState("");
-    const [email, setEmail] = useState("")
-    const [user_id, setUserId] = useState("")
+    const [email, setEmail] = useState("");
+    const [user_id, setUserId] = useState("");
     const navigate = useNavigate();
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         console.log("🔍 Sending login request:", { email, password });
-    
+
         try {
             const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
-    
+
             console.log("✅ Login response:", response.data);
-    
+
             if (response.data.success) {
                 if (response.data.mfaRequired) {
                     console.log("🔒 MFA required. Storing user_id...");
@@ -29,14 +29,14 @@ const AdminLogin = ({ onLogin }) => {
                     setStep("mfa");
                 } else if (response.data.mfaSetupRequired) {
                     console.log("⚠️ MFA setup required. Redirecting to setup...");
-    
+
                     // ✅ Request MFA setup
                     const setupResponse = await axios.post(`${API_BASE_URL}/admin/setup-mfa`, { email });
                     setOtpUri(setupResponse.data.otp_uri);
                     setStep("setup-mfa");
                 } else {
                     console.log("✅ Login successful.");
-                    onLogin(true);
+                    onLogin(true); // ✅ Update authentication state
                     navigate("/admin/products");
                 }
             } else {
@@ -48,16 +48,10 @@ const AdminLogin = ({ onLogin }) => {
             setError("An error occurred while logging in.");
         }
     };    
-    
+
     const handleMfaSubmit = async (e) => {
         e.preventDefault();
-        console.log("🔍 Sending MFA verification request with data:", { user_id, mfaCode });
-    
-        if (!user_id || !mfaCode) {
-            console.error("🚨 Error: Missing user_id or MFA code.");
-            setError("User ID and MFA code are required.");
-            return;
-        }
+        console.log("🔍 Sending MFA verification request:", { user_id, mfaCode });
     
         try {
             const response = await axios.post(`${API_BASE_URL}/admin/verify-mfa`, {
@@ -68,12 +62,15 @@ const AdminLogin = ({ onLogin }) => {
             console.log("✅ MFA Verification response:", response.data);
     
             if (response.data.success) {
-                console.log("✅ MFA verified. Logging in...");
-                
-                // ✅ Store MFA Code in Session Storage (expires after session ends)
-                sessionStorage.setItem("mfaToken", response.data.mfaToken);
+                console.log("✅ MFA verified. Storing session token...");
     
-                onLogin(true);
+                // ✅ Store Session Token (Not MFA Code)
+                sessionStorage.setItem("sessionToken", response.data.sessionToken);
+    
+                if (typeof onLogin === "function") {
+                    onLogin(true);
+                }
+    
                 navigate("/admin/products");
             } else {
                 console.log("❌ MFA verification failed:", response.data.message);
@@ -85,6 +82,7 @@ const AdminLogin = ({ onLogin }) => {
         }
     };
     
+
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
             <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%"}}>
