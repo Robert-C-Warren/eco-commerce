@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API_BASE_URL from "../components/urls";
-import "./CompaniesByCategory.css"
+import "./styles/CompaniesByCategory.scss"
 import Logo from "../resources/eclogov7.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
@@ -260,7 +260,7 @@ const CompaniesByCategory = () => {
                                 {expandedCompany !== company._id && (
                                     <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
                                 )}
-                                <div className="card-header align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
+                                <div className="card-header-category align-items-center" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}>
                                     <img
                                         src={company.logo}
                                         className="card-img-top"
@@ -268,12 +268,12 @@ const CompaniesByCategory = () => {
                                         style={{ objectFit: "contain", height: "150px", width: "100%" }}
                                         loading="lazy"
                                     />
-                                    <h5 className="card-title m-0">{company.name}</h5>
-                                    <h6 className="card-specifics">{company.specifics}</h6>
+                                    <h5 className="card-title-category m-0">{company.name}</h5>
+                                    <h6 className="card-specifics-category">{company.specifics}</h6>
                                 </div>
                                 {expandedCompany === company._id && (
-                                    <div className="card-body ">
-                                        <p className="card-text">{company.description}</p>
+                                    <div className="card-body-category">
+                                        <p className="card-text-category">{company.description}</p>
                                         <ul>
                                             {company.qualifications.map((qualification, i) => (
                                                 <li className="qualifications" key={i}>{qualification}</li>
@@ -281,7 +281,7 @@ const CompaniesByCategory = () => {
                                         </ul>
                                         <a
                                             href={company.website}
-                                            className="btn btn-primary"
+                                            className="btn btn-primary visit-site-btn"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -294,7 +294,7 @@ const CompaniesByCategory = () => {
                                                         const icon = availableIcons.find((i) => i.id === iconId);
                                                         return icon ? (
                                                             <img
-                                                                className="icon_actual"
+                                                                className="icon-actual-category"
                                                                 key={icon.id}
                                                                 src={icon.src}
                                                                 alt={icon.label}

@@ -1,0 +1,35 @@
+@import 'variables';
+
+.card-header-category {
+  text-align: center;
+  max-height: 40%;
+  margin-top: $padding-medium;
+}
+
+.card-body-category {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  top: 0;
+}
+
+.visit-site-btn {
+  width: 20%;
+  padding: $padding-medium;
+  margin: 0 auto;
+}
+
+.card-title-category, .card-specifics-category {
+  padding-top: $padding-small;
+}
+
+.card-text-category {
+  padding: $padding-medium;
+  font-size: $medium-font-size;
+}
+
+.icon-actual-category {
+  padding-top: $padding-medium;
+  height: $icon-height;
+  width: auto;
+}

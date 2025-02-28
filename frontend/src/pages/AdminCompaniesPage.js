@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import "react-toastify/dist/ReactToastify.css"
-import "./AdminCompaniesPage.css"
+import "./styles/AdminCompaniesPage.scss"
 import API_BASE_URL from "../components/urls"
 import API from "../services/api";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"

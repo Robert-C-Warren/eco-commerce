@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import Logo from "../resources/eclogov7.webp"
 import API_BASE_URL from "../components/urls"
-import "./ProductsByCategory.css"
+import "./styles/ProductsByCategory.scss"
 
 const ProductsByCategory = () => {
     const { categoryName } = useParams()
@@ -90,7 +90,7 @@ const ProductsByCategory = () => {
                                     <div className="card-details">
                                         <h5 className="card-title">{product.title}</h5>
                                         <h6 className="card-price">{product.price}</h6>
-                                        <a href={product.website} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                        <a href={product.website} className="btn btn-outline-secondary view-product-btn" target="_blank" rel="noopener noreferrer">
                                             View Product
                                         </a>
                                     </div>
@@ -105,7 +105,7 @@ const ProductsByCategory = () => {
                 </div>
                 <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center"}}>
                     <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
-                    <h5>
+                    <h5 className="disclaimer">
                     All product prices are from the time that the product was added to the site.<br/>
                     For current pricing, refer to the companies website.
                     </h5>

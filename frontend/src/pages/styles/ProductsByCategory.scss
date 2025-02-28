@@ -1,5 +1,7 @@
+@import 'variables';
+
 .product-card {
-    background-color: #A3BBAD;
+    background-color: $secondary-color;
     height: 100%;
     width: 100%;
     display: flex;
@@ -13,6 +15,7 @@
     text-align: center;
     margin-top: auto;
     text-align: center;
+    border-style: none;
 }
 
 .product-image {
@@ -31,4 +34,5 @@
 .card-footer {
     text-align: center;
     padding-top: 10px;
+    border-style: none;
 }

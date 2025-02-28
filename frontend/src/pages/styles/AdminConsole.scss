@@ -1,10 +1,12 @@
+@import 'variables';
+
 .admin-container {
     align-items: center;
     justify-content: center;
-    max-width: 90%;
+    max-width: $max-width;
     margin: 0 auto;
     height: 100vh;
-    margin-bottom: 20px;
+    margin-bottom: $padding-medium;
 }
 
 .admin-nav-btns {
@@ -13,21 +15,21 @@
 }
 
 .admin-companies-btn {
-    margin-right: 20px;
+    margin-right: $padding-medium;
 }
 
 .btn-secondary {
-    background-color: #357266;
+    background-color: $primary-color;
 }
 
 .company-button {
-    color: #ffffff;
+    color: $secondary-color;
     border: none;
-    font-size: 1.3rem;
+    font-size: $large-font-size;
 }
 
 .add-product-btn {
-    background-color: #357266;
+    background-color: $primary-color;
 }
 
 .new-product-card {
@@ -36,16 +38,20 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 90%;
+    width: $max-width;
     top: 0;
 }
 
 .new-product-form {
-    width: 90%;
+    width: $max-width;
 }
 
-.new-product-form input textarea{
-    width: 90%;
+.new-product-form {
+    width: $max-width;
+
+        input textarea{
+            width: 90%;
+    }
 }
 
 .product-card-row {
@@ -55,20 +61,20 @@
 }
 
 .existing-product-card {
-    background-color: #357266;
+    background-color: $primary-color;
     max-width: 80%;
     height: 40vh;
     text-align: center;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: $border-radius;
 }
 
 .product-card-image {
     object-fit: contain;
     padding: 5%;
-    border-radius: 20px;
+    border-radius: $border-radius;
 }
 
 .product-card-body {
@@ -77,7 +83,7 @@
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-    width: 90%;
+    width: $max-width;
     align-items: center;
     margin: 0 auto;
     padding: 5%;

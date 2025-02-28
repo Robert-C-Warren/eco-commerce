@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../components/urls";
 import Logo from "../resources/eclogov7.webp"
-import "./ProductsPage.css"
+import "./styles/ProductsPage.scss"
 
 const ProductsPage = ({ searchQuery, collection = "products" }) => {
     const [products, setProducts] = useState([])
@@ -123,10 +123,6 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
         });
     };
     
-    
-    
-    
-
     return (
         <div>
             <div className="container my-4">
@@ -138,7 +134,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                             To explore their full catalog, click on a product to visit their website directly.
                         </p>
                     )}
-                    <button className="btn btn-dark" onClick={() => navigate("/products/recent")}>
+                    <button className="btn btn-outline-secondary recent-companies-btn" onClick={() => navigate("/products/recent")}>
                         Recent Products
                     </button>
                 </div>
@@ -201,7 +197,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                                         <div className="card-details">
                                                             <h5 className="card-title">{product.title}</h5>
                                                             <h6 className="card-price">{product.price}</h6>
-                                                            <a href={product.website} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                                            <a href={product.website} className="btn btn-outline-secondary view-product-btn" target="_blank" rel="noopener noreferrer">
                                                                 View Product
                                                             </a>
                                                         </div>
@@ -219,7 +215,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                         ))}
                     <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center"}}>
                     <i className="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
-                    <h5>
+                    <h5 className="disclaimer">
                     All product prices are from the time that the product was added to the site.<br/>
                     For current pricing, refer to the companies website.
                     </h5>

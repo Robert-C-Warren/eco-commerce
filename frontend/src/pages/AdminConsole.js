@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./AdminConsole.css"
+import "./styles/AdminConsole.scss"
 import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
 import API_BASE_URL from "../components/urls"

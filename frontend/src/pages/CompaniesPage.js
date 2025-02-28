@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./CompaniesPage.css"
+import "./styles/CompaniesPage.scss"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from "../resources/eclogov7.webp"
 import API_BASE_URL from "../components/urls"
@@ -207,20 +207,20 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 
   useEffect(() => {
     const fetchCompanies = async () => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/${collection}`);
-            const data = await response.json();
-            console.log("Fetched Companies Data:", data);  // ✅ Check API response
-            setCompanies(data);
-        } catch (error) {
-            console.error("Error fetching companies", error);
-        } finally {
-            setLoading(false);
-        }
+      try {
+        const response = await fetch(`${API_BASE_URL}/${collection}`);
+        const data = await response.json();
+        console.log("Fetched Companies Data:", data);  // ✅ Check API response
+        setCompanies(data);
+      } catch (error) {
+        console.error("Error fetching companies", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchCompanies();
-}, [collection]);
+  }, [collection]);
 
   useEffect(() => {
     const existingToolTips = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -373,7 +373,7 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                     <div
                       ref={expandedCompany === String(company._id) ? cardRef : null}
                       className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"}`}
-                      onPointerMove={handleMouseMove}
+                      onPointerMove={handleMouseMove} style={{ border: "none" }}
                     >
                       {expandedCompany !== company._id && (
                         <div className="tooltip" style={{ position: "fixed", top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` }}><i className="bi bi-eye-fill"></i> More Info</div>
@@ -408,8 +408,9 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                           >
                             Visit Website
                           </a>
-                          <div className="d-flex justify-content-between align-items-center icon-wrapper">
-                            <div className="d-flex justify-content-center align-items-center flex-grow-1">
+                          <div className="icon-wrapper">
+                            {/* Icons & Score (Centered) */}
+                            <div className="d-flex justify-content-center align-items-center center-container flex-grow-1">
                               <div className="product-icons d-flex justify-content-center align-items-center gap-2">
                                 {company.icons?.map((iconId) => {
                                   const icon = availableIcons.find((i) => i.id === iconId);
@@ -427,11 +428,14 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                                   ) : null;
                                 })}
                               </div>
-                              <h4 className="index-score">{company.transparency_score} {company.transparency_score}</h4>
+                              <h4 className="index-score">{company.transparency_score}</h4>
                             </div>
-                            <div className="d-flex">
-                              <i className="collapse-button bi bi-box-arrow-in-up" onClick={() => toggleExpand(company._id)} style={{ cursor: "pointer" }}></i>
-                            </div>
+
+                            {/* Absolutely Positioned Collapse Button */}
+                            <i
+                              className="collapse-button bi bi-box-arrow-in-up"
+                              onClick={() => toggleExpand(company._id)}
+                            ></i>
                           </div>
                         </div>
                       )}

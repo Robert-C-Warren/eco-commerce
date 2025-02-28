@@ -1,5 +1,21 @@
+@import 'variables';
+
+.hero-text, .lead {
+    color: white;
+}
+
+.recent-companies-btn, .view-product-btn {
+    color: $darks-color;
+    border-color: $darks-color;
+
+    &:hover {
+        background-color: $tertiary-color;
+        color: $darks-color;
+    }
+}
+
 .product-card {
-    background-color: #A3BBAD;
+    background-color: $secondary-color;
     height: 100%;
     width: 100%;
     display: flex;
@@ -13,7 +29,6 @@
     text-align: center;
     margin-top: auto;
     text-align: center;
-    border-style: none;
 }
 
 .product-image {
@@ -23,6 +38,7 @@
 .card-details {
     margin-top: auto;
     text-align: center;
+    color: white;
 }
 
 .card-title {
@@ -32,5 +48,8 @@
 .card-footer {
     text-align: center;
     padding-top: 10px;
-    border-style: none;
+}
+
+.disclaimer-footer {
+    color: white;
 }

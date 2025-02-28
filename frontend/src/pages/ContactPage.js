@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import API from "../services/api"
-import "./ContactPage.css"
+import "./styles/ContactPage.scss"
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })

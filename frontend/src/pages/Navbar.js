@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap"
 import { useNavigate, Link } from "react-router-dom"
 import smallLogo from "../resources/eclogov7.webp";
+import "./styles/HomePage.scss"
 import API_BASE_URL from "../components/urls";
 import axios from "axios"
 
@@ -37,7 +38,7 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar expand="lg" style={{ backgroundColor: "#A3BBAD" }}>
+        <Navbar expand="lg" style={{ backgroundColor: "#62929E" }}>
             <Navbar.Brand as={Link} to="/">
                 <img src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%" }} />
             </Navbar.Brand>
@@ -87,7 +88,7 @@ const CustomNavbar = () => {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <Button variant="outline-success" type="submit" style={{ marginRight: "15px" }}>
+                    <Button variant="outline-success" type="submit" className="search-submit-btn" style={{ marginRight: "15px", color: "#3C3941", borderColor: "#3C3941" }}>
                         Search
                     </Button>
                 </Form>

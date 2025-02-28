@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./CompaniesPage.css"
+import "./styles/CompaniesPage.scss"
 import API_BASE_URL from "../components/urls";
 import Logo from "../resources/eclogov7.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";

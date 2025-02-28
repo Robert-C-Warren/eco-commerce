@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API_BASE_URL from "../components/urls";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify"
-import "./AdminReportManager.css"
+import "./styles/AdminReportManager.scss"
 
 const AdminReportManager = () => {
     const [companies, setCompanies] = useState([])

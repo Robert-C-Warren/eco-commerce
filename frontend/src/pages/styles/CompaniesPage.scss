@@ -1,3 +1,5 @@
+@import 'variables';
+
 .card-grouping {
     padding-top: 0.5%;
     text-align: center;
@@ -6,15 +8,16 @@
 .category-container {
     text-align: center;
     height: auto;
+    color: $secondary-color;
 }
 
 .hero-section {
-    background-color: rgba(163, 187, 173);
-    border-radius: 20px;
+    background-color: $secondary-color;
+    border-radius: $border-radius;
 }
 
 .eco-hero {
-    color: #28a739;
+    color: $greens-color;
 }
 
 .hero-text {
@@ -22,7 +25,7 @@
 }
 
 .icon-toggler {
-    font-size: 30px;
+    font-size: $toggler-icon-size;
 }
 
 .loading-container {
@@ -35,7 +38,7 @@
 .logo-shake {
     width: 300px;
     height: 300px;
-    animation: shake 0.5s ease-in-out infinite;
+    animation: shake $shake-direction ease-in-out infinite;
 }
 
 @keyframes shake {
@@ -55,6 +58,10 @@
 
 .icon-wrapper {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .product-icons {
@@ -64,36 +71,53 @@
     flex-grow: 1;
 }
 
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .collapse-button {
     position: absolute;
     cursor: pointer;
     right: 0;
+    padding-top: $padding-small;
+    font-size: $icon-height;
+    margin-right: $padding-medium;
+    display: inline-block;
+
+    &:hover {
+        scale: 1.2;
+        color: $primary-color;
+    }
 }
 
 .category-content {
     transition: height 0.5s ease;
-}
 
-.category-content.expanded {
-    height: auto;
-    opacity: 1;
+    &.expanded {
+        height: auto;
+        opacity: 1;
+    }
 }
 
 .bi-toggle-icon {
     cursor: pointer;
     font-size: 1.9rem;
-    transition: 0.3s ease;
-}
+    transition: $tooltip-transition;
 
-.bi-toggle-icon:hover {
-    color: #ffffff;
+    &:hover {
+        color: $background-light;
+    }
 }
 
 .product-icons .icon_actual {
     width: 80px; 
     height: auto; 
-    padding-top: 10px;
-    margin-bottom: 10px;
+    padding-top: $padding-small;
+    margin-bottom: $padding-small;
     object-fit: contain;
 }
 
@@ -102,22 +126,22 @@
 }
 
 .category-title {
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: $category-margin;
+    margin-right: $category-margin;
     transition: transform 0.3s ease;
-}
 
-.category-title:hover {
-    transform: scale(1.07);
+    &:hover {
+        transform: scale(1.07);
+    }
 }
 
 .container {
-    margin:  0 auto; /* Center the content */
+    margin:  0 auto;
     margin-left: 100px;
     margin-right: 100px;
     max-width: fit-content;
     height: auto;
-    padding: 30px; /* Adjust padding as needed */
+    padding: 30px;
 }
 
 @media (max-width: 1300px) {
@@ -152,7 +176,7 @@
 
     .company-card {
         margin-left: 0;
-        padding-bottom: 10px;
+        padding-bottom: $padding-small;
     }
 
     .company-card.company-card.collapsed {
@@ -173,18 +197,19 @@
 }
 
 .card-title {
-    padding-top: 10px;
+    padding-top: $padding-small;
     text-align: center;
 }
 
 .company-card {
     margin: 15px;
+    color: white;
 }
 
 .card-header {
     align-items: center;
-    background-color: #A3BBAD;
-    padding: 10px;
+    background-color: $secondary-color;
+    padding: $padding-small;
 }
 
 .card.expanded {
@@ -192,7 +217,7 @@
     position: fixed;
     top: 15%;
     min-height: 65vh;
-    background-color: #A3BBAD !important;
+    background-color: $secondary-color !important;
     box-shadow: 10px 0px 18px rgba(0,0,0,0.5);
     left: 0;
     font-size: 1.2rem;
@@ -201,10 +226,10 @@
 .card-header-expanded{
     align-items: center;
     font-size: 1.2rem;
-    background-color: #A3BBAD;
+    background-color: $secondary-color;
     z-index: 15;
     border: none;
-    padding-top: 20px;
+    padding-top: $padding-medium;
 }
 
 .card-body {
@@ -214,13 +239,13 @@
 .company-card .card-header {
     align-items: center;
     font-size: 1.2rem;
-    background-color: #A3BBAD;
+    background-color: $secondary-color;
     z-index: 15;
     border: none;
 }
 
 .company-card .card-header:hover {
-    background-color: #357266;
+    background-color: $primary-color;
     transition: transform 1s ease !important;
 }
 
@@ -247,7 +272,7 @@
 
 .company-card.expanded .card-body {
     position: absolute;
-    background: #A3BBAD;
+    background: $secondary-color;
     font-size: 1.3rem;
 }
 
@@ -264,7 +289,7 @@
 }
 
 .company-card.company-card.collapsed {
-    background-color: #A3BBAD;
+    background-color: $secondary-color;
     width: 95%;
     margin: 2%;
     flex-direction: column;
@@ -275,14 +300,14 @@
 }
 
 .company-card.company-card.collapsed:hover {
-    background-color: #357266;
+    background-color: $primary-color;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    padding-top: 20px;
+    padding-top: $padding-medium;
 }
 
 .card-text {
@@ -308,7 +333,7 @@
 
 .collapse-button:hover {
     scale: 1.2;
-    color: #357266;
+    color: $primary-color;
 }
 
 body.dark-mode .card {

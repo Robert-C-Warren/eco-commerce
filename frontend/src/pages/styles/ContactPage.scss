@@ -1,3 +1,5 @@
+@import 'variables';
+
 .parent {
     display: flex;
     justify-content: center;
@@ -8,12 +10,12 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: $contact-form-width;
     align-items: center;
-    background-color: #A3BBAD;
-    border-radius: 20px;
-    padding-bottom: 2%;
-    padding-top: 2%;
+    background-color: $secondary-color;
+    border-radius: $border-radius;
+    padding-bottom: $padding-medium;
+    padding-top: $padding-medium;
 }
 
 h4 {
@@ -33,15 +35,15 @@ h4 {
 
 .contact-button {
     margin-top: 4%;
-    font-size: 2rem;
-    width: 30%;
-    border-radius: 40px;
+    font-size: 2.5rem;
+    width: $contact-btn-width;
+    border-radius: $border-radius;
 }
 
 .email-box, .name-box {
-    padding: 20px;
+    padding: $padding-medium;
 }
 
 .email-box, .name-box, .message-box {
-    font-size: 1.3rem;
+    font-size: $medium-font-size;
 }
