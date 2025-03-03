@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap"
 import { useNavigate, Link } from "react-router-dom"
-import smallLogo from "../resources/eclogov7.webp";
+import smallLogo from "../resources/eclogo8.webp";
 import "./styles/HomePage.scss"
 import API_BASE_URL from "../components/urls";
 import axios from "axios"
@@ -38,7 +38,7 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar expand="lg" style={{ backgroundColor: "#62929E" }}>
+        <Navbar expand="lg" style={{ backgroundColor: "#62929E" }} className="sticky-top">
             <Navbar.Brand as={Link} to="/">
                 <img src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%" }} />
             </Navbar.Brand>

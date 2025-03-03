@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../components/urls";
-import Logo from "../resources/eclogov7.webp"
+import Logo from "../resources/eclogo8.webp"
 import "./styles/ProductsPage.scss"
 
 const ProductsPage = ({ searchQuery, collection = "products" }) => {
@@ -141,7 +141,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
 
                 {loading && (
                     <div className="loading-container">
-                        <img src={Logo} alt="Loading..." className="logo-shake" />
+                        <img src={Logo} alt="Loading..." className="logo-bounce" />
                     </div>
                 )}
                 {!loading &&
@@ -149,22 +149,24 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                         .sort()
                         .map((category) => (
                             <div key={category} className="category-container">
-                                <h2
-                                    className="mt-4"
-                                    data-category={category}
-                                    onClick={() => toggleCategory(category)}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    {category}
-                                </h2>
-                                <i
-                                    className={`icon-toggler bi ${expandedCategory === category
-                                            ? "bi-arrows-collapse"
-                                            : "bi-arrows-expand"
-                                        }`}
-                                    onClick={() => toggleCategory(category)}
-                                    style={{ cursor: "pointer" }}
-                                />
+                                <div className="category-toggle">
+                                    <h2
+                                        className="mt-4"
+                                        data-category={category}
+                                        onClick={() => toggleCategory(category)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        {category}
+                                    </h2>
+                                    <i
+                                        className={`icon-toggler bi ${expandedCategory === category
+                                                ? "bi-arrows-collapse"
+                                                : "bi-arrows-expand"
+                                            }`}
+                                        onClick={() => toggleCategory(category)}
+                                        style={{ cursor: "pointer" }}
+                                    />
+                                </div>
                                 <div
                                     ref={(el) => (categoryRefs.current[category] = el)}
                                     className="category-content"

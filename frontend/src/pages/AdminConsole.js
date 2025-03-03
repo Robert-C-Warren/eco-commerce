@@ -319,9 +319,9 @@ const AdminConsole = () => {
         const buttons = document.querySelectorAll('.company-button-container button')
         buttons.forEach((button, index) => {
             if (index % 2 === 0) {
-                button.style.backgroundColor = '#357266';
+                button.style.backgroundColor = '#62929E';
             } else {
-                button.style.backgroundColor = '#37be59'
+                button.style.backgroundColor = '#59594A'
             }
             button.style.color = 'white'
         })
@@ -330,7 +330,7 @@ const AdminConsole = () => {
     return (
         <div className="admin-container mt-4">
             <ToastContainer />
-            <h1 className="text-center mb-4">Admin Console - Manage Products</h1>
+            <h1 className="text-center mb-4 admin-page-title">Admin Console - Manage Products</h1>
             <div className="admin-nav-btns">
                 <div className="admin-companies-btn">
                     <Link to="/admin/companies" className="btn btn-secondary mb-3">Admin Companies</Link>

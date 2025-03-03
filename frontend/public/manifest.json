@@ -1,21 +1,21 @@
 {
-    "short_name": "EcoCommerce",
-    "name": "Eco-Commerce App",
-    "icons": [
-      {
-        "src": "eclogo.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "eclogo.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
-  }
-  
+  "name": "EcoCommerce",
+  "short_name": "EcoCommerce",
+  "description": "A platform for discovering eco-friendly companies and products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#59594A",
+  "theme_color": "#62929E",
+  "icons": [
+    {
+      "src": "/ecologo8.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/ecologo8.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    }
+  ]
+}

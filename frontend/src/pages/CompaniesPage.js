@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/CompaniesPage.scss"
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Logo from "../resources/eclogov7.webp"
+import Logo from "../resources/eclogo8.webp"
 import API_BASE_URL from "../components/urls"
 import BScoreChart from "../components/BScoreChart"
 import bCorpIcon from "../resources/icons/bcorp.png";
@@ -348,16 +348,18 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
         </div>
         {loading && (
           <div className="loading-container">
-            <img src={Logo} alt="Loading..." className="logo-shake" />
+            <img src={Logo} alt="Loading..." className="logo-bounce" />
           </div>
         )}
 
         {!loading && Object.keys(groupedCompanies).sort().map((category) => (
           <div key={category} className="category-container">
-            <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
-              {category}
-            </h2>
-            <i className={`icon-toggler bi ${expandedCategory === category ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
+            <div className="category-toggle">
+              <h2 className="mt-4" onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}>
+                {category}
+              </h2>
+              <i className={`icon-toggler bi ${expandedCategory === category ? "bi-arrows-collapse" : "bi-arrows-expand"}`} onClick={() => toggleCategory(category)} style={{ cursor: "pointer" }}></i>
+            </div>
             <div
               ref={(el) => (categoryRefs.current[category] = el)}
               className="category-content"

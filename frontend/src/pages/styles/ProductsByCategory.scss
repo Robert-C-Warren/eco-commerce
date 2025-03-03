@@ -36,3 +36,21 @@
     padding-top: 10px;
     border-style: none;
 }
+
+.category-toggle {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: $padding-medium;
+    width: 50%;
+    justify-content: center;
+    background-color: $secondary-color-rgb;
+    border-radius: $border-radius;
+    color: white;
+
+    &:hover {
+        background-color: $secondary-color-rgb-hover;
+        transform: scale(1.1); 
+        transition: 0.5s ease;  
+    }
+}
