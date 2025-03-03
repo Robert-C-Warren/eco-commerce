@@ -341,7 +341,7 @@ const AdminConsole = () => {
             </div>
 
             <div className="new-product-card p-4 mb-4">
-                <h3>Add New Product</h3>
+                <h3 className="new-product-title">Add New Product</h3>
                 <form onSubmit={(e) => { e.preventDefault(); addProduct(); }} className="new-product-form">
                     {/* Title */}
                     <input type="text" className="form-control mb-2" placeholder="Title"
