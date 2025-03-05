@@ -54,3 +54,25 @@
         transition: 0.5s ease;  
     }
 }
+
+.logo-bounce {
+    width: 300px;
+    height: 300px;
+    animation: bounce 1.5s ease-out forwards infinite;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    10% { transform: translateY(-60px); } /* Highest bounce */
+    20% { transform: translateY(0); } 
+    30% { transform: translateY(-50px); } /* Lower bounce */
+    40% { transform: translateY(0); }
+    50% { transform: translateY(-35px); } /* Even lower */
+    60% { transform: translateY(0); }
+    70% { transform: translateY(-25px); } /* Small bounce */
+    80% { transform: translateY(0); }
+    85% { transform: translateY(-10px); } /* Tiny bounce */
+    90% { transform: translateY(0); }
+    95% { transform: translateY(-5px); } /* Final tiny bounce */
+    100% { transform: translateY(0); } /* Stops */
+}

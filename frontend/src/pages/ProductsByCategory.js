@@ -4,6 +4,21 @@ import axios from "axios"
 import Logo from "../resources/eclogo8.webp"
 import API_BASE_URL from "../components/urls"
 import "./styles/ProductsByCategory.scss"
+import veganIcon from "../resources/icons/veganlogo.png"
+import glutenFreeIcon from "../resources/icons/glutenfreeicon.png"
+import nutFreeIcon from "../resources/icons/nutfreeicon.png"
+import nonGmoLogo from "../resources/icons/nongmologo.png"
+import usdaOrganic from "../resources/icons/usdaorganiclogo.png"
+
+
+const availableIcons = [
+    { id: "vegan", label: "Vegan", src: veganIcon, title: "Vegan" },
+    { id: "gluten_free", label: "Gluten Free", src: glutenFreeIcon, title: "Gluten Free" },
+    { id: "nut_free", label: "Nut Free", src: nutFreeIcon, title: "Nut Free" },
+    { id: "non_gmo", label: "Non GMO", src: nonGmoLogo, title: "Non GMO" },
+    { id: "organic", label: "Organic", src: usdaOrganic, title: "Organic" },
+
+]
 
 const ProductsByCategory = () => {
     const { categoryName } = useParams()
@@ -62,7 +77,7 @@ const ProductsByCategory = () => {
 
                 {loading && (
                     <div className="loading-container">
-                        <img src={Logo} alt="Loading..." className="logo-shake" />
+                        <img src={Logo} alt="Loading..." className="logo-bounce" />
                     </div>
                 )}
 
@@ -79,37 +94,49 @@ const ProductsByCategory = () => {
                             if (companyA > companyB) return 1;
                             return (a.title || "").localeCompare(b.title || "");
                         })
-                        .map((product, index) => (
-                            <div key={index} className="col-lg-3 col-md-6 col-sm-12" style={{ marginBottom: "20px" }}>
-                                <div className="card product-card">
-                                    <div className="card-header align-items-center">
-                                        <img src={product.image} className="product-image" alt={product.title}
-                                            style={{ objectFit: "contain" }} loading="lazy" />
-                                    </div>
+                        .map((product, index) => {
+                            const iconCount = availableIcons.filter(icon => product[icon.id]).length
 
-                                    <div className="card-details">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <h6 className="card-price">{product.price}</h6>
-                                        <a href={product.website} className="btn btn-outline-secondary view-product-btn" target="_blank" rel="noopener noreferrer">
-                                            View Product
-                                        </a>
-                                    </div>
+                            return (
+                                <div key={index} className="col-lg-3 col-md-6 col-sm-12" style={{ marginBottom: "20px" }}>
+                                    <div className="card product-card">
+                                        <div className="card-header align-items-center">
+                                            <img src={product.image} className="product-image" alt={product.title}
+                                                style={{ objectFit: "contain" }} loading="lazy" />
+                                        </div>
 
-                                    <div className="card-footer text-center">
-                                        <img src={getCompanyLogo(product.company)} alt="Company Logo"
-                                            style={{ width: "100px", height: "50px", objectFit: "contain" }} loading="lazy" />
+                                        <div className="card-details">
+                                            <h5 className="card-title">{product.title}</h5>
+                                            <h6 className="card-price">{product.price}</h6>
+                                            <a href={product.website} className="btn btn-outline-secondary view-product-btn" target="_blank" rel="noopener noreferrer">
+                                                View Product
+                                            </a>
+                                        </div>
+
+                                        <div className={`dietary-icons ${iconCount >= 4 ? "shrink-icons" : ""}`}>
+                                            {availableIcons.map(icon =>
+                                                product[icon.id] && (
+                                                    <img key={icon.id} src={icon.src} alt={icon.label} title={icon.label} className="dietary-icon" />
+                                                )
+                                            )}
+                                        </div>
+
+                                        <div className="card-footer text-center">
+                                            <img src={getCompanyLogo(product.company)} alt="Company Logo"
+                                                style={{ width: "100px", height: "50px", objectFit: "contain" }} loading="lazy" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                 </div>
-                <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center"}}>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center" }}>
+                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
                     <h5 className="disclaimer">
-                    All product prices are from the time that the product was added to the site.<br/>
-                    For current pricing, refer to the companies website.
+                        All product prices are from the time that the product was added to the site.<br />
+                        For current pricing, refer to the companies website.
                     </h5>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem"}}></i>
+                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
                 </div>
             </div>
         </div>
