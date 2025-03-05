@@ -226,8 +226,6 @@ def upload_logo():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-
 @app.route("/get-logo/<filename>", methods=["GET"])
 def get_logo(filename):
     try:
@@ -292,15 +290,9 @@ def update_product_category(id):
 
 @app.route("/products", methods=["POST"])
 def add_product():
-    """
-        Add a new product to the DB.
-        Requires certain fields to be present in the request JSON.
-    """
     try:
-        data = request.json
-        print("Received data:", data)
+        data = request.get_json()  # ✅ Get raw JSON from request
 
-        # Ensure required fields exist
         required_fields = ["title", "website", "image", "company", "category", "price"]
         if not all(field in data for field in required_fields):
             return jsonify({"error": "Missing required fields"}), 400
@@ -308,9 +300,18 @@ def add_product():
         if not isinstance(data["price"], str):
             data["price"] = str(data["price"])
 
+        # ✅ Ensure dietary fields are received
+        dietary_fields = ["vegan", "gluten_free", "nut_free", "non_gmo", "organic"]
+        for field in dietary_fields:
+            if field in data:
+                print(f"Field {field}: {data[field]}")  # ✅ Debug before insertion
+                data[field] = bool(data[field])  # Ensure proper boolean conversion
+            else:
+                data[field] = False  # Default if missing
+
         data["createdAt"] = datetime.now(timezone.utc)
-    
-        db.products.insert_one(data)  # ✅ Insert into the correct "products" collection
+
+        db.products.insert_one(data)  # ✅ Insert into DB
 
         return jsonify({"message": "Product added successfully"}), 201
     except Exception as e:
@@ -319,9 +320,9 @@ def add_product():
 @app.route("/products", methods=["GET"])
 def get_products():
     """
-        Get products grouped by company.
-        If a category query parameter is provided, filters by that category.
-        The aggregation pipeline groups products by company and converts ObjectId to str.
+    Get products grouped by company.
+    If a category query parameter is provided, filters by that category.
+    The aggregation pipeline groups products by company and converts ObjectId to str.
     """
     category = request.args.get('category', None)
 
@@ -329,11 +330,11 @@ def get_products():
         # Build aggregation pipeline dynamically
         pipeline = []
         if category:
-            pipeline.append({"$match": {"category": category}})  # ✅ Filter by category if provided
+            pipeline.append({"$match": {"category": category}})  # Filter by category if provided
 
         pipeline.extend([
             {
-                "$lookup": {  # ✅ Join with the companies collection to get the company logo
+                "$lookup": {  # Join with the companies collection to get the company logo
                     "from": "companies",
                     "localField": "company",
                     "foreignField": "name",
@@ -341,30 +342,35 @@ def get_products():
                 }
             },
             {
-                "$addFields": {  # ✅ Extract the first company logo (if exists)
+                "$addFields": {  # Extract the first company logo (if exists)
                     "company_logo": {"$arrayElemAt": ["$company_details.logo", 0]}
                 }
             },
             {
-                "$group": {  # ✅ Group by company name
+                "$group": {  # Group by company name
                     "_id": "$company",
-                    "company_logo": {"$first": "$company_logo"},  # ✅ Include logo in the group
+                    "company_logo": {"$first": "$company_logo"},  # Include logo in the group
                     "products": {"$push": {
-                        "_id": {"$toString": "$_id"},  # ✅ Convert ObjectId to string
+                        "_id": {"$toString": "$_id"},  # Convert ObjectId to string
                         "title": "$title",
                         "company": "$company",
                         "website": "$website",
                         "category": "$category",
                         "image": "$image",
-                        "price": "$price"
+                        "price": "$price",
+                        "vegan": "$vegan",   
+                        "gluten_free": "$gluten_free", 
+                        "nut_free": "$nut_free", 
+                        "non_gmo": "$non_gmo",  
+                        "organic": "$organic",  
+                        "createdAt": "$createdAt"
                     }}
                 }
             },
-            {"$sort": {"_id": 1}}  # ✅ Sort companies alphabetically
+            {"$sort": {"_id": 1}}  # Sort companies alphabetically
         ])
 
         grouped_products = list(db.products.aggregate(pipeline))
-
         return jsonify(grouped_products), 200
 
     except Exception as e:

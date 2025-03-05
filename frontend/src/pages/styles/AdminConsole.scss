@@ -65,17 +65,20 @@
 .product-card-row {
     display: flex;
     flex-direction: row;
-    max-height: 40vh;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .existing-product-card {
     background-color: $primary-color;
     max-width: 80%;
-    height: 40vh;
+    height: $product-card-height;
     text-align: center;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
     border-radius: $border-radius;
 }
 
@@ -95,4 +98,29 @@
     align-items: center;
     margin: 0 auto;
     padding: 5%;
+}
+
+.dietary-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+
+    .dietary-icon {
+        width: 80px; 
+        height: auto; 
+        margin-bottom: $padding-medium;
+        object-fit: contain;
+        top: 0;
+    }
+    
+    &.shrink-icons .dietary-icon {
+        width: 55px;
+    }
+}
+
+.product-text-muted {
+    margin-top: $padding-small;
 }

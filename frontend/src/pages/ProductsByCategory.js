@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
-import Logo from "../resources/eclogov7.webp"
+import Logo from "../resources/eclogo8.webp"
 import API_BASE_URL from "../components/urls"
 import "./styles/ProductsByCategory.scss"
 

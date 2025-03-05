@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/CompaniesPage.scss"
 import API_BASE_URL from "../components/urls";
-import Logo from "../resources/eclogov7.webp"
+import Logo from "../resources/eclogo8.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
 import veganIcon from "../resources/icons/veganlogo.png";
@@ -29,7 +29,7 @@ import ECOLOGO from "../resources/icons/ecologologo.png"
 import fscLogo from "../resources/icons/fsclogo.svg"
 import rainforestAlliance from "../resources/icons/rainforestalliancelogo.png"
 import ewg from "../resources/icons/ewglogo.svg"
-import nongmo from "../resources/icons/nongmologo.jpeg"
+import nongmo from "../resources/icons/nongmologo.png"
 import greenAmerica from "../resources/icons/greenamericalogo.png"
 import safecosmetics from "../resources/icons/safecosmeticslogo.png"
 import reefsafe from "../resources/icons/reefsafelogo.png"
@@ -71,7 +71,7 @@ import Agave from "../resources/icons/agavelogo.png"
 import MCS from "../resources/icons/marineconservationlogo.gif"
 import jpma from "../resources/icons/jpmalogo.png"
 import carbonNeutral from "../resources/icons/carbonneutrallogo.png"
-import usdaOrganic from "../resources/icons/usdaorganiclogo.gif"
+import usdaOrganic from "../resources/icons/usdaorganiclogo.png"
 import craftDistillery from "../resources/icons/craftdistillery.png"
 import ecoboard from "../resources/icons/ecoboardlogo.png"
 import GIA from "../resources/icons/gialogo.svg"
