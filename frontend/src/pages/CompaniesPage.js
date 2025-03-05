@@ -210,7 +210,6 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
       try {
         const response = await fetch(`${API_BASE_URL}/${collection}`);
         const data = await response.json();
-        console.log("Fetched Companies Data:", data);  // ✅ Check API response
         setCompanies(data);
       } catch (error) {
         console.error("Error fetching companies", error);

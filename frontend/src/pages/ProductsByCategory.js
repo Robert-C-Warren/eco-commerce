@@ -131,12 +131,12 @@ const ProductsByCategory = () => {
                         })}
                 </div>
                 <div className="disclaimer-footer" style={{ display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center" }}>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
+                    <i className="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
                     <h5 className="disclaimer">
                         All product prices are from the time that the product was added to the site.<br />
                         For current pricing, refer to the companies website.
                     </h5>
-                    <i class="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
+                    <i className="bi bi-cone-striped" style={{ fontSize: "3rem" }}></i>
                 </div>
             </div>
         </div>

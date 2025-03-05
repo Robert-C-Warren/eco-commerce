@@ -50,15 +50,12 @@ const AdminConsole = () => {
 
     const fetchProducts = async () => {
         try {
-            console.log("Fetching products...");
             const response = await API.get(`${API_BASE_URL}/products`);
-            console.log("API Response:", response.data);  // ✅ Logs full API response
 
             const formattedProducts = {};
             response.data.forEach(group => {
                 if (group._id && Array.isArray(group.products)) {
                     formattedProducts[group._id] = group.products.map(product => {
-                        console.log("Processing Product:", product);  // ✅ Debug each product
 
                         return {
                             _id: product._id,
@@ -78,8 +75,6 @@ const AdminConsole = () => {
                     console.warn("Unexpected group format:", group);
                 }
             });
-
-            console.log("Formatted Products with Dietary Fields:", formattedProducts); // ✅ Debugging log
 
             setProductsByCompany(formattedProducts);  // ✅ Updates state (was missing before)
         } catch (error) {
