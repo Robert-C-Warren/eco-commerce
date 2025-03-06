@@ -202,6 +202,27 @@ def add_cors_headers(response):
         response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
     return response
 
+@app.after_request
+def add_security_headers(response):
+    """
+    Adds key security headers, including Content Security Policy (CSP).
+    """
+    csp = (
+        "default-src 'self'; "
+        "script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; "
+        "object-src 'none'; "
+        
+    ) 
+    response.headers["Content-Security-Policy"] = csp
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Permissions-Policy"] = "accelerometer=(), camera=(), microphone=()"
+
+    return response
+
 @app.route("/upload-logo", methods=["POST"])
 def upload_logo():
     """Update MongoDB with file URL instead of re-uploading"""
