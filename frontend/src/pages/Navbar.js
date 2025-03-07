@@ -38,9 +38,9 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar expand="lg" style={{ backgroundColor: "#62929E" }} className="sticky-top">
+        <Navbar expand="lg" style={{ backgroundColor: "#62929E" }} className="sticky-top navbar">
             <Navbar.Brand as={Link} to="/">
-                <img src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%" }} />
+                <img className="nav-logo" src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%" }} />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav" style={{ fontWeight: "bold", fontSize: "1.2rem" }}>

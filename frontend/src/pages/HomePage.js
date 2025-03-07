@@ -11,9 +11,9 @@ const HomePage = () => {
     return (
         <div className="container-fluid my-4">
             <div className="logo-container">
-                <img className="logo-actual" src={Logo} alt="EC" height="300" width="auto" loading="lazy" fetchPriority="high"/>
+                <img className="logo-actual" src={Logo} alt="EC" loading="lazy" fetchPriority="high"/>
             </div>
-            <div className="hero-section text-center p-5">
+            <div className="hero-section-home text-center p-5">
                 <h1 className="display-2 hero-text">
                     Find Better <strong className="eco-hero">Companies</strong> & <strong className="eco-hero">Products</strong> for the Planet.
                 </h1>
