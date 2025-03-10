@@ -1,5 +1,9 @@
 @import 'variables';
 
+.admin-manage-companies {
+    color: white;
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -7,11 +11,15 @@
     background-color: $secondary-color;
     text-align: center;
     padding: $padding-small;
-}
+    width: 90%;
 
-.form-input {
-    font-size: $medium-font-size;
-    width: 90vh;
+    .form-actual {
+        width: 90%;
+    }
+
+    .form-input {
+        font-size: $medium-font-size;
+    }
 }
 
 .container-fluid {
@@ -69,6 +77,12 @@
         margin-bottom: 5px;
         margin-left: $padding-small;
     }
+}
+
+.modal-container {
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
 }
 
 body.dark-mode{

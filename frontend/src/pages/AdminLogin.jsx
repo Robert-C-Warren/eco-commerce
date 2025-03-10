@@ -51,36 +51,24 @@ const AdminLogin = ({ onLogin }) => {
 
     const handleMfaSubmit = async (e) => {
         e.preventDefault();
-        console.log("🔍 Sending MFA verification request:", { user_id, mfaCode });
-    
         try {
             const response = await axios.post(`${API_BASE_URL}/admin/verify-mfa`, {
                 user_id, 
                 mfaCode
             });
     
-            console.log("✅ MFA Verification response:", response.data);
-    
-            if (response.data.success) {
-                console.log("✅ MFA verified. Storing session token...");
-    
-                // ✅ Store Session Token (Not MFA Code)
-                sessionStorage.setItem("sessionToken", response.data.sessionToken);
-    
-                if (typeof onLogin === "function") {
-                    onLogin(true);
-                }
-    
+            if (response.data.success && response.data.sessionToken) {
+                sessionStorage.setItem("sessionToken", response.data.sessionToken);  // ✅ Correct
+                onLogin(true);
                 navigate("/admin/products");
             } else {
-                console.log("❌ MFA verification failed:", response.data.message);
-                setError(response.data.message);
+                setError(response.data.message || "MFA verification failed");
             }
         } catch (err) {
-            console.error("🚨 Error in MFA verification:", err);
             setError("An error occurred during MFA verification.");
         }
     };
+    
     
 
     return (

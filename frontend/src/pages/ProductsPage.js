@@ -202,7 +202,7 @@ const ProductsPage = ({ searchQuery, collection = "products" }) => {
                                                 return (a.title || "").localeCompare(b.title || "");
                                             })
                                             .map((product, index) => (
-                                                <div key={index} className="card-group col-lg-3 col-md-6 col-sm-12">
+                                                <div key={index} className="card-group col-lg-3 col-md-6 col-sm-12 card-container">
                                                     <div className="product-card">
                                                         <div className="card-header align-items-center">
                                                             <img src={product.image} className="product-image" alt={product.title}

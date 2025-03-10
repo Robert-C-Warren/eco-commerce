@@ -87,12 +87,11 @@ def auth_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         auth_header = request.headers.get("Authorization")
-
         if not auth_header or "Bearer" not in auth_header:
             return jsonify({"message": "Unauthorized: Token missing"}), 401
 
+        token = auth_header.split(" ")[1]
         try:
-            token = auth_header.split(" ")[1]
             payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
             user_id = payload["user_id"]
 
@@ -100,16 +99,10 @@ def auth_required(f):
             if not admin:
                 return jsonify({"message": "Unauthorized: User not found"}), 403
 
-            # ✅ Ensure `lastActivity` is converted to a timezone-naive datetime
             last_activity = admin.get("lastActivity")
-            if last_activity:
-                last_activity_dt = last_activity.replace(tzinfo=None)  # ✅ Remove timezone info
+            if last_activity and (datetime.utcnow() - last_activity.replace(tzinfo=None)) > timedelta(hours=2):
+                return jsonify({"message": "Session expired. Please log in again."}), 401
 
-                # ✅ Now, both timestamps are naive and can be compared
-                if datetime.utcnow() - last_activity_dt > timedelta(hours=2):
-                    return jsonify({"message": "Session expired. Please log in again."}), 401
-
-            # ✅ Update last activity timestamp with a timezone-naive datetime
             db.admins.update_one({"_id": ObjectId(user_id)}, {"$set": {"lastActivity": datetime.utcnow()}})
 
             return f(*args, **kwargs)

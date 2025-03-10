@@ -1,5 +1,5 @@
 import React from "react";
-import "./BScoreChart.css"
+import "../pages/styles/BScoreChart.scss"
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from "recharts";
 
 const BScoreChart = ({ score }) => {
@@ -7,8 +7,8 @@ const BScoreChart = ({ score }) => {
     const normalizedScore = (score / maxScore) * 100; // Convert to percentage
 
     const data = [
-        { name: "B Score", value: 100, fill: "rgba(0, 136, 254, 0.2" }, // Scale the value
-        { name: "B Score", value: normalizedScore, fill: "#0088FE" }, // Scale the value
+        { name: "B Score", value: 100, fill: "rgba(89, 89, 74, 0.2" }, // Scale the value
+        { name: "B Score", value: normalizedScore, fill: "#A7DBCF" }, // Scale the value
     ];
 
     return (
@@ -19,7 +19,7 @@ const BScoreChart = ({ score }) => {
                     <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
                     <RadialBar dataKey="value" data={[data[0]]} cornerRadius={5} />
                     <RadialBar minAngle={15} clockWise dataKey="value" data={[data[1]]} cornerRadius={5} />
-                    <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="24px">
+                    <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="24px" fontWeight="600" fill="white">
                         {score}
                     </text>
                 </RadialBarChart>

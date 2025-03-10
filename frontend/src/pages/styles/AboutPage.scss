@@ -1,0 +1,44 @@
+@import 'variables';
+
+.about-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .about-title {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .worded-logo {
+        width: 45%;
+        padding: $padding-small;
+    }
+
+    .section-1 {
+        background-color: $fourth-color;
+        padding: $padding-medium;
+        border-radius: $border-radius;
+    }
+    
+    .section-2 {
+        background-color: $fifth-color;
+        padding: $padding-medium;
+        border-radius: $border-radius;
+    }
+
+    .highlights-container {
+        background-color: $fourth-color;
+        padding: $padding-medium;
+        border-radius: $border-radius;
+    }
+
+    .section-4 {
+        background-color: $fifth-color;
+        padding: $padding-medium;
+        border-radius: $border-radius;
+        margin-top: $padding-medium;
+    }
+}

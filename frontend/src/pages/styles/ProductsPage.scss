@@ -103,3 +103,13 @@
     95% { transform: translateY(-5px); } /* Final tiny bounce */
     100% { transform: translateY(0); } /* Stops */
 }
+
+@media (max-width: 600px) {
+    .card-container {
+        padding-bottom: $padding-medium;
+    }
+
+    .product-image {
+        max-height: 300px;
+    }
+}

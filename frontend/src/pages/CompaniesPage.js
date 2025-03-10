@@ -325,6 +325,22 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
     setTooltipPosition({ x: e.clientX + 10, y: e.clientY - 40 })
   }
 
+  const getScoreColor = (score) => {
+    if (score >= 85) return "#28a745", "Excellent";
+    if (score >= 70) return "#ffc107", "Good";
+    if (score >= 50) return "#fd7e14", "Moderate";
+    if (score >= 30) return "#dc3545", "Low";
+    return "#ffffff", "Not Enough Info";
+  }
+
+  const getScoreRating = (score) => {
+    if (score >= 85) return "Excellent";
+    if (score >= 70) return "Good";
+    if (score >= 50) return "Moderate";
+    if (score >= 30) return "Low";
+    return "Not Enough Info";
+  }
+
   return (
     <div>
       <div className="container my-4">
@@ -429,7 +445,8 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                                   ) : null;
                                 })}
                               </div>
-                              <h4 className="index-score">{company.transparency_score}</h4>
+                              <h2 className="index-score-title">Transparency Score</h2>
+                              <h2 className="index-score" style={{ color: getScoreColor(company.transparency_score)}}>{company.transparency_score} {getScoreRating(company.transparency_score)}</h2>
                             </div>
 
                             {/* Absolutely Positioned Collapse Button */}

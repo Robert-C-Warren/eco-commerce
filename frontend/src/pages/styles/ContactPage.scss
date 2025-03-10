@@ -47,3 +47,11 @@ h4 {
 .email-box, .name-box, .message-box {
     font-size: $medium-font-size;
 }
+
+@media (max-width: 600px) {
+    .form-control {
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}

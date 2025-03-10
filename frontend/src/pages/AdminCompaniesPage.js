@@ -324,7 +324,7 @@ const NewCompanyForm = () => {
   return (
     <div className="my-3 form-container">
       <h3>Add New Company</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-actual">
         {/* Company Name */}
         <div className="mb-3 form-input">
           <label htmlFor="name" className="form-label" />
@@ -740,7 +740,7 @@ const CompanyCard = ({ company, availableIcons }) => {
 
           {/* Edit Modal */}
           {isEditing && (
-            <div className="modal show d-block" tabIndex="-1">
+            <div className="modal show d-block modal-container" tabIndex="-1">
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
@@ -819,7 +819,7 @@ const AdminCompaniesPage = () => {
   return (
     <div className="container-fluid my-4">
       <ToastContainer />
-      <h1 className="text-center mb-4">Admin: Manage Companies</h1>
+      <h1 className="text-center mb-4 admin-manage-companies">Admin: Manage Companies</h1>
 
       <div className="d-flex justify-content-end mb-3">
         <Link to="/admin/products" className="btn btn-secondary">

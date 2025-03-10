@@ -165,19 +165,21 @@
 
 @media (max-width: 500px) {
     .container {
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0 auto;
         text-align: center;
     }
 
     .cards {
-        margin-left: 0;
         padding-left: 0;
     }
 
     .company-card {
-        margin-left: 0;
-        padding-bottom: $padding-small;
+        padding-bottom: $padding-medium;
+        
+        &.expanded {
+            margin: 0 auto;
+            max-width: 100%t;
+        }
     }
 
     .company-card.company-card.collapsed {
@@ -203,7 +205,7 @@
 }
 
 .company-card {
-    margin: 15px;
+
     color: white;
 }
 
