@@ -5,6 +5,7 @@ import smallLogo from "../resources/eclogo8.webp";
 import "./styles/HomePage.scss"
 import API_BASE_URL from "../components/urls";
 import axios from "axios"
+import { Helmet } from "react-helmet";
 
 const CustomNavbar = () => {
     const [companyCategories, setCompanyCategories] = useState([])
@@ -19,14 +20,14 @@ const CustomNavbar = () => {
                     axios.get(`${API_BASE_URL}/companies/categories`),  // ✅ Fetch company categories
                     axios.get(`${API_BASE_URL}/products/categories`)    // ✅ Fetch product categories
                 ]);
-    
+
                 setCompanyCategories(companyRes.data || []);  // ✅ Ensure correct mapping
                 setProductCategories(productRes.data || []);  // ✅ Ensure correct mapping
             } catch (err) {
                 console.error("Error fetching categories:", err);
             }
         };
-    
+
         fetchCategories();
     }, []);
 
@@ -39,6 +40,13 @@ const CustomNavbar = () => {
 
     return (
         <Navbar expand="lg" style={{ backgroundColor: "#62929E" }} className="sticky-top navbar">
+            <Helmet>
+                <title>EcoCommerce | About</title>
+                <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+                <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                    b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                    ethical sourcing, ethical brands, ethical clothing" />
+            </Helmet>
             <Navbar.Brand as={Link} to="/">
                 <img className="nav-logo" src={smallLogo} alt="EC" height="80" style={{ paddingLeft: "8%" }} />
             </Navbar.Brand>
@@ -48,6 +56,7 @@ const CustomNavbar = () => {
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                     <Nav.Link as={Link} to="/products">Products</Nav.Link>
                     <Nav.Link as={Link} to="/companies">Companies</Nav.Link>
+                    <Nav.Link as={Link} to="/social">Social</Nav.Link>
                     {/* <Nav.Link as={Link} to="/smallbusiness">Small Businesses</Nav.Link> */}
                     <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                     <Nav.Link as={Link} to="/about">About</Nav.Link>

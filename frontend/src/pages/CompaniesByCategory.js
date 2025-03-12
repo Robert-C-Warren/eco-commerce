@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API_BASE_URL from "../components/urls";
 import "./styles/CompaniesByCategory.scss"
+import { Helmet } from "react-helmet";
 import Logo from "../resources/eclogo8.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
 import smallBusinessIcon from "../resources/icons/handshake.png";
@@ -233,6 +234,13 @@ const CompaniesByCategory = () => {
     return (
         <div>
             <div className="container my-4">
+                <Helmet>
+                    <title>EcoCommerce | About</title>
+                    <meta name="description" content={`Find eco-friendly ${categoryName} companies and sustainable products for responsible shopping`} />
+                    <meta name="keywords" content={`${categoryName}, EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                        b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                        ethical sourcing, ethical brands, ethical clothing`} />
+                </Helmet>
                 <div className="hero-section text-center p-5">
                     <h1 className="display-2 hero-text">
                         Companies Doing <strong className="eco-hero">Good</strong> for the Planet

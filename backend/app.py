@@ -218,24 +218,36 @@ def add_security_headers(response):
 
 @app.route("/upload-logo", methods=["POST"])
 def upload_logo():
-    """Update MongoDB with file URL instead of re-uploading"""
-    company_id = request.json.get("company_id")  # Get company ID from request
-    file_url = request.json.get("file_url")  # Get uploaded file URL
+    """Update MongoDB with file URL and Instagram without requiring both"""
+    data = request.json
+    company_id = data.get("company_id")  # Get company ID
+    file_url = data.get("file_url", None)  # Get uploaded file URL
+    instagram = data.get("instagram", None)  # Get Instagram link
 
-    if not company_id or not file_url:
-        return jsonify({"error": "Company ID and file URL are required"}), 400
+    if not company_id:
+        return jsonify({"error": "Company ID is required"}), 400
 
     try:
-        # 🔄 Update MongoDB with the uploaded file URL
+        update_fields = {}
+
+        if file_url:
+            update_fields["logo"] = file_url  # ✅ Update only if file is uploaded
+        if instagram:
+            update_fields["instagram"] = instagram  # ✅ Update Instagram if provided
+
+        if not update_fields:
+            return jsonify({"error": "No valid fields provided for update"}), 400
+
+        # 🔄 Update MongoDB with provided fields
         result = db.companies.update_one(
-            {"_id": ObjectId(company_id)},  # Ensure you're updating the correct company
-            {"$set": {"logo": file_url}}
+            {"_id": ObjectId(company_id)},
+            {"$set": update_fields}
         )
 
         if result.modified_count == 0:
-            return jsonify({"error": "Failed to update company logo in database"}), 500
+            return jsonify({"error": "No changes made"}), 400
 
-        return jsonify({"message": "Logo updated successfully", "file_url": file_url}), 200
+        return jsonify({"message": "Company updated successfully", "updated_data": update_fields}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -837,18 +849,14 @@ def get_recent_companies():
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
     try:
-        print(f"📥 Received PUT request for company ID: {company_id}")
-
         try:
             object_id = ObjectId(company_id)
         except Exception as e:
             print("❌ Invalid company ID:", e)
             return jsonify({"error": "Invalid company ID"}), 400
-        
-        print("📥 Incoming Form Data:", request.form.to_dict())
-        print("📂 Incoming Files:", request.files.keys())
 
-        data = {}
+        data = request.json  # ✅ Expect JSON input
+        update_fields = {}
 
         company = db.companies.find_one({"_id": object_id})
         if company:
@@ -863,6 +871,14 @@ def update_company(company_id):
                 print("❌ Company not found in either collection.")
                 return jsonify({"error": "Company not found"}), 404
 
+        # ✅ Handle Instagram Link Update (JSON input)
+        if "instagram" in data:
+            new_instagram = data["instagram"].strip()
+            if new_instagram:
+                update_fields["instagram"] = new_instagram
+                print(f"🔗 Updating Instagram Link: {new_instagram}")
+
+        # ✅ Handle File Upload (Only if present)
         if "file" in request.files:
             file = request.files["file"]
             file_name = f"logos/{datetime.now().timestamp()}_{secure_filename(file.filename)}"
@@ -874,7 +890,7 @@ def update_company(company_id):
                 blob.make_public()
 
                 file_url = blob.public_url
-                data["logo"] = file_url
+                update_fields["logo"] = file_url  # ✅ Preserve old logo if no new file
 
                 print(f"✅ File uploaded successfully: {file_url}")
 
@@ -884,35 +900,18 @@ def update_company(company_id):
         else:
             print("⚠️ No file received in request.")
 
-        # Read other form data
-        form_data = request.form.to_dict()
-        data.update(form_data)
-
-        # Remove '_id' if present
-        data.pop("_id", None)
-
-        # Convert qualifications to a list if needed
-        if "qualifications" in data and isinstance(data["qualifications"], str):
-            data["qualifications"] = [q.strip() for q in data["qualifications"].split(",")]
-
-        # Debug: Check if logo exists in `data`
-        print(f"🛠️ Data before MongoDB update: {data}")
-
-        if not data:
+        # ✅ Ensure MongoDB Only Updates Provided Fields
+        if not update_fields:
             print("❌ No valid fields provided for update.")
             return jsonify({"error": "No valid fields provided"}), 400
 
-        # Log MongoDB update
-        print(f"🔄 Updating MongoDB for {company_id} with:", data)
-
-        result = collection.update_one({"_id": object_id}, {"$set": data})
+        result = collection.update_one({"_id": object_id}, {"$set": update_fields})
 
         if result.modified_count == 0:
             print("❌ MongoDB did not modify any documents")
             return jsonify({"error": "No changes made to the company"}), 400
 
-        print("✅ Company updated successfully in MongoDB")
-        return jsonify({"message": "Company updated successfully", "updated_data": data}), 200
+        return jsonify({"message": "Company updated successfully", "updated_data": update_fields}), 200
 
     except Exception as e:
         print("❌ Unexpected Error:", str(e))

@@ -1,9 +1,17 @@
 import React from 'react';
 import './styles/AboutPage.scss';
 import LongLogo from '../resources/ecocommercelogo.webp';
+import { Helmet } from "react-helmet";
 
 const AboutPage = () => (
     <div className="container about-page">
+        <Helmet>
+            <title>EcoCommerce | About</title>
+            <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+            <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                ethical sourcing, ethical brands, ethical clothing" />
+        </Helmet>
         <div className="my-5">
             <h1 className="text-center about-title">About <img src={LongLogo} className='worded-logo' /></h1>
             <p className='section-1'>

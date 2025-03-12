@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/CompaniesPage.scss"
+import { Helmet } from "react-helmet";
 import API_BASE_URL from "../components/urls";
 import Logo from "../resources/eclogo8.webp"
 import bCorpIcon from "../resources/icons/bcorp.png";
@@ -234,15 +235,22 @@ const RecentCompaniesPage = ({ searchQuery }) => {
     // Filter companies based on searchQuery if provided
     const displayedCompanies = searchQuery
         ? companies.filter(
-              (company) =>
-                  company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  company.description?.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+            (company) =>
+                company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                company.description?.toLowerCase().includes(searchQuery.toLowerCase())
+        )
         : companies;
 
     return (
         <div>
             <div className="container my-4">
+                <Helmet>
+                    <title>EcoCommerce | About</title>
+                    <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+                    <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                        b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                        ethical sourcing, ethical brands, ethical clothing" />
+                </Helmet>
                 <div className="hero-section text-center p-5">
                     <h1 className="display-2 hero-text">
                         Recently <strong className="eco-hero">Added</strong> Companies
@@ -268,15 +276,13 @@ const RecentCompaniesPage = ({ searchQuery }) => {
                         {displayedCompanies.sort((a, b) => a.name.localeCompare(b.name)).map((company, index) => (
                             <div
                                 key={index}
-                                className={`card-group col-lg-3 col-md-6 col-sm-12 ${
-                                    expandedCompany === company._id ? "position-relative" : ""
-                                }`}
+                                className={`card-group col-lg-3 col-md-6 col-sm-12 ${expandedCompany === company._id ? "position-relative" : ""
+                                    }`}
                             >
                                 <div
                                     ref={expandedCompany === company._id ? cardRef : null}
-                                    className={`card company-card ${
-                                        expandedCompany === company._id ? "expanded" : "collapsed"
-                                    }`}
+                                    className={`card company-card ${expandedCompany === company._id ? "expanded" : "collapsed"
+                                        }`}
                                     onPointerMove={handleMouseMove}
                                 >
                                     {expandedCompany !== company._id && (

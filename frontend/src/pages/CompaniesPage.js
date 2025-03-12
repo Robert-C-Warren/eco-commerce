@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/CompaniesPage.scss"
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Helmet } from "react-helmet";
 import Logo from "../resources/eclogo8.webp"
 import API_BASE_URL from "../components/urls"
 import BScoreChart from "../components/BScoreChart"
@@ -344,6 +345,13 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   return (
     <div>
       <div className="container my-4">
+      <Helmet>
+            <title>EcoCommerce | About</title>
+            <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+            <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                ethical sourcing, ethical brands, ethical clothing" />
+        </Helmet>
         <div className="hero-section text-center p-5">
           <h1 className="display-2 hero-text">
             {collection === "smallbusiness"

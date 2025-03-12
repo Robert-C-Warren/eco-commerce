@@ -4,14 +4,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./styles/HomePage.scss"
 import Logo from "../resources/ecocommercelogo.webp"
+import { Helmet } from "react-helmet";
 
 const HomePage = () => {
     const navigate = useNavigate();
 
     return (
         <div className="container-fluid my-4">
+            <Helmet>
+                <title>EcoCommerce | About</title>
+                <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+                <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+                    b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+                    ethical sourcing, ethical brands, ethical clothing" />
+            </Helmet>
             <div className="logo-container">
-                <img className="logo-actual" src={Logo} alt="EC" loading="lazy" fetchPriority="high"/>
+                <img className="logo-actual" src={Logo} alt="EC" loading="lazy" fetchPriority="high" />
             </div>
             <div className="hero-section-home text-center p-5">
                 <h1 className="display-2 hero-text">

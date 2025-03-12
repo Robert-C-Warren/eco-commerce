@@ -225,6 +225,7 @@ const NewCompanyForm = () => {
     qualifications: "",
     logo: "",
     website: "",
+    instagram: "",
     category: "",
     isSmallBusiness: false,
   })
@@ -276,6 +277,7 @@ const NewCompanyForm = () => {
             qualifications: "",
             logo: "",
             website: "",
+            instagram: "",
             category: "",
         });
         setFile(null);
@@ -317,7 +319,12 @@ const NewCompanyForm = () => {
   //Input change handler
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "instagram"
+          ? `https://www.instagram.com/${value.replace("https://www.instagram.com/", "").trim()}`
+          : value
+    }));
   }
 
   // New Company Form
@@ -355,6 +362,12 @@ const NewCompanyForm = () => {
           <label htmlFor="website" className="form-label" />
           <input type="text" name="website" id="website" className="form-control"
             placeholder="Company Website URL" value={formData.website} onChange={handleChange} />
+        </div>
+        {/* Company Instagram */}
+        <div className="mb-3 form-input">
+          <label htmlFor="instagram" className="form-label" />
+          <input type="text" name="instagram" id="instagram" className="form-control"
+            placeholder="Company Instagram URL" value={formData.instagram? formData.instagram.replace("https://www.instagram.com/", "") : ""} onChange={handleChange} />
         </div>
         {/* Company Category */}
         <div className="mb-3 form-input">
@@ -403,7 +416,8 @@ const CompanyCard = ({ company, availableIcons }) => {
   const [formData, setFormData] = useState({
     name: company.name,
     description: company.description,
-    logo: company.logo
+    logo: company.logo,
+    instagram: company.instagram
   })
   const toggleExpand = () => setExpanded((prev) => !prev)
 
@@ -455,13 +469,10 @@ const CompanyCard = ({ company, availableIcons }) => {
         });
 
         if (file) {
-            console.log("📂 Adding file to FormData:", file.name);
             formData.append("file", file);
         } else {
             console.log("⚠️ No file added to FormData.");
         }
-
-        console.log("🚀 Sending PUT request to:", `${API_BASE_URL}/companies/${companyId}`);
 
         const response = await fetch(`${API_BASE_URL}/companies/${companyId}`, {
             method: "PUT",
@@ -518,8 +529,7 @@ const CompanyCard = ({ company, availableIcons }) => {
     }
   });
 
-
-// ✅ Partial update for icons with MFA
+  // ✅ Partial update for icons with MFA
   const updateIconsMutation = useMutation({
     mutationFn: ({ companyId, icons }) => {
         const sessionToken = localStorage.getItem("sessionToken");
@@ -544,8 +554,7 @@ const CompanyCard = ({ company, availableIcons }) => {
     }
   });
 
-
-// ✅ Partial update for category with MFA
+  // ✅ Partial update for category with MFA
   const updateCategoryMutation = useMutation({
     mutationFn: ({ companyId, category }) => {
         const sessionToken = localStorage.getItem("sessionToken");
@@ -570,6 +579,32 @@ const CompanyCard = ({ company, availableIcons }) => {
     }
   });
 
+  // Update instagram
+  const updateInstagramMutation = useMutation({
+    mutationFn: ({ companyId, instagram }) => {
+      const sessionToken = localStorage.getItem("sessionToken")
+
+      if (!sessionToken) {
+        toast.error("MFA required. Please log in again.")
+        return Promise.reject("Unauthorized: No MFA Token.")
+      }
+
+      return API.patch(`${API_BASE_URL}/companies/${companyId}/instagram`,
+        { instagram },
+        { headers: { Authorization: `Bearer ${sessionToken}`}}
+      )
+    },
+
+    onSuccess: () => {
+      toast.success("Instagram link added successfully", {autoClose: 3000})
+      queryClient.invalidateQueries(["companies"])
+    },
+
+    onError: () => {
+      toast.error("Failed to update Instagram link")
+    }
+  })
+
   // Handle toggling icons in local state before saving
   const toggleIcon = (iconId) => {
     setSelectedIcons((prev) =>
@@ -585,12 +620,18 @@ const CompanyCard = ({ company, availableIcons }) => {
   
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "instagram"
+          ? `https://www.instagram.com/${value.replace("https://www.instagram.com/", "").trim()}`
+          : value
+    }));
   }
 
   // Handle file input
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+
     if (!file) return;
 
     setSelectedFile(file); // ✅ Just store the file, don't upload yet
@@ -605,37 +646,53 @@ const CompanyCard = ({ company, availableIcons }) => {
         return;
     }
 
-    let fileUrl = formData.logo; // Default to existing logo
+    let formattedInstagram = formData.instagram
+      ? `https://www.instagram.com/${formData.instagram.replace("https://www.instagram.com/", "").trim()}`
+      : "";
+
+    // ✅ Prepare JSON data for update (Only send changed fields)
+    let updateData = { company_id: company._id };
+
+    if (formattedInstagram) {
+      updateData.instagram = formattedInstagram;  // ✅ Save full URL
+    }
 
     if (selectedFile) {
         try {
             console.log("📂 Uploading file to Firebase...");
             const storageRef = ref(storage, `logos/${Date.now()}_${selectedFile.name}`);
             const uploadTaskSnapshot = await uploadBytesResumable(storageRef, selectedFile);
-            fileUrl = await getDownloadURL(uploadTaskSnapshot.ref);
+            const fileUrl = await getDownloadURL(uploadTaskSnapshot.ref);
+            updateData.file_url = fileUrl; // ✅ Include file only if uploaded
         } catch (error) {
             toast.error("Failed to upload logo");
             return;
         }
     }
 
-    // ✅ Now send only the file URL to update MongoDB
     try {
         const response = await fetch(`${API_BASE_URL}/upload-logo`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ company_id: company._id, file_url: fileUrl }),
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("sessionToken")}`
+            },
+            body: JSON.stringify(updateData),
         });
 
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
 
-        setFormData((prev) => ({ ...prev, logo: data.file_url }));
+        setFormData((prev) => ({
+            ...prev,
+            logo: data.file_url || prev.logo, // ✅ Preserve old logo if unchanged
+            instagram: data.instagram || prev.instagram // ✅ Preserve old Instagram if unchanged
+        }));
 
         toast.success("Company updated successfully!");
     } catch (error) {
         console.error("❌ Error updating MongoDB:", error);
-        toast.error("Error updating company logo.");
+        toast.error("Error updating company details.");
     }
   };
 
@@ -758,6 +815,12 @@ const CompanyCard = ({ company, availableIcons }) => {
                       <div className="mb-3">
                         <label className="form-label">Company Description</label>
                         <textarea name="description" className="form-control" value={formData.description} onChange={handleChange} required />
+                      </div>
+                      {/* Instagram Link */}
+                      <div className="mb-3">
+                        <label className="form-label">Instagram</label>
+                        <input type="text" name="instagram" className="form-control" value={formData.instagram ? formData.instagram.replace("https://www.instagram.com/", "") : ""} 
+                            onChange={handleChange} placeholder="Instagram" />
                       </div>
                       {/* Existing Logo Preview */}
                       {formData.logo && (

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import API from "../services/api"
+import { Helmet } from "react-helmet"
 import "./styles/ContactPage.scss"
 
 const ContactPage = () => {
@@ -19,7 +20,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Submitting...")
-    
+
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name)
     formDataToSend.append("email", formData.email)
@@ -36,7 +37,7 @@ const ContactPage = () => {
       })
 
       setStatus("Message Sent Successfully!")
-      setFormData({name: "", email: "", message: ""})
+      setFormData({ name: "", email: "", message: "" })
       setFile(null)
     } catch (error) {
       console.error("Error sending message:", error)
@@ -46,6 +47,13 @@ const ContactPage = () => {
 
   return (
     <div className="parent">
+      <Helmet>
+        <title>EcoCommerce | About</title>
+        <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+        <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+            b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
+            ethical sourcing, ethical brands, ethical clothing" />
+      </Helmet>
       <div className="contact-form my-4">
         <h1 className="text-center mb-4">Contact Us</h1>
         <h4 className="text-center mb-4">If you have any questions, suggestions, or company recommendations for our site, feel free to contact us. We welcome feedback and will respond as soon as possible.
