@@ -690,6 +690,8 @@ const CompanyCard = ({ company, availableIcons }) => {
         }));
 
         toast.success("Company updated successfully!");
+
+        setIsEditing(false)
     } catch (error) {
         console.error("❌ Error updating MongoDB:", error);
         toast.error("Error updating company details.");
@@ -733,24 +735,6 @@ const CompanyCard = ({ company, availableIcons }) => {
             Save Speicifics
           </button>
 
-          {/* Icon Selector */}
-          <div className="icon-selector row">
-            {availableIcons.map((icon) => (
-              <div key={icon.id} className="form-check col-md-4 mb-1">
-                <input type="checkbox" className="form-check-input" id={`${company._id}.${icon.id}`}
-                  checked={selectedIcons.includes(icon.id)} onChange={() => toggleIcon(icon.id)} />
-                <label htmlFor={`${company._id}-${icon.id}`}>
-                  <img src={icon.src} alt={icon.label} style={{ width: "30px", marginRight: "5px" }} />
-                  {icon.label}
-                </label>
-              </div>
-            ))}
-          </div>
-          <button className="btn btn-primary mt-2" onClick={() =>
-            updateIconsMutation.mutate({ companyId: company._id, icons: selectedIcons })}>
-            Save Icons
-          </button>
-
           {/* Category Dropdown */}
           <select className="form-control mb-2 mt-2" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
             <option value="">Select a category</option>
@@ -784,6 +768,24 @@ const CompanyCard = ({ company, availableIcons }) => {
             Done
           </button>
 
+          {/* Icon Selector */}
+          <div className="icon-selector row">
+            {availableIcons.map((icon) => (
+              <div key={icon.id} className="form-check col-md-4 mb-1">
+                <input type="checkbox" className="form-check-input" id={`${company._id}.${icon.id}`}
+                  checked={selectedIcons.includes(icon.id)} onChange={() => toggleIcon(icon.id)} />
+                <label htmlFor={`${company._id}-${icon.id}`}>
+                  <img src={icon.src} alt={icon.label} style={{ width: "30px", marginRight: "5px" }} />
+                  {icon.label}
+                </label>
+              </div>
+            ))}
+          </div>
+          <button className="btn btn-primary mt-2" onClick={() =>
+            updateIconsMutation.mutate({ companyId: company._id, icons: selectedIcons })}>
+            Save Icons
+          </button>
+
           {/* Display assigned icons */}
           <div className="product-icons d-flex justify-content-center align-items-center gap-2 mt-2">
             {company.icons?.map((iconId) => {
@@ -814,7 +816,7 @@ const CompanyCard = ({ company, availableIcons }) => {
                       {/* Company Description */}
                       <div className="mb-3">
                         <label className="form-label">Company Description</label>
-                        <textarea name="description" className="form-control" value={formData.description} onChange={handleChange} required />
+                        <textarea name="description" className="form-control company-description-modal" value={formData.description} onChange={handleChange} required />
                       </div>
                       {/* Instagram Link */}
                       <div className="mb-3">
