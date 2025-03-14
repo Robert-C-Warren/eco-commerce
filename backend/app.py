@@ -179,6 +179,7 @@ def handle_options_request():
         headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
         headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
         response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        response.headers["Content-Security-Policy"] = "upgrade-insecure-requests;"
 
         return response
 

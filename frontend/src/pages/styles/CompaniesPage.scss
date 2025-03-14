@@ -145,6 +145,36 @@
     padding: 30px;
 }
 
+.company-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .visit-company-btn {
+        width: 30%;
+        background-color: $tertiary-color;
+        color: #353535;
+        border: none;
+
+        &:hover {
+            background-color: $fourth-color;
+        }
+    }
+}
+
+.company-insta-container {
+    font-size: 30px;
+    padding: $padding-small;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+
+    .visit-company-insta {
+        color: $tertiary-color;
+    }
+}
+
 @media (max-width: 1300px) {
     .card-text {
         padding-top: 5%;

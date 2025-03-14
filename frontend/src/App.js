@@ -18,7 +18,6 @@ import AdminTransparencyForm from "./pages/AdminTransparencyForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRegister from "./pages/AdminRegister"
 import AboutPage from "./pages/AboutPage";
-import SocialFeed from "./pages/SocialFeedPage"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Nav } from "react-bootstrap";
@@ -47,7 +46,6 @@ const App = () => {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/email" element={<SubscribePage />} />
-                <Route path="/social" element={<SocialFeed />} />
                 <Route path="/products/category/:category" element={<HomePage />} />
                 <Route path="/search" element={<SearchResultsPage />} />
 

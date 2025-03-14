@@ -345,10 +345,10 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
   return (
     <div>
       <div className="container my-4">
-      <Helmet>
-            <title>EcoCommerce | About</title>
-            <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
-            <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
+        <Helmet>
+          <title>EcoCommerce | About</title>
+          <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
+          <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
                 b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
                 ethical sourcing, ethical brands, ethical clothing" />
         </Helmet>
@@ -425,14 +425,30 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                               <li className="qualifications" key={i}>{qualification}</li>
                             ))}
                           </ul>
-                          <a
-                            href={company.website}
-                            className="btn btn-primary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Visit Website
-                          </a>
+
+                          <div className="company-links-container">
+                            <a
+                              href={company.website}
+                              className="btn btn-primary visit-company-btn"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Visit Website
+                            </a>
+                          </div>
+                          <div className="company-insta-container">
+                            {company.instagram && (
+                              <a
+                                href={company.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="instagram-link"
+                                aria-label={`Visit ${company.name} on Instagram`}
+                              >
+                                <i className="bi bi-instagram visit-company-insta"></i>
+                              </a>
+                            )}
+                          </div>
                           <div className="icon-wrapper">
                             {/* Icons & Score (Centered) */}
                             <div className="d-flex justify-content-center align-items-center center-container flex-grow-1">
@@ -454,7 +470,7 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
                                 })}
                               </div>
                               <h2 className="index-score-title">Transparency Score</h2>
-                              <h2 className="index-score" style={{ color: getScoreColor(company.transparency_score)}}>{company.transparency_score} {getScoreRating(company.transparency_score)}</h2>
+                              <h2 className="index-score" style={{ color: getScoreColor(company.transparency_score) }}>{company.transparency_score} {getScoreRating(company.transparency_score)}</h2>
                             </div>
 
                             {/* Absolutely Positioned Collapse Button */}
