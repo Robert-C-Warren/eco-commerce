@@ -149,13 +149,13 @@ const AdminTransparencyForm = () => {
   return (
     <div className="container-fluid">
       <ToastContainer />
-      <h2>Admin - Transparency Index</h2>
+      <h2 className="page-title-label">Admin - Transparency Index</h2>
 
       {/* {message && <div className="alert alert-info">{message}</div>} */}
 
       {/* Company Dropdown */}
       <div className="dropdown-container">
-        <label className="form-label">Select Company</label>
+        <label className="form-label page-title-label">Select Company</label>
         <select
           className="form-select dropdown"
           value={selectedCompany || ""}

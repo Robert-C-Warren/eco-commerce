@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/AboutPage.scss';
 import LongLogo from '../resources/ecocommercelogo.webp';
 import { Helmet } from "react-helmet";
+import LiveDashboard from './LiveDashboard';
 
 const AboutPage = () => (
     <div className="container about-page">
@@ -12,22 +13,23 @@ const AboutPage = () => (
                 b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
                 ethical sourcing, ethical brands, ethical clothing" />
         </Helmet>
-        <div className="my-5">
+        <div className="my-5 about-container">
             <h1 className="text-center about-title">About <img src={LongLogo} className='worded-logo' /></h1>
-            <p className='section-1'>
+            <p className='section-1 sections'>
                 EcoCommerce is your trusted guide for discovering eco-friendly and ethically responsible companies
                 and their products. Our platform serves as a comprehensive directory designed to empower consumers
                 to easily find and support businesses committed to sustainability, fair labor practices, and
                 environmental responsibility. Every company featured on our site has been thoughtfully evaluated,
                 providing clarity and confidence in your eco-conscious shopping choices.
             </p>
-            <p className='section-2'>
+            <LiveDashboard className='sections' />
+            <p className='section-2 sections'>
                 EcoCommerce was created to help you make informed purchasing decisions without cost, tracking,
                 or monetization. We do not charge fees, use cookies, or earn revenue from the platform. Our sole
                 mission is to offer accessible, unbiased information on companies actively working to protect the
                 planet and promote ethical business practices.
             </p>
-            <div className='highlights-container'>
+            <div className='highlights-container sections'>
                 <h3 className='ecocommerce-highlights'>Highlights:</h3>
                 <ul>
                     <li>Prioritizing sustainability and environmental stewardship</li>
@@ -38,7 +40,7 @@ const AboutPage = () => (
                     <li>Free, unbiased, and not monetized</li>
                 </ul>
             </div>
-            <p className='section-4'>
+            <p className='section-4 sections'>
                 We invite you to explore our curated directory and support businesses making genuine efforts to protect the planet and respect their workers and suppliers.
             </p>
         </div>

@@ -7,6 +7,14 @@
     align-items: center;
     color: white;
 
+    .about-container {
+        margin: $padding-medium;
+    }
+
+    .sections {
+        padding: $padding-medium;
+    }
+
     .about-title {
         font-size: 3rem;
         font-weight: 700;
@@ -19,26 +27,52 @@
 
     .section-1 {
         background-color: $fourth-color;
-        padding: $padding-medium;
         border-radius: $border-radius;
     }
-    
-    .section-2 {
+
+    .live-dashboard {
+        display: flex;
+        flex-direction: column;
         background-color: $fifth-color;
-        padding: $padding-medium;
+        border-radius: $border-radius;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $padding-medium;
+
+        .dashboard-title {
+            padding-top: $padding-small;
+        }
+
+        .dashboard-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recent-companies-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .dash-icon {
+            font-size: 20px;
+        }
+    }
+
+    .section-2 {
+        background-color: $fourth-color;
         border-radius: $border-radius;
     }
 
     .highlights-container {
-        background-color: $fourth-color;
-        padding: $padding-medium;
+        background-color: $fifth-color;
         border-radius: $border-radius;
     }
 
     .section-4 {
-        background-color: $fifth-color;
-        padding: $padding-medium;
+        background-color: $fourth-color;
         border-radius: $border-radius;
-        margin-top: $padding-medium;
     }
 }

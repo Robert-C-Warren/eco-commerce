@@ -227,6 +227,16 @@
     .collapse-button {
         width: 10%;
     }
+
+    .visit-company-btn {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 355px) {
+    .visit-company-btn {
+        font-size: 10px;
+    }
 }
 
 .card-title {
@@ -235,7 +245,6 @@
 }
 
 .company-card {
-
     color: white;
 }
 
@@ -256,6 +265,7 @@
     font-size: 1.2rem;
     padding: 0 !important;
 }
+
 .card-header-expanded{
     align-items: center;
     font-size: 1.2rem;

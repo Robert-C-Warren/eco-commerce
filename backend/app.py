@@ -821,32 +821,6 @@ def add_company():
         traceback.print_exc()  # ✅ Logs the full error stack trace
         return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
 
-@app.route('/companies/recent', methods=["GET"])
-def get_recent_companies():
-    """
-        Retrieve companies added in the last two weeks.
-        Filters companies by comparing their creation date.
-    """
-    try:
-        two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=14)
-
-        recent_companies = list(db.companies.find(
-            {"createdAt": {"$gte": two_weeks_ago}}
-        ))
-
-        recent_small_businesses = list(db.smallbusiness.find({"createdAt": {"$gte": two_weeks_ago}}))
-
-        all_recent = recent_companies + recent_small_businesses
-
-        for company in all_recent:
-            company["_id"] = str(company["_id"])
-
-        all_recent.sort(key=lambda x: x.get("createdAt", ""), reverse=True)
-
-        return jsonify(all_recent), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
 @app.route('/companies/<company_id>', methods=['PUT'])
 def update_company(company_id):
     try:
@@ -1328,6 +1302,94 @@ def send_contact_email():
     except Exception as e:
         print("🚨 Unexpected Error:", str(e))
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
+
+@app.route('/companies/count', methods=['GET'])
+def get_companies_count():
+    try:
+        total_companies = db.companies.count_documents({})
+
+        print(f"📊 Total Companies (Debug): {total_companies}")  # Ensure it's correct
+
+        # ✅ Explicitly return JSON response
+        response = jsonify({"count": int(total_companies)})  # Convert to int just in case
+        response.status_code = 200
+        return response
+
+    except Exception as e:
+        print("❌ Error:", str(e))
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/products/count', methods=['GET'])
+def get_products_count():
+    try:
+        total_products = db.products.count_documents({})
+        print(f"📦 Total Products (Debug): {total_products}")  # Debug log
+        return jsonify({"count": int(total_products)}), 200  # Ensure JSON response
+    except Exception as e:
+        print("❌ Error in /products/count:", str(e))
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/certifications/count', methods=['GET'])
+def get_unique_icons_count():
+    """
+    Counts the total number of unique icons used in the 'icons' field
+    across all companies in the database.
+    """
+    try:
+        # Fetch all distinct icon arrays from companies collection
+        all_icons = db.companies.distinct("icons")
+
+        # Flatten the list and remove duplicates
+        unique_icons = set(icon for icon_list in all_icons if icon_list for icon in icon_list)
+
+        print(f"🏅 Total Unique Icons (Certifications Count Debug): {len(unique_icons)}")  # Debugging
+
+        return jsonify({"count": len(unique_icons)}), 200
+    except Exception as e:
+        print("❌ Error in /certifications/count:", str(e))
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/companies/recent', methods=['GET'])
+def get_recent_companies():
+    """
+    Retrieve the most recent companies added.
+    - If `lastTwoWeeks=true` is provided, it only returns companies added in the last 14 days.
+    - If `limit` is provided, it limits the number of results (default: 5).
+    """
+    try:
+        limit = int(request.args.get('limit', 5))  # Default limit is 5
+        last_two_weeks = request.args.get('lastTwoWeeks', 'false').lower() == 'true'
+
+        query = {}
+
+        if last_two_weeks:
+            two_weeks_ago = datetime.now(timezone.utc) - timedelta(days=14)
+            query["createdAt"] = {"$gte": two_weeks_ago}  # Fetch only recent companies
+
+        # Fetch companies based on the query
+        recent_companies = list(db.companies.find(query, {"name": 1, "createdAt": 1})
+                                .sort("createdAt", -1)
+                                .limit(limit))
+
+        # Fetch from `smallbusiness` collection too
+        recent_small_businesses = list(db.smallbusiness.find(query, {"name": 1, "createdAt": 1})
+                                       .sort("createdAt", -1)
+                                       .limit(limit))
+
+        all_recent = recent_companies + recent_small_businesses
+
+        # Convert ObjectId to string for JSON response
+        for company in all_recent:
+            company["_id"] = str(company["_id"])
+
+        # Sort results by creation date (most recent first)
+        all_recent.sort(key=lambda x: x.get("createdAt", ""), reverse=True)
+
+        return jsonify(all_recent), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

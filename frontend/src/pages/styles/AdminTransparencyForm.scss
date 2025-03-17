@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.page-title-label {
+    color: white;
+}
+
 .dropdown-container {
     text-align: center;
 
@@ -22,7 +26,8 @@
     width: $form-width;
     height: $form-height;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: $padding-medium;
+    margin-top: $padding-medium;
 }
 
 .score-input {
@@ -32,6 +37,7 @@
 
 .score-label {
     font-weight: 600;
+    color: white;
 }
 
 .calculate-btn {
@@ -40,4 +46,5 @@
     font-size: $large-font-size;
     background-color: $primary-color;
     border: none;
+    margin-bottom: $padding-large;
 }

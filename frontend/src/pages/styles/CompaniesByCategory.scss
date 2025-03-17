@@ -13,10 +13,15 @@
   top: 0;
 }
 
-.visit-site-btn {
-  width: 20%;
-  padding: $padding-medium;
-  margin: 0 auto;
+.card.expanded {
+    z-index: 1050;
+    position: fixed;
+    top: 15%;
+    max-height: 80vh;
+    background-color: $secondary-color !important;
+    box-shadow: 10px 0px 18px rgba(0,0,0,0.5);
+    font-size: 1.2rem;
+    padding: 0 !important;
 }
 
 .card-title-category, .card-specifics-category {
@@ -26,10 +31,63 @@
 .card-text-category {
   padding: $padding-medium;
   font-size: $medium-font-size;
+  color: black;
 }
 
 .icon-actual-category {
   padding-top: $padding-medium;
   height: $icon-height;
   width: auto;
+}
+
+.company-links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .visit-site-btn {
+      width: 30%;
+      background-color: $tertiary-color;
+      color: #353535;
+      border: none;
+
+      &:hover {
+          background-color: $fourth-color;
+      }
+  }
+}
+
+@media (max-width: 500px) {
+  .visit-site-btn {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 355px) {
+  .visit-site-btn {
+    font-size: 10px;
+  }
+}
+
+.logo-bounce {
+  width: 300px;
+  height: 300px;
+  animation: bounce 1.5s ease-out forwards infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  10% { transform: translateY(-60px); } /* Highest bounce */
+  20% { transform: translateY(0); } 
+  30% { transform: translateY(-50px); } /* Lower bounce */
+  40% { transform: translateY(0); }
+  50% { transform: translateY(-35px); } /* Even lower */
+  60% { transform: translateY(0); }
+  70% { transform: translateY(-25px); } /* Small bounce */
+  80% { transform: translateY(0); }
+  85% { transform: translateY(-10px); } /* Tiny bounce */
+  90% { transform: translateY(0); }
+  95% { transform: translateY(-5px); } /* Final tiny bounce */
+  100% { transform: translateY(0); } /* Stops */
 }
