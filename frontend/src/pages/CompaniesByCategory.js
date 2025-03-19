@@ -691,7 +691,7 @@ const CompaniesByCategory = () => {
     <div>
       <div className="container my-4">
         <Helmet>
-          <title>EcoCommerce | About</title>
+          <title>EcoCommerce | {categoryName ? categoryName.charAt(0).toUpperCase() + categoryName.slice(1) + " Companies" : "Category"}</title>
           <meta
             name="description"
             content={`Find eco-friendly ${categoryName} companies and sustainable products for responsible shopping`}

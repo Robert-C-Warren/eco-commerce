@@ -67,8 +67,8 @@ const ProductsByCategory = () => {
         <div>
             <div className="container my-4">
                 <Helmet>
-                    <title>EcoCommerce | About</title>
-                    <meta name="description" content={`Find eco-friendly ${categoryName} companies and sustainable products for responsible shopping`} />
+                <title>EcoCommerce | {categoryName ? categoryName.charAt(0).toUpperCase() + categoryName.slice(1) + " Products" : "Category"}</title>
+                <meta name="description" content={`Find eco-friendly ${categoryName} companies and sustainable products for responsible shopping`} />
                     <meta name="keywords" content={`${categoryName}, EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
                         b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,
                         ethical sourcing, ethical brands, ethical clothing`} />

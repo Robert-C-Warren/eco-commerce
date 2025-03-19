@@ -3,6 +3,7 @@ import API from "../services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./styles/AdminConsole.scss"
+import { Helmet } from 'react-helmet';
 import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom";
 import API_BASE_URL from "../components/urls"
@@ -174,6 +175,9 @@ const AdminConsole = () => {
 
     return (
         <div className="admin-container mt-4">
+            <Helmet>
+                <title>EcoCommerce | Admin Console</title>
+            </Helmet>
             <ToastContainer />
             <h1 className="text-center mb-4 admin-page-title">Admin Console - Manage Products</h1>
             <div className="admin-nav-btns">

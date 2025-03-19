@@ -74,7 +74,6 @@ const CustomNavbar = () => {
       className="sticky-top navbar"
     >
       <Helmet>
-        <title>EcoCommerce | About</title>
         <meta
           name="description"
           content="Find eco-friendly companies and sustainable products for responsible shopping"

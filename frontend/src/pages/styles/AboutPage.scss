@@ -76,3 +76,40 @@
         border-radius: $border-radius;
     }
 }
+
+.index-info {
+    display: flex;
+    flex-direction: column;
+    background-color: $secondary-color;
+    padding: $padding-medium;
+    border-radius: $border-radius;
+
+    .transp-table {
+        background-color: $tertiary-color;
+    }
+
+    .emphasize {
+        font-weight: 600;
+    }
+
+    .transp-title, .transp-sustain, .transp-meaning, .transp-matter {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        margin: 20px 0;
+        font-size: $medium-font-size;
+        text-align: left;
+        border: none;
+    }
+
+    th, td {
+        padding: $padding-medium;
+    }
+}
+
+.transp-icon {
+    text-align: center;
+    font-size: 2.0rem;
+}

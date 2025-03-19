@@ -12,7 +12,7 @@ const HomePage = () => {
     return (
         <div className="container-fluid my-4">
             <Helmet>
-                <title>EcoCommerce | About</title>
+                <title>EcoCommerce | Home</title>
                 <meta name="description" content="Find eco-friendly companies and sustainable products for responsible shopping" />
                 <meta name="keywords" content="EcoCommerce, sustainable, eco-friendly, responsible shopping, ethical brands, 
                     b-corp products, best eco-friendly clothing companies, best eco-friendly jewelry companies, best eco-friendly food companies,

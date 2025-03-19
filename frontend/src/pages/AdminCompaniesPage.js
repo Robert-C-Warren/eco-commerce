@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import "react-toastify/dist/ReactToastify.css"
 import "./styles/AdminCompaniesPage.scss"
+import { Helmet } from "react-helmet";
 import API_BASE_URL from "../components/urls"
 import API from "../services/api";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
@@ -705,6 +706,9 @@ const CompanyCard = ({ company, availableIcons }) => {
   // Render the card
   return (
     <div className={`company-card ${expanded ? "expanded" : "collapsed"}`}>
+      <Helmet>
+        <title>EcoCommerce | Admin Companies</title>
+      </Helmet>
       <div className="company-header" onClick={toggleExpand}>
         {company.name}{" "}
         {company.icons?.includes("small_business") && (

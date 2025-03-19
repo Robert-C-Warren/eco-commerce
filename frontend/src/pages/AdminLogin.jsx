@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"
 import API_BASE_URL from "../components/urls"
+import { Helmet } from "react-helmet";
 
 const AdminLogin = ({ onLogin }) => {
     const [step, setStep] = useState("login");
@@ -73,6 +74,9 @@ const AdminLogin = ({ onLogin }) => {
 
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+            <Helmet>
+                <title>EcoCommerce | Admin Login</title>
+            </Helmet>
             <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%"}}>
                 <div className="card-body">
                     <h2 className="card-title text-center mb-4 text-primary">

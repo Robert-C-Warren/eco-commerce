@@ -3,6 +3,7 @@ import axios from "axios";
 import API_BASE_URL from "../components/urls";
 import { ToastContainer, toast } from "react-toastify"
 import "./styles/AdminTransparencyForm.scss"
+import { Helmet } from 'react-helmet';
 
 const AdminTransparencyForm = () => {
   const [companies, setCompanies] = useState([]);
@@ -148,6 +149,9 @@ const AdminTransparencyForm = () => {
 
   return (
     <div className="container-fluid">
+      <Helmet>
+        <title>EcoCommerce | Transparency Index</title>
+      </Helmet>
       <ToastContainer />
       <h2 className="page-title-label">Admin - Transparency Index</h2>
 

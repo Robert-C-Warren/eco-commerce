@@ -51,22 +51,22 @@ const LiveDashboard = () => {
             <h2 className="dashboard-title">Live EcoCommerce Stats</h2>
             <div className="dashboard-grid">
                 <div className="dashboard-card">
-                    <FaBuilding className="dash-icon" />
+                    <i className="bi bi-buildings transp-icon"></i>
                     <h3>{stats.totalCompanies}</h3>
                     <p>Companies Listed</p>
                 </div>
                 <div className="dashboard-card">
-                    <FaShoppingCart className="dash-icon" />
+                    <i class="bi bi-cart3 transp-icon"></i>
                     <h3>{stats.totalProducts}</h3>
                     <p>Products Available</p>
                 </div>
                 <div className="dashboard-card">
-                    <FaCertificate className="dash-icon" />
+                    <i class="bi bi-award transp-icon"></i>
                     <h3>{stats.totalCertifications}</h3>
                     <p>Certifications Featured</p>
                 </div>
                 <div className="dashboard-card">
-                    <FaClock className="dash-icon" />
+                    <i class="bi bi-clock transp-icon"></i>
                     <h3>Recent Companies</h3>
                     <ul className="recent-companies-list">
                         {stats.recentCompanies?.length > 0 ? (
