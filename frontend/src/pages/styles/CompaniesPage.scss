@@ -57,6 +57,10 @@
     100% { transform: translateY(0); } /* Stops */
 }
 
+.favorites-btn {
+    margin: 0 auto;
+}
+
 .icon-wrapper {
     position: relative;
     display: flex;
@@ -267,16 +271,36 @@
 }
 
 .card-header-expanded{
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: 1.2rem;
     background-color: $secondary-color;
     z-index: 15;
     border: none;
     padding-top: $padding-medium;
+    padding-bottom: 15px;
+}
+
+.company-logo {
+    max-width: 80%;
+    max-height: 120px; /* ✅ Ensure the logo does not take too much space */
+    object-fit: contain;
+    margin-bottom: 10px; /* ✅ Adds space below the logo */
+}
+
+.favorites-btn {
+    margin-top: 5px; /* ✅ Ensure favorite button does not overlap */
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
 }
 
 .card-body {
-    margin-top: 120px;
+    margin-top: 140px;
 }
 
 .company-card .card-header {

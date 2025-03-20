@@ -21,18 +21,27 @@
     }
 }
 
-
 .form-container-transp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: $form-width;
     height: $form-height;
     text-align: center;
-    margin-bottom: $padding-medium;
-    margin-top: $padding-medium;
+    margin-bottom: $padding-small;
+    margin-top: $padding-small;
 }
 
 .score-input {
     height: 60px;
-    font-size: $large-font-size;
+    font-size: $medium-font-size;
+}
+
+.score-actual {
+    text-align: center;
+    width: 20%;
+    justify-content: center;
 }
 
 .score-label {

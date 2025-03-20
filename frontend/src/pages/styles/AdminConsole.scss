@@ -15,7 +15,8 @@
 
 .admin-nav-btns {
     display: flex;
-    justify-content: end;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .admin-companies-btn {

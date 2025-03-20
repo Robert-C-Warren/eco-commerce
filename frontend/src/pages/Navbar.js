@@ -14,11 +14,14 @@ import API_BASE_URL from "../components/urls";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { auth, signInWithGoogle, logOut } from "../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const CustomNavbar = () => {
   const [companyCategories, setCompanyCategories] = useState([]);
   const [productCategories, setProductCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [user] = useAuthState(auth);
   const navbarCollapseRef = useRef(null);
   const navigate = useNavigate();
 
@@ -161,6 +164,29 @@ const CustomNavbar = () => {
               )}
             </NavDropdown>
           </NavDropdown>
+          {user ? (
+            <>
+              <Nav.Link as={Link} to="/favorites">
+                Favorites
+              </Nav.Link>
+              <Button variant="danger" onClick={logOut}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                variant="primary"
+                className="me-2"
+                onClick={() => navigate("/signin")}
+              >
+                Sign In
+              </Button>
+              <Button variant="success" onClick={() => navigate("/signup")}>
+                Sign Up
+              </Button>
+            </>
+          )}
         </Nav>
         <div className="search-bar-container">
           <Form className="d-flex search-bar" onSubmit={handleSearch}>

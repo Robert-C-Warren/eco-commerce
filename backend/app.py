@@ -903,6 +903,25 @@ def delete_company(company_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/companies/<company_id>', methods=["GET"])
+def get_company_by_id(company_id):
+    """
+    Retrieve a company by ID.
+    Converts the MongoDB ObjectId to a string before returning
+    """
+    try:
+        company = db.companies.find_one({"_id": ObjectId(company_id)})
+
+        if not company:
+            return jsonify({"error": "Company not found"}), 404
+        
+        company["_id"] = str(company["_id"])
+        return jsonify(company), 200
+
+    except Exception as e:
+        print(f"Error fetching company: {e}")
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/reports/<company_id>", methods=["GET"])
 def get_reports_by_company(company_id):
     """
