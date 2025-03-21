@@ -24,6 +24,10 @@ body {
     height: auto;
 }
 
+.logout-button {
+    margin-left: $padding-medium;
+}
+
 .hero-section-home {
     background-color: $secondary-color;
     border-radius: $border-radius;

@@ -169,7 +169,7 @@ const CustomNavbar = () => {
               <Nav.Link as={Link} to="/favorites">
                 Favorites
               </Nav.Link>
-              <Button variant="danger" onClick={logOut}>
+              <Button className="logout-button" variant="danger" onClick={logOut}>
                 Logout
               </Button>
             </>

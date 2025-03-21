@@ -57,10 +57,6 @@
     100% { transform: translateY(0); } /* Stops */
 }
 
-.favorites-btn {
-    margin: 0 auto;
-}
-
 .icon-wrapper {
     position: relative;
     display: flex;
@@ -290,15 +286,6 @@
     margin-bottom: 10px; /* ✅ Adds space below the logo */
 }
 
-.favorites-btn {
-    margin-top: 5px; /* ✅ Ensure favorite button does not overlap */
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: relative;
-}
-
 .card-body {
     margin-top: 140px;
 }
@@ -316,20 +303,73 @@
     transition: transform 1s ease !important;
 }
 
-.tooltip {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0,0,0,0.8);
-    color: rgb(255, 255, 255);
-    padding: 8px 12px;
-    height: 3.5%;
-    font-size: 1.4rem;
-    border-radius: 5px;
+.global-tooltip {
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
     white-space: nowrap;
     opacity: 0;
+    transform: scale(0.5);
+    animation: fadeIn 0.35s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float-hearts {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(1.5);
+    }
+}
+
+.floating-heart {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    font-size: 1rem;
+    color: #000000;
+    animation: float-hearts 1s ease-out forwards;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+}
+
+@keyframes drop-hearts {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50px) scale(1.3);
+    }
+}
+
+.breaking-heart {
+    position: absolute;
+    top: 0;
+    color: #000000;
+    font-size: 1rem;
+    pointer-events: none;
+    animation: drop-hearts 1s ease-out forwards;
+}
+
+.favorites-btn {
+    margin: 0 auto;
+    margin-top: 5px; /* ✅ Ensure favorite button does not overlap */
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
 }
 
 .company-card:hover .tooltip {
