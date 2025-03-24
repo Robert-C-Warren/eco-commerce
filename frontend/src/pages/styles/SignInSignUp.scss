@@ -1,0 +1,80 @@
+@import 'variables';
+
+.sign-in-container, .sign-up-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    
+    .sign-in-form, .sign-up-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: $padding-large;
+        padding-right: $padding-large;
+        padding-top: $padding-medium;
+        padding-bottom: $padding-medium;
+        border-radius: $border-radius;
+        background-color: $secondary-color;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 400px;
+
+        @media (max-width: 500px) {
+            max-width: 80%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .login-inputs, .sign-up-inputs {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          
+            input {
+              width: 100%;
+              max-width: unset;
+
+            }
+      
+            .email-form-label,
+            .password-form-label {
+              padding-top: $padding-xsmall;
+              padding-bottom: $padding-xsmall;
+              color: white;
+            }
+          }
+
+        .sign-up-link-container, .sign-in-link-container{
+            padding-top: $padding-xsmall;
+
+            .sign-up-link {
+                text-decoration: none;
+                color: #0003cc;
+                display: inline-block;
+
+                &:hover {
+                    transform: scale(1.2) translateX(5px);
+                    color: #00fc69;
+                    transition: transform 0.8s ease;
+                }
+            }
+
+            .sign-in-link{
+                text-decoration: none;
+                color: #0003cc;
+                display: inline-block;
+
+                &:hover {
+                    transform: scale(1.2);
+                    color: #00fc69;
+                    transition: transform 0.8s ease;
+                }
+            }
+        }
+    }
+}
+

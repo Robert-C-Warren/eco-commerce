@@ -19,6 +19,12 @@ body {
     background-color: $secondary-color;
 }
 
+.sign-btns {
+    display: flex;
+    flex-direction: row;
+    max-width: 200px;
+}
+
 .logo-actual {
     width: 80vh;
     height: auto;
@@ -64,11 +70,11 @@ body {
 
 .search-bar-container {
     display: flex;
+    flex-direction: row;
 }
 
 .search-bar {
     background-color: $secondary-color;
-    padding-bottom: $padding-medium;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     padding-left: $padding-small;

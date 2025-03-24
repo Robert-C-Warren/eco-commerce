@@ -1,0 +1,21 @@
+@import '../pages/styles/variables.scss';
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: $primary-color;
+    border: none;
+    border-radius: $border-radius;
+    padding: 10px;
+    font-size: 2rem;
+    z-index: 1000;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}

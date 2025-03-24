@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import API_BASE_URL from "../components/urls";
 import BScoreChart from "../components/BScoreChart";
 import availableIcons from "../components/AvailableIcons";
+import ScrollToTop from "../components/ScrollToTop"
 
 const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 	const [companies, setCompanies] = useState([]);
@@ -159,13 +160,11 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 						const titleEl = categoryTitleRefs.current[category];
 						if (titleEl) {
 							titleEl.scrollIntoView({ behavior: "auto", block: "start" });
-					
-							const offset = 300
+
+							const offset = 300;
 							window.scrollBy({ top: offset, behavior: "smooth" });
 						}
 					}, 550);
-					
-					
 
 					return category;
 				}
@@ -472,24 +471,25 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 			</div>
 			{tooltipState.visible && (
 				<div
-					className="global-tooltip"
-					style={{
-						position: "fixed",
-						top: `${tooltipState.y}px`,
-						left: `${tooltipState.x}px`,
-						background: "rgba(0, 0, 0, 0.85)",
-						color: "white",
-						padding: "6px 10px",
-						borderRadius: "6px",
-						fontSize: "0.85rem",
-						transition: "top 0.08s ease, left 0.08s ease, opacity 0.15s ease",
-						pointerEvents: "none",
-						zIndex: 9999,
-					}}>
+				className="global-tooltip"
+				style={{
+					position: "fixed",
+					top: `${tooltipState.y}px`,
+					left: `${tooltipState.x}px`,
+					background: "rgba(0, 0, 0, 0.85)",
+					color: "white",
+					padding: "6px 10px",
+					borderRadius: "6px",
+					fontSize: "0.85rem",
+					transition: "top 0.08s ease, left 0.08s ease, opacity 0.15s ease",
+					pointerEvents: "none",
+					zIndex: 9999,
+				}}>
 					<i className="bi bi-eye-fill me-1" />
 					{tooltipState.content}
 				</div>
 			)}
+			<ScrollToTop />
 		</div>
 	);
 };
