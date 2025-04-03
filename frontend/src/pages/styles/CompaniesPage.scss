@@ -150,6 +150,10 @@
 
   &.expanded {
     min-height: 800px;
+
+    @media(max-width: 500px) {
+      min-height: 80vh;
+    }
   }
 
   &.expanded .card-body {

@@ -237,13 +237,14 @@ const CompanyCard = ({ company, availableIcons }) => {
 		description: company.description,
 		logo: company.logo,
 		instagram: company.instagram,
+		tags: company.tags?.join(", ") || "",
 	});
 	const toggleExpand = () => setExpanded((prev) => !prev);
 
 	// Mutation to delete a company
 	const deleteCompanyMutation = useMutation({
 		mutationFn: (companyId) => {
-			const sessionToken = localStorage.getItem("sessionToken"); // Get MFA code from storage
+			const sessionToken = sessionStorage.getItem("sessionToken"); // Get MFA code from storage
 
 			if (!sessionToken) {
 				toast.error("MFA required. Please log in again.");
@@ -267,7 +268,7 @@ const CompanyCard = ({ company, availableIcons }) => {
 	// Partial update for specifics
 	const updateSpecificsMutation = useMutation({
 		mutationFn: ({ companyId, specifics }) => {
-			const sessionToken = localStorage.getItem("sessionToken");
+			const sessionToken = sessionStorage.getItem("sessionToken");
 
 			if (!sessionToken) {
 				toast.error("MFA required. Please log in again.");
@@ -293,7 +294,7 @@ const CompanyCard = ({ company, availableIcons }) => {
 	// ✅ Partial update for icons with MFA
 	const updateIconsMutation = useMutation({
 		mutationFn: ({ companyId, icons }) => {
-			const sessionToken = localStorage.getItem("sessionToken");
+			const sessionToken = sessionStorage.getItem("sessionToken");
 
 			if (!sessionToken) {
 				toast.error("MFA required. Please log in again.");
@@ -319,7 +320,7 @@ const CompanyCard = ({ company, availableIcons }) => {
 	// ✅ Partial update for category with MFA
 	const updateCategoryMutation = useMutation({
 		mutationFn: ({ companyId, category }) => {
-			const sessionToken = localStorage.getItem("sessionToken");
+			const sessionToken = sessionStorage.getItem("sessionToken");
 
 			if (!sessionToken) {
 				toast.error("MFA required. Please log in again.");
@@ -388,6 +389,13 @@ const CompanyCard = ({ company, availableIcons }) => {
 			updateData.instagram = formattedInstagram; // ✅ Save full URL
 		}
 
+		if (formData.tags) {
+			updateData.tags = formData.tags
+			  .split(",")
+			  .map(tag => tag.trim())
+			  .filter(Boolean); // Remove empty tags
+		  }
+
 		if (selectedFile) {
 			try {
 				console.log("📂 Uploading file to Firebase...");
@@ -406,7 +414,7 @@ const CompanyCard = ({ company, availableIcons }) => {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+					Authorization: `Bearer ${sessionStorage.getItem("sessionToken")}`,
 				},
 				body: JSON.stringify(updateData),
 			});
@@ -606,6 +614,11 @@ const CompanyCard = ({ company, availableIcons }) => {
 											<div className="mb-3">
 												<label className="form-label">Upload New Logo</label>
 												<input type="file" className="form-control" accept="image/*" onChange={handleFileChange} />
+											</div>
+											{/* Tags Input */}
+											<div className="mb-3">
+												<label className="form-label">Tags (comma separated)</label>
+												<input type="text" name="tags" className="form-control" value={formData.tags} onChange={handleChange} placeholder="eco-friendly, cruelty-free, upcycled" />
 											</div>
 											{/* Submit Button */}
 											<button type="submit" className="btn btn-success">

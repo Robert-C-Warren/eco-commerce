@@ -16,16 +16,12 @@ const AdminLogin = ({ onLogin }) => {
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        console.log("🔍 Sending login request:", { email, password });
 
         try {
             const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
 
-            console.log("✅ Login response:", response.data);
-
             if (response.data.success) {
                 if (response.data.mfaRequired) {
-                    console.log("🔒 MFA required. Storing user_id...");
                     setUserId(response.data.user_id); // ✅ Store user ID for MFA
                     setStep("mfa");
                 } else if (response.data.mfaSetupRequired) {
@@ -36,7 +32,6 @@ const AdminLogin = ({ onLogin }) => {
                     setOtpUri(setupResponse.data.otp_uri);
                     setStep("setup-mfa");
                 } else {
-                    console.log("✅ Login successful.");
                     onLogin(true); // ✅ Update authentication state
                     navigate("/admin/products");
                 }
@@ -45,9 +40,14 @@ const AdminLogin = ({ onLogin }) => {
                 setError(response.data.message);
             }
         } catch (err) {
-            console.error("🚨 Error in login request:", err);
-            setError("An error occurred while logging in.");
+            console.error("🚨 Login error:", err);
+            if (err.response && err.response.data && err.response.data.message) {
+                setError(err.response.data.message);
+            } else {
+                setError("An error occurred while logging in.");
+            }
         }
+        
     };    
 
     const handleMfaSubmit = async (e) => {
