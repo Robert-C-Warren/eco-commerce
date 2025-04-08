@@ -1,5 +1,7 @@
 # 🌱 EcoCommerce Web App
 
+[![Live Site](https://img.shields.io/badge/Live%20Site-ecocommerce.earth-brightgreen?style=for-the-badge)](https://ecocommerce.earth)
+
 EcoCommerce is a web application that helps users discover and support eco-friendly companies and products.  
 It provides information about companies' sustainability practices, certifications, and ethical business standards.
 
