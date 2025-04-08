@@ -40,24 +40,31 @@ git clone https://github.com/Robert-C-Warren/eco-commerce.git
 cd eco-commerce
 ```
 
-## 2️⃣ Set Up the Backend
+### 2️⃣ Set Up the Backend
+
 ```bash
 cd backend
 ```
-### Create a virtual environment and activate it
+
+Create a virtual environment and activate it:
+
 ```bash
 python -m venv venv
-# Mac/Linux
+# Mac/Linux:
 source venv/bin/activate
-# Windows
+# Windows:
 venv\Scripts\activate
 ```
-### Install dependencies
+
+Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
-Create a .env file in the backend directory:
 
+Create a `.env` file in the backend directory:
+
+```env
 PORT=5000
 MONGO_URI=mongodb+srv://your-mongo-uri
 ALLOWED_ORIGINS=http://localhost:3000
@@ -67,15 +74,29 @@ FIREBASE_CLIENT_EMAIL=your-client-email
 FIREBASE_STORAGE_BUCKET=your-storage-bucket
 BREVO_API_KEY=your-brevo-api-key
 ADMIN_PASSWORD=your-admin-password
+```
+
 Run the Flask API:
 
+```bash
 python app.py
-3️⃣ Set Up the Frontend
+```
+
+### 3️⃣ Set Up the Frontend
+
+Navigate to the frontend directory and install dependencies:
+
+```bash
 cd ../frontend
 npm install
 npm start
+```
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 EcoCommerce/
 │── backend/
 │   ├── app.py                # Main Flask app
@@ -99,37 +120,34 @@ EcoCommerce/
 │── .env                      # Environment variables
 │── README.md                 # Documentation
 │── .gitignore                # Files to ignore in Git
+```
 
-📡 API Endpoints
+---
 
-🛠️ Companies
-GET /companies → Fetch all companies
+## 📡 API Endpoints
 
-GET /companies/search?q=keyword → Search for companies
+### 🛠️ Companies
 
-POST /companies → Add new company
+- **GET** `/companies` → Fetch all companies  
+- **GET** `/companies/search?q=keyword` → Search for companies  
+- **POST** `/companies` → Add new company  
+- **PUT** `/companies/<company_id>` → Update company details  
+- **DELETE** `/companies/<company_id>` → Remove a company  
 
-PUT /companies/<company_id> → Update company details
+### 🛠️ Products
 
-DELETE /companies/<company_id> → Remove a company
+- **GET** `/products` → Get all products  
+- **POST** `/products` → Add new product  
+- **PATCH** `/admin/products/<id>/categories` → Update product category  
+- **DELETE** `/admin/products/<id>` → Remove a product  
 
-🛠️ Products
-GET /products → Get all products
+### 🛠️ Admin
 
-POST /products → Add new product
+- **POST** `/admin/login` → Admin authentication  
+- **GET** `/admin/reports` → Get all reports  
+- **POST** `/admin/reports/<company_id>` → Add or update a report  
 
-PATCH /admin/products/<id>/categories → Update product category
+### 🛠️ Assets
 
-DELETE /admin/products/<id> → Remove a product
-
-🛠️ Admin
-POST /admin/login → Admin authentication
-
-GET /admin/reports → Get all reports
-
-POST /admin/reports/<company_id> → Add or update a report
-
-🛠️ Assets
-POST /upload-logo → Upload a company logo
-
-GET /get-logo/<filename> → Retrieve an uploaded logo
+- **POST** `/upload-logo` → Upload a company logo  
+- **GET** `/get-logo/<filename>` → Retrieve an uploaded logo
