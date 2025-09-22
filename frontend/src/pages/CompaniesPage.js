@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import API_BASE_URL from "../components/urls";
 import BScoreChart from "../components/BScoreChart";
 import availableIcons from "../components/AvailableIcons";
-import ScrollToTop from "../components/ScrollToTop"
+import ScrollToTop from "../components/ScrollToTop";
 
 const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 	const [companies, setCompanies] = useState([]);
@@ -370,7 +370,7 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 																/>
 																<h5 className="card-title m-0">{company.name}</h5>
 																<h6 className="card-specifics">{company.specifics}</h6>
-																<button
+																{/* <button
 																	className="favorites-btn"
 																	onClick={(e) => {
 																		e.stopPropagation();
@@ -378,10 +378,10 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 																	}}
 																	disabled={favoritingNow === company._id}
 																	aria-label={`${userFavorites.includes(String(company._id)) ? "Remove from" : "Add to"} favorites`}>
-																	{/* Heart icon */}
+																	{/* Heart icon }
 																	{userFavorites.includes(String(company._id)) ? <i className="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
 
-																	{/* Render all floating hearts */}
+																	 
 																	{floatingHearts
 																		.filter((h) => h.companyId === company._id)
 																		.map((h) => (
@@ -407,8 +407,8 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 																				}}>
 																				<i className="bi bi-heartbreak-fill"></i>
 																			</span>
-																		))}
-																</button>
+																		))} 
+																</button> */}
 															</div>
 															{expandedCompany === company._id && (
 																<div className="card-body ">
@@ -471,20 +471,20 @@ const CompaniesPage = ({ searchQuery, collection = "companies" }) => {
 			</div>
 			{tooltipState.visible && (
 				<div
-				className="global-tooltip"
-				style={{
-					position: "fixed",
-					top: `${tooltipState.y}px`,
-					left: `${tooltipState.x}px`,
-					background: "rgba(0, 0, 0, 0.85)",
-					color: "white",
-					padding: "6px 10px",
-					borderRadius: "6px",
-					fontSize: "0.85rem",
-					transition: "top 0.08s ease, left 0.08s ease, opacity 0.15s ease",
-					pointerEvents: "none",
-					zIndex: 9999,
-				}}>
+					className="global-tooltip"
+					style={{
+						position: "fixed",
+						top: `${tooltipState.y}px`,
+						left: `${tooltipState.x}px`,
+						background: "rgba(0, 0, 0, 0.85)",
+						color: "white",
+						padding: "6px 10px",
+						borderRadius: "6px",
+						fontSize: "0.85rem",
+						transition: "top 0.08s ease, left 0.08s ease, opacity 0.15s ease",
+						pointerEvents: "none",
+						zIndex: 9999,
+					}}>
 					<i className="bi bi-eye-fill me-1" />
 					{tooltipState.content}
 				</div>

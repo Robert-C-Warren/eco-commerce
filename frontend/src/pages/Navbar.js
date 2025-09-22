@@ -7,7 +7,7 @@ import API_BASE_URL from "../components/urls";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { auth, signInWithGoogle, logOut } from "../firebaseConfig";
+import { auth, logOut } from "../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const CustomNavbar = () => {
@@ -124,7 +124,7 @@ const CustomNavbar = () => {
 							)}
 						</NavDropdown>
 					</NavDropdown>
-					{user ? (
+					{/* {user ? (
 						<>
 							<Nav.Link as={Link} to="/favorites">
 								Favorites
@@ -142,7 +142,7 @@ const CustomNavbar = () => {
 								Sign Up
 							</Button>
 						</ div>
-					)}
+					)} */}
 				</Nav>
 				<div className="search-bar-container">
 					<Form className="d-flex search-bar" onSubmit={handleSearch}>
