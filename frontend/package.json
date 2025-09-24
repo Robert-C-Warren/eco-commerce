@@ -53,7 +53,8 @@
   },
   "devDependencies": {
     "eslint": "^8.57.1",
-    "sass": "^1.85.1"
+    "sass": "^1.85.1",
+    "webpack-dev-server": "^5.2.2"
   },
   "overrides": {
     "form-data": "^4.0.4",
