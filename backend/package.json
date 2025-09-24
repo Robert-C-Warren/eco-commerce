@@ -20,5 +20,8 @@
     "mongoose": "^8.8.4",
     "node-cron": "^3.0.3",
     "pip": "^0.0.1"
+  },
+  "overrides": {
+    "minimist": "^1.2.8"
   }
 }
