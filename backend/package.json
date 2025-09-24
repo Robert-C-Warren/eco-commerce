@@ -17,7 +17,7 @@
     "express": "^4.21.1",
     "flask": "^0.2.10",
     "flask-cors": "^0.0.1",
-    "mongoose": "^8.8.3",
+    "mongoose": "^8.8.4",
     "node-cron": "^3.0.3",
     "pip": "^0.0.1"
   }
