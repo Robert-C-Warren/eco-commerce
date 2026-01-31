@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AdminLogin from "./pages/AdminLogin";
 import AdminConsole from "./pages/AdminConsole";
@@ -23,7 +23,6 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Nav } from "react-bootstrap";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
