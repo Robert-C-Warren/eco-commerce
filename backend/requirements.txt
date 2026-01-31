@@ -1,5 +1,5 @@
 flask
-pymongo>=4.0
+pymongo
 flask-cors
 python-dotenv
 sib_api_v3_sdk
